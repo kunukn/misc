@@ -1,0 +1,15 @@
+#main {
+	padding-left: 0;
+	padding-right: 0;
+}
+#s4-bodyContainer .container {
+	padding-left: 0;
+	padding-right: 0;
+}
+#logo{
+	padding: 2px;		
+}	
+.topbanner, .featurebanners {
+		margin: 0 !important; 
+		padding: 0 !important;
+}	
