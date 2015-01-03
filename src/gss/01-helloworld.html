@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <!-- CSS styling -->
+    <style type="text/css">
+    body{    	    	    
+        background-color: #eee;
+    }    
+    #section1 {        
+        background-color: #fff;
+        color: #000;
+        z-index: 1;        
+    }
+    #section2 {        
+        background-color: #000;
+        color: #fff;
+    }
+    #section1,
+    #section2 {
+        border-radius: 5px;
+        padding: 10px;
+    }
+    </style>
+
+    <!-- GSS styling -->
+    <style type="text/gss">
+        #section1 { width: == 400; height: == 200; margin: == 20;} 
+        #section2 { width: == 800; height: == 300;  margin: == 20;}         
+        #section1[center-x] == #section2[center-x]; 
+        #section1[bottom] == #section2[bottom] - 8; 
+    </style>
+
+   
+     <!-- GSS Dependencies -->
+    <script>
+        GSS_CONFIG = { 
+            useWorker: true, 
+            worker: "bower_components/gss/dist/worker.min.js" 
+        }
+    </script>     
+    <script src="bower_components/gss/dist/gss.min.js"></script> 
+    <!-- online file  <script src="//rawgit.com/gss/gss.github.io/master/bower_components/gss/dist/gss.min.js"></script> -->
+</head>
+
+<body>
+
+    <section id='section1'>    
+        SECTION1: But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.
+    </section>
+
+    <section id='section2'>    
+        SECTION2: On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain.
+    </section>
+
+   
+</body>
+</html>
