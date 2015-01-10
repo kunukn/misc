@@ -147,6 +147,7 @@
 
 	<script>
 		 !function (d, $) {
+            // Aggregate string array to string
 			Handlebars.registerHelper('categoryList', function (categories) {
 				if (!categories) return '';
 				if (categories.length === 1) return categories[0];
@@ -156,20 +157,26 @@
 				}, '');
 			});
 
+            // Format author data
 			Handlebars.registerHelper('authorFormatted', function (author) {
 				if (!author) return '- Unknown author';
 				return '- ' + author
 			});
 
+            // Json url
 			var url = '//ajax.googleapis.com/ajax/services/feed/load?v=1.0';
 			url += '&num=10&q=http://news.google.com/news?output=rss';
 
+            // Get json data from Google
 			$.ajax({
 				url: url,
 				type: 'GET',
-				dataType: 'jsonp',
-				success: function (result) {
+                // avoid having no CORS policy by using jsonp
+				dataType: 'jsonp', 
+				success: function (result) {                  
 					data = result; // save to global var for debugging
+
+                    // If download was success, then apply rendering
 					if (result.responseStatus === 200) {
 						var templateSource = $('#template').html();
 						var template = Handlebars.compile(templateSource);
@@ -179,7 +186,7 @@
 				},
 				error: function (result) {
 					console.log(result);
-					$('#rendered').append(result);
+					$('#rendered').append('ERROR - ' + JSON.stringify(result));
 				}
 			});
 		}(document, jQuery);
