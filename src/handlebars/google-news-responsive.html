@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Google News</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+    <link rel="stylesheet" type="text/css" href="google-news-responsive.css">
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js'>
+    </script>
+</head>
+
+<body>
+    <section id='rendered'></section>
+    <script id="template" type="text/x-handlebars-template">
+        <h3>Google News</h3>
+        <ul>
+        {{#entries}}
+        <li>
+            <a href='{{link}}' target='_blank'>
+                <div class='date gray'>{{publishedDate}}</div>
+                <div class='author gray'>{{authorFormatted author}}</div>
+                <div class='clearboth'></div>
+                <div>{{title}}</div>
+                <div class='gray'>Categories: {{categoriesFormatted categories}}</div>
+            </a>
+        </li>
+        {{/entries}}
+        </ul>
+    </script>
+
+    <script src='google-news-responsive.js'></script>
+</body>
+</html>
