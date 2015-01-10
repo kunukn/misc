@@ -23,7 +23,7 @@
     $.ajax({
         url: url,
         type: 'GET',
-        // Avoid having no CORS policy by using jsonp
+        // Avoid having no CORS policy issues by using jsonp
         // I trust that the google service will do no harm
         dataType: 'jsonp', 
         success: function (result) {                  
@@ -31,9 +31,9 @@
 
             // If download was success, then apply rendering
             if (result.responseStatus === 200) {
-                var templateSource = $('#template').html();
-                var template = Handlebars.compile(templateSource);
-                var html = template(result.responseData.feed);
+                var templateSource = $('#template').html()
+                , template = Handlebars.compile(templateSource)
+                , html = template(result.responseData.feed);
                 $('#rendered').append(html);
             }
         },
