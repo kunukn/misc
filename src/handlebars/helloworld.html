@@ -2,35 +2,36 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <title>Handlebars Helloworld</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
 
     <!-- handlebars from CDN -->
     <script 
-    src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js'>
+    src='//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js'>
     </script>
 
-    <style type="text/css">
-    	#renderedContent{
-    		width: 50%;
-    		margin: 0 auto;
-    		background-color: #222;
-    		color: #fff;    	
-    		text-align: center;	
-    	}    	
+    <!-- Styling for rendered content -->
+    <style type='text/css'>
+        #renderedContent{
+            width: 50%;
+            margin: 0 auto;
+            background-color: #222;
+            color: #fff;    	
+            text-align: center;	
+        }    	
     </style>
 </head>
 
 <body>
-    <!-- Handlebars rendered result -->
+    <!-- Handlebars rendered result placeholder -->
     <section id='renderedContent'></section>
 
-    <!-- Handlebars template -->
-    <script id="myTemplate" type="text/x-handlebars-template">
-        <article>
+    <!-- Handlebars template, title and body are placeholders for data -->
+    <script id='myTemplate' type='text/x-handlebars-template'>
+        <article>        	
             <h1>{{title}}</h1>
-            <div>
+            <div>            	
                 {{body}}
             </div>
         </article>
@@ -39,20 +40,20 @@
     <!-- Handlebars rendering -->
     <script>
     !function(d) {
-    	// Prepare template
+        // Prepare template
         var templateSource = d.getElementById('myTemplate').innerHTML;
         var template = Handlebars.compile(templateSource);
 
-		// Data in json
+        // Data in json
         var data = {
             title: 'Handlebars'
             ,body: 'Helloworld'
         };
 
-		// Generate html using template and data
+        // Generate html using template and data
         var html = template(data);
 
-		// Add the result to the DOM
+        // Add the result to the DOM
         d.getElementById('renderedContent').innerHTML = html;
     }(document);
     </script>
