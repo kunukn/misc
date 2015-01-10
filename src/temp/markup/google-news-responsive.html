@@ -6,122 +6,10 @@
 	<title>Google News</title>
 	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
 
+	<link rel="stylesheet" type="text/css" href="../styles/google-news-responsive.css">
 	<script src="//code.jquery.com/jquery.min.js"></script>
 	<script src='//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js'>
 	</script>
-
-	<style type='text/css'>
-		/* resets */
-		html {
-			box-sizing: border-box;
-		}
-
-		*, *:before, *:after {
-			margin: 0;
-			padding: 0;
-			border: 0;
-			box-sizing: inherit;
-		}
-
-		/* Responsive design, smallest device first */
-		body {
-			margin-top: 1em;
-		}
-
-		.clearboth {
-			clear: both;
-		}
-
-		.date {
-			float: left;
-			font-size: 70%;
-		}
-
-		.author {
-			float: right;
-			font-size: 70%;
-		}
-
-		.gray {
-			color: gray;
-		}
-
-		#rendered {
-			margin: 0 auto;
-		}
-
-
-			#rendered ul {
-				list-style-type: none;
-			}
-
-			#rendered li {
-				list-style-type: none;
-				border: 1px solid black;
-				border-radius: 0.5em;
-				display: block;
-				margin: 1em 0.5em 1em 0.5em;
-			}
-
-				#rendered li a {
-					display: block;
-					padding: 0.5em;
-				}
-
-		a:link, a:visited, a:hover, a:active {
-			text-decoration: none;
-		}
-
-		#rendered h3 {
-			text-align: center;
-		}
-
-			#rendered h3:after {
-				content: " - Phone";
-			}
-
-		@media (min-width: 480px) {
-
-			#rendered h3:after {
-				content: " - Phone large";
-			}
-
-			#rendered {
-				font-size: 110%;
-			}
-		}
-
-		@media (min-width: 768px) {
-			#rendered h3:after {
-				content: " - Tablet";
-			}
-
-			#rendered {
-				width: 90%;
-				font-size: 120%;
-			}
-		}
-
-		@media (min-width: 992px) {
-			#rendered h3:after {
-				content: " - Desktop";
-			}
-
-			#rendered {
-				font-size: 130%;
-			}
-		}
-
-		@media (min-width: 1200px) {
-			#rendered h3:after {
-				content: " - Desktop large";
-			}
-
-			#rendered {
-				font-size: 140%;
-			}
-		}
-	</style>
 </head>
 
 <body>
@@ -142,7 +30,6 @@
 			{{/entries}}
 		</ul>
 	</script>
-
 
 	<script>
 		 !function (d, $) {
