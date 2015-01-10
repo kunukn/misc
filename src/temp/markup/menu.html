@@ -10,47 +10,38 @@
     <script src='//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js'></script>
 
     <style type='text/css'>
-        #menu{
-            width: 50%;
-            margin: 0 auto;
-            background-color: #222;
-            color: #fff;    	
-            text-align: center;	
-        }    	
+    #menu {
+        
+        margin: 0 auto;
+       
+    }
     </style>
 </head>
 
 <body>
     <section id='menu'></section>
-
-    <script id='menuTemplate' type='text/x-handlebars-template'>
-        <article>        	
-            <h1>{{title}}</h1>
-            <div>            	
-                {{body}}
-            </div>
-        </article>
+    <script id="menuTemplate" type="text/x-handlebars-template">
+       
     </script>
-
-
-  <script>
-       data = {
-            title: 'hi'
-            ,body: 'you'
-        };
-  </script>
-     
 
 
     <script>
-    !function(d, $, data) {
+    data = {
+       
+    };
+    </script>
 
+
+
+    <script>
+    ! function(d, $) {
+       
         var templateSource = d.getElementById('menuTemplate').innerHTML;
-        var template = Handlebars.compile(templateSource);
-        var html = template(data);
-
-        $('#menu').append(html);
-    }(document, jQuery, data);
+                var template = Handlebars.compile(templateSource);
+                var html = template(data);
+                $('#menu').append(html); 
+    }(document, jQuery);
     </script>
 </body>
+
 </html>
