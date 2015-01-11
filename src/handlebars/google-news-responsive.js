@@ -1,7 +1,7 @@
 ﻿!function (d, $) {
     // Aggregate string array to string
     Handlebars.registerHelper('categoriesFormatted', function (categories) {
-        if (!categories) return '';
+        if (!categories || categories.length === 0) return '';
         if (categories.length === 1) return categories[0];
 
         return categories.reduce(function (a, b) {
