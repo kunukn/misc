@@ -39,9 +39,9 @@
     var url = '//ajax.googleapis.com/ajax/services/feed/load?v=1.0';
     url += '&num=10&q=http://news.google.com/news?output=rss';
 
-    var templateSource = $('#template').html(),
-        template = Handlebars.compile(templateSource),
-        html = '';
+    var templateSource = $('#template').html()
+        , template = Handlebars.compile(templateSource)
+        , html = '';
 
     // Get json data from Google
     $.ajax({
@@ -50,7 +50,7 @@
         // avoid having no CORS policy issues by using jsonp
         dataType: 'jsonp',
         success: function(result) {
-            debug = result; // save to global var for debugging
+            data = result; // save to global var for debugging
 
             // If download was success, then apply rendering
             if (result.responseStatus === 200) {
