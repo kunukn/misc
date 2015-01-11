@@ -35,13 +35,14 @@
         return '- ' + author
     });
 
-    // Json url
-    var url = '//ajax.googleapis.com/ajax/services/feed/load?v=1.0';
+    var 
+    templateSource = $('#template').html(),
+    template = Handlebars.compile(templateSource),
+    html = '',
+  
+   // Json url
+    url = '//ajax.googleapis.com/ajax/services/feed/load?v=1.0';
     url += '&num=10&q=http://news.google.com/news?output=rss';
-
-    var templateSource = $('#template').html()
-        , template = Handlebars.compile(templateSource)
-        , html = '';
 
     // Get json data from Google
     $.ajax({
