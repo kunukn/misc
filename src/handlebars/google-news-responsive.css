@@ -36,18 +36,23 @@ body {
     list-style-type: none;
 }
 #rendered li {
-    list-style-type: none;
-    border: 1px solid black;
-    border-radius: 0.5em;
+    list-style-type: none;    
     display: block;
     margin: 1em 0.5em 1em 0.5em;
 }
 #rendered li a {
     display: block;
     padding: 0.5em;
+    border: 1px solid black;
+    border-radius: 0.5em;
 }
 a:link, a:visited, a:hover, a:active {
     text-decoration: none;
+}
+a:hover {
+  background: -webkit-linear-gradient(white, #ddd);  
+  background: -moz-linear-gradient(white, #ddd); 
+  background: linear-gradient(white, #ddd); 
 }
 #rendered h3 {
     text-align: center;
@@ -66,7 +71,7 @@ a:link, a:visited, a:hover, a:active {
 }
 @media (min-width: 768px) {
     #rendered h3:after {
-        content: ' - Tablet';
+        content: " - Tablet";
     }
     #rendered {
         width: 80%;
