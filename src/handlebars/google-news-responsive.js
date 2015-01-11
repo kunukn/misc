@@ -64,7 +64,7 @@
             console.log(result);
             $('body').append('ERROR - ' + JSON.stringify(result));
         },
-        complete: function(result) {
+        complete: function() {
             $('#rendered').append(html);
         }
     });
