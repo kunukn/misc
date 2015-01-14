@@ -57,11 +57,11 @@ a:hover {
 #rendered h3 {
     text-align: center;
 }
-#rendered h3:after {
+#rendered h3::after {
     content: ' - Phone';
 }
 @media (min-width: 480px) {
-    #rendered h3:after {
+    #rendered h3::after {
         content: ' - Phone large';
     }
     #rendered {
@@ -70,7 +70,7 @@ a:hover {
     }
 }
 @media (min-width: 768px) {
-    #rendered h3:after {
+    #rendered h3::after {
         content: " - Tablet";
     }
     #rendered {
@@ -79,7 +79,7 @@ a:hover {
     }
 }
 @media (min-width: 992px) {
-    #rendered h3:after {
+    #rendered h3::after {
         content: ' - Desktop';
     }
     #rendered {
@@ -91,7 +91,7 @@ a:hover {
     }
 }
 @media (min-width: 1200px) {
-    #rendered h3:after {
+    #rendered h3::after {
         content: ' - Desktop large';
     }
     #rendered {
