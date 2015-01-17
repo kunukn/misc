@@ -14,7 +14,7 @@
 <body>
     <section id='rendered'></section>
     <script id="template" type="text/x-handlebars-template">
-        <h3>Google News</h3>
+        <h3 class='title'>Google News</h3>
         <ul>
         {{#entries}}
         <li>
@@ -22,7 +22,7 @@
                 <div class='date gray'>{{publishedDate}}</div>
                 <div class='author gray'>{{authorFormatted author}}</div>
                 <div class='clearboth'></div>
-                <div>{{title}}</div>
+                <div class='item-news'>{{title}}</div>
                 <div class='gray'>Categories: {{categoriesFormatted categories}}</div>
             </a>
         </li>

@@ -54,14 +54,17 @@ a:hover {
   background: -moz-linear-gradient(white, #ddd); 
   background: linear-gradient(white, #ddd); 
 }
-#rendered h3 {
+#rendered .item-news {
+    margin: 0.5em 0;
+}
+#rendered .title {
     text-align: center;
 }
-#rendered h3::after {
+#rendered .title::after {
     content: ' - Phone';
 }
 @media (min-width: 480px) {
-    #rendered h3::after {
+    #rendered .title::after {
         content: ' - Phone large';
     }
     #rendered {
@@ -70,7 +73,7 @@ a:hover {
     }
 }
 @media (min-width: 768px) {
-    #rendered h3::after {
+    #rendered .title::after {
         content: " - Tablet";
     }
     #rendered {
@@ -79,7 +82,7 @@ a:hover {
     }
 }
 @media (min-width: 992px) {
-    #rendered h3::after {
+    #rendered .title::after {
         content: ' - Desktop';
     }
     #rendered {
@@ -91,7 +94,7 @@ a:hover {
     }
 }
 @media (min-width: 1200px) {
-    #rendered h3::after {
+    #rendered .title::after {
         content: ' - Desktop large';
     }
     #rendered {
