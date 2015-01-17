@@ -14,11 +14,51 @@
 </head>
 
 <body>
-    <section id='renderedAllMenus' class='template-rendered'></section>    
+	<div class='body'>
+
+		<div class='company-logo'>
+			<div class='name'>mitt </div>			
+			<span class='device-info'>Device</span>
+		</div>
+
+		<div class='global-links hidden-xs'>global links</div>
+
+		<div class='main-search'>
+		search
+		<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+		</div>
+
+		<div class='language-selection hidden-xs'>language</div>
+
+		
+		 <div class="all-navigation-button visible-xs">
+                    <button type="button" data-toggle="collapse" data-target="#renderedAllMenus" class="navbar-toggle">
+                    button
+                    <span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
+                    </button>
+                  
+          </div>
+    
+                   
+
+
+		<div class='clearboth'></div>
+
+	</div>
+
+
+	
+
+ 	<div id="all-navigation-container" class="navbar-collapse collapse">
+                    all-navigation-container                   
+    </div>  
+    <section id='renderedAllMenus' class='template-rendered navbar-collapse collapse'></section>    
+
+
 
 
     <script id='templateAllMenus' type='text/x-handlebars-template'>
-    	 <h3 class='device-info'>Device</h3>
+    	 
 
 		{{! Global navigation - only 1 level nesting}} 
         <h3 class='navigation-title global-navigation-title'>Global Navigation</h3>
@@ -101,6 +141,7 @@
      
     </script>
 
+	<script src='menudata.js'></script>
     <script src='menu.js'></script>
 </body>
 </html>

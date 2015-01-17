@@ -9,47 +9,75 @@
     box-sizing: inherit;
 }
 */
-
 /* Responsive design, smallest device first */
 
 body {
-    margin-top: 1em;
+    /*margin-top: 0em;*/
+    margin: 0 0.5em;
 }
+
+.body{
+    margin: 0 auto;
+    /*max-width: 50%*/;
+}
+
+.company-logo{
+    background-color: #8c0000;
+    color: white;
+    min-width: 4em;
+    padding: 0.8em;    
+    display: block;
+    float: left;
+}
+
+.company-logo .name{
+    font: small-caps 700 2em/1.2 sans-serif;
+    text-transform: uppercase;
+}
+
 .clearboth {
     clear: both;
 }
 .template-rendered {
     margin: 0 auto;
 }
-#renderedAllMenus .navigation-container ul {
+.navigation-container ul {
     list-style: none;
 }
-#renderedAllMenus .device-info {
+
+    .template-rendered .navigation-item-description{
+        display: none;
+    }
+
+.device-info {
     text-align: center;
+    font-size: 50%;
+    float: right;
 }
-#renderedAllMenus .device-info::after {
+.device-info::after {
     content: ' - Phone';
 }
 @media (min-width: 480px) {
-    #renderedAllMenus .device-info::after {
+    .device-info::after {
         content: ' - Phone large';
-    }
-    #renderedAllMenus {
-        margin-left: 1em;
     }
 }
 @media (min-width: 768px) {
-    #renderedAllMenus .device-info::after {
+    .device-info::after {
         content: " - Tablet";
+    }
+
+    .template-rendered .navigation-item-description{
+        display: inline;
     }
 }
 @media (min-width: 992px) {
-    #renderedAllMenus .device-info::after {
+    .device-info::after {
         content: ' - Desktop';
     }
 }
 @media (min-width: 1200px) {
-    #renderedAllMenus .device-info::after {
+    .device-info::after {
         content: ' - Desktop large';
     }
 }
