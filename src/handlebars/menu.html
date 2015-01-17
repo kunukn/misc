@@ -14,58 +14,70 @@
 </head>
 
 <body>
-    <section id='rendered'></section>
-    
-    <script id="navigationChildren" type="x-handlebars-template">
-    {{#each children}}
-    <li>
-        {{name}}
-        {{#if children}}
-        <ul>
-        {{> children}}
-        </ul>
-        {{/if}}
-    </li>
-    {{/each}}
-	</script>
-
-<script id="main" type="x-handlebars-template">
-    <ul>
-    {{> children}}
-    </ul>
-    </script>
-
+    <section id='rendered'></section>    
     <script id="template" type="text/x-handlebars-template">
     	 <h3 class='device-info'>Device</h3>
 
-        <h3>GlobalNavigation</h3>
+		{{! only 1 level nesting}} 
+        <h3 class='navigation-title global-navigation-title'>Global Navigation</h3>
         <div class='global-navigation'>
 	  		<ul>
 	        {{#globalNavigationItems}}
 	        <li>
-	            <a href='{{url}}'>{{text}}</a>	                	                
+	            <a href='{{url}}'>{{text}}</a>		                  	               
 	        </li>
 	        {{/globalNavigationItems}}
 	        </ul>
         </div>
 
-        <h3>MainNavigation</h3>
+		{{! supports upto 3 level nesting }} 
+        <h3 class='navigation-title main-navigation-title'>MainNavigation</h3>
         <div class='main-navigation'>
-	  		<ul>
+	  		<ul class='main-navigation-level1'>
 	        {{#mainNavigationItems}}
-	        <li>
-	            <a href='{{url}}'>{{text}}</a>    	          
+	        <li >
+	            <a href='{{url}}'>
+	            	<span class='main-navigation-item-text'>{{text}}</span>
+					<span class='main-navigation-item-description'>{{description}}</span>
+	            </a>    	          
+	            
+	            {{#if children}}
+	                   	<ul class='main-navigation-level2'>
+	                   	{{#each children}}
+	                   		<li>
+	                   			<a href='{{url}}'>
+	                   				<span class='main-navigation-item-text'>{{text}}</span>
+	                   				<span class='main-navigation-item-description'>{{description}}</span>
+	                   			</a>	                   		
+		              			{{#if children}}
+		                   		<ul class='main-navigation-level3'>
+					            	{{#each children}}
+					                   	<li>
+					                   		<a href='{{url}}'>
+					            	       		<span class='main-navigation-item-text'>{{text}}</span>
+												<span class='main-navigation-item-description'>{{description}}</span>
+					                   		</a>				                   		
+					                   	</li>
+					              	{{/each}}
+					            </ul>
+		             			{{/if}} {{! closes level 3}} 	
+	              			</li> 
+	              		{{/each}}
+	               </ul>
+	            {{/if}}  {{! closes level 2}} 	
 	        </li>
 	        {{/mainNavigationItems}}
 	        </ul>
         </div>
 
-        <h3>LeftNavigation</h3>
+		{{! supports upto 3 level nesting }} 
+        <h3 class='navigation-title left-navigation-title'>Left Navigation</h3>
         <div class='left-navigation'>
 	  		<ul>
 	        {{#leftNavigationItems}}
 	        <li>
 	            <a href='{{url}}'>{{text}}</a>               
+	            <span class='left-navigation-item-description'>{{description}}</span>
 	        </li>
 	        {{/leftNavigationItems}}
 	        </ul>

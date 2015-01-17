@@ -1,60 +1,60 @@
 ﻿! function(d, $) {
+ 
     var stub = {
-        globalNavigationItems: [{
+        globalNavigationItems: [
+        {
             text: 'global text',
-            url: 'url'
-        }, {
+            url: '#'
+        }, 
+        {
             text: 'global text2',
-            url: 'url2'
-        }],
-        mainNavigationItems: [{
-            level: 1,
+            url: '#'
+        },
+        {
+            text: 'global text3',
+            url: '#'
+        },
+        {
+            text: 'global text4',
+            url: '#'
+        }
+        ],
+
+        mainNavigationItems: [{            
             text: 'main text',
-            url: 'url',
-            children: [{
-                level: 2,
+            url: '#',
+            description: 'description text',
+            children: [
+            {                
                 text: 'main text level2',
-                url: 'url'
-            }]
-        }, {
-            level: 1,
+                url: '#',
+                description: 'description text',
+            },
+            {                
+                text: 'main2 text level2',
+                url: '#',
+                description: 'description text',
+                children: [
+                {                
+                    text: 'main text level3',
+                    url: '#',
+                    description: 'description text level 3',
+                }
+                ]
+            }
+            ]
+        }, {            
             text: 'main text2',
-            url: 'url2'
+            url: '#'
         }],
-        leftNavigationItems: [{
-            level: 1,
+        leftNavigationItems: [{            
             text: 'left text',
-            url: 'url'
-        }, {
-            level: 1,
+            url: '#'
+        }, {            
             text: 'left text2',
-            url: 'url2'
+            url: '#'
         }]
     };
-
-    var children = [
-    { name: "1" },
-    { name: "2" },
-    { name: "3", children: [
-        { name: "4" },
-        { name: "5" },
-        { name: "6", children: [
-            { name: "7" }    
-        ]}
-    ]},
-    { name: "8" }
-];
-
-// The main template.
-var main = Handlebars.compile( $( "#main" ).html() );
-
-// Register the list partial that "main" uses.
-Handlebars.registerPartial( "children", $( "#navigationChildren" ).html() );
-
-// Render the list.
-$( "body" ).html( main( { children: children } ) );
-
-return;
 
     var template = Handlebars.compile($('#template').html());
     var html = template(stub);

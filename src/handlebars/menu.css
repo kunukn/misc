@@ -1,5 +1,4 @@
-﻿/* resets */
-
+/* resets */
 /*html {
     box-sizing: border-box;
 }
@@ -11,47 +10,40 @@
 }
 */
 /* Responsive design, smallest device first */
-
 body {
-    margin-top: 1em;
-}
+  margin-top: 1em; }
+
 .clearboth {
-    clear: both;
-}
+  clear: both; }
+
 #rendered {
-    margin: 0 auto;
-}
-#rendered .global-navigation ul, 
-#rendered .main-navigation ul, 
-#rendered .left-navigation ul{
-    list-style: none;
-}
+  margin: 0 auto; }
+
+#rendered .global-navigation ul,
+#rendered .main-navigation ul,
+#rendered .left-navigation ul {
+  list-style: none; }
+
 #rendered .device-info {
-    text-align: center;
-}
+  text-align: center; }
+
 #rendered .device-info::after {
-    content: ' - Phone';
-}
+  content: ' - Phone'; }
+
 @media (min-width: 480px) {
-    #rendered .device-info::after {
-        content: ' - Phone large';
-    }
-    #rendered {
-        margin-left: 1em;      
-    }
-}
+  #rendered .device-info::after {
+    content: ' - Phone large'; }
+
+  #rendered {
+    margin-left: 1em; } }
 @media (min-width: 768px) {
-    #rendered .device-info::after {
-        content: " - Tablet";
-    }   
-}
+  #rendered .device-info::after {
+    content: " - Tablet"; } }
 @media (min-width: 992px) {
-    #rendered .device-info::after {
-        content: ' - Desktop';
-    }   
-}
+  #rendered .device-info::after {
+    content: ' - Desktop'; } }
 @media (min-width: 1200px) {
-    #rendered .device-info::after {
-        content: ' - Desktop large';
-    }   
-}
+  #rendered .device-info::after {
+    content: ' - Desktop large'; } }
+
+/*# sourceMappingURL=menu.css.map */
