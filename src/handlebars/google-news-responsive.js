@@ -27,7 +27,7 @@
 
     // Format author data
     Handlebars.registerHelper('authorFormatted', function(author) {        
-        return author ? '- ' + author : '- Unknown author'
+        return author ? '- ' + author : '- Unknown author';
     });
 
     var 
