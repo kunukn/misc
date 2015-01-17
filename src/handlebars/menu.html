@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset='utf-8'>
-    <title>Menu</title>
+    <title>Responsive Menu Example</title>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
 	
 	<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
@@ -14,11 +14,13 @@
 </head>
 
 <body>
-    <section id='rendered'></section>    
-    <script id="template" type="text/x-handlebars-template">
+    <section id='renderedAllMenus' class='template-rendered'></section>    
+
+
+    <script id='templateAllMenus' type='text/x-handlebars-template'>
     	 <h3 class='device-info'>Device</h3>
 
-		{{! only 1 level nesting}} 
+		{{! Global navigation - only 1 level nesting}} 
         <h3 class='navigation-title global-navigation-title'>Global Navigation</h3>
         <div class='navigation-container global-navigation-container'>
 	  		<ul>
@@ -30,7 +32,7 @@
 	        </ul>
         </div>
 
-		{{! supports upto 3 level nesting }} 
+		{{! Main navigation - supports upto 3 level nesting }} 
         <h3 class='navigation-title main-navigation-title'>MainNavigation</h3>
         <div class='navigation-container main-navigation-container'>
 	  		<ul class='navigation-level1 main-navigation-level1'>
@@ -70,7 +72,7 @@
 	        </ul>
         </div>
 
-		{{! supports upto 2 level nesting }} 
+		{{! Left navigation - supports upto 2 level nesting }} 
         <h3 class='navigation-title left-navigation-title'>Left Navigation</h3>
         <div class='navigation-container left-navigation-container'>
 	  		<ul>

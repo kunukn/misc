@@ -23,7 +23,7 @@
         mainNavigationItems: [{            
             text: 'main text1',
             url: '#',
-            description: 'main description',
+            description: 'main description Lorem ipsum dolor sit amet, graeco virtute feugiat ex sea. Vide suscipiantur duo ea, has eu alia ceteros. An vidit alienum gubergren vis, mei at doming legendos, has ex scaevola comprehensam. Quem putant scribentur usu et, ad tota noluisse principes mel, nec suscipit invidunt singulis ut.',
             children: [
             {                
                 text: 'main text 11',
@@ -33,7 +33,7 @@
                 {                
                     text: 'main text 111',
                     url: '#',
-                    description: 'main description 111',
+                    description: 'main description 111 Lorem ipsum dolor sit amet, graeco virtute feugiat ex sea. Vide suscipiantur duo ea, has eu alia ceteros. An vidit alienum gubergren vis, mei at doming legendos, has ex scaevola comprehensam. Quem putant scribentur usu et, ad tota noluisse principes mel, nec suscipit invidunt singulis ut.',
                 }
                 ]
             },
@@ -114,7 +114,7 @@
         {            
             text: 'left text5',
             url: '#',
-             children: [
+            children: [
             {                
                 text: 'left text 51',
                 url: '#',                
@@ -128,8 +128,8 @@
         ]
     };
 
-    var template = Handlebars.compile($('#template').html());
+    var template = Handlebars.compile($('#templateAllMenus').html());
     var html = template(stub);
-   $('#rendered').append(html);
+   $('#renderedAllMenus').append(html);
 
 }(document, jQuery);
