@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="menu.css">
     
     <script src="//code.jquery.com/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>   
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script src='//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js'></script>
 </head>
 
@@ -20,7 +20,7 @@
 
 		{{! only 1 level nesting}} 
         <h3 class='navigation-title global-navigation-title'>Global Navigation</h3>
-        <div class='global-navigation'>
+        <div class='navigation-container global-navigation-container'>
 	  		<ul>
 	        {{#globalNavigationItems}}
 	        <li>
@@ -32,17 +32,17 @@
 
 		{{! supports upto 3 level nesting }} 
         <h3 class='navigation-title main-navigation-title'>MainNavigation</h3>
-        <div class='main-navigation'>
-	  		<ul class='main-navigation-level1'>
+        <div class='navigation-container main-navigation-container'>
+	  		<ul class='navigation-level1 main-navigation-level1'>
 	        {{#mainNavigationItems}}
-	        <li >
+	        <li>
 	            <a href='{{url}}'>
-	            	<span class='main-navigation-item-text'>{{text}}</span>
-					<span class='main-navigation-item-description'>{{description}}</span>
+	            	<span class='navigation-item-text main-navigation-item-text'>{{text}}</span>
+					<span class='navigation-item-description main-navigation-item-description'>{{description}}</span>
 	            </a>    	          
 	            
 	            {{#if children}}
-	                   	<ul class='main-navigation-level2'>
+	                   	<ul class='navigation-level2 main-navigation-level2'>
 	                   	{{#each children}}
 	                   		<li>
 	                   			<a href='{{url}}'>
@@ -50,36 +50,50 @@
 	                   				<span class='main-navigation-item-description'>{{description}}</span>
 	                   			</a>	                   		
 		              			{{#if children}}
-		                   		<ul class='main-navigation-level3'>
+		                   		<ul class='navigation-level3 main-navigation-level3'>
 					            	{{#each children}}
 					                   	<li>
 					                   		<a href='{{url}}'>
-					            	       		<span class='main-navigation-item-text'>{{text}}</span>
-												<span class='main-navigation-item-description'>{{description}}</span>
+					            	       		<span class='navigation-item-text main-navigation-item-text'>{{text}}</span>
+												<span class='navigation-item-description main-navigation-item-description'>{{description}}</span>
 					                   		</a>				                   		
 					                   	</li>
-					              	{{/each}}
+					              	{{/each}} {{! closes level 3}}
 					            </ul>
-		             			{{/if}} {{! closes level 3}} 	
+		             			{{/if}}
 	              			</li> 
-	              		{{/each}}
+	              		{{/each}} {{! closes level 2}} 	
 	               </ul>
-	            {{/if}}  {{! closes level 2}} 	
+	            {{/if}}  
 	        </li>
-	        {{/mainNavigationItems}}
+	        {{/mainNavigationItems}} {{! closes level 1}} 	
 	        </ul>
         </div>
 
-		{{! supports upto 3 level nesting }} 
+		{{! supports upto 2 level nesting }} 
         <h3 class='navigation-title left-navigation-title'>Left Navigation</h3>
-        <div class='left-navigation'>
+        <div class='navigation-container left-navigation-container'>
 	  		<ul>
 	        {{#leftNavigationItems}}
 	        <li>
-	            <a href='{{url}}'>{{text}}</a>               
-	            <span class='left-navigation-item-description'>{{description}}</span>
+	            <a href='{{url}}'>
+	            	<span class='left-navigation-item-text'>{{text}}</span>
+	            	<span class='left-navigation-item-description'>{{description}}</span>
+	            </a>               
+	              {{#if children}}
+	                   	<ul class='left-navigation-level2'>
+	                   	{{#each children}}
+	                   		<li>
+	                   			<a href='{{url}}'>
+	                   				<span class='left-navigation-item-text'>{{text}}</span>
+	                   				<span class='left-navigation-item-description'>{{description}}</span>
+	                   			</a>	                   				              			
+	              			</li> 
+	              		{{/each}} {{! closes level 2}}	
+	               </ul>
+	            {{/if}} 
 	        </li>
-	        {{/leftNavigationItems}}
+	        {{/leftNavigationItems}} {{! closes level 1}}
 	        </ul>
         </div>
      
