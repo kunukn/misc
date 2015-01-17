@@ -1,21 +1,17 @@
 ﻿!function(d, $) {
     var stub = {
         entries: [{
-            title: 'title data',
-            link: 'link data',
-            author: 'author data',
-            publishedDate: 'publishedDate data',
-            categories: [
-                'category 1', 'category 2'
-            ]
+            title: 'title 1',
+            link: 'link 1',
+            author: 'author 1',
+            publishedDate: 'publishedDate 1',
+            categories: ['category 11', 'category 12']
         }, {
-            title: 'title data',
-            link: 'link data',
-            author: 'author data',
-            publishedDate: 'publishedDate data',
-            categories: [
-                'category 1', 'category 2'
-            ]
+            title: 'title 2',
+            link: 'link 2',
+            author: 'author 2',
+            publishedDate: 'publishedDate 2',
+            categories: ['category 21', 'category 22']
         }]
     };
 
@@ -30,9 +26,8 @@
     });
 
     // Format author data
-    Handlebars.registerHelper('authorFormatted', function(author) {
-        if (!author) return '- Unknown author';
-        return '- ' + author
+    Handlebars.registerHelper('authorFormatted', function(author) {        
+        return author ? '- ' + author : '- Unknown author'
     });
 
     var 
