@@ -1,8 +1,8 @@
 ﻿var WEB = WEB || {};
 
 ! function(d, $) {    
-    var template = Handlebars.compile($('#templateAllMenus').html());
+    var template = Handlebars.compile($('#templateSmallDeviceNavigation').html());
     var html = template(WEB.stub);
-   $('#renderedAllMenus').append(html);
+   $('#renderedSmallDeviceNavigation').append(html);
 
 }(document, jQuery);

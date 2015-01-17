@@ -13,31 +13,100 @@
 
 body {
     /*margin-top: 0em;*/
-    margin: 0 0.5em;
+    /*margin: 0 0.5em;*/
+    background-color: #f6f4ef;
 }
 
 .body{
-    margin: 0 auto;
-    /*max-width: 50%*/;
+    margin: 0 auto;    
 }
 
-.company-logo{
+.top-panel{
+    background-color: #8c0000;
+}
+
+.top-panel-item{
+    background-color: #f6f4ef;
+    float: right;
+}
+
+.top-panel .global-links{
+    border: 1px solid #333;
+    background-color: #f6f4ef;
+}
+
+.top-panel .language-selection {
+    border: 1px solid #333;
+    background-color: #f6f4ef;
+}
+
+.top-panel .company-logo{
     background-color: #8c0000;
     color: white;
     min-width: 4em;
-    padding: 0.8em;    
-    display: block;
+    padding: 0.8em;        
+
+    float: left;
+
+}
+
+.float-left{
     float: left;
 }
 
-.company-logo .name{
+.float-right{
+    float: right;
+}
+
+.top-panel .company-logo .name{
     font: small-caps 700 2em/1.2 sans-serif;
     text-transform: uppercase;
 }
 
-.clearboth {
-    clear: both;
+.company-logo .homepage-link{
+    text-decoration: none;
 }
+.company-logo .homepage-link:active,
+.company-logo .homepage-link:visited, 
+.company-logo .homepage-link:link,
+.company-logo .homepage-link:hover{    
+    color: inherit;
+}
+
+.top-panel .main-search-toggle{
+    border: 1px solid #8c0000;
+    min-height: 2em;
+    max-width: 6em;
+    font: small-caps 700 2em/1.2 sans-serif;
+    float: right;
+    background-color: #f6f4ef;
+}
+
+.top-panel .navigation-dropdown-icon{
+    min-width: 4em;
+    border: 1px solid #8c0000;
+    display: block;
+    float: right;
+    max-width: 10em;  
+    padding: 0.5em; 
+    border-radius: 0.2em;
+    background-color: #f6f4ef;
+}
+
+.navigation-dropdown-icon:link,.navigation-dropdown-icon:active,.navigation-dropdown-icon:visited, .navigation-dropdown-icon:hover{
+    background-color: #f6f4ef;
+}
+.navigation-dropdown-icon:hover{
+    background-color: #f6f4ef;
+}
+
+.navigation-dropdown-icon .navigation-bar-stripe {
+    background: #8c0000;
+    height: 4px;     
+    margin: 4px 0;  
+    max-width: 8em;  
+}
+
 .template-rendered {
     margin: 0 auto;
 }
@@ -51,12 +120,26 @@ body {
 
 .device-info {
     text-align: center;
-    font-size: 50%;
+    font-size: 60%;
     float: right;
 }
 .device-info::after {
     content: ' - Phone';
 }
+
+/* Bootstrap override 
+    Not desktop
+*/
+@media (max-width: 991px) {
+  /* Override Bootstrap never hide for tablet and up */
+  /*  .navbar-collapse.collapse {
+        display: none !important;
+    }
+    .collapse.in {
+        display: block !important;
+    }*/
+}
+
 @media (min-width: 480px) {
     .device-info::after {
         content: ' - Phone large';
@@ -66,14 +149,22 @@ body {
     .device-info::after {
         content: " - Tablet";
     }
-
     .template-rendered .navigation-item-description{
         display: inline;
     }
-}
+
+    /* Override Bootstrap never hide for tablet and up */
+    .navbar-collapse.collapse {
+        display: none !important;
+    }
+    .collapse.in {
+        display: block !important;
+    }
+
+  
 @media (min-width: 992px) {
     .device-info::after {
-        content: ' - Desktop';
+        content: ' - Desktop';    
     }
 }
 @media (min-width: 1200px) {
