@@ -25,14 +25,7 @@
 
             <div class='float-right'>
 
-                <div class='global-links top-panel-item float-left hidden-xs'> 
-                		<ul>
-                			<li><a href='#'>Events</a></li>
-                			<li><a href='#'>Kontakt</a></li>
-                			<li><a href='#'>Nyheder &amp; medier</a></li>
-                			<li><a href='#'>Om os</a></li>
-                		</ul>
-                </div>
+                <div id='renderedTopPanelGlobalLinks' class='global-links top-panel-item float-left hidden-xs'></div>
 
                 <div class='language-selection top-panel-item float-left hidden-xs'>language</div>
 
@@ -51,6 +44,18 @@
 
             <div class='clearfix'></div>
         </header>
+
+		<script id='templateTopPanelGlobalLinks' type='text/x-handlebars-template'>
+             {{! Global navigation - only 1 level nesting}}                                 
+                <ul>
+                    {{#globalNavigationItems}}
+                    <li>
+                        <a href='{{url}}'>{{text}}</a>
+                    </li>
+                    {{/globalNavigationItems}}
+                </ul>            
+		</script>
+
 
         <section id='renderedSmallDeviceNavigation' class='template-rendered navbar-collapse collapse'>rendered section</section>
         <script id='templateSmallDeviceNavigation' type='text/x-handlebars-template'>
