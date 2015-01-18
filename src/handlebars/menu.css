@@ -145,6 +145,9 @@ body {
     height: 100%;
 }
 
+.spot-container-default img{
+    text-align: center;
+}
 
 .image-responsive{
     width: auto;
