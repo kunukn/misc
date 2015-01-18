@@ -1,8 +1,8 @@
-/* resets */
+/* resets, they might disrupt Bootstrap values, undo these resets as you please */
 html {
     box-sizing: border-box;
 }
-/*
+
 *, *:before, *:after {
     margin: 0;
     padding: 0;
@@ -10,7 +10,8 @@ html {
     box-sizing: inherit;
 }
 
-*//* Responsive design, smallest device first */
+
+/* Responsive design, smallest device first */
 
 .float-left {
     float: left;
@@ -21,28 +22,31 @@ html {
 body {
     background-color: #f6f4ef;
 }
+/* body wrapper to center content */
 .body {
     margin: 0 auto;
 }
+
 .top-panel {
-    /*background-color: #8c0000;*/
-    
     background: linear-gradient(#8c0000, #7c0000);
 }
 .top-panel-item {
     margin-top: 8px;
     background-color: #f6f4ef;
+    margin-right: 10px;
     /*   float: right;*/
 }
 .top-panel .global-links {
     border: 1px solid #333;
     background-color: #f6f4ef;
 }
-.top-panel .global-links li {
+.top-panel .top-panel-links li {
     border-left: 1px solid #585858;
     list-style-type: none;
     display: inline-block;
 }
+
+
 .top-panel .language-selection {
     border: 1px solid #333;
     background-color: #f6f4ef;
@@ -66,9 +70,8 @@ body {
 .top-panel .top-panel-button {
     border: 1px solid #8c0000;            
     display: block;    
-    border-radius: 0.2em;
-    background-color: #f6f4ef;
-    margin-right: 1em;
+    border-radius: 4px;
+    background-color: #f6f4ef;    
     width: 50px;
     max-height: 50px;
     overflow: hidden;
@@ -91,13 +94,24 @@ body {
     margin: 7px auto;    
 }
 
+.main-page-container{
+    margin: 5px 0 0 0;
+}
+
 .navigation-container ul{
     padding-left: 20px;
 }
 
-.template-rendered {
-    margin: 0 auto;
+#searchInputContainer{
+    margin: 5px 0 0 0;
+    padding: 5px;
 }
+
+
+#searchInputContainer.search-input::before{
+   
+}
+
 .navigation-container ul {
     list-style: none;
 }
@@ -113,6 +127,7 @@ body {
     padding: 0.5em;
 
     border: 1px solid #333;
+    overflow: hidden;
 }
 
 .spot-background-darkgreen{
@@ -125,7 +140,9 @@ body {
 .spot-background-turkish{    
     background: linear-gradient(#00736E, #00636E);
 }
-
+.spot-background-red{    
+    background: linear-gradient(#8c0000, #7c0000);
+}
 
 
 .device-info {
@@ -150,9 +167,9 @@ body {
 }
 
 .image-responsive{
-    width: auto;
-    height: auto;
-    margin: 0 auto;
+    
+      display:block;
+    margin:auto;
 }
    
    /* Bootstrap override */
@@ -162,6 +179,7 @@ body {
    }
 .row {
     margin: inherit 0 inherit 0;
+    background-color: #C8D0CC;
 }
 
 

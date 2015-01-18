@@ -26,15 +26,29 @@
 
             <div class='float-right'>
 
-                <div id='renderedTopPanelGlobalLinks' class='global-links top-panel-item float-left hidden-xs'></div>
+                <div id='renderedTopPanelGlobalLinks' class='global-links template-rendered top-panel-links top-panel-item float-left hidden-xs'>
+                    global links
+                </div>
 
-                <div class='language-selection top-panel-item float-left hidden-xs'>language</div>
+                <div class='language-selection top-panel-item float-left top-panel-links hidden-xs'>
+                    language
+                    <ul>
+                        <li><a href="#">English</a>
+                        </li>
+                        <li><a href="#">Danish</a>
+                        </li>
+                        <li><a href="#">Chinese</a>
+                        </li>
+                    </ul>
+                </div>
 
-                <div class='main-search-toggle top-panel-item float-left top-panel-button'>
+                <div data-toggle='collapse' data-target='#searchInputContainer' 
+                class='main-search-toggle top-panel-item float-left top-panel-button' >
                     <span class="glyphicon glyphicon-search"></span>
                 </div>
 
-                <div data-toggle="collapse" data-target="#renderedSmallDeviceNavigation" class="collapsed navigation-dropdown-icon top-panel-item float-left top-panel-button hidden-md hidden-lg">
+                <div data-toggle='collapse' data-target='#renderedSmallDeviceNavigation'
+                class="collapsed navigation-dropdown-icon top-panel-item float-left top-panel-button hidden-md hidden-lg">
                     <div class='navigation-bar-stripe'></div>
                     <div class='navigation-bar-stripe'></div>
                     <div class='navigation-bar-stripe'></div>
@@ -46,8 +60,10 @@
 
         </header>
 
-        <section class='form-group' class=''>
-            <input type="text" class="form-control search-input" placeholder='search'>
+        <section class='form-group navbar-collapse xcollapse' id='searchInputContainer'>
+
+            <input type="text" class="form-control search-input" placeholder='search'><span class="glyphicon glyphicon-search"></span>
+            <button>search</button>
 
         </section>
 
@@ -137,8 +153,7 @@
         </script>
 
 
-        <section class="container-fluid">
-
+        <section class="container-fluid main-page-container">
             <div class='row'>
                 <div class='col-sm-6 spot-container-default'>
                     <section class='spot html-spot spot-background-turkish'>
@@ -156,7 +171,7 @@
                 </div>
             </div>
 
-             <div class='row'>
+            <div class='row'>
                 <div class='col-sm-3 spot-container-default'>
                     <section class='spot html-spot spot-background-lightgreen'>
                         <h3>IT advisory, development and outsourcing</h3>
@@ -171,7 +186,7 @@
                         </p>
                     </section>
                 </div>
-                 <div class='col-sm-3 spot-container-default'>
+                <div class='col-sm-3 spot-container-default'>
                     <section class='spot html-spot spot-background-turkish'>
                         <h3>IT advisory, development and outsourcing</h3>
                         <p>We are passionate people building We are passionate people building We are passionate people building We are passionate people building We are passionate people building Meet us here
@@ -180,15 +195,16 @@
                 </div>
                 <div class='col-sm-3 spot-container-default'>
                     <section class='spot html-spot spot-background-darkgreen'>
-                        <h3>Cool image here</h3>
-                        
-                        	<img src="http://placehold.it/200x100" class='image-responsive' />
+                        <h3>Cool image centered here</h3>
+
+                        <img src="http://placehold.it/200x100" class='image-responsive' />
+                        <p>We are passionate people building We are passionate people building </p>
 
                     </section>
                 </div>
             </div>
 
-             <div class='row'>
+            <div class='row'>
                 <div class='col-sm-6 spot-container-default'>
                     <section class='spot html-spot spot-background-lightgreen'>
                         <h3>IT advisory, development and outsourcing</h3>
@@ -197,7 +213,7 @@
                     </section>
                 </div>
                 <div class='col-sm-6 spot-container-default'>
-                    <section class='spot html-spot spot-background-darkgreen'>
+                    <section class='spot html-spot spot-background-red'>
                         <h3>IT advisory, development and outsourcing</h3>
                         <p>We are passionate people building We are passionate people building We are passionate people building We are passionate people building We are passionate people building Meet us here
                         </p>
