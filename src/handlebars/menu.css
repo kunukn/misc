@@ -22,7 +22,8 @@ body {
 }
 
 .top-panel{
-    background-color: #8c0000;
+    /*background-color: #8c0000;*/
+    background: linear-gradient(#8c0000, #7c0000);
 }
 
 .top-panel-item{
@@ -41,7 +42,7 @@ body {
 }
 
 .top-panel .company-logo{
-    background-color: #8c0000;
+   
     color: white;
     min-width: 4em;
     padding: 0.8em;        
@@ -117,6 +118,16 @@ body {
     .template-rendered .navigation-item-description{
         display: none;
     }
+
+
+.html-spot{
+    /*background-color: #4B5A55;*/
+    color: white;
+     background: linear-gradient(#4B5A55, #53605A );
+     margin: 0.5em;
+     padding: 0.5em;
+}
+
 
 .device-info {
     text-align: center;
