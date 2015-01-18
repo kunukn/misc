@@ -108,10 +108,26 @@ body {
     /*background-color: #4B5A55;*/
     
     color: white;
-    background: linear-gradient(#4B5A55, #53605A);
-    margin: 0.5em;
+    
+    /*margin: 0.3em;*/
     padding: 0.5em;
+
+    border: 1px solid #333;
 }
+
+.spot-background-darkgreen{
+    background: linear-gradient(#4B5A55, #53605A);
+}
+
+.spot-background-lightgreen{
+    background: linear-gradient(#879119, #779119);
+}
+.spot-background-turkish{    
+    background: linear-gradient(#00736E, #00636E);
+}
+
+
+
 .device-info {
     text-align: center;
     font-size: 60%;
@@ -120,11 +136,38 @@ body {
 .device-info::after {
     content: ' - Phone';
 }
-/* Bootstrap override 
-    Not desktop
-*/
+
+.search-input::after{
+
+}
+.spot-container-default{
+    padding: 0px 5px 5px 0px; /* push right and down -wards */
+    height: 100%;
+}
+
+
+.image-responsive{
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+}
+   
+   /* Bootstrap override */
+   .container-fluid{
+    padding: inherit 0 inherit 0;
+    margin-left: 5px;
+   }
+.row {
+    margin: inherit 0 inherit 0;
+}
+
+
 
 @media (max-width: 991px) {
+    /* Bootstrap override 
+        Not desktop
+    */
+
     /* Override Bootstrap never hide for tablet and up */
     /*  .navbar-collapse.collapse {
         display: none !important;

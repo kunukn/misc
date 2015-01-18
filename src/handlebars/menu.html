@@ -13,6 +13,7 @@
 </head>
 
 <body>
+
     <div class='body'>
 
         <header class='top-panel'>
@@ -32,37 +33,31 @@
                 <div class='main-search-toggle top-panel-item float-left top-panel-button'>
                     <span class="glyphicon glyphicon-search"></span>
                 </div>
-                          
-                <div data-toggle="collapse" data-target="#renderedSmallDeviceNavigation" 
-                class="collapsed navigation-dropdown-icon top-panel-item float-left top-panel-button hidden-md hidden-lg">
+
+                <div data-toggle="collapse" data-target="#renderedSmallDeviceNavigation" class="collapsed navigation-dropdown-icon top-panel-item float-left top-panel-button hidden-md hidden-lg">
                     <div class='navigation-bar-stripe'></div>
                     <div class='navigation-bar-stripe'></div>
                     <div class='navigation-bar-stripe'></div>
-                </div>	                
-                
+                </div>
+
             </div>
 
             <div class='clearfix'></div>
+
         </header>
 
-		<script id='templateTopPanelGlobalLinks' type='text/x-handlebars-template'>
-             {{! Global navigation - only 1 level nesting}}                                 
-                <ul>
-                    {{#globalNavigationItems}}
-                    <li>
-                        <a href='{{url}}'>{{text}}</a>
-                    </li>
-                    {{/globalNavigationItems}}
-                </ul>            
-		</script>
+        <section class='form-group' class=''>
+            <input type="text" class="form-control search-input" placeholder='search'>
+
+        </section>
 
 
         <section id='renderedSmallDeviceNavigation' class='template-rendered navbar-collapse collapse'>rendered section</section>
         <script id='templateSmallDeviceNavigation' type='text/x-handlebars-template'>
-           
-            {{! Main navigation - supports upto 3 level nesting }}            
+
+            {{! Main navigation - supports upto 3 level nesting }}
             <div class='navigation-container main-navigation-container'>
-            <h3 class='navigation-title main-navigation-title'>MainNavigation</h3>
+                <h3 class='navigation-title main-navigation-title'>MainNavigation</h3>
                 <ul class='navigation-level1 main-navigation-level1'>
                     {{#mainNavigationItems}}
                     <li>
@@ -100,10 +95,10 @@
                 </ul>
             </div>
 
-             {{! Global navigation - only 1 level nesting}}
-            
+            {{! Global navigation - only 1 level nesting}}
+
             <div class='navigation-container global-navigation-container'>
-            <h3 class='navigation-title global-navigation-title'>Global Navigation</h3>
+                <h3 class='navigation-title global-navigation-title'>Global Navigation</h3>
                 <ul>
                     {{#globalNavigationItems}}
                     <li>
@@ -113,9 +108,9 @@
                 </ul>
             </div>
 
-            {{! Left navigation - supports upto 2 level nesting }}            
+            {{! Left navigation - supports upto 2 level nesting }}
             <div class='navigation-container left-navigation-container'>
-            <h3 class='navigation-title left-navigation-title'>Left Navigation</h3>
+                <h3 class='navigation-title left-navigation-title'>Left Navigation</h3>
                 <ul>
                     {{#leftNavigationItems}}
                     <li>
@@ -141,17 +136,88 @@
             </div>
         </script>
 
-        <section class='spot html-spot'>
-            <h3>IT advisory, development and outsourcing</h3>
-            <p>We are passionate people building We are passionate people building We are passionate people building We are passionate people building We are passionate people building Meet us here
-            </p>
+
+        <section class="container-fluid">
+
+            <div class='row'>
+                <div class='col-sm-6 spot-container-default'>
+                    <section class='spot html-spot spot-background-turkish'>
+                        <h3>IT advisory, development and outsourcing</h3>
+                        <p>We are passionate people building We are passionate people building We are passionate people building We are passionate people building We are passionate people building Meet us here
+                        </p>
+                    </section>
+                </div>
+                <div class='col-sm-6 spot-container-default'>
+                    <section class='spot html-spot spot-background-darkgreen'>
+                        <h3>IT advisory, development and outsourcing</h3>
+                        <p>We are passionate people building We are passionate people building We are passionate people building We are passionate people building We are passionate people building Meet us here
+                        </p>
+                    </section>
+                </div>
+            </div>
+
+             <div class='row'>
+                <div class='col-sm-3 spot-container-default'>
+                    <section class='spot html-spot spot-background-lightgreen'>
+                        <h3>IT advisory, development and outsourcing</h3>
+                        <p>We are passionate people building We are passionate people building We are passionate people building We are passionate people building We are passionate people building Meet us here
+                        </p>
+                    </section>
+                </div>
+                <div class='col-sm-3 spot-container-default'>
+                    <section class='spot html-spot spot-background-darkgreen'>
+                        <h3>IT advisory, development and outsourcing</h3>
+                        <p>We are passionate people building We are passionate people building We are passionate people building We are passionate people building We are passionate people building Meet us here
+                        </p>
+                    </section>
+                </div>
+                 <div class='col-sm-3 spot-container-default'>
+                    <section class='spot html-spot spot-background-turkish'>
+                        <h3>IT advisory, development and outsourcing</h3>
+                        <p>We are passionate people building We are passionate people building We are passionate people building We are passionate people building We are passionate people building Meet us here
+                        </p>
+                    </section>
+                </div>
+                <div class='col-sm-3 spot-container-default'>
+                    <section class='spot html-spot spot-background-darkgreen'>
+                        <h3>Cool image here</h3>
+                        
+                        	<img src="http://placehold.it/200x100" class='image-responsive' />
+
+                    </section>
+                </div>
+            </div>
+
+             <div class='row'>
+                <div class='col-sm-6 spot-container-default'>
+                    <section class='spot html-spot spot-background-lightgreen'>
+                        <h3>IT advisory, development and outsourcing</h3>
+                        <p>We are passionate people building We are passionate people building We are passionate people building We are passionate people building We are passionate people building Meet us here
+                        </p>
+                    </section>
+                </div>
+                <div class='col-sm-6 spot-container-default'>
+                    <section class='spot html-spot spot-background-darkgreen'>
+                        <h3>IT advisory, development and outsourcing</h3>
+                        <p>We are passionate people building We are passionate people building We are passionate people building We are passionate people building We are passionate people building Meet us here
+                        </p>
+                    </section>
+                </div>
+            </div>
+
         </section>
 
-        <section class='spot html-spot'>
-            <h3>IT advisory, development and outsourcing</h3>
-            <p>We are passionate people building We are passionate people building We are passionate people building We are passionate people building We are passionate people building Meet us here
-            </p>
-        </section>
+
+        <script id='templateTopPanelGlobalLinks' type='text/x-handlebars-template'>
+            {{! Global navigation - only 1 level nesting}}
+            <ul>
+                {{#globalNavigationItems}}
+                <li>
+                    <a href='{{url}}'>{{text}}</a>
+                </li>
+                {{/globalNavigationItems}}
+            </ul>
+        </script>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
