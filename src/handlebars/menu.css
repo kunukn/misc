@@ -118,16 +118,23 @@ body {
 .template-rendered .navigation-item-description {
     display: none;
 }
+
+.spot{
+  
+}
+
 .html-spot {
-    /*background-color: #4B5A55;*/
     
     color: white;
     
-    /*margin: 0.3em;*/
     padding: 0.5em;
 
     border: 1px solid #333;
     overflow: hidden;
+}
+
+.html-spot-small{
+    min-height: 100px;
 }
 
 .spot-background-darkgreen{
@@ -205,7 +212,7 @@ body {
 @media (min-width: 480px) {
     .device-info::after {
         content: ' - Phone large';
-    }
+    }    
 }
 @media (min-width: 768px) {
     .device-info::after {
@@ -219,6 +226,10 @@ body {
         display: block;
     }
 
+    .html-spot-small{
+           min-height: 330px;
+        }
+
     /* Override Bootstrap never hide for tablet and up */    
     .navbar-collapse.collapse {
         display: none !important;
@@ -230,9 +241,15 @@ body {
         .device-info::after {
             content: ' - Desktop';
         }
+        .html-spot-small{
+           min-height: 300px;
+        }
     }
     @media (min-width: 1200px) {
         .device-info::after {
             content: ' - Desktop large';
+        }
+        .html-spot-small{
+            min-height: 230px;
         }
     }
