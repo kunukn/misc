@@ -1,16 +1,14 @@
 /* resets, they might disrupt Bootstrap values, undo these resets as you please */
+
 html {
     box-sizing: border-box;
 }
-
 *, *:before, *:after {
     margin: 0;
     padding: 0;
     border: 0;
     box-sizing: inherit;
 }
-
-
 /* Responsive design, smallest device first */
 
 .float-left {
@@ -23,10 +21,10 @@ body {
     background-color: #f6f4ef;
 }
 /* body wrapper to center content */
+
 .body {
     margin: 0 auto;
 }
-
 .top-panel {
     background: linear-gradient(#8c0000, #7c0000);
 }
@@ -45,8 +43,6 @@ body {
     list-style-type: none;
     display: inline-block;
 }
-
-
 .top-panel .language-selection {
     border: 1px solid #333;
     background-color: #f6f4ef;
@@ -68,10 +64,10 @@ body {
     color: inherit;
 }
 .top-panel .top-panel-button {
-    border: 1px solid #8c0000;            
-    display: block;    
+    border: 1px solid #8c0000;
+    display: block;
     border-radius: 4px;
-    background-color: #f6f4ef;    
+    background-color: #f6f4ef;
     width: 50px;
     max-height: 50px;
     overflow: hidden;
@@ -83,7 +79,7 @@ body {
     color: #8c0000;
 }
 .navigation-dropdown-icon {
-    padding: 0.3em; 
+    padding: 0.3em;
 }
 .top-panel-button:hover {
     background-color: #C8D0CC;
@@ -91,67 +87,60 @@ body {
 .navigation-dropdown-icon .navigation-bar-stripe {
     background: #8c0000;
     height: 4px;
-    margin: 7px auto;    
+    margin: 7px auto;
 }
-
-.main-page-container{
+.main-page-container {
     margin: 5px 0 0 0;
 }
-
-.navigation-container ul{
+.navigation-container ul {
     padding-left: 20px;
 }
-
-#searchInputContainer{
+#searchInputContainer {
     margin: 5px 0 0 0;
     padding: 5px;
+    max-width: 480px;
+    width: 100%;
+    float: right;
+    position: relative;
 }
-
-
-#searchInputContainer.search-input::before{
-   
+#searchInputContainer.search-input {
+    width: auto;
+    display: inline;
 }
-
+#searchInputContainer > a {
+    display: inline;
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    background-color: white;
+}
 .navigation-container ul {
     list-style: none;
 }
 .template-rendered .navigation-item-description {
     display: none;
 }
-
-.spot{
-  
-}
-
-.html-spot {
-    
+.spot {} .html-spot {
     color: white;
-    
     padding: 0.5em;
-
     border: 1px solid #333;
     overflow: hidden;
 }
-
-.html-spot-small{
+.html-spot-small {
     min-height: 100px;
 }
-
-.spot-background-darkgreen{
+.spot-background-darkgreen {
     background: linear-gradient(#4B5A55, #53605A);
 }
-
-.spot-background-lightgreen{
+.spot-background-lightgreen {
     background: linear-gradient(#879119, #779119);
 }
-.spot-background-turkish{    
+.spot-background-turkish {
     background: linear-gradient(#00736E, #00636E);
 }
-.spot-background-red{    
+.spot-background-red {
     background: linear-gradient(#8c0000, #7c0000);
 }
-
-
 .device-info {
     text-align: center;
     font-size: 60%;
@@ -160,42 +149,33 @@ body {
 .device-info::after {
     content: ' - Phone';
 }
-
-.search-input::after{
-
-}
-.spot-container-default{
-    padding: 0px 5px 5px 0px; /* push right and down -wards */
+.search-input::after {} .spot-container-default {
+    padding: 0px 5px 5px 0px;
+    /* push right and down -wards */
+    
     height: 100%;
 }
-
-.spot-container-default img{
+.spot-container-default img {
     text-align: center;
 }
-
-.image-responsive{
-    
-      display:block;
-    margin:auto;
+.image-responsive {
+    display: block;
+    margin: auto;
 }
-   
-   /* Bootstrap override */
-   .container-fluid{
+/* Bootstrap override */
+
+.container-fluid {
     padding: inherit 0 inherit 0;
     margin-left: 5px;
-   }
+}
 .row {
     margin: inherit 0 inherit 0;
     background-color: #C8D0CC;
 }
-
-
-
 @media (max-width: 991px) {
     /* Bootstrap override 
         Not desktop
     */
-
     /* Override Bootstrap never hide for tablet and up */
     /*  .navbar-collapse.collapse {
         display: none !important;
@@ -204,15 +184,13 @@ body {
         display: block !important;
     }*/
 }
-
-.global-navigation-container{
+.global-navigation-container {
     display: none;
 }
-
 @media (min-width: 480px) {
     .device-info::after {
         content: ' - Phone large';
-    }    
+    }
 }
 @media (min-width: 768px) {
     .device-info::after {
@@ -221,16 +199,14 @@ body {
     .template-rendered .navigation-item-description {
         display: inline;
     }
-
-    .global-navigation-container{
+    .global-navigation-container {
         display: block;
     }
-
-    .html-spot-small{
-           min-height: 330px;
-        }
-
-    /* Override Bootstrap never hide for tablet and up */    
+    .html-spot-small {
+        min-height: 330px;
+    }
+    /* Override Bootstrap never hide for tablet and up */
+    
     .navbar-collapse.collapse {
         display: none !important;
     }
@@ -241,15 +217,21 @@ body {
         .device-info::after {
             content: ' - Desktop';
         }
-        .html-spot-small{
-           min-height: 300px;
+        .body {
+            max-width: 90%;
+        }
+        .html-spot-small {
+            min-height: 300px;
         }
     }
     @media (min-width: 1200px) {
         .device-info::after {
             content: ' - Desktop large';
         }
-        .html-spot-small{
-            min-height: 230px;
+        .body {
+            max-width: 80%;
+        }
+        .html-spot-small {
+            min-height: 260px;
         }
     }
