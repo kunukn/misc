@@ -1,111 +1,98 @@
 /* resets */
-/*html {
+html {
     box-sizing: border-box;
 }
+/*
 *, *:before, *:after {
     margin: 0;
     padding: 0;
     border: 0;
     box-sizing: inherit;
 }
-*/
-/* Responsive design, smallest device first */
 
-body {
-    /*margin-top: 0em;*/
-    /*margin: 0 0.5em;*/
-    background-color: #f6f4ef;
+*//* Responsive design, smallest device first */
+
+.float-left {
+    float: left;
 }
-
-.body{
-    margin: 0 auto;    
-}
-
-.top-panel{
-    /*background-color: #8c0000;*/
-    background: linear-gradient(#8c0000, #7c0000);
-}
-
-.top-panel-item{
-    background-color: #f6f4ef;
+.float-right {
     float: right;
 }
-
-.top-panel .global-links{
+body {
+    background-color: #f6f4ef;
+}
+.body {
+    margin: 0 auto;
+}
+.top-panel {
+    /*background-color: #8c0000;*/
+    
+    background: linear-gradient(#8c0000, #7c0000);
+}
+.top-panel-item {
+    margin-top: 8px;
+    background-color: #f6f4ef;
+    /*   float: right;*/
+}
+.top-panel .global-links {
     border: 1px solid #333;
     background-color: #f6f4ef;
 }
-
+.top-panel .global-links li {
+    border-left: 1px solid #585858;
+    list-style-type: none;
+    display: inline-block;
+}
 .top-panel .language-selection {
     border: 1px solid #333;
     background-color: #f6f4ef;
 }
-
-.top-panel .company-logo{
-   
+.top-panel .company-logo {
     color: white;
     min-width: 4em;
-    padding: 0.8em;        
-
-    float: left;
-
-}
-
-.float-left{
+    padding: 0.8em;
     float: left;
 }
-
-.float-right{
-    float: right;
-}
-
-.top-panel .company-logo .name{
+.top-panel .company-logo .name {
     font: small-caps 700 2em/1.2 sans-serif;
     text-transform: uppercase;
 }
-
-.company-logo .homepage-link{
+.company-logo .homepage-link {
     text-decoration: none;
 }
-.company-logo .homepage-link:active,
-.company-logo .homepage-link:visited, 
-.company-logo .homepage-link:link,
-.company-logo .homepage-link:hover{    
+.company-logo .homepage-link:active, .company-logo .homepage-link:visited, .company-logo .homepage-link:link, .company-logo .homepage-link:hover {
     color: inherit;
 }
-
-.top-panel .main-search-toggle{
-    border: 1px solid #8c0000;
-    min-height: 2em;
-    max-width: 6em;
-    font: small-caps 700 2em/1.2 sans-serif;
-    float: right;
-    background-color: #f6f4ef;
-}
-
-.top-panel .navigation-dropdown-icon{
-    min-width: 4em;
-    border: 1px solid #8c0000;
-    display: block;
-    float: right;
-    max-width: 10em;  
-    padding: 0.5em; 
+.top-panel .top-panel-button {
+    border: 1px solid #8c0000;            
+    display: block;    
     border-radius: 0.2em;
     background-color: #f6f4ef;
+    margin-right: 1em;
+    width: 50px;
+    max-height: 50px;
+    overflow: hidden;
 }
-
-.navigation-dropdown-icon:link,.navigation-dropdown-icon:active,.navigation-dropdown-icon:visited, .navigation-dropdown-icon:hover{
+.top-panel .main-search-toggle {
+    font: small-caps 700 2em/1.2 sans-serif;
     background-color: #f6f4ef;
+    padding: 0.3em;
+    color: #8c0000;
 }
-.navigation-dropdown-icon:hover{
-    background-color: #f6f4ef;
+.navigation-dropdown-icon {
+    padding: 0.3em; 
 }
-
+.top-panel-button:hover {
+    background-color: #C8D0CC;
+}
 .navigation-dropdown-icon .navigation-bar-stripe {
     background: #8c0000;
-    height: 4px;     
-    margin: 4px 0;  
-    max-width: 8em;  
+    height: 4px;
+    margin: 7px auto;    
+}
+
+.navigation-container ul{
+    padding-left: 20px;
 }
 
 .template-rendered {
@@ -114,21 +101,17 @@ body {
 .navigation-container ul {
     list-style: none;
 }
-
-    .template-rendered .navigation-item-description{
-        display: none;
-    }
-
-
-.html-spot{
-    /*background-color: #4B5A55;*/
-    color: white;
-     background: linear-gradient(#4B5A55, #53605A );
-     margin: 0.5em;
-     padding: 0.5em;
+.template-rendered .navigation-item-description {
+    display: none;
 }
-
-
+.html-spot {
+    /*background-color: #4B5A55;*/
+    
+    color: white;
+    background: linear-gradient(#4B5A55, #53605A);
+    margin: 0.5em;
+    padding: 0.5em;
+}
 .device-info {
     text-align: center;
     font-size: 60%;
@@ -137,18 +120,22 @@ body {
 .device-info::after {
     content: ' - Phone';
 }
-
 /* Bootstrap override 
     Not desktop
 */
+
 @media (max-width: 991px) {
-  /* Override Bootstrap never hide for tablet and up */
-  /*  .navbar-collapse.collapse {
+    /* Override Bootstrap never hide for tablet and up */
+    /*  .navbar-collapse.collapse {
         display: none !important;
     }
     .collapse.in {
         display: block !important;
     }*/
+}
+
+.global-navigation-container{
+    display: none;
 }
 
 @media (min-width: 480px) {
@@ -160,26 +147,28 @@ body {
     .device-info::after {
         content: " - Tablet";
     }
-    .template-rendered .navigation-item-description{
+    .template-rendered .navigation-item-description {
         display: inline;
     }
 
-    /* Override Bootstrap never hide for tablet and up */
+    .global-navigation-container{
+        display: block;
+    }
+
+    /* Override Bootstrap never hide for tablet and up */    
     .navbar-collapse.collapse {
         display: none !important;
     }
     .collapse.in {
         display: block !important;
     }
-
-  
-@media (min-width: 992px) {
-    .device-info::after {
-        content: ' - Desktop';    
+    @media (min-width: 992px) {
+        .device-info::after {
+            content: ' - Desktop';
+        }
     }
-}
-@media (min-width: 1200px) {
-    .device-info::after {
-        content: ' - Desktop large';
+    @media (min-width: 1200px) {
+        .device-info::after {
+            content: ' - Desktop large';
+        }
     }
-}

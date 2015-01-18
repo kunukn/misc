@@ -1,9 +1,9 @@
 ﻿<!DOCTYPE html>
 <html>
 
-<head>    
-    <title>Responsive Menu Example</title>    
-       
+<head>
+    <title>Responsive Menu Example</title>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,49 +18,46 @@
         <header class='top-panel'>
             <div class='company-logo float-left'>
                 <a href="#" class='homepage-link'>
-                    <div class='name'>mitt</div>
+                    <div class='name'>mit</div>
                     <div class='device-info'>Device</div>
                 </a>
             </div>
 
-            <div class='global-links top-panel-item'>global links</div>
+            <div class='float-right'>
 
-            <div class='main-search-toggle top-panel-item'>
-                <span class="glyphicon glyphicon-search"></span>
+                <div class='global-links top-panel-item float-left hidden-xs'> 
+                		<ul>
+                			<li><a href='#'>Events</a></li>
+                			<li><a href='#'>Kontakt</a></li>
+                			<li><a href='#'>Nyheder &amp; medier</a></li>
+                			<li><a href='#'>Om os</a></li>
+                		</ul>
+                </div>
+
+                <div class='language-selection top-panel-item float-left hidden-xs'>language</div>
+
+                <div class='main-search-toggle top-panel-item float-left top-panel-button'>
+                    <span class="glyphicon glyphicon-search"></span>
+                </div>
+                          
+                <div data-toggle="collapse" data-target="#renderedSmallDeviceNavigation" 
+                class="collapsed navigation-dropdown-icon top-panel-item float-left top-panel-button hidden-md hidden-lg">
+                    <div class='navigation-bar-stripe'></div>
+                    <div class='navigation-bar-stripe'></div>
+                    <div class='navigation-bar-stripe'></div>
+                </div>	                
+                
             </div>
-
-            <div class='language-selection top-panel-item'>language</div>
-
-            <button type="button" data-toggle="collapse" data-target="#renderedSmallDeviceNavigation" 
-            class="collapsed navigation-dropdown-icon top-panel-item hidden-md hidden-lg">
-                <div class='navigation-bar-stripe'></div>
-                <div class='navigation-bar-stripe'></div>
-                <div class='navigation-bar-stripe'></div>
-            </button>
-
-        
 
             <div class='clearfix'></div>
         </header>
 
         <section id='renderedSmallDeviceNavigation' class='template-rendered navbar-collapse collapse'>rendered section</section>
         <script id='templateSmallDeviceNavigation' type='text/x-handlebars-template'>
-
-            {{! Global navigation - only 1 level nesting}}
-            <h3 class='navigation-title global-navigation-title'>Global Navigation</h3>
-            <div class='navigation-container global-navigation-container'>
-                <ul>
-                    {{#globalNavigationItems}}
-                    <li>
-                        <a href='{{url}}'>{{text}}</a>
-                    </li>
-                    {{/globalNavigationItems}}
-                </ul>
-            </div>
-
-            {{! Main navigation - supports upto 3 level nesting }}
-            <h3 class='navigation-title main-navigation-title'>MainNavigation</h3>
+           
+            {{! Main navigation - supports upto 3 level nesting }}            
             <div class='navigation-container main-navigation-container'>
+            <h3 class='navigation-title main-navigation-title'>MainNavigation</h3>
                 <ul class='navigation-level1 main-navigation-level1'>
                     {{#mainNavigationItems}}
                     <li>
@@ -98,9 +95,22 @@
                 </ul>
             </div>
 
-            {{! Left navigation - supports upto 2 level nesting }}
-            <h3 class='navigation-title left-navigation-title'>Left Navigation</h3>
+             {{! Global navigation - only 1 level nesting}}
+            
+            <div class='navigation-container global-navigation-container'>
+            <h3 class='navigation-title global-navigation-title'>Global Navigation</h3>
+                <ul>
+                    {{#globalNavigationItems}}
+                    <li>
+                        <a href='{{url}}'>{{text}}</a>
+                    </li>
+                    {{/globalNavigationItems}}
+                </ul>
+            </div>
+
+            {{! Left navigation - supports upto 2 level nesting }}            
             <div class='navigation-container left-navigation-container'>
+            <h3 class='navigation-title left-navigation-title'>Left Navigation</h3>
                 <ul>
                     {{#leftNavigationItems}}
                     <li>
@@ -126,31 +136,21 @@
             </div>
         </script>
 
-        <section class='html-spot'>
-        	<h3>IT advisory, development and outsourcing</h3>
-        	<p>We are passionate people building
-			We are passionate people building
-			We are passionate people building
-			We are passionate people building
-			We are passionate people building
-			Meet us here
-        	</p>
+        <section class='spot html-spot'>
+            <h3>IT advisory, development and outsourcing</h3>
+            <p>We are passionate people building We are passionate people building We are passionate people building We are passionate people building We are passionate people building Meet us here
+            </p>
         </section>
 
-        <section class='html-spot'>
-        	<h3>IT advisory, development and outsourcing</h3>
-        	<p>We are passionate people building
-			We are passionate people building
-			We are passionate people building
-			We are passionate people building
-			We are passionate people building
-			Meet us here
-        	</p>
+        <section class='spot html-spot'>
+            <h3>IT advisory, development and outsourcing</h3>
+            <p>We are passionate people building We are passionate people building We are passionate people building We are passionate people building We are passionate people building Meet us here
+            </p>
         </section>
 
-    	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    	<script src='//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js'></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <script src='//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js'></script>
         <script src='menudata.js'></script>
         <script src='menu.js'></script>
     </div>
