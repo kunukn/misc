@@ -16,7 +16,7 @@
     };
 
     // Aggregate string array to string
-    Handlebars.registerHelper('categoriesFormatted', function(categories) {
+    Handlebars.registerHelper('categoriesFormat', function(categories) {
         if (!categories || categories.length === 0) return '';
         if (categories.length === 1) return categories[0];
 
@@ -26,7 +26,7 @@
     });
 
     // Format author data
-    Handlebars.registerHelper('authorFormatted', function(author) {        
+    Handlebars.registerHelper('authorFormat', function(author) {        
         return author ? '- ' + author : '- Unknown author';
     });
 
