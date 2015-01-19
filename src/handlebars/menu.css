@@ -17,13 +17,20 @@ html {
 .float-right {
     float: right;
 }
-body {
-    background-color: #f6f4ef;
-}
 /* body wrapper to center content */
 
 .body {
     margin: 0 auto;
+    height: 100%;
+    z-index: 1;
+}
+.body > footer {
+    background-color: #333;
+    color: white;
+    min-height: 10em;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }
 .top-panel {
     background: linear-gradient(#8c0000, #7c0000);
@@ -85,18 +92,18 @@ body {
     background-color: #C8D0CC;
 }
 .navigation-dropdown-icon .navigation-bar-stripe {
-    background: #8c0000;
+    background-color: #8c0000;
     height: 4px;
     margin: 7px auto;
 }
 .main-page-container {
-    margin: 5px 0 0 0;
+    margin: 10px 0 0 0;
 }
 .navigation-container ul {
     padding-left: 20px;
 }
 #searchInputContainer {
-    margin: 5px 0 0 0;
+    margin: 5px 5px 0 0;
     padding: 5px;
     max-width: 480px;
     width: 100%;
@@ -120,11 +127,12 @@ body {
 .template-rendered .navigation-item-description {
     display: none;
 }
-.spot {} .html-spot {
+.html-spot {
     color: white;
     padding: 0.5em;
     border: 1px solid #333;
     overflow: hidden;
+    margin-bottom: 15px;
 }
 .html-spot-small {
     min-height: 100px;
@@ -149,11 +157,12 @@ body {
 .device-info::after {
     content: ' - Phone';
 }
-.search-input::after {} .spot-container-default {
-    padding: 0px 5px 5px 0px;
+.spot-container-default {
+    padding: 0;
     /* push right and down -wards */
-    
-    height: 100%;
+}
+.spot-container-right-end {
+    /*padding-right: 0;*/
 }
 .spot-container-default img {
     text-align: center;
@@ -166,23 +175,26 @@ body {
 
 .container-fluid {
     padding: inherit 0 inherit 0;
-    margin-left: 5px;
 }
 .row {
     margin: inherit 0 inherit 0;
-    background-color: #C8D0CC;
+}
+.row-air {
+    /* margin-bottom: 15px;*/
 }
 @media (max-width: 991px) {
     /* Bootstrap override 
         Not desktop
     */
-    /* Override Bootstrap never hide for tablet and up */
-    /*  .navbar-collapse.collapse {
-        display: none !important;
+    
+    .row {
+        margin-right: 0;
+        margin-left: 0;
     }
-    .collapse.in {
-        display: block !important;
-    }*/
+    .container-fluid {
+        padding-right: 0;
+        padding-left: 0;
+    }
 }
 .global-navigation-container {
     display: none;
@@ -191,10 +203,25 @@ body {
     .device-info::after {
         content: ' - Phone large';
     }
+    .body {
+        width: 96%;
+    }
 }
 @media (min-width: 768px) {
     .device-info::after {
         content: " - Tablet";
+    }
+    .body {
+        width: 90%;
+    }
+    .main-page-container {
+        margin: 20px 0 0 0;
+    }
+    .spot-container-default {
+        padding: 0px 15px 0 15px;
+    }
+    .spot-container-right-end {
+        /* padding-right: 0;*/
     }
     .template-rendered .navigation-item-description {
         display: inline;
@@ -204,6 +231,7 @@ body {
     }
     .html-spot-small {
         min-height: 330px;
+        /*  margin: 10px;*/
     }
     /* Override Bootstrap never hide for tablet and up */
     
@@ -218,10 +246,24 @@ body {
             content: ' - Desktop';
         }
         .body {
-            max-width: 90%;
+            width: 80%;
+            /*  background-color: #f6f4ef;*/
+            
+            background-color: #f6f4ef;
+            opacity: 0.90;
         }
+         .main-page-container {
+        margin: 40px 0 0 0;
+    }
         .html-spot-small {
             min-height: 300px;
+        }
+        body {
+            background: url('//www.prairiewise.com/images/web_background_texture2.jpg') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
         }
     }
     @media (min-width: 1200px) {
@@ -229,7 +271,7 @@ body {
             content: ' - Desktop large';
         }
         .body {
-            max-width: 80%;
+            width: 70%;
         }
         .html-spot-small {
             min-height: 260px;
