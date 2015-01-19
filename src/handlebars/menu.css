@@ -15,6 +15,9 @@ html {
 }
 /* Responsive design, smallest device first */
 
+html, body {
+    height: 100%;
+}
 .float-left {
     float: left;
 }
@@ -28,13 +31,10 @@ html {
     height: 100%;
     z-index: 1;
 }
-.main-footer {
+.site-footer {
     background-color: #333;
     color: white;
-    min-height: 10em;
-    left: 0;
-    bottom: 0;
-    width: 100%;
+    height: 100px;
 }
 .top-panel {
     background: linear-gradient(#8c0000, #7c0000);
@@ -190,8 +190,8 @@ html {
     padding-bottom: 10px;
 }
 .main-page-container {
-        margin-top: 10px;
-    }
+    margin-top: 10px;
+}
 @media (max-width: 991px) {
     /* 
         Not desktop
@@ -223,7 +223,7 @@ html {
         display: inline;
     }
     .html-spot-small {
-        min-height: 330px;        
+        min-height: 330px;
     }
     /* Override Bootstrap never hide for tablet and up */
     
@@ -241,6 +241,22 @@ html {
         -ms-background-size: cover;
         background-size: cover;
     }
+
+    /* Sticky footer */
+    
+    .page-wrap {
+        min-height: 100%;
+        /* Equal to footer height */
+        
+        margin-bottom: -100px;
+    }
+    .page-wrap::after {
+        content: '';
+        display: block;
+    }
+    .site-footer, .page-wrap::after {
+        height: 100px;
+    }
 }
 @media (min-width: 992px) {
     .device-info::after {
@@ -252,9 +268,6 @@ html {
         -ms-opacity: 0.90;
         opacity: 0.90;
     }
-    .main-page-container {
-        /*margin: 40px 0 0 0;*/
-    }
     .html-spot-small {
         min-height: 300px;
     }
@@ -265,7 +278,7 @@ html {
         -o-background-size: cover;
         -ms-background-size: cover;
         background-size: cover;
-        margin-top: 10px;
+        /*   margin-top: 10px;*/
     }
 }
 @media (min-width: 1200px) {
