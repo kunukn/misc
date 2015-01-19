@@ -31,19 +31,15 @@
 
                 <div class='float-right'>
 
-                    <div id='renderedTopPanelGlobalLinks' class='global-links template-rendered top-panel-links top-panel-item float-left hidden-xs'>
-                        global links
+                    <div id='renderedTopPanelGlobalLinks' class='global-links template-rendered top-panel-links top-panel-item float-left hidden-xs'>                        
                     </div>
 
-                    <div class='language-selection top-panel-item float-left top-panel-links hidden-xs'>
-                        language
+                    <div class='language-selection top-panel-item float-left top-panel-links hidden-xs'>                        
                         <ul>
                             <li><a href="#">English</a>
                             </li>
                             <li><a href="#">Danish</a>
-                            </li>
-                            <li><a href="#">Chinese</a>
-                            </li>
+                            </li>                                            
                         </ul>
                     </div>
 
@@ -125,7 +121,7 @@
             <ul>
                 {{#globalNavigationItems}}
                 <li>
-                    <a href='{{url}}'>{{text}}</a>
+                    <a href='{{urlFormat url}}'>{{text}}</a>
                 </li>
                 {{/globalNavigationItems}}
             </ul>
@@ -137,7 +133,7 @@
             <ul>
                 {{#leftNavigationItems}}
                 <li>
-                    <a href='{{url}}'>
+                    <a href='{{urlFormat url}}'>
                         <span class='left-navigation-item-text'>{{text}}</span>
                         <span class='left-navigation-item-description'>{{description}}</span>
                     </a>
@@ -145,7 +141,7 @@
                     <ul class='left-navigation-level2'>
                         {{#each children}}
                         <li>
-                            <a href='{{url}}'>
+                            <a href='{{urlFormat url}}'>
                                 <span class='left-navigation-item-text'>{{text}}</span>
                                 <span class='left-navigation-item-description'>{{description}}</span>
                             </a>
@@ -214,14 +210,14 @@
             <div class='row'>
                 <div class='col-sm-6 spot-container-default'>
                     <section class='spot html-spot spot-background-lightgreen'>
-                        <h3>IT advisory, development and outsourcing</h3>
+                        <h3>IT advisory, development and outsourcing <span class='glyphicon glyphicon-tags'></span></h3>
                         <p>We are passionate people building We are passionate people building We are passionate people building We are passionate people building We are passionate people building Meet us here
                         </p>
                     </section>
                 </div>
                 <div class='col-sm-6 spot-container-default'>
                     <section class='spot html-spot spot-background-red'>
-                        <h3>IT advisory, development and outsourcing</h3>
+                        <h3>IT advisory, development and outsourcing <span class='glyphicon glyphicon-facetime-video'></span></h3>
                         <p>We are passionate people building We are passionate people building We are passionate people building We are passionate people building We are passionate people building Meet us here
                         </p>
                     </section>
@@ -236,7 +232,7 @@
             <ul>
                 {{#globalNavigationItems}}
                 <li>
-                    <a href='{{url}}'>{{text}}</a>
+                    <a href='{{urlFormat url}}'>{{text}}</a>
                 </li>
                 {{/globalNavigationItems}}
             </ul>

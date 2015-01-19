@@ -40,23 +40,37 @@ html, body {
     background: linear-gradient(#8c0000, #7c0000);
 }
 .top-panel-item {
-    margin-top: 8px;
-    background-color: #f6f4ef;
+    margin-top: 8px;    
     margin-right: 10px;
     /*   float: right;*/
 }
+
+.top-panel-item a{
+    color: white;
+}
+
+#renderedTopPanelGlobalLinks{    
+    margin-right: 30px;    
+}
 .top-panel .global-links {
-    border: 1px solid #333;
-    background-color: #f6f4ef;
+    /*border: 1px solid #333;*/
+    color: white;
+}
+.top-panel .global-links li {
+  display: inline-block;
+  padding: 10px; 
+}
+
+.top-panel .top-panel-links ul {
+    margin: 0;
 }
 .top-panel .top-panel-links li {
-    border-left: 1px solid #585858;
-    list-style-type: none;
-    display: inline-block;
+    /*border: 1px solid #585858;*/
+    list-style-type: none;    
+    height: 100%;
 }
-.top-panel .language-selection {
-    border: 1px solid #333;
-    background-color: #f6f4ef;
+.top-panel .language-selection li {
+    padding-bottom: 6px;
 }
 .top-panel .company-logo {
     color: white;
