@@ -84,7 +84,7 @@
                 <ul class='navigation-level1 main-navigation-level1'>
                     {{#mainNavigationItems}}
                     <li>
-                        <a href='{{url}}'>
+                        <a href='{{urlFormat url}}'>
                             <span class='navigation-item-text main-navigation-item-text'>{{text}}</span>
                     <span class='navigation-item-description main-navigation-item-description'>{{description}}</span>
                 </a>
@@ -93,7 +93,7 @@
                 <ul class='navigation-level2 main-navigation-level2'>
                     {{#each children}}
                     <li>
-                        <a href='{{url}}'>
+                        <a href='{{urlFormat url}}'>
                             <span class='main-navigation-item-text'>{{text}}</span>
                             <span class='main-navigation-item-description'>{{description}}</span>
                         </a>
@@ -101,7 +101,7 @@
                         <ul class='navigation-level3 main-navigation-level3'>
                             {{#each children}}
                             <li>
-                                <a href='{{url}}'>
+                                <a href='{{urlFormat url}}'>
                                     <span class='navigation-item-text main-navigation-item-text'>{{text}}</span>
                                     <span class='navigation-item-description main-navigation-item-description'>{{description}}</span>
                                 </a>
@@ -164,14 +164,14 @@
             <div class='row'>
                 <div class='col-sm-6 spot-container-default'>
                     <section class='spot html-spot spot-background-turkish'>
-                        <h3>IT advisory, development and outsourcing</h3>
+                        <h3>IT advisory, development and outsourcing <span class='glyphicon glyphicon-headphones'></span></h3>
                         <p>We are passionate people building We are passionate people building We are passionate people building We are passionate people building We are passionate people building Meet us here
                         </p>
                     </section>
                 </div>
                 <div class='col-sm-6 spot-container-default'>
                     <section class='spot html-spot spot-background-darkgreen'>
-                        <h3>IT advisory, development and outsourcing</h3>
+                        <h3>IT advisory, development and outsourcing <span class='glyphicon glyphicon-wrench'></span></h3>
                         <p>We are passionate people building We are passionate people building We are passionate people building We are passionate people building We are passionate people building Meet us here
                         </p>
                     </section>

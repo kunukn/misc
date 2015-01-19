@@ -1,6 +1,6 @@
 ﻿var WEB = WEB || {};
 
-! function() {
+(function() {
     WEB.stub = {
         globalNavigationItems: [
         {
@@ -22,12 +22,10 @@
         ],
 
         mainNavigationItems: [{
-            text: 'Industries & Solutions',
-            url: '#',            
+            text: 'Industries & Solutions',            
             children: [
             {
-                text: 'Industries',
-                url: '#',                
+                text: 'Industries',                        
                 children: [
                 {
                     text: 'Life sciences'
@@ -42,8 +40,7 @@
                 ]
             },
             {
-                text: 'Solutions'
-                ,url: '#'                
+                text: 'Solutions'                        
                 ,children: [
                 {
                     text: 'Advisory Services'
@@ -74,8 +71,7 @@
             }
             ]
         }, {
-            text: 'Customers & cases'
-            ,url: '#'
+            text: 'Customers & cases'            
             ,children: [
             {
                 text: 'Cases'
@@ -143,4 +139,4 @@
         }
         ]
     };
-}();
+})();
