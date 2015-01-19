@@ -5,7 +5,6 @@ html {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-
 *, *:before, *:after {
     margin: 0;
     padding: 0;
@@ -14,13 +13,11 @@ html {
     -moz-box-sizing: inherit;
     box-sizing: inherit;
 }
-
 /* Responsive design, smallest device first */
 
 .float-left {
     float: left;
 }
-
 .float-right {
     float: right;
 }
@@ -31,7 +28,6 @@ html {
     height: 100%;
     z-index: 1;
 }
-
 .main-footer {
     background-color: #333;
     color: white;
@@ -40,34 +36,28 @@ html {
     bottom: 0;
     width: 100%;
 }
-
 .top-panel {
     background: linear-gradient(#8c0000, #7c0000);
 }
-
 .top-panel-item {
     margin-top: 8px;
     background-color: #f6f4ef;
     margin-right: 10px;
     /*   float: right;*/
 }
-
 .top-panel .global-links {
     border: 1px solid #333;
     background-color: #f6f4ef;
 }
-
 .top-panel .top-panel-links li {
     border-left: 1px solid #585858;
     list-style-type: none;
     display: inline-block;
 }
-
 .top-panel .language-selection {
     border: 1px solid #333;
     background-color: #f6f4ef;
 }
-
 .top-panel .company-logo {
     color: white;
     -moz-min-width: 4em;
@@ -78,59 +68,50 @@ html {
     padding: 0.8em;
     float: left;
 }
-
 .top-panel .company-logo .name {
-        font: small-caps 700 2em/1.2 sans-serif;
-        text-transform: uppercase;
-    }
-
+    font: small-caps 700 2em/1.2 sans-serif;
+    text-transform: uppercase;
+}
 .company-logo .homepage-link {
     text-decoration: none;
 }
-
-    .company-logo .homepage-link:active, .company-logo .homepage-link:visited, .company-logo .homepage-link:link, .company-logo .homepage-link:hover {
-        color: inherit;
-    }
-
+.company-logo .homepage-link:active, .company-logo .homepage-link:visited, .company-logo .homepage-link:link, .company-logo .homepage-link:hover {
+    color: inherit;
+}
 .top-panel .top-panel-button {
     border: 1px solid #8c0000;
     display: block;
     border-radius: 4px;
     background-color: #f6f4ef;
     width: 50px;
-    max-height: 50px;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
     overflow: hidden;
 }
-
 .top-panel .main-search-toggle {
     font: small-caps 700 2em/1.2 sans-serif;
     background-color: #f6f4ef;
-    padding: 0.3em;
+    padding: 4px;
     color: #8c0000;
 }
-
 .navigation-dropdown-icon {
     padding: 0.3em;
 }
-
 .top-panel-button:hover {
     background-color: #C8D0CC;
 }
-
 .navigation-dropdown-icon .navigation-bar-stripe {
     background-color: #8c0000;
     height: 4px;
-    margin: 7px auto;
+    margin: 6px auto;
 }
-
 .main-page-container {
-    margin: 10px 0 0 0;
+    /*margin: 10px 0 0 0;*/
 }
-
 .navigation-container ul {
     padding-left: 20px;
 }
-
 #searchInputContainer {
     margin: 5px 5px 0 0;
     padding: 5px;
@@ -139,79 +120,60 @@ html {
     float: right;
     position: relative;
 }
-
-    #searchInputContainer.search-input {
-        width: auto;
-        display: inline;
-    }
-
-    #searchInputContainer > a {
-        display: inline;
-        position: absolute;
-        right: 12px;
-        top: 12px;
-        background-color: white;
-    }
-
+#searchInputContainer.search-input {
+    width: auto;
+    display: inline;
+}
+#searchInputContainer > a {
+    display: inline;
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    background-color: white;
+}
 .navigation-container ul {
     list-style: none;
 }
-
 .template-rendered .navigation-item-description {
     display: none;
 }
-
 .html-spot {
     color: white;
     padding: 0.5em;
     border: 1px solid #333;
     overflow: hidden;
-    margin-bottom: 15px;
+    /*margin-bottom: 15px;*/
 }
-
 .html-spot-small {
     min-height: 100px;
 }
-
 .spot-background-darkgreen {
     background: linear-gradient(#4B5A55, #53605A);
 }
-
 .spot-background-lightgreen {
     background: linear-gradient(#879119, #779119);
 }
-
 .spot-background-turkish {
     background: linear-gradient(#00736E, #00636E);
 }
-
 .spot-background-red {
     background: linear-gradient(#8c0000, #7c0000);
 }
-
 .device-info {
     text-align: center;
     font-size: 60%;
     float: right;
 }
-
-    .device-info::after {
-        content: ' - Phone';
-    }
-
+.device-info::after {
+    content: ' - Phone';
+}
 .spot-container-default {
     padding: 0;
     /* push right and down -wards */
 }
-
-.spot-container-right-end {
-    /*padding-right: 0;*/
-}
-
 .spot-container-default img {
     text-align: center;
 }
-
 .image-responsive {
     display: block;
     margin: auto;
@@ -219,103 +181,83 @@ html {
 /* Bootstrap override */
 
 .container-fluid {
-    padding: auto 0 auto 0;
+    padding: 0;
 }
-
 .row {
     margin: auto 0 auto 0;
 }
-
-.row-air {
-    /* margin-bottom: 15px;*/
+.spot-container-default {
+    padding-bottom: 10px;
 }
-
+.main-page-container {
+        margin-top: 10px;
+    }
 @media (max-width: 991px) {
-    /* Bootstrap override 
+    /* 
         Not desktop
     */
-
-    .row {
-        margin-right: 0;
-        margin-left: 0;
-    }
-
-    .container-fluid {
-        padding-right: 0;
-        padding-left: 0;
-    }
 }
-
 @media (min-width: 480px) {
     .device-info::after {
         content: ' - Phone large';
     }
-
     .body {
         width: 96%;
     }
 }
-
 @media (min-width: 768px) {
     .device-info::after {
         content: " - Tablet";
     }
-
     .body {
         width: 90%;
+        background-color: #f6f4ef;
     }
-
     .main-page-container {
-        margin: 20px 0 0 0;
+        margin: 0;
     }
-
     .spot-container-default {
-        padding: 0px 15px 0 15px;
+        padding-bottom: 0;
     }
-
-    .spot-container-right-end {
-        /* padding-right: 0;*/
-    }
-
     .template-rendered .navigation-item-description {
         display: inline;
     }
-
     .html-spot-small {
-        min-height: 330px;
-        /*  margin: 10px;*/
+        min-height: 330px;        
     }
     /* Override Bootstrap never hide for tablet and up */
-
+    
     .navbar-collapse.collapse {
         display: none !important;
     }
-
     .collapse.in {
         display: block !important;
     }
+    body {
+        background: url('//i.imgur.com/3PP2VUn.jpg') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        -ms-background-size: cover;
+        background-size: cover;
+    }
 }
-
 @media (min-width: 992px) {
     .device-info::after {
         content: ' - Desktop';
     }
-
     .body {
         width: 80%;
         background-color: #f6f4ef;
         -ms-opacity: 0.90;
         opacity: 0.90;
     }
-
     .main-page-container {
-        margin: 40px 0 0 0;
+        /*margin: 40px 0 0 0;*/
     }
-
     .html-spot-small {
         min-height: 300px;
     }
-
     body {
         background: url('//i.imgur.com/3PP2VUn.jpg') no-repeat center center fixed;
         -webkit-background-size: cover;
@@ -326,16 +268,13 @@ html {
         margin-top: 10px;
     }
 }
-
 @media (min-width: 1200px) {
     .device-info::after {
         content: ' - Desktop large';
     }
-
     .body {
         width: 70%;
     }
-
     .html-spot-small {
         min-height: 260px;
     }
