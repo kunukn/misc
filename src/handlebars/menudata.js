@@ -8,69 +8,84 @@
             ,url: '#'
         },
         {
-            text: 'Kontakt'
+            text: 'News & Media'
             ,url: '#'
         },
         {
-            text: 'Nyheder & medier'
+            text: 'Contact'
             ,url: '#'
         },
         {
-            text: 'Om os'
+            text: 'About us'
             ,url: '#'
         }
         ],
 
         mainNavigationItems: [{
-            text: 'main text1',
-            url: '#',
-            description: 'main description Lorem ipsum dolor sit amet, graeco virtute feugiat ex sea. Vide suscipiantur duo ea, has eu alia ceteros. An vidit alienum gubergren vis, mei at doming legendos, has ex scaevola comprehensam. Quem putant scribentur usu et, ad tota noluisse principes mel, nec suscipit invidunt singulis ut.',
+            text: 'Industries & Solutions',
+            url: '#',            
             children: [
             {
-                text: 'main text 11',
-                url: '#',
-                description: 'main description 11',
-                 children: [
+                text: 'Industries',
+                url: '#',                
+                children: [
                 {
-                    text: 'main text 111',
-                    url: '#',
-                    description: 'main description 111 Lorem ipsum dolor sit amet, graeco virtute feugiat ex sea. Vide suscipiantur duo ea, has eu alia ceteros. An vidit alienum gubergren vis, mei at doming legendos, has ex scaevola comprehensam. Quem putant scribentur usu et, ad tota noluisse principes mel, nec suscipit invidunt singulis ut.',
+                    text: 'Life sciences'
+                    ,url: '#'
+                    ,description: 'With profound domain knowledge, MIT knows how to use IT to optimize business processes while staying compliant'
+                },
+                 {
+                    text: 'Enterprise'
+                    ,url: '#'
+                    ,description: 'MIT has a proven track record of handling IT challenges, in terms of both size and complexity, for large enterprises'
                 }
                 ]
             },
             {
-                text: 'main text 12',
-                url: '#',
-                description: 'main description 12',
-                children: [
+                text: 'Solutions'
+                ,url: '#'                
+                ,children: [
                 {
-                    text: 'main text 112'
+                    text: 'Advisory Services'
                     ,url: '#'
-                    ,description: 'main description 112'
+                    ,description: 'MIT’s advisory services span a variety of areas and are built to optimize your company’s use of IT'
+                },
+                 {
+                    text: 'Application Outsourcing'
+                    ,url: '#'
+                    ,description: 'Based on best practices, we manage applications in a secure, flexible and scalable way, freeing you to focus on your core business'
+                },
+                 {
+                    text: 'Application Outsourcing2'
+                    ,url: '#'
+                    ,description: 'Based on best practices, we manage applications in a secure, flexible and scalable way, freeing you to focus on your core business'
+                },
+                 {
+                    text: 'Application Outsourcing3'
+                    ,url: '#'
+                    ,description: 'Based on best practices, we manage applications in a secure, flexible and scalable way, freeing you to focus on your core business'
+                },
+                  {
+                    text: 'Application Outsourcing4'
+                    ,url: '#'
+                    ,description: 'Based on best practices, we manage applications in a secure, flexible and scalable way, freeing you to focus on your core business'
                 }
                 ]
             }
             ]
         }, {
-            text: 'main text2',
-            url: '#',
-             children: [
+            text: 'Customers & cases'
+            ,url: '#'
+            ,children: [
             {
-                text: 'main text 21'
+                text: 'Cases'
                 ,url: '#'
                 ,description: 'main description 21'
             },
             {
-                text: 'main text 22',
-                url: '#',
-                description: 'main description 22',
-                children: [
-                {
-                    text: 'main text 212'
-                    ,url: '#'
-                    ,description: 'main description 212'
-                }
-                ]
+                text: 'Customers'
+                ,url: '#'
+                ,description: 'main description 22'                
             }
             ]
         }],
