@@ -124,12 +124,6 @@ html {
 .navigation-container ul {
     list-style: none;
 }
-
-.renderedSmallDeviceNavigation{
-    padding: 0;
-    overflow: hidden;
-}
-
 .template-rendered .navigation-item-description {
     display: none;
 }
@@ -248,9 +242,7 @@ html {
             content: ' - Desktop';
         }
         .body {
-            width: 86%;
-            /*  background-color: #f6f4ef;*/
-            
+            width: 80%;
             background-color: #f6f4ef;
             opacity: 0.90;
         }
@@ -261,12 +253,12 @@ html {
             min-height: 300px;
         }
         body {
-            background: url('//cphpost.dk/image/box/338466/1920/1080.jpg') no-repeat center center fixed;
+            background: url('//www.prairiewise.com/images/web_background_texture2.jpg') no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
             background-size: cover;
-            margin-top: 40px;
+            margin-top: 10px;
         }
     }
     @media (min-width: 1200px) {
@@ -274,7 +266,7 @@ html {
             content: ' - Desktop large';
         }
         .body {
-            width: 80%;
+            width: 70%;
         }
         .html-spot-small {
             min-height: 260px;
