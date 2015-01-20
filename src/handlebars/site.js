@@ -1,4 +1,4 @@
-﻿var WEB = WEB || {};
+﻿var Site = Site || {};
 
 (function(d, $) {
     // Format url
@@ -9,6 +9,6 @@
     var templateSmallDeviceNavigation = Handlebars.compile($('#templateSmallDeviceNavigation').html());
     var templateTopPanelGlobalLinks = Handlebars.compile($('#templateTopPanelGlobalLinks').html());
 
-    $('#renderedSmallDeviceNavigation').append(templateSmallDeviceNavigation(WEB.stub));
-    $('#renderedTopPanelGlobalLinks').append(templateTopPanelGlobalLinks(WEB.stub));
+    $('#renderedSmallDeviceNavigation').append(templateSmallDeviceNavigation(Site.stub));
+    $('#renderedTopPanelGlobalLinks').append(templateTopPanelGlobalLinks(Site.stub));
 })(document, jQuery);

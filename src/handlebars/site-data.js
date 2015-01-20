@@ -1,7 +1,7 @@
-﻿var WEB = WEB || {};
+﻿var Site = Site || {};
 
 (function() {
-    WEB.stub = {
+    Site.stub = {
         globalNavigationItems: [
         {
             text: 'Events'
@@ -30,12 +30,12 @@
                 {
                     text: 'Life sciences'
                     ,url: '#'
-                    ,description: 'With profound domain knowledge, MIT knows how to use IT to optimize business processes while staying compliant'
+                    ,description: 'With profound domain knowledge, Wood knows how to use IT to optimize business processes while staying compliant'
                 },
                  {
                     text: 'Enterprise'
                     ,url: '#'
-                    ,description: 'MIT has a proven track record of handling IT challenges, in terms of both size and complexity, for large enterprises'
+                    ,description: 'Wood has a proven track record of handling IT challenges, in terms of both size and complexity, for large enterprises'
                 }
                 ]
             },
@@ -45,7 +45,7 @@
                 {
                     text: 'Advisory Services'
                     ,url: '#'
-                    ,description: 'MIT’s advisory services span a variety of areas and are built to optimize your company’s use of IT'
+                    ,description: 'Wood’s advisory services span a variety of areas and are built to optimize your company’s use of IT'
                 },
                  {
                     text: 'Application Outsourcing'
