@@ -1,5 +1,5 @@
 ﻿var Site;
-
+/* site.js */
 (function(d, $) {
 	Site = Site || {};
 	$( document ).ready(function() {

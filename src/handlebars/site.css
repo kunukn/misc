@@ -1,5 +1,5 @@
-/* resets, they might disrupt Bootstrap values, undo these resets as you please */
-
+/* Resets, they might disrupt Bootstrap values, undo these resets as needed */
+/* site.css */
 html {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;

@@ -1,5 +1,5 @@
 ﻿var Site;
-
+/* site-data.js */
 (function() {
     Site = Site || {};
     Site.stub = {
