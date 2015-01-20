@@ -13,6 +13,7 @@ html {
     -moz-box-sizing: inherit;
     box-sizing: inherit;
 }
+
 /* Responsive design, smallest device first */
 
 html, body {
@@ -77,17 +78,13 @@ html, body {
     color: white;
 }
 .top-panel .company-logo {
-    color: white;
-    -moz-min-width: 4em;
-    -ms-min-width: 4em;
-    -o-min-width: 4em;
-    -webkit-min-width: 4em;
-    min-width: 4em;
-    padding: 0.8em;
+    color: white;    
+    min-width: 10px;
+    padding: 10px;
     float: left;
 }
 .top-panel .company-logo .name {
-    font: small-caps 700 2em/1.2 sans-serif;
+    font: small-caps 700 30px/1.2 sans-serif;
     text-transform: uppercase;
 }
 .company-logo .homepage-link {
@@ -114,7 +111,7 @@ html, body {
     color: #8c0000;
 }
 .navigation-dropdown-icon {
-    padding: 0.3em;
+    padding: 4px;
 }
 .top-panel-button:hover {
     background-color: #C8D0CC;
@@ -157,7 +154,7 @@ html, body {
 }
 .html-spot {
     color: white;
-    padding: 0.5em;
+    padding: 10px;
     border: 1px solid #333;
     overflow: hidden;
     /*margin-bottom: 15px;*/
