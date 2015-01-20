@@ -78,13 +78,13 @@ html, body {
     color: white;
 }
 .top-panel .company-logo {
-    color: white;    
+    color: white;
     min-width: 10px;
     padding: 10px;
     float: left;
 }
 .top-panel .company-logo .name {
-    font: small-caps 700 30px/1.2 sans-serif;
+    font: small-caps 700 24px/1.2 sans-serif;
     text-transform: uppercase;
 }
 .company-logo .homepage-link {
