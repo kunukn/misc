@@ -6,7 +6,7 @@
 
         htmlSpots: {},
         htmlSpotTitleDefault: 'Wood advisory, development and design',
-        htmlSpotBodyDefault: 'We are passionate people building We are passionate people building We are passionate people building We are passionate people building We are passionate people building Meet us here',
+        htmlSpotBodyDefault: 'We are passionate people We are passionate people We are passionate people We are passionate people We are passionate people We are passionate people We are passionate people - Meet us here',
         htmlSpotIconDefault: 'glyphicon glyphicon-headphones',
         globalNavigationItems: [{
             text: 'Events',
@@ -123,7 +123,7 @@
             htmlSpot2: {
                 background: 'spot-background-gray',
                 title: stub.htmlSpotTitleDefault,
-                icon: 'glyphicon glyphicon-wrench',
+                icon: 'glyphicon glyphicon-phone',
                 body: stub.htmlSpotBodyDefault
             },
             htmlSpot3: {
@@ -151,7 +151,7 @@
             htmlSpot7: {
                 background: 'spot-background-blue',
                 title: stub.htmlSpotTitleDefault,
-                icon: 'glyphicon glyphicon-tags',
+                icon: 'glyphicon glyphicon-camera',
                 body: stub.htmlSpotBodyDefault
             },
             htmlSpot8: {
