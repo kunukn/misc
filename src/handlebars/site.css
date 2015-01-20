@@ -128,23 +128,30 @@ html, body {
 .navigation-container ul {
     padding-left: 20px;
 }
-#searchInputContainer {
-    margin: 5px 5px 0 0;
-    padding: 5px;
-    max-width: 480px;
+#searchInputContainer {    
+    padding: 10px;  
     width: 100%;
     float: right;
     position: relative;
+     background-color: white;
 }
-#searchInputContainer.search-input {
+
+#searchInputContainer.form-group{
+    margin-bottom: 0; /* override bootstrap */
+}
+
+#searchInputContainer .search-input {
     width: auto;
     display: inline;
+    max-width: 480px;
+    width: 100%;
+    float: right;
 }
 #searchInputContainer > a {
     display: inline;
     position: absolute;
-    right: 12px;
-    top: 12px;
+    right: 16px;
+    top: 16px;
     background-color: white;
 }
 .navigation-container ul {
@@ -167,29 +174,40 @@ html, body {
 .spot > a:hover, a:link, a:visited, a:active{
     color: inherit;
 }
-
+.spot-container-small{
+ 
+}
+.spot-container-big{
+ 
+}
 .spot-background-gray {
 	background: -webkit-linear-gradient(#4B5A55, #53605A);
-    background: -o-linear-gradient(#4B5A55, #53605A);
     background: -moz-linear-gradient(#4B5A55, #53605A);
+    background: -o-linear-gradient(#4B5A55, #53605A);
     background: linear-gradient(#4B5A55, #53605A);
 }
 .spot-background-green {
-	background: -webkit-linear-gradient(#879119, #779119);
-    background: -o-linear-gradient(#879119, #779119);
+	background: -webkit-linear-gradient(#879119, #779119);  
     background: -moz-linear-gradient(#879119, #779119);
+    background: -o-linear-gradient(#879119, #779119);
     background: linear-gradient(#879119, #779119);
 }
 .spot-background-turkish {
-	background: -webkit-linear-gradient(#00736E, #00636E);
-    background: -o-linear-gradient(#00736E, #00636E);
+	background: -webkit-linear-gradient(#00736E, #00636E); 
     background: -moz-linear-gradient(#00736E, #00636E);
+    background: -o-linear-gradient(#00736E, #00636E);
     background: linear-gradient(#00736E, #00636E);
 }
+.spot-background-blue {
+    background: -webkit-linear-gradient(#23343E, #13242E);    
+    background: -moz-linear-gradient(#23343E, #13242E);
+    background: -o-linear-gradient(#23343E, #13242E);
+    background: linear-gradient(#23343E, #13242E);
+}
 .spot-background-red {
-	background: -webkit-linear-gradient(#8c0000, #7c0000);
-    background: -o-linear-gradient(#8c0000, #7c0000);
+	background: -webkit-linear-gradient(#8c0000, #7c0000);   
     background: -moz-linear-gradient(#8c0000, #7c0000);
+    background: -o-linear-gradient(#8c0000, #7c0000);
     background: linear-gradient(#8c0000, #7c0000);
 }
 .device-info {
@@ -235,12 +253,6 @@ html, body {
         content: ' - Phone large';
     }
     body {
-/*        background: url('//i.imgur.com/3PP2VUn.jpg') no-repeat center center fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        -ms-background-size: cover;
-        background-size: cover;*/
     }
     .body {
         width: 96%;
@@ -278,7 +290,7 @@ html, body {
     }
     .body {
         width: 90%;
-        background-color: #f6f4ef;
+        background-color: #C8CCCF;
 
         -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
 		filter: alpha(opacity=90);
@@ -308,18 +320,11 @@ html, body {
     .device-info::after {
         content: ' - Desktop';
     }
-    body {
-       /* background: url('//i.imgur.com/3PP2VUn.jpg') no-repeat center center fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        -ms-background-size: cover;
-        background-size: cover;*/
-        /*   margin-top: 10px;*/
+    body {      
     }
     .body {
         width: 80%;
-    }    
+    }      
 }
 @media (min-width: 1200px) {
     .device-info::after {
@@ -336,5 +341,12 @@ html, body {
     }
     .body {
         width: 70%;
+
+         -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=96)";
+        filter: alpha(opacity=96);
+        -moz-opacity:0.96;
+        -khtml-opacity: 0.96;
+        -ms-opacity: 0.96;
+        opacity: 0.96;
     }    
 }

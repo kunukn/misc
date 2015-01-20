@@ -144,10 +144,12 @@
             htmlSpot6: {
                 background: 'spot-background-gray',
                 title: 'Responsive centered image',
-                body: 'We are passionate people'
+                icon: 'glyphicon glyphicon-map-marker',
+                body: '',
+                imageUrl: 'http://placehold.it/200x150'
             },
             htmlSpot7: {
-                background: 'spot-background-green',
+                background: 'spot-background-blue',
                 title: stub.htmlSpotTitleDefault,
                 icon: 'glyphicon glyphicon-tags',
                 body: stub.htmlSpotBodyDefault
