@@ -40,7 +40,7 @@ html, body {
     background: linear-gradient(#8c0000, #7c0000);
 }
 .top-panel-item {
-    margin-top: 8px;    
+    margin-top: 8px;
     margin-right: 10px;
     /*   float: right;*/
 }
@@ -49,8 +49,8 @@ html, body {
     color: white;
 }
 
-#renderedTopPanelGlobalLinks{    
-    margin-right: 30px;    
+#renderedTopPanelGlobalLinks{
+    margin-right: 30px;
 }
 .top-panel .global-links {
     /*border: 1px solid #333;*/
@@ -58,7 +58,7 @@ html, body {
 }
 .top-panel .global-links li {
   display: inline-block;
-  padding: 10px; 
+  padding: 10px;
 }
 
 .top-panel .top-panel-links ul {
@@ -66,11 +66,14 @@ html, body {
 }
 .top-panel .top-panel-links li {
     /*border: 1px solid #585858;*/
-    list-style-type: none;    
+    list-style-type: none;
     height: 100%;
 }
 .top-panel .language-selection li {
     padding-bottom: 6px;
+}
+.top-panel .language-selection a{
+    color: white;
 }
 .top-panel .company-logo {
     color: white;
@@ -161,6 +164,14 @@ html, body {
 .html-spot-small {
     min-height: 100px;
 }
+.spot > a{
+    color: inherit;
+    text-decoration: none;
+}
+.spot > a:hover, a:link, a:visited, a:active{
+    color: inherit;
+}
+
 .spot-background-darkgreen {
     background: linear-gradient(#4B5A55, #53605A);
 }
@@ -257,11 +268,11 @@ html, body {
     }
 
     /* Sticky footer */
-    
+
     .page-wrap {
         min-height: 100%;
         /* Equal to footer height */
-        
+
         margin-bottom: -100px;
     }
     .page-wrap::after {
