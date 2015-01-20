@@ -160,10 +160,7 @@ html, body {
     overflow: hidden;
     /*margin-bottom: 15px;*/
 }
-.html-spot-small {
-    min-height: 100px;
-}
-.spot > a{
+.spot > a {
     color: inherit;
     text-decoration: none;
 }
@@ -171,13 +168,13 @@ html, body {
     color: inherit;
 }
 
-.spot-background-darkgreen {
+.spot-background-gray {
 	background: -webkit-linear-gradient(#4B5A55, #53605A);
     background: -o-linear-gradient(#4B5A55, #53605A);
     background: -moz-linear-gradient(#4B5A55, #53605A);
     background: linear-gradient(#4B5A55, #53605A);
 }
-.spot-background-lightgreen {
+.spot-background-green {
 	background: -webkit-linear-gradient(#879119, #779119);
     background: -o-linear-gradient(#879119, #779119);
     background: -moz-linear-gradient(#879119, #779119);
@@ -270,9 +267,7 @@ html, body {
     .template-rendered .navigation-item-description {
         display: inline;
     }
-    .html-spot-small {
-        min-height: 330px;
-    }
+   
     /* Override Bootstrap never hide for tablet and up */
 
     .navbar-collapse.collapse {
@@ -324,10 +319,7 @@ html, body {
     }
     .body {
         width: 80%;
-    }
-    .html-spot-small {
-        min-height: 300px;
-    }
+    }    
 }
 @media (min-width: 1200px) {
     .device-info::after {
@@ -344,8 +336,5 @@ html, body {
     }
     .body {
         width: 70%;
-    }
-    .html-spot-small {
-        min-height: 260px;
-    }
+    }    
 }

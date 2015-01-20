@@ -2,273 +2,221 @@
 <html>
 
 <head>
-	<title>Responsive Web Example</title>
+    <title>Responsive Web</title>
 
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="site.css">
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="site.css">
 
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-	<!-- Author: Kunuk Nykjaer, builded from scratch -->
-	<div class='body'>
+    <!-- Author: Kunuk Nykjaer, builded from scratch -->
+    <div class='body'>
 
-		<div class='page-wrap'>
+        <div class='page-wrap'>
 
-			<header class='top-panel'>
-				<div class='company-logo float-left'>
-					<a href="#" class='homepage-link'>
-						<div class='name'>wood it</div>
-						<div class='device-info'>Device</div>
-					</a>
-				</div>
+            <header class='top-panel'>
+                <div class='company-logo float-left'>
+                    <a href="#" class='homepage-link'>
+                        <div class='name'>wood it</div>
+                        <div class='device-info'>Device</div>
+                    </a>
+                </div>
 
-				<div class='float-right'>
+                <div class='float-right'>
 
-					<div id='renderedTopPanelGlobalLinks' class='global-links template-rendered top-panel-links top-panel-item float-left hidden-xs'>
-					</div>
+                    <div id='renderedTopPanelGlobalLinks' class='global-links template-rendered top-panel-links top-panel-item float-left hidden-xs'>
+                    </div>
 
-					<div class='language-selection top-panel-item float-left top-panel-links hidden-xs'>
-						<ul>
-							<li>
-								<a href="#">English</a>
-							</li>
-							<li>
-								<a href="#">Danish</a>
-							</li>
-						</ul>
-					</div>
+                    <div class='language-selection top-panel-item float-left top-panel-links hidden-xs'>
+                        <ul>
+                            <li>
+                                <a href="#">English</a>
+                            </li>
+                            <li>
+                                <a href="#">Danish</a>
+                            </li>
+                        </ul>
+                    </div>
 
-					<button data-toggle='collapse' data-target='#searchInputContainer' class='main-search-toggle top-panel-item float-left top-panel-button navbar-toggle'>
-						<span class="glyphicon glyphicon-search"></span>
-					</button>
+                    <button data-toggle='collapse' data-target='#searchInputContainer' class='main-search-toggle top-panel-item float-left top-panel-button navbar-toggle'>
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
 
-					<button data-toggle='collapse' data-target='#renderedSmallDeviceNavigation'
-					class="collapsed navigation-dropdown-icon top-panel-item float-left top-panel-button visible-xs visible-sm navbar-toggle">
-						<div class='navigation-bar-stripe'></div>
-						<div class='navigation-bar-stripe'></div>
-						<div class='navigation-bar-stripe'></div>
-					</button>
+                    <button data-toggle='collapse' data-target='#renderedSmallDeviceNavigation' class="collapsed navigation-dropdown-icon top-panel-item float-left top-panel-button visible-xs visible-sm navbar-toggle">
+                        <div class='navigation-bar-stripe'></div>
+                        <div class='navigation-bar-stripe'></div>
+                        <div class='navigation-bar-stripe'></div>
+                    </button>
 
-				</div>
+                </div>
 
-				<div class='clearfix'></div>
+                <div class='clearfix'></div>
 
-			</header>
+            </header>
 
-			<section class='form-group navbar-collapse collapse' id='searchInputContainer'>
+            <section class='form-group navbar-collapse collapse' id='searchInputContainer'>
 
-				<input type="text" class="form-control search-input" placeholder='search'>
-				<a href='#'><span class='glyphicon glyphicon-search'></span></a>
+                <input type="text" class="form-control search-input" placeholder='search'>
+                <a href='#'><span class='glyphicon glyphicon-search'></span></a>
 
-			</section>
+            </section>
 
-			<div class='clearfix'></div>
-
-
-			<section id='renderedSmallDeviceNavigation' class='template-rendered navbar-collapse collapse'></section>
-			<script id='templateSmallDeviceNavigation' type='text/x-handlebars-template'>
-
-				{{! Main navigation - supports upto 3 level nesting }}
-				<div class='navigation-container main-navigation-container'>
-					<h3 class='navigation-title main-navigation-title'>Main Navigation</h3>
-					<ul class='navigation-level1 main-navigation-level1'>
-						{{#mainNavigationItems}}
-						<li>
-							<a href='{{urlFormat url}}'>
-								<span class='navigation-item-text main-navigation-item-text'>{{text}}</span>
-								<span class='navigation-item-description main-navigation-item-description'>{{description}}</span>
-							</a>
-
-							{{#if children}}
-							<ul class='navigation-level2 main-navigation-level2'>
-								{{#each children}}
-								<li>
-									<a href='{{urlFormat url}}'>
-										<span class='main-navigation-item-text'>{{text}}</span>
-										<span class='main-navigation-item-description'>{{description}}</span>
-									</a>
-									{{#if children}}
-									<ul class='navigation-level3 main-navigation-level3'>
-										{{#each children}}
-										<li>
-											<a href='{{urlFormat url}}'>
-												<span class='navigation-item-text main-navigation-item-text'>{{text}}</span>
-												<span class='navigation-item-description main-navigation-item-description'>{{description}}</span>
-											</a>
-										</li>
-										{{/each}} {{! closes level 3}}
-									</ul>
-									{{/if}}
-								</li>
-								{{/each}} {{! closes level 2}}
-							</ul>
-							{{/if}}
-						</li>
-						{{/mainNavigationItems}} {{! closes level 1}}
-					</ul>
-				</div>
-
-				{{! Global navigation - only 1 level nesting}}
-
-				<div class='navigation-container global-navigation-container visible-xs'>
-					<h3 class='navigation-title global-navigation-title'>Global Navigation</h3>
-					<ul>
-						{{#globalNavigationItems}}
-						<li>
-							<a href='{{urlFormat url}}'>{{text}}</a>
-						</li>
-						{{/globalNavigationItems}}
-					</ul>
-				</div>
-
-				{{! Left navigation - supports upto 2 level nesting }}
-				<div class='navigation-container left-navigation-container'>
-					<h3 class='navigation-title left-navigation-title'>Left Navigation</h3>
-					<ul>
-						{{#leftNavigationItems}}
-						<li>
-							<a href='{{urlFormat url}}'>
-								<span class='left-navigation-item-text'>{{text}}</span>
-								<span class='left-navigation-item-description'>{{description}}</span>
-							</a>
-							{{#if children}}
-							<ul class='left-navigation-level2'>
-								{{#each children}}
-								<li>
-									<a href='{{urlFormat url}}'>
-										<span class='left-navigation-item-text'>{{text}}</span>
-										<span class='left-navigation-item-description'>{{description}}</span>
-									</a>
-								</li>
-								{{/each}} {{! closes level 2}}
-							</ul>
-							{{/if}}
-						</li>
-						{{/leftNavigationItems}} {{! closes level 1}}
-					</ul>
-				</div>
-			</script>
+            <div class='clearfix'></div>
 
 
-			<section class="container-fluid main-page-container">
-				<div class='row'>
-					<div class='col-sm-6 spot-container-default'>
-						<section class='spot html-spot spot-background-turkish'>
-							<a href='#'>
-								<h3>Wood advisory, development and design <span class='glyphicon glyphicon-headphones'></span></h3>
-								<p>
-									We are passionate people building We are passionate people building We are passionate people building We are passionate people building We are passionate people building Meet us here
-								</p>
-							</a>
-						</section>
-					</div>
-					<div class='col-sm-6 spot-container-default'>
-						<section class='spot html-spot spot-background-darkgreen'>
-							<a href='#'>
-								<h3>Wood advisory, development and design <span class='glyphicon glyphicon-wrench'></span></h3>
-								<p>
-									We are passionate people building We are passionate people building We are passionate people building We are passionate people building We are passionate people building Meet us here
-								</p>
-							</a>
-						</section>
-					</div>
-				</div>
+            <section id='renderedSmallDeviceNavigation' class='template-rendered navbar-collapse collapse'></section>
+            <script id='templateSmallDeviceNavigation' type='text/x-handlebars-template'>
 
-				<div class='row'>
-					<div class='col-sm-3 spot-container-default'>
-						<section class='spot html-spot html-spot-small spot-background-lightgreen'>
-							<a href='#'>
-								<h3>Wood advisory, development and design</h3>
-								<p>
-									We are passionate people building We are passionate people building We are passionate people building We are passionate people building We are passionate people building Meet us here
-								</p>
-							</a>
-						</section>
-					</div>
-					<div class='col-sm-3 spot-container-default'>
-						<section class='spot html-spot html-spot-small spot-background-darkgreen'>
-							<a href='#'>
-								<h3>Wood advisory, development and design</h3>
-								<p>
-									We are passionate people building We are passionate people building We are passionate people building We are passionate people building We are passionate people building Meet us here
-								</p>
-							</a>
-						</section>
-					</div>
-					<div class='col-sm-3 spot-container-default'>
-						<section class='spot html-spot html-spot-small spot-background-turkish'>
-							<a href='#'>
-								<h3>Wood advisory, development and design</h3>
-								<p>
-									We are passionate people building We are passionate people building We are passionate people building We are passionate people building We are passionate people building Meet us here
-								</p>
-							</a>
-						</section>
-					</div>
-					<div class='col-sm-3 spot-container-default'>
-						<section class='spot html-spot html-spot-small spot-background-darkgreen'>
-							<a href='#'>
-								<h3>Responsive centered image</h3>
+                {{! Main navigation - supports upto 3 level nesting }}
+                <div class='navigation-container main-navigation-container'>
+                    <h3 class='navigation-title main-navigation-title'>Main Navigation</h3>
+                    <ul class='navigation-level1 main-navigation-level1'>
+                        {{#mainNavigationItems}}
+                        <li>
+                            <a href='{{urlFormat url}}'>
+                                <span class='navigation-item-text main-navigation-item-text'>{{text}}</span>
+                                <span class='navigation-item-description main-navigation-item-description'>{{description}}</span>
+                            </a>
 
-								<img src="http://placehold.it/200x100" class='image-responsive img-responsive' />
-								<p>We are passionate people building We are passionate people building </p>
-							</a>
-						</section>
-					</div>
-				</div>
+                            {{#if children}}
+                            <ul class='navigation-level2 main-navigation-level2'>
+                                {{#each children}}
+                                <li>
+                                    <a href='{{urlFormat url}}'>
+                                        <span class='main-navigation-item-text'>{{text}}</span>
+                                        <span class='main-navigation-item-description'>{{description}}</span>
+                                    </a>
+                                    {{#if children}}
+                                    <ul class='navigation-level3 main-navigation-level3'>
+                                        {{#each children}}
+                                        <li>
+                                            <a href='{{urlFormat url}}'>
+                                                <span class='navigation-item-text main-navigation-item-text'>{{text}}</span>
+                                                <span class='navigation-item-description main-navigation-item-description'>{{description}}</span>
+                                            </a>
+                                        </li>
+                                        {{/each}} {{! closes level 3}}
+                                    </ul>
+                                    {{/if}}
+                                </li>
+                                {{/each}} {{! closes level 2}}
+                            </ul>
+                            {{/if}}
+                        </li>
+                        {{/mainNavigationItems}} {{! closes level 1}}
+                    </ul>
+                </div>
 
-				<div class='row'>
-					<div class='col-sm-6 spot-container-default'>
-						<section class='spot html-spot spot-background-lightgreen'>
-							<a href='#'>
-								<h3>Wood advisory, development and design <span class='glyphicon glyphicon-tags'></span></h3>
-								<p>
-									We are passionate people building We are passionate people building We are passionate people building We are passionate people building We are passionate people building Meet us here
-								</p>
-							</a>
-						</section>
-					</div>
-					<div class='col-sm-6 spot-container-default'>
-						<section class='spot html-spot spot-background-red'>
-							<a href='#'>
-								<h3>Wood advisory, development and design <span class='glyphicon glyphicon-facetime-video'></span></h3>
-								<p>
-									We are passionate people building We are passionate people building We are passionate people building We are passionate people building We are passionate people building Meet us here
-								</p>
-							</a>
-						</section>
-					</div>
-				</div>
+                {{! Global navigation - only 1 level nesting}}
 
-			</section>
+                <div class='navigation-container global-navigation-container visible-xs'>
+                    <h3 class='navigation-title global-navigation-title'>Global Navigation</h3>
+                    <ul>
+                        {{#globalNavigationItems}}
+                        <li>
+                            <a href='{{urlFormat url}}'>{{text}}</a>
+                        </li>
+                        {{/globalNavigationItems}}
+                    </ul>
+                </div>
+
+                {{! Left navigation - supports upto 2 level nesting }}
+                <div class='navigation-container left-navigation-container'>
+                    <h3 class='navigation-title left-navigation-title'>Left Navigation</h3>
+                    <ul>
+                        {{#leftNavigationItems}}
+                        <li>
+                            <a href='{{urlFormat url}}'>
+                                <span class='left-navigation-item-text'>{{text}}</span>
+                                <span class='left-navigation-item-description'>{{description}}</span>
+                            </a>
+                            {{#if children}}
+                            <ul class='left-navigation-level2'>
+                                {{#each children}}
+                                <li>
+                                    <a href='{{urlFormat url}}'>
+                                        <span class='left-navigation-item-text'>{{text}}</span>
+                                        <span class='left-navigation-item-description'>{{description}}</span>
+                                    </a>
+                                </li>
+                                {{/each}} {{! closes level 2}}
+                            </ul>
+                            {{/if}}
+                        </li>
+                        {{/leftNavigationItems}} {{! closes level 1}}
+                    </ul>
+                </div>
+            </script>
 
 
-			<script id='templateTopPanelGlobalLinks' type='text/x-handlebars-template'>
-				{{! Global navigation - only 1 level nesting}}
-				<ul>
-					{{#globalNavigationItems}}
-					<li>
-						<a href='{{urlFormat url}}'>{{text}}</a>
-					</li>
-					{{/globalNavigationItems}}
-				</ul>
-			</script>
+            <section class="container-fluid main-page-container">
+                <div class='row'>
+                    <div id='placeholder1' class='col-sm-6 spot-container-default'></div>
+                    <div id='placeholder2' class='col-sm-6 spot-container-default'></div>
+                </div>
 
-			<script src='//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js'></script>
-			<script src='site-data.js'></script>
-			<script src='site.js'></script>
+                <div class='row'>
+                    <div id='placeholder3' class='col-sm-3 spot-container-default'></div>
+                    <div id='placeholder4' class='col-sm-3 spot-container-default'></div>
+                    <div id='placeholder5' class='col-sm-3 spot-container-default'></div>
+                    <div id='placeholder6' class='col-sm-3 spot-container-default'></div>
+                </div>
 
-		</div>     <!-- end .page-wrap -->
+                <div class='row'>
+                    <div id='placeholder7' class='col-sm-6 spot-container-default'></div>
+                    <div id='placeholder8' class='col-sm-6 spot-container-default'></div>
+                </div>
 
-		<footer class='site-footer'> sticky footer </footer>
-	</div>     <!-- end .body -->
+            </section>
+
+
+            <script id='templateTopPanelGlobalLinks' type='text/x-handlebars-template'>
+                {{! Global navigation - only 1 level nesting}}
+                <ul>
+                    {{#globalNavigationItems}}
+                    <li>
+                        <a href='{{urlFormat url}}'>{{text}}</a>
+                    </li>
+                    {{/globalNavigationItems}}
+                </ul>
+            </script>
+
+            <script id='templateHtmlSpot' type='text/x-handlebars-template'>
+             <section class='spot html-spot {{background}}'>                        
+                <a href='{{urlFormat url}}'>
+                <h3>{{title}} <span class='{{iconFormat icon}}'></span></h3>
+                <p>{{body}}</p>
+                </a>    
+                </section>           
+            </script> 
+
+              <script id='templateHtmlImageSpot' type='text/x-handlebars-template'>
+             <section class='spot html-spot {{background}}'>                        
+                <a href='{{urlFormat url}}'>
+                <h3>{{title}} <span class='{{iconFormat icon}}'></span></h3>
+                <img src="http://placehold.it/200x100" class='image-responsive img-responsive' />
+                <p>{{body}}</p>
+                </a>    
+                </section>           
+            </script> 
+            
+            <script src='//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js'></script>
+            <script src='site-data.js'></script>
+            <script src='site.js'></script>
+
+        </div>
+        <!-- end .page-wrap -->
+
+        <footer class='site-footer'> sticky footer </footer>
+    </div>
+    <!-- end .body -->
 
 </body>
 
