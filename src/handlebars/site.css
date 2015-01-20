@@ -31,6 +31,7 @@ html, body {
     margin: 0 auto;
     height: 100%;
     z-index: 0;
+    -webkit-overflow-scrolling: touch;
 }
 .site-footer {
     background-color: #000;
@@ -236,6 +237,14 @@ html, body {
     .device-info::after {
         content: ' - Phone large';
     }
+    body {
+/*        background: url('//i.imgur.com/3PP2VUn.jpg') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        -ms-background-size: cover;
+        background-size: cover;*/
+    }
     .body {
         width: 96%;
     }
@@ -245,7 +254,7 @@ html, body {
         content: " - Tablet";
     }
     body {
-        background: url('//i.imgur.com/3PP2VUn.jpg') no-repeat center center fixed;
+    	background: url('http://i.imgur.com/ndXts7z.jpg') no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -305,12 +314,12 @@ html, body {
         content: ' - Desktop';
     }
     body {
-        background: url('//i.imgur.com/3PP2VUn.jpg') no-repeat center center fixed;
+       /* background: url('//i.imgur.com/3PP2VUn.jpg') no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         -ms-background-size: cover;
-        background-size: cover;
+        background-size: cover;*/
         /*   margin-top: 10px;*/
     }
     .body {
@@ -323,6 +332,15 @@ html, body {
 @media (min-width: 1200px) {
     .device-info::after {
         content: ' - Desktop large';
+    }
+      body {
+        background: url('//i.imgur.com/isxWrsg.jpg') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        -ms-background-size: cover;
+        background-size: cover;
+        /*   margin-top: 10px;*/
     }
     .body {
         width: 70%;
