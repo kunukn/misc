@@ -32,7 +32,7 @@ html, body {
     z-index: 0;
 }
 .site-footer {
-    background-color: #333;
+    background-color: #000;
     color: white;
     height: 100px;
 }
@@ -231,7 +231,7 @@ html, body {
     margin-top: 10px;
 }
 @media (max-width: 991px) {
-    /* 
+    /*
         Not desktop
     */
 }
@@ -247,9 +247,13 @@ html, body {
     .device-info::after {
         content: " - Tablet";
     }
-    .body {
-        width: 90%;
-        background-color: #f6f4ef;
+    body {
+        background: url('//i.imgur.com/3PP2VUn.jpg') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        -ms-background-size: cover;
+        background-size: cover;
     }
     .main-page-container {
         margin: 0;
@@ -271,13 +275,16 @@ html, body {
     .collapse.in {
         display: block !important;
     }
-    body {
-        background: url('//i.imgur.com/3PP2VUn.jpg') no-repeat center center fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        -ms-background-size: cover;
-        background-size: cover;
+    .body {
+        width: 90%;
+        background-color: #f6f4ef;
+
+        -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+		filter: alpha(opacity=90);
+		-moz-opacity:0.9;
+		-khtml-opacity: 0.9;
+        -ms-opacity: 0.90;
+        opacity: 0.90;
     }
 
     /* Sticky footer */
@@ -300,20 +307,6 @@ html, body {
     .device-info::after {
         content: ' - Desktop';
     }
-    .body {
-        width: 80%;
-        background-color: #f6f4ef;
-
-		-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
-		filter: alpha(opacity=90);
-		-moz-opacity:0.9;
-		-khtml-opacity: 0.9;
-        -ms-opacity: 0.90;
-        opacity: 0.90;
-    }
-    .html-spot-small {
-        min-height: 300px;
-    }
     body {
         background: url('//i.imgur.com/3PP2VUn.jpg') no-repeat center center fixed;
         -webkit-background-size: cover;
@@ -322,6 +315,12 @@ html, body {
         -ms-background-size: cover;
         background-size: cover;
         /*   margin-top: 10px;*/
+    }
+    .body {
+        width: 80%;
+    }
+    .html-spot-small {
+        min-height: 300px;
     }
 }
 @media (min-width: 1200px) {
