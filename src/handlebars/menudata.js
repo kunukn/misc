@@ -22,10 +22,10 @@
         ],
 
         mainNavigationItems: [{
-            text: 'Industries & Solutions',            
+            text: 'Industries & Solutions',
             children: [
             {
-                text: 'Industries',                        
+                text: 'Industries',
                 children: [
                 {
                     text: 'Life sciences'
@@ -40,7 +40,7 @@
                 ]
             },
             {
-                text: 'Solutions'                        
+                text: 'Solutions'
                 ,children: [
                 {
                     text: 'Advisory Services'
@@ -71,7 +71,7 @@
             }
             ]
         }, {
-            text: 'Customers & cases'            
+            text: 'Customers & cases'
             ,children: [
             {
                 text: 'Cases'
@@ -81,7 +81,7 @@
             {
                 text: 'Customers'
                 ,url: '#'
-                ,description: 'main description 22'                
+                ,description: 'main description 22'
             }
             ]
         }],
