@@ -1,6 +1,7 @@
-﻿var Site = Site || {};
+﻿var Site;
 
 (function(d, $) {
+	Site = Site || {};
 	$( document ).ready(function() {
 		// Format url
 	    Handlebars.registerHelper('urlFormat', function(url) {

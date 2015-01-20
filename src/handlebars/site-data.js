@@ -1,6 +1,7 @@
-﻿var Site = Site || {};
+﻿var Site;
 
 (function() {
+    Site = Site || {};
     Site.stub = {
         globalNavigationItems: [
         {
@@ -28,7 +29,7 @@
                 text: 'Industries',
                 children: [
                 {
-                    text: 'Life sciences'
+                    text: 'IT sciences'
                     ,url: '#'
                     ,description: 'With profound domain knowledge, Wood knows how to use IT to optimize business processes while staying compliant'
                 },
@@ -48,22 +49,22 @@
                     ,description: 'Wood’s advisory services span a variety of areas and are built to optimize your company’s use of IT'
                 },
                  {
-                    text: 'Application Outsourcing'
+                    text: 'Application Design'
                     ,url: '#'
                     ,description: 'Based on best practices, we manage applications in a secure, flexible and scalable way, freeing you to focus on your core business'
                 },
                  {
-                    text: 'Application Outsourcing2'
+                    text: 'Application Design2'
                     ,url: '#'
                     ,description: 'Based on best practices, we manage applications in a secure, flexible and scalable way, freeing you to focus on your core business'
                 },
                  {
-                    text: 'Application Outsourcing3'
+                    text: 'Application Design3'
                     ,url: '#'
                     ,description: 'Based on best practices, we manage applications in a secure, flexible and scalable way, freeing you to focus on your core business'
                 },
                   {
-                    text: 'Application Outsourcing4'
+                    text: 'Application Design4'
                     ,url: '#'
                     ,description: 'Based on best practices, we manage applications in a secure, flexible and scalable way, freeing you to focus on your core business'
                 }
