@@ -1,8 +1,9 @@
 ﻿var Site;
+
 /* site-data.js */
 (function() {
-    Site = Site || {};
-    Site.stub = {
+    Site = Site || {}; // global var
+    Site.Stub = {
 
         htmlSpots: {},
         htmlSpotTitleDefault: 'Wood advisory, development and design',
@@ -111,35 +112,35 @@
         }]
     };
 
-    (function(stub) {
-        stub.htmlSpots = {
+    (function(Stub) {
+        Stub.htmlSpots = {
             htmlSpot1: {
                 background: 'spot-background-turkish',
                 url: '#',
-                title: stub.htmlSpotTitleDefault,
+                title: Stub.htmlSpotTitleDefault,
                 icon: 'glyphicon glyphicon-headphones',
-                body: stub.htmlSpotBodyDefault
+                body: Stub.htmlSpotBodyDefault
             },
             htmlSpot2: {
                 background: 'spot-background-gray',
-                title: stub.htmlSpotTitleDefault,
+                title: Stub.htmlSpotTitleDefault,
                 icon: 'glyphicon glyphicon-phone',
-                body: stub.htmlSpotBodyDefault
+                body: Stub.htmlSpotBodyDefault
             },
             htmlSpot3: {
                 background: 'spot-background-green',
-                title: stub.htmlSpotTitleDefault,
-                body: stub.htmlSpotBodyDefault
+                title: Stub.htmlSpotTitleDefault,
+                body: Stub.htmlSpotBodyDefault
             },
             htmlSpot4: {
                 background: 'spot-background-gray',
-                title: stub.htmlSpotTitleDefault,
-                body: stub.htmlSpotBodyDefault
+                title: Stub.htmlSpotTitleDefault,
+                body: Stub.htmlSpotBodyDefault
             },
             htmlSpot5: {
                 background: 'spot-background-turkish',
-                title: stub.htmlSpotTitleDefault,
-                body: stub.htmlSpotBodyDefault
+                title: Stub.htmlSpotTitleDefault,
+                body: Stub.htmlSpotBodyDefault
             },
             htmlSpot6: {
                 background: 'spot-background-gray',
@@ -150,16 +151,16 @@
             },
             htmlSpot7: {
                 background: 'spot-background-blue',
-                title: stub.htmlSpotTitleDefault,
+                title: Stub.htmlSpotTitleDefault,
                 icon: 'glyphicon glyphicon-camera',
-                body: stub.htmlSpotBodyDefault
+                body: Stub.htmlSpotBodyDefault
             },
             htmlSpot8: {
                 background: 'spot-background-red',
                 icon: 'glyphicon glyphicon-facetime-video',
-                title: stub.htmlSpotTitleDefault,
-                body: stub.htmlSpotBodyDefault
+                title: Stub.htmlSpotTitleDefault,
+                body: Stub.htmlSpotBodyDefault
             }
         }
-    })(Site.stub);
+    })(Site.Stub);
 })();

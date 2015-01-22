@@ -1,7 +1,8 @@
 ﻿var Site;
+
 /* site.js */
 (function(d, $) {
-	Site = Site || {};
+	Site = Site || {}; // global var
 	$( document ).ready(function() {
 		
 	    Handlebars.registerHelper('urlFormat', function(url) {
@@ -18,16 +19,16 @@
 	    templateHtmlSpot = Handlebars.compile($('#templateHtmlSpot').html()),
 	    templateHtmlImageSpot = Handlebars.compile($('#templateHtmlImageSpot').html());;	    
 	    
-    	$('#renderedSmallDeviceNavigation').append(templateSmallDeviceNavigation(Site.stub));
-    	$('#renderedTopPanelGlobalLinks').append(templateTopPanelGlobalLinks(Site.stub));
+    	$('#renderedSmallDeviceNavigation').append(templateSmallDeviceNavigation(Site.Stub));
+    	$('#renderedTopPanelGlobalLinks').append(templateTopPanelGlobalLinks(Site.Stub));
     	
-    	$('#placeholder1').append(templateHtmlSpot(Site.stub.htmlSpots.htmlSpot1));
-    	$('#placeholder2').append(templateHtmlSpot(Site.stub.htmlSpots.htmlSpot2));
-    	$('#placeholder3').append(templateHtmlSpot(Site.stub.htmlSpots.htmlSpot3));
-    	$('#placeholder4').append(templateHtmlSpot(Site.stub.htmlSpots.htmlSpot4));
-    	$('#placeholder5').append(templateHtmlSpot(Site.stub.htmlSpots.htmlSpot5));
-    	$('#placeholder6').append(templateHtmlImageSpot(Site.stub.htmlSpots.htmlSpot6));
-    	$('#placeholder7').append(templateHtmlSpot(Site.stub.htmlSpots.htmlSpot7));
-    	$('#placeholder8').append(templateHtmlSpot(Site.stub.htmlSpots.htmlSpot8));
+    	$('#placeholder1').append(templateHtmlSpot(Site.Stub.htmlSpots.htmlSpot1));
+    	$('#placeholder2').append(templateHtmlSpot(Site.Stub.htmlSpots.htmlSpot2));
+    	$('#placeholder3').append(templateHtmlSpot(Site.Stub.htmlSpots.htmlSpot3));
+    	$('#placeholder4').append(templateHtmlSpot(Site.Stub.htmlSpots.htmlSpot4));
+    	$('#placeholder5').append(templateHtmlSpot(Site.Stub.htmlSpots.htmlSpot5));
+    	$('#placeholder6').append(templateHtmlImageSpot(Site.Stub.htmlSpots.htmlSpot6));
+    	$('#placeholder7').append(templateHtmlSpot(Site.Stub.htmlSpots.htmlSpot7));
+    	$('#placeholder8').append(templateHtmlSpot(Site.Stub.htmlSpots.htmlSpot8));
 	});
 })(document, jQuery);
