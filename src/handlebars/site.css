@@ -29,8 +29,7 @@ html, body {
 
 .body {
     margin: 0 auto;
-    height: 100%;
-    z-index: 0;
+    height: 100%;    
     -webkit-overflow-scrolling: touch;
 }
 .site-footer {
@@ -244,11 +243,17 @@ html, body {
     margin-top: 10px;
 }
 
-div {    
+.spot {    
      transition-property: width, height;
         transition-duration: 1s;
 }
 
+
+@media (orientation : landscape){
+    .device-info::before {
+        content: ' (landscape) ';
+    }  
+}
 
 @media (min-width: 480px) {
     .device-info::after {

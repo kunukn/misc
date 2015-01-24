@@ -4,7 +4,14 @@
 (function() {
     Site = Site || {}; // global var
     Site.Stub = {
-
+        languagesSupportedForWebsite: [{
+            text: 'English',
+            url: '#'
+        },
+        {
+            text: 'Dansk',
+            url: '#'
+        }],
         htmlSpots: {},
         htmlSpotTitleDefault: 'Wood advisory, development and design',
         htmlSpotBodyDefault: 'We are passionate people We are passionate people We are passionate people We are passionate people We are passionate people We are passionate people We are passionate people - Meet us here',

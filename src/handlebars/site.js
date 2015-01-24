@@ -14,13 +14,17 @@
 	    });
 
 	    var 
+	    templateLanguagesSupported = Handlebars.compile($('#templateLanguagesSupported').html()),
 	    templateSmallDeviceNavigation = Handlebars.compile($('#templateSmallDeviceNavigation').html()),
 	    templateTopPanelGlobalLinks = Handlebars.compile($('#templateTopPanelGlobalLinks').html()),
 	    templateHtmlSpot = Handlebars.compile($('#templateHtmlSpot').html()),
 	    templateHtmlImageSpot = Handlebars.compile($('#templateHtmlImageSpot').html());;	    
 	    
+	    $('#renderedLanguageSelection').append(templateLanguagesSupported(Site.Stub));
     	$('#renderedSmallDeviceNavigation').append(templateSmallDeviceNavigation(Site.Stub));
     	$('#renderedTopPanelGlobalLinks').append(templateTopPanelGlobalLinks(Site.Stub));
+
+    	
     	
     	$('#placeholder1').append(templateHtmlSpot(Site.Stub.htmlSpots.htmlSpot1));
     	$('#placeholder2').append(templateHtmlSpot(Site.Stub.htmlSpots.htmlSpot2));

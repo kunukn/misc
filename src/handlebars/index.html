@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Responsive Web</title>
+    <title>Responsive Frontpage</title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,16 +36,7 @@
                     <div id='renderedTopPanelGlobalLinks' class='global-links template-rendered top-panel-links top-panel-item float-left hidden-xs'>
                     </div>
 
-                    <div class='language-selection top-panel-item float-left top-panel-links hidden-xs'>
-                        <ul>
-                            <li>
-                                <a href="#">English</a>
-                            </li>
-                            <li>
-                                <a href="#">Danish</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <div id='renderedLanguageSelection' class='language-selection top-panel-item float-left top-panel-links hidden-xs'></div>
 
                     <button data-toggle='collapse' data-target='#searchInputContainer' class='main-search-toggle top-panel-item float-left top-panel-button navbar-toggle'>
                         <span class="glyphicon glyphicon-search"></span>
@@ -189,6 +180,18 @@
                     {{/globalNavigationItems}}
                 </ul>
             </script>
+
+            <script id='templateLanguagesSupported' type='text/x-handlebars-template'>
+                {{! languages supported }}
+                <ul>
+                    {{#languagesSupportedForWebsite}}
+                    <li>
+                        <a href='{{urlFormat url}}'>{{text}}</a>
+                    </li>
+                    {{/languagesSupportedForWebsite}}
+                </ul>
+            </script>
+
 
             <script id='templateHtmlSpot' type='text/x-handlebars-template'>
                 <section class='spot html-spot {{background}}'>
