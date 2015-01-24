@@ -248,6 +248,9 @@ html, body {
         transition-duration: 1s;
 }
 
+.left-navigation-container{
+    display: none;
+}
 
 @media (orientation : landscape){
     .device-info::before {
@@ -332,6 +335,10 @@ html, body {
     .body {
         width: 80%;
     }      
+    .main-navigation-container{
+        background-color: red;
+    }
+
 }
 @media (min-width: 1200px) {
     .device-info::after {

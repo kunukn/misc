@@ -17,7 +17,7 @@
     <script src='//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js'></script>
 </head>
 
-<body>
+<body data-pagetype='frontpage'>
     <!-- Author: Kunuk Nykjaer, builded from scratch -->
     <div class='body'>
 
@@ -42,7 +42,7 @@
                         <span class="glyphicon glyphicon-search"></span>
                     </button>
 
-                    <button data-toggle='collapse' data-target='#renderedSmallDeviceNavigation' class="collapsed navigation-dropdown-icon top-panel-item float-left top-panel-button visible-xs visible-sm navbar-toggle">
+                    <button data-toggle='collapse' data-target='#renderedNavigation' class="collapsed navigation-dropdown-icon top-panel-item float-left top-panel-button visible-xs visible-sm navbar-toggle">
                         <div class='navigation-bar-stripe'></div>
                         <div class='navigation-bar-stripe'></div>
                         <div class='navigation-bar-stripe'></div>
@@ -64,8 +64,8 @@
             <div class='clearfix'></div>
 
 
-            <section id='renderedSmallDeviceNavigation' class='template-rendered navbar-collapse collapse'></section>
-            <script id='templateSmallDeviceNavigation' type='text/x-handlebars-template'>
+            <section id='renderedNavigation' class='template-rendered navbar-collapse collapse'></section>
+            <script id='templateNavigation' type='text/x-handlebars-template'>
 
                 {{! Main navigation - supports upto 3 level nesting }}
                 <div class='navigation-container main-navigation-container'>
