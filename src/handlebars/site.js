@@ -7,7 +7,7 @@
 	Site.Api = {};
 	Site.Api.isDesktop = function(){
 		return $(document).width() >= 992;
-	};
+	};	
 
 	$( document ).ready(function() {			
 	    Handlebars.registerHelper('urlFormat', function(url) {
