@@ -43,7 +43,7 @@ html, body {
 .body {
   margin: 0 auto;
   height: 100%;
-  -webkit-overflow-scrolling: touch;
+  -webkit-overflow-scrolling: touch;  
 }
 
 .site-footer {
@@ -72,11 +72,13 @@ html, body {
   }
 }
 
+$gradient-color-top-panel1: #8c0000;
+$gradient-color-top-panel2: #7c0000;
 .top-panel {
-  background: -webkit-linear-gradient(#8c0000, #7c0000);
-  background: -o-linear-gradient(#8c0000, #7c0000);
-  background: -moz-linear-gradient(#8c0000, #7c0000);
-  background: linear-gradient(#8c0000, #7c0000);
+  background: -webkit-linear-gradient($gradient-color-top-panel1, $gradient-color-top-panel2);
+  background: -o-linear-gradient($gradient-color-top-panel1, $gradient-color-top-panel2);
+  background: -moz-linear-gradient($gradient-color-top-panel1, $gradient-color-top-panel2);
+  background: linear-gradient($gradient-color-top-panel1, $gradient-color-top-panel2);
 
   .global-links {
     color: white;
