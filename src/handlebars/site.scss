@@ -26,6 +26,19 @@ html {
 
 /* Responsive design, smallest device first */
 
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+@mixin linear-gradient($val1, $val2) {
+  background: -webkit-linear-gradient($val1, $val2);
+  background: -o-linear-gradient($val1, $val2);
+  background: -moz-linear-gradient($val1, $val2);
+  background: linear-gradient($val1, $val2);
+}
+
 html, body {
   height: 100%;
 }
@@ -75,11 +88,9 @@ html, body {
 $gradient-color-top-panel1: #8c0000;
 $gradient-color-top-panel2: #7c0000;
 .top-panel {
-  background: -webkit-linear-gradient($gradient-color-top-panel1, $gradient-color-top-panel2);
-  background: -o-linear-gradient($gradient-color-top-panel1, $gradient-color-top-panel2);
-  background: -moz-linear-gradient($gradient-color-top-panel1, $gradient-color-top-panel2);
-  background: linear-gradient($gradient-color-top-panel1, $gradient-color-top-panel2);
-
+  
+  @include linear-gradient($gradient-color-top-panel1,$gradient-color-top-panel2);
+  
   .global-links {
     color: white;
     li {
@@ -209,38 +220,23 @@ a {
 .spot-container-small, .spot-container-big {}
 
 .spot-background-gray {
-  background: -webkit-linear-gradient(#4B5A55, #53605A);
-  background: -moz-linear-gradient(#4B5A55, #53605A);
-  background: -o-linear-gradient(#4B5A55, #53605A);
-  background: linear-gradient(#4B5A55, #53605A);
+  @include linear-gradient(#4B5A55, #53605A);  
 }
 
 .spot-background-green {
-  background: -webkit-linear-gradient(#879119, #779119);
-  background: -moz-linear-gradient(#879119, #779119);
-  background: -o-linear-gradient(#879119, #779119);
-  background: linear-gradient(#879119, #779119);
+  @include linear-gradient(#879119, #779119);
 }
 
 .spot-background-turkish {
-  background: -webkit-linear-gradient(#00736E, #00636E);
-  background: -moz-linear-gradient(#00736E, #00636E);
-  background: -o-linear-gradient(#00736E, #00636E);
-  background: linear-gradient(#00736E, #00636E);
+  @include linear-gradient(#00736E, #00636E);
 }
 
 .spot-background-blue {
-  background: -webkit-linear-gradient(#23343E, #13242E);
-  background: -moz-linear-gradient(#23343E, #13242E);
-  background: -o-linear-gradient(#23343E, #13242E);
-  background: linear-gradient(#23343E, #13242E);
+  @include linear-gradient(#23343E, #13242E);
 }
 
 .spot-background-red {
-  background: -webkit-linear-gradient(#8c0000, #7c0000);
-  background: -moz-linear-gradient(#8c0000, #7c0000);
-  background: -o-linear-gradient(#8c0000, #7c0000);
-  background: linear-gradient(#8c0000, #7c0000);
+  @include linear-gradient(#8c0000, #7c0000);
 }
 
 .device-info {
