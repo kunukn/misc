@@ -10,25 +10,47 @@
 
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <style type="text/css">
+    #navigation .panel-title{
+        font-size: 18px;
+    }
     #navigation .panel-body {
         padding-right: 0;
     }
-    .panel-body ul {
+    #navigation .panel-body ul {
         list-style-type: none;
         margin: 0;
         padding: 0;
+        padding-left: 15px;       
+        border-color: #ddd;
     }
-    .panel-body li {
+    #navigation .panel-body ul li {        
+        /*border-top: 1px solid #ddd;*/
+        background-color: rgb(245, 245, 245);
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        color: #333;
+        border-top: 1px solid #ddd;
+        border-left: 1px solid #ddd;        
+        border-radius-top-left: 3px;
+        border-radius-bottom-left: 3px;        
+    }
+    #navigation a:active{
+        color: #8c0000;
+    }
+    #navigation a    {
+        color: #333;
+    }
+    #navigation .panel-body ul a{
+        display: block;
         padding: 10px;
-        border-bottom: 1px solid rgb(245, 245, 245);
     }
-    .panel-body {
+
+    #navigation .panel-body {
         padding-top: 0;
         padding-bottom: 10px;
     }
-    .panel-group .panel+.panel {
+    #navigation.panel-group .panel+.panel {
         margin-top: 0;
-    }
+    }   
     #navigation .panel-group {
         margin-bottom: 0;
     }
@@ -139,7 +161,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                <a href="#"><span class='glyphicon glyphicon-user'></span> Cases</a>                                                    
+                                <a href="#"><span class='glyphicon glyphicon-book'></span> Cases</a>                                                    
                                 </h4>
                             </div>
                         </div>
@@ -175,7 +197,7 @@
                          <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                <a href="#"><span class='glyphicon glyphicon-user'></span> Locations</a>                                                    
+                                <a href="#"><span class='glyphicon glyphicon-map-marker'></span> Locations</a>                                                    
                                 </h4>
                             </div>
                         </div>
