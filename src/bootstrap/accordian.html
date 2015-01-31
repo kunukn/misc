@@ -8,66 +8,182 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <style type="text/css">
+    #navigation .panel-body {
+        padding-right: 0;
+    }
+    .panel-body ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+    .panel-body li {
+        padding: 10px;
+        border-bottom: 1px solid rgb(245, 245, 245);
+    }
+    .panel-body {
+        padding-top: 0;
+        padding-bottom: 10px;
+    }
+    .panel-group .panel+.panel {
+        margin-top: 0;
+    }
+    #navigation .panel-group {
+        margin-bottom: 0;
+    }
+    </style>
+
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 
 <body>
 
-    <div class="panel-group" id="accordion">
+    <div class="panel-group" id="navigation">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Collapsible Group Item #1</a><i class="indicator glyphicon glyphicon-chevron-down pull-right"></i>
-      </h4>
+                    <a href="#"><span class='glyphicon glyphicon-fire'></span> Solutions</a>
+                    <a class="accordion-toggle pull-right" data-toggle="collapse" data-parent="#navigation" href="#collapseSolutions"><span class="glyphicon glyphicon glyphicon-option-vertical" /></a>
+                </h4>
             </div>
-            <div id="collapseOne" class="panel-collapse collapse in">
+            <div id="collapseSolutions" class="panel-collapse collapse">
                 <div class="panel-body">
-                    a
+
+                    <div class="panel-group" id="navigationSolutions">
+
+                        <div class="panel panel-default">
+
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                <a href="#"> <span class='glyphicon glyphicon-hand-up'></span> Advisory</a>
+                                <a class="accordion-toggle pull-right" data-toggle="collapse" data-parent="#navigationSolutions" href="#collapseAdvisory"><span class="glyphicon glyphicon-option-vertical" /></a>
+                            </h4>
+                            </div>
+
+                            <div id="collapseAdvisory" class="panel-collapse collapse">
+
+                                <ul>
+                                    <li><a href="#">Page 1</a>
+                                    </li>
+                                    <li><a href="#">Page 2</a>
+                                    </li>
+                                    <li><a href="#">Page 3</a>
+                                    </li>
+                                    <li><a href="#">Page 4</a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                <a href="#"><span class='glyphicon glyphicon-wrench'></span> Support</a>
+                                <a class="accordion-toggle pull-right" data-toggle="collapse" data-parent="#navigationSolutions" href="#collapseSupport"><span class="glyphicon glyphicon-option-vertical" /></a>                               
+                            </h4>
+                            </div>
+
+                            <div id="collapseSupport" class="panel-collapse collapse">
+
+                                <ul>
+                                    <li><a href="#">Page 1</a>
+                                    </li>
+                                    <li><a href="#">Page 2</a>
+                                    </li>
+                                    <li><a href="#">Page 3</a>
+                                    </li>
+                                    <li><a href="#">Page 4</a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                <a href="#"><span class='glyphicon glyphicon-cloud'></span> Outsourcing</a>                                
+                            </h4>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Collapsible Group Item #2</a><i class="indicator glyphicon glyphicon-chevron-up  pull-right"></i>
-      </h4>
+<a href="#"><span class='glyphicon glyphicon-briefcase'></span> Customers &amp; Cases</a>                   
+<a class="accordion-toggle pull-right" data-toggle="collapse" data-parent="#navigation" href="#collapseCustormersAndCases"><span class="glyphicon glyphicon-option-vertical" /></a>
+                </h4>
+
             </div>
-            <div id="collapseTwo" class="panel-collapse collapse">
+            <div id="collapseCustormersAndCases" class="panel-collapse collapse">
                 <div class="panel-body">
-                    b
+
+                    <div class="panel-group" id="navigationCustormersAndCases">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                <a href="#"><span class='glyphicon glyphicon-user'></span> Custormers</a>                                                    
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                <a href="#"><span class='glyphicon glyphicon-user'></span> Cases</a>                                                    
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"> Collapsible Group Item #3 </a><i class="indicator glyphicon glyphicon-chevron-up pull-right"></i>
-      </h4>
+                <a href="#"><span class='glyphicon glyphicon-education'></span> Your Career</a>     
+                <a class="accordion-toggle pull-right" data-toggle="collapse" data-parent="#navigation" href="#collapseCareer"><span class="glyphicon glyphicon-option-vertical"></span></a>                  
+                </h4>
             </div>
-            <div id="collapseThree" class="panel-collapse collapse">
+            <div id="collapseCareer" class="panel-collapse collapse">
                 <div class="panel-body">
-                    c
+
+                    <div class="panel-group" id="navigationCareer">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                <a href="#"><span class='glyphicon glyphicon-user'></span> Vacancies</a>                                                    
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                <a href="#"><span class='glyphicon glyphicon-user'></span> Career routes</a>                                                    
+                                </h4>
+                            </div>
+                        </div>
+                         <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                <a href="#"><span class='glyphicon glyphicon-user'></span> Locations</a>                                                    
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-    <script>
-    ! function($) {
-        function toggleChevron(e) {
-            $(e.target)
-                .prev('.panel-heading')
-                .find("i.indicator")
-                .toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
-        }
-        $('#accordion').on('hidden.bs.collapse', toggleChevron);
-        $('#accordion').on('shown.bs.collapse', toggleChevron);
-    }(jQuery);
-    </script>
 </body>
 
 </html>
