@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Accordian</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Collapsible Group Item #1</a><i class="indicator glyphicon glyphicon-chevron-down pull-right"></i>
+      </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    a
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Collapsible Group Item #2</a><i class="indicator glyphicon glyphicon-chevron-up  pull-right"></i>
+      </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-body">
+                    b
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"> Collapsible Group Item #3 </a><i class="indicator glyphicon glyphicon-chevron-up pull-right"></i>
+      </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse">
+                <div class="panel-body">
+                    c
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+    ! function($) {
+        function toggleChevron(e) {
+            $(e.target)
+                .prev('.panel-heading')
+                .find("i.indicator")
+                .toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
+        }
+        $('#accordion').on('hidden.bs.collapse', toggleChevron);
+        $('#accordion').on('shown.bs.collapse', toggleChevron);
+    }(jQuery);
+    </script>
+</body>
+
+</html>
