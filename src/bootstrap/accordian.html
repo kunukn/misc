@@ -15,11 +15,13 @@
     }
     #navigation .panel-body {
         padding-right: 0;
+		 padding-top: 10px;
+        padding-bottom: 10px;
     }
     #navigation .panel-body ul {
         list-style-type: none;
         margin: 0;
-        padding: 0;
+        padding: 10px 0;
         padding-left: 15px;       
         border-color: #ddd;
     }
@@ -29,6 +31,7 @@
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         color: #333;
         border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
         border-left: 1px solid #ddd;        
         border-radius-top-left: 3px;
         border-radius-bottom-left: 3px;        
@@ -42,12 +45,7 @@
     #navigation .panel-body ul a{
         display: block;
         padding: 10px;
-    }
-
-    #navigation .panel-body {
-        padding-top: 0;
-        padding-bottom: 10px;
-    }
+    }   
     #navigation.panel-group .panel+.panel {
         margin-top: 0;
     }   
@@ -191,8 +189,25 @@
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                 <a href="#"><span class='glyphicon glyphicon-user'></span> Career routes</a>                                                    
+                                 <a class="accordion-toggle pull-right" data-toggle="collapse" data-parent="#navigationCareer" href="#collapseCareerRoutes"><span class="glyphicon glyphicon-option-vertical" /></a>    
                                 </h4>
                             </div>
+                         
+                            <div id="collapseCareerRoutes" class="panel-collapse collapse">
+
+                                <ul>
+                                    <li><a href="#">Page 1</a>
+                                    </li>
+                                    <li><a href="#">Page 2</a>
+                                    </li>
+                                    <li><a href="#">Page 3</a>
+                                    </li>
+                                    <li><a href="#">Page 4</a>
+                                    </li>
+                                </ul>
+
+                            </div>
+
                         </div>
                          <div class="panel panel-default">
                             <div class="panel-heading">
