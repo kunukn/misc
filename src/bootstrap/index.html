@@ -8,23 +8,128 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <style type="text/css">
+    #navigation .panel-body {
+        padding-right: 0;
+    }
+    .panel-body ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+    .panel-body li {        
+        padding: 10px;
+        border-bottom: 1px solid rgb(245, 245, 245);        
+    }
+    .panel-body {
+        padding-top: 0;
+        padding-bottom: 10px;
+    }
+    .panel-group .panel+.panel {
+        margin-top: 0;
+    }
+    </style>
+
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 
 <body>
 
-  
+    <div class="panel-group" id="navigation">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a href="#">Solutions <span class='glyphicon glyphicon-fire'></span></a>
+                    <a class="accordion-toggle pull-right" data-toggle="collapse" data-parent="#navigation" href="#collapseSolutions"><span class="glyphicon glyphicon glyphicon-option-vertical"></span></a>
+                </h4>
+            </div>
+            <div id="collapseSolutions" class="panel-collapse collapse in">
+                <div class="panel-body">
+
+                    <div class="panel panel-default">
+
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a href="#">Advisory <span class='glyphicon glyphicon-hand-up'></span></a>
+                                <a class="accordion-toggle pull-right" data-toggle="collapse" href="#collapseAdvisory"><span class="glyphicon glyphicon-option-vertical"></span></a>
+                            </h4>
+                        </div>
+
+                        <div id="collapseAdvisory" class="panel-collapse collapse">
+
+                            <ul>
+                                <li>Page 1</li>
+                                <li>Page 2</li>
+                                <li>Page 3</li>
+                                <li>Page 4</li>
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                    <div class="panel panel-default">
+
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a href="#">Support <span class='glyphicon glyphicon-wrench'></span></a>
+                                <a class="accordion-toggle pull-right" data-toggle="collapse" href="#collapseSupport"><span class="glyphicon glyphicon-option-vertical"></span></a>                               
+                            </h4>
+                        </div>
+
+                        <div id="collapseSupport" class="panel-collapse collapse">
+
+                            <ul>
+                                <li>Page 1</li>
+                                <li>Page 2</li>
+                                <li>Page 3</li>
+                                <li>Page 4</li>
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+<a href="#">Customers &amp; Cases <span class='glyphicon glyphicon-briefcase'></span></a>                   
+<a class="accordion-toggle pull-right" data-toggle="collapse" data-parent="#navigation" href="#collapseTwo"><span class="glyphicon glyphicon-option-vertical"></span></a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-body">
+                    b
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                <a href="#">Your Career <span class='glyphicon glyphicon-education'></span></a>     
+                <a class="accordion-toggle pull-right" data-toggle="collapse" data-parent="#navigation" href="#collapseThree"><span class="glyphicon glyphicon-option-vertical"></span></a>                  
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse">
+                <div class="panel-body">
+                    c
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <script>
     ! function($) {
-      
+
     }(jQuery);
     </script>
-    
 </body>
 
 </html>
