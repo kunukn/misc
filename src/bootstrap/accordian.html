@@ -10,49 +10,67 @@
 
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <style type="text/css">
-    
-    #navigation .panel-title{
+    #navigation {
+        max-width: 500px;
+        width: 100%;
+        float: right;
+    }
+    #navigation .panel-title {
         font-size: 18px;
     }
     #navigation .panel-body {
         padding-right: 0;
-		 padding-top: 10px;
+        padding-top: 10px;
         padding-bottom: 10px;
     }
     #navigation .panel-body ul {
         list-style-type: none;
         margin: 0;
         padding: 10px 0;
-        padding-left: 15px;       
+        padding-left: 15px;
         border-color: #ddd;
     }
-    #navigation .panel-body ul li {        
+    #navigation .panel-body ul li {
         /*border-top: 1px solid #ddd;*/
-        background-color: rgb(245, 245, 245);        
+        
+        background-color: rgb(245, 245, 245);
         color: #333;
         border-top: 1px solid #ddd;
         border-bottom: 1px solid #ddd;
-        border-left: 1px solid #ddd;        
-        border-radius-top-left: 3px;
-        border-radius-bottom-left: 3px;        
+        border-left: 1px solid #ddd;
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
     }
-    #navigation a:active{
+    #navigation a:active {
         color: #8c0000;
     }
-    #navigation a    {
+    #navigation a {
         color: #333;
     }
-    #navigation .panel-body ul a{
+    #navigation .panel-body ul a {
         display: block;
         padding: 10px;
-    }   
+    }
     #navigation.panel-group .panel+.panel {
         margin-top: 0;
-    }   
+    }
     #navigation .panel-group {
         margin-bottom: 0;
     }
-
+    #navigation .description {
+        display: none;
+    }
+    #navigation .accordion-toggle {
+        padding-left: 10px;
+    }
+    @media (min-width: 768px) {
+        #navigation {
+            min-width: 600px;
+        }
+        #navigation .description {
+            display: block;
+        }
+    }
     </style>
 
 
@@ -70,6 +88,9 @@
                     <a href="#"><span class='glyphicon glyphicon-fire'></span> Solutions</a>
                     <a class="accordion-toggle pull-right" data-toggle="collapse" data-parent="#navigation" href="#collapseSolutions"><span class="glyphicon glyphicon glyphicon-option-vertical" /></a>
                 </h4>
+                <p class='description'>
+                    Solutions description description description description description description description description
+                </p>
             </div>
             <div id="collapseSolutions" class="panel-collapse collapse">
                 <div class="panel-body">
@@ -83,6 +104,9 @@
                                 <a href="#"> <span class='glyphicon glyphicon-hand-up'></span> Advisory</a>
                                 <a class="accordion-toggle pull-right" data-toggle="collapse" data-parent="#navigationSolutions" href="#collapseAdvisory"><span class="glyphicon glyphicon-option-vertical" /></a>
                             </h4>
+                                <p class='description'>
+                                    Advisory description description description description description description description description
+                                </p>
                             </div>
 
                             <div id="collapseAdvisory" class="panel-collapse collapse">
@@ -108,6 +132,9 @@
                                 <a href="#"><span class='glyphicon glyphicon-wrench'></span> Support</a>
                                 <a class="accordion-toggle pull-right" data-toggle="collapse" data-parent="#navigationSolutions" href="#collapseSupport"><span class="glyphicon glyphicon-option-vertical" /></a>                               
                             </h4>
+                                <p class='description'>
+                                    Support description description description description description description description description
+                                </p>
                             </div>
 
                             <div id="collapseSupport" class="panel-collapse collapse">
@@ -132,6 +159,9 @@
                                 <h4 class="panel-title">
                                 <a href="#"><span class='glyphicon glyphicon-cloud'></span> Outsourcing</a>                                
                             </h4>
+                                <p class='description'>
+                                    Outsourcing description description description description description description description description
+                                </p>
                             </div>
 
                         </div>
@@ -145,6 +175,9 @@
 <a href="#"><span class='glyphicon glyphicon-briefcase'></span> Customers &amp; Cases</a>                   
 <a class="accordion-toggle pull-right" data-toggle="collapse" data-parent="#navigation" href="#collapseCustormersAndCases"><span class="glyphicon glyphicon-option-vertical" /></a>
                 </h4>
+                <p class='description'>
+                    Customers &amp; Cases description description description description description description description description
+                </p>
 
             </div>
             <div id="collapseCustormersAndCases" class="panel-collapse collapse">
@@ -175,6 +208,9 @@
                 <a href="#"><span class='glyphicon glyphicon-education'></span> Your Career</a>     
                 <a class="accordion-toggle pull-right" data-toggle="collapse" data-parent="#navigation" href="#collapseCareer"><span class="glyphicon glyphicon-option-vertical"></span></a>                  
                 </h4>
+                <p class='description'>
+                    Your Career description description description description description description description description
+                </p>
             </div>
             <div id="collapseCareer" class="panel-collapse collapse">
                 <div class="panel-body">
@@ -185,6 +221,9 @@
                                 <h4 class="panel-title">
                                 <a href="#"><span class='glyphicon glyphicon-user'></span> Vacancies</a>                                                    
                                 </h4>
+                                <p class='description'>
+                                    Vacancies description description description description description description description description
+                                </p>
                             </div>
                         </div>
                         <div class="panel panel-default">
@@ -193,8 +232,11 @@
                                 <a href="#"><span class='glyphicon glyphicon-user'></span> Career routes</a>                                                    
                                  <a class="accordion-toggle pull-right" data-toggle="collapse" data-parent="#navigationCareer" href="#collapseCareerRoutes"><span class="glyphicon glyphicon-option-vertical" /></a>    
                                 </h4>
+                                <p class='description'>
+                                    Career routes description description description description description description description description
+                                </p>
                             </div>
-                         
+
                             <div id="collapseCareerRoutes" class="panel-collapse collapse">
 
                                 <ul>
@@ -211,11 +253,14 @@
                             </div>
 
                         </div>
-                         <div class="panel panel-default">
+                        <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                 <a href="#"><span class='glyphicon glyphicon-map-marker'></span> Locations</a>                                                    
                                 </h4>
+                                 <p class='description'>
+                                    Locations description description description description description description description description
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -223,7 +268,7 @@
             </div>
         </div>
     </div>
-    
+
 </body>
 
 </html>
