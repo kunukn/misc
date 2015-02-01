@@ -11,7 +11,8 @@
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <style type="text/css">
 
-    .flex-container {
+  /* navigationMegamenu */
+    #navigationMegamenu .flex-container {
         position: relative;
         padding: 0;
         margin: 0;
@@ -25,7 +26,7 @@
         -webkit-justify-content: center;
         justify-content: center;
     }
-    .flex-item {
+    #navigationMegamenu .flex-item {
         background-color: #f5f5f5;
         padding: 5px;
         margin: 0;
@@ -34,7 +35,7 @@
         text-align: center;
         flex: 1;
     }
-    .my-dropdown-menu {
+    #navigationMegamenu .my-dropdown-menu {
         position: absolute;
         top: 100%;
         left: 0;
@@ -48,17 +49,16 @@
         list-style: none;
         background-color: #f5f5f5;
     }
-    .open>.my-dropdown-menu {
+    #navigationMegamenu  .open>.my-dropdown-menu {
         display: block;
     }
-    .my-dropdown-menu li {
+    #navigationMegamenu  .my-dropdown-menu li {
         padding: 0;
         text-align: center;
         min-height: 150px;
         border: 1px solid white;
     }
-    /* navigationMegamenu */
-    
+  
     #navigationMegamenu {
         display: none;
         width: 80%;
@@ -128,7 +128,8 @@
     }
     @media (min-width: 768px) {
         #navigationAccordian {
-            min-width: 600px;
+            min-width: inherit;
+            max-width: inherit;
         }
         #navigationAccordian .description {
             display: block;
@@ -174,6 +175,7 @@
                         <li class='col-xs-6'>b2</li>
                         <li class='col-xs-6'>c2</li>
                         <li class='col-xs-6'>d2</li>
+                        <li class='col-xs-6'>e2</li>                       
                     </ul>
                 </li>
                 <li class="flex-item"><a href="#">Your Career</a>
@@ -182,6 +184,8 @@
                         <li class='col-xs-6'>b3</li>
                         <li class='col-xs-6'>c3</li>
                         <li class='col-xs-6'>d3</li>
+                        <li class='col-xs-6'>e3</li>
+                        <li class='col-xs-6'>ef</li>
                     </ul>
                 </li>
             </ul>
@@ -397,11 +401,7 @@
                 );
 
                 $('.title').text(w());
-
-                $(document).on('click', '.yamm .dropdown-menu', function(e) {
-                    e.stopPropagation();
-                });
-
+            
                 $('#navigationMegamenu .flex-item').on('mouseenter', function(e) {
                     $(this).addClass('open');
                 });
