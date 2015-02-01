@@ -10,6 +10,42 @@
 
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <style type="text/css">
+    .yamm .nav,
+    .yamm .collapse,
+    .yamm .dropup,
+    .yamm .dropdown {
+        position: static;
+    }
+    .yamm .container {
+        position: relative;
+    }
+    .yamm .dropdown-menu {
+        /*left: auto;*/
+    }
+    .yamm .yamm-content {
+        padding: 20px 30px;
+    }
+    .yamm .dropdown.yamm-fw .dropdown-menu {
+        left: 0;
+        right: 0;
+    }
+    #navigationDesktop {
+        width: 80%;
+        margin: 0 auto;
+    }
+    #navigationDesktop .dropdown-menu {
+        width: 100%;
+    }
+    #navigationDesktop .item {
+        border: 1px solid black;
+    }
+
+
+
+
+    #navigation {
+        display: none;
+    }
     #navigation .panel-body {
         padding-right: 0;
     }
@@ -40,6 +76,70 @@
 </head>
 
 <body>
+
+    <div class="" id="navigationDesktop">
+        <nav class="navbar yamm navbar-default " role="navigation">
+
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Solutions</a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown yamm-fw">
+                            <div class="yamm-content">
+                                <div class="row">
+                                    <div class="col-xs-6 item">a</div>
+                                    <div class="col-xs-6 item">b</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6 item">a1</div>
+                                    <div class="col-xs-6 item">b1</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Customer and Cases</a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown yamm-fw">
+                            <div class="yamm-content">
+                                <div class="row">
+                                    <div class="col-xs-6 item">aa</div>
+                                    <div class="col-xs-6 item">bb</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6 item">aaa</div>
+                                    <div class="col-xs-6 item">bbb</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                 <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Your Career</a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown yamm-fw">
+                            <div class="yamm-content">
+                                <div class="row">
+                                    <div class="col-xs-6 item">aa</div>
+                                    <div class="col-xs-6 item">bb</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6 item">aaa</div>
+                                    <div class="col-xs-6 item">bbb</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+        </nav>
+    </div>
+
+<div>content here</div>
+<div>content here</div>
+
 
     <div class="panel-group" id="navigation">
         <div class="panel panel-default">
@@ -172,7 +272,7 @@
                                 </h4>
                             </div>
                         </div>
-                         <div class="panel panel-default">
+                        <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                 <a href="#"><span class='glyphicon glyphicon-user'></span> Locations</a>                                                    
