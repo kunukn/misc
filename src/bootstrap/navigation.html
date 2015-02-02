@@ -10,8 +10,8 @@
 
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <style type="text/css">
-
-  /* navigationMegamenu */
+    /* navigationMegamenu */
+    
     #navigationMegamenu .flex-container {
         position: relative;
         padding: 0;
@@ -19,8 +19,7 @@
         list-style: none;
         display: -webkit-flex;
         display: flex;
-        -webkit-flex-direction: row
-        flex-direction: row;
+        -webkit-flex-direction: row flex-direction: row;
         -webkit-align-items: center;
         align-items: center;
         -webkit-justify-content: center;
@@ -50,21 +49,23 @@
         background-color: #f5f5f5;
         padding: 0;
     }
-    #navigationMegamenu  .open>.my-dropdown-menu {
+    #navigationMegamenu .open>.my-dropdown-menu {
         display: block;
     }
-    #navigationMegamenu  .my-dropdown-menu li {
-        padding: 10px;
+    #navigationMegamenu .my-dropdown-menu li {
         text-align: left;
         min-height: 150px;
         border: 1px solid white;
-
     }
-
+    #navigationMegamenu .my-dropdown-menu li a {
+        display: block;
+        padding: 10px;
+    }
     #navigationMegamenu {
         display: none;
-        width: 80%;
-        margin: 0 auto;
+    }
+    #navigationMegamenu a {
+        text-decoration: none;
     }
     #navigationMegamenu ul {
         width: 100%;
@@ -122,12 +123,23 @@
     #navigationAccordian .accordion-toggle {
         padding-left: 10px;
     }
+    #leftMenu {
+        display: none;
+        background-color: beige;
+        padding: 10px;
+    }
+    #leftMenu ul {
+        padding-left: 10px;
+    }
+    #leftMenu li {
+        list-style-type: none;
+    }
     .content {
         background-color: #ddd;
         min-height: 200px;
     }
     @media (min-width: 480px) {
-        #navigationAccordian{
+        #navigationAccordian {
             width: 96%;
             margin: 0 auto;
         }
@@ -136,7 +148,7 @@
         }
     }
     @media (min-width: 768px) {
-        #navigationAccordian{
+        #navigationAccordian {
             width: 90%;
             margin: 0 auto;
         }
@@ -150,6 +162,11 @@
         }
         #navigationMegamenu {
             display: block;
+            width: 60%;
+            margin: 0 auto;
+        }
+        #leftMenu {
+            display: inline-block;
         }
     }
     </style>
@@ -172,51 +189,105 @@
                 <li class="flex-item">
                     <a href="#">Solutions</a>
                     <ul class="my-dropdown-menu row">
-                        <li class='col-xs-6'>
-                        <h3>Advisory</h3>
-                        <p>Advisory description description description description description description description description</p>
+                        <li class='col-xs-12'>
+                            <a href="#">
+                                <h3>Solutions</h3>
+                                <p>solutions description description description description description description description description</p>
+                            </a>
                         </li>
                         <li class='col-xs-6'>
-                        <h3>Support</h3>
-                        <p>Support description description description description description description description description</p>
+                            <a href="#">
+                                <h3>Advisory</h3>
+                                <p>Advisory description description description description description description description description</p>
+                            </a>
                         </li>
                         <li class='col-xs-6'>
-                        <h3>Outsourcing</h3>
-                        <p>Outsourcing description description description description description description description description</p>
+                            <a href="#">
+                                <h3>Support</h3>
+                                <p>Support description description description description description description description description</p>
+                            </a>
+                        </li>
+                        <li class='col-xs-6'>
+                            <a href="#">
+                                <h3>Outsourcing</h3>
+                                <p>Outsourcing description description description description description description description description</p>
+                            </a>
                         </li>
                     </ul>
                 </li>
                 <li class="flex-item"><a href="#">Customers &amp; Cases</a>
-                  <ul class="my-dropdown-menu row">
-                        <li class='col-xs-6'>
-                        <h3>Custormers</h3>
-                        <p>Custormers description description description description description description description description</p>
+                    <ul class="my-dropdown-menu row">
+                        <li class='col-xs-12'>
+                            <a href="#">
+                                <h3>Customers &amp; Cases</h3>
+                                <p>Customers &amp; Cases description description description description description description description description</p>
+                            </a>
                         </li>
                         <li class='col-xs-6'>
-                        <h3>Cases</h3>
-                        <p>Cases description description description description description description description description</p>
+                            <a href="#">
+                                <h3>Custormers</h3>
+                                <p>Custormers description description description description description description description description</p>
+                            </a>
+                        </li>
+                        <li class='col-xs-6'>
+                            <a href="#">
+                                <h3>Cases</h3>
+                                <p>Cases description description description description description description description description</p>
+                            </a>
                         </li>
                     </ul>
                 </li>
                 <li class="flex-item"><a href="#">Your Career</a>
-                 <ul class="my-dropdown-menu row">
-                        <li class='col-xs-6'>
-                        <h3>Vacancies</h3>
-                        <p>Vacancies description description description description description description description description</p>
+                    <ul class="my-dropdown-menu row">
+                        <li class='col-xs-12'>
+                            <a href="#">
+                                <h3>Your Career</h3>
+                                <p>Your Career description description description description description description description description</p>
+                            </a>
                         </li>
                         <li class='col-xs-6'>
-                        <h3>Career routes</h3>
-                        <p>Career routes description description description description description description description description</p>
+                            <a href="#">
+                                <h3>Vacancies</h3>
+                                <p>Vacancies description description description description description description description description</p>
+                            </a>
                         </li>
                         <li class='col-xs-6'>
-                        <h3>Locations</h3>
-                        <p>Locations description description description description description description description description</p>
+                            <a href="#">
+                                <h3>Career routes</h3>
+                                <p>Career routes description description description description description description description description</p>
+                            </a>
+                        </li>
+                        <li class='col-xs-6'>
+                            <a href="#">
+                                <h3>Locations</h3>
+                                <p>Locations description description description description description description description description</p>
+                            </a>
                         </li>
                     </ul>
                 </li>
             </ul>
         </div>
 
+
+        <div class="" id="leftMenu">
+            <h3>left menu</h3>
+            <p>Breadcrumb</p>
+            <p><a href="#">Site</a> / <a href="#">Solutions</a> / </p>
+            <ul>
+                <li>
+                    <span>Advisory - Current page</span>
+                    <ul>
+                        <li><a href="#">page child 1</a></li>
+                        <li><a href="#">page child 2</a></li>
+                        <li><a href="#">page child 3</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Support - sibling page</a>
+                </li>
+                <li><a href="#">Outsourcing - sibling page</a>
+                </li>
+            </ul>
+        </div>
 
 
         <div class="panel-group" id="navigationAccordian">
