@@ -72,7 +72,6 @@
 
     #navigationAccordian {
         width: 100%;
-        float: right;
     }
     #navigationAccordian .panel-title {
         font-size: 18px;
@@ -126,17 +125,30 @@
         background-color: #ddd;
         min-height: 200px;
     }
+    @media (min-width: 480px) {
+        #navigationAccordian{
+            width: 96%;
+            margin: 0 auto;
+        }
+        #navigationAccordian .description {
+            display: block;
+        }
+    }
     @media (min-width: 768px) {
+        #navigationAccordian{
+            width: 90%;
+            margin: 0 auto;
+        }
         #navigationAccordian .description {
             display: block;
         }
     }
     @media (min-width: 992px) {
-        #navigationMegamenu {
-            display: block;
-        }
         #navigationAccordian {
             display: none;
+        }
+        #navigationMegamenu {
+            display: block;
         }
     }
     </style>
