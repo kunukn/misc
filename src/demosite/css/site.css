@@ -467,6 +467,7 @@ a:link, a:visited, a:active {
     .body {
         width: 80%;
     }
+   
       #navigationAccordian {
             display: none;
         }
@@ -478,6 +479,7 @@ a:link, a:visited, a:active {
         #leftMenu {
             display: inline-block;
         }
+    }
     .main-navigation-container {
         background-color: red;
         /* debug */
