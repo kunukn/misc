@@ -24,19 +24,12 @@
     <![endif]-->
 
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <!-- 
-    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-    <link href="http://cloud.typography.com/6137912/799826/css/fonts.css" rel="stylesheet" type="text/css"> 
-    -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">    
 </head>
 
-<body data-pagetype='frontpage'>
+<body>
     <!-- Author: Kunuk Nykjaer, builded from scratch -->
-    <div class='body'>
+    <div class='body' data-pagetype='frontpage'>
 
         <div class='page-wrap'>
 
@@ -71,6 +64,9 @@
 
             </header>
 
+
+    
+
             <section class='form-group navbar-collapse collapse' id='searchInputContainer'>
 
                 <input type="text" class="form-control search-input" placeholder='search'>
@@ -80,8 +76,286 @@
 
             <div class='clearfix'></div>
 
+    <div class="" id="navigationMegamenu">
 
-            <section id='renderedNavigation' class='template-rendered navbar-collapse collapse'></section>
+
+            <ul class="flex-container">
+                <li class="flex-item">
+                    <a href="#">Solutions</a>
+                    <ul class="my-dropdown-menu row">
+                        <li class='col-xs-12'>
+                            <a href="#">
+                                <h3>Solutions</h3>
+                                <p>solutions description description description description description description description description</p>
+                            </a>
+                        </li>
+                        <li class='col-xs-6'>
+                            <a href="#">
+                                <h3>Advisory</h3>
+                                <p>Advisory description description description description description description description description</p>
+                            </a>
+                        </li>
+                        <li class='col-xs-6'>
+                            <a href="#">
+                                <h3>Support</h3>
+                                <p>Support description description description description description description description description</p>
+                            </a>
+                        </li>
+                        <li class='col-xs-6'>
+                            <a href="#">
+                                <h3>Outsourcing</h3>
+                                <p>Outsourcing description description description description description description description description</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="flex-item"><a href="#">Customers &amp; Cases</a>
+                    <ul class="my-dropdown-menu row">
+                        <li class='col-xs-12'>
+                            <a href="#">
+                                <h3>Customers &amp; Cases</h3>
+                                <p>Customers &amp; Cases description description description description description description description description</p>
+                            </a>
+                        </li>
+                        <li class='col-xs-6'>
+                            <a href="#">
+                                <h3>Custormers</h3>
+                                <p>Custormers description description description description description description description description</p>
+                            </a>
+                        </li>
+                        <li class='col-xs-6'>
+                            <a href="#">
+                                <h3>Cases</h3>
+                                <p>Cases description description description description description description description description</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="flex-item"><a href="#">Your Career</a>
+                    <ul class="my-dropdown-menu row">
+                        <li class='col-xs-12'>
+                            <a href="#">
+                                <h3>Your Career</h3>
+                                <p>Your Career description description description description description description description description</p>
+                            </a>
+                        </li>
+                        <li class='col-xs-6'>
+                            <a href="#">
+                                <h3>Vacancies</h3>
+                                <p>Vacancies description description description description description description description description</p>
+                            </a>
+                        </li>
+                        <li class='col-xs-6'>
+                            <a href="#">
+                                <h3>Career routes</h3>
+                                <p>Career routes description description description description description description description description</p>
+                            </a>
+                        </li>
+                        <li class='col-xs-6'>
+                            <a href="#">
+                                <h3>Locations</h3>
+                                <p>Locations description description description description description description description description</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+
+
+
+
+            <section id='renderedNavigation' class='template-rendered navbar-collapse collapse'>
+                     <div class="panel-group" id="navigationAccordian">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                    <a href="#"><span class='glyphicon glyphicon-fire'></span> Solutions</a>
+                    <a class="accordion-toggle pull-right" data-toggle="collapse" data-parent="#navigationAccordian" href="#collapseSolutions"><span class="glyphicon glyphicon glyphicon-option-vertical" /></a>
+                </h4>
+                    <p class='description'>
+                        Solutions description description description description description description description description
+                    </p>
+                </div>
+                <div id="collapseSolutions" class="panel-collapse collapse">
+                    <div class="panel-body">
+
+                        <div class="panel-group" id="navigationSolutions">
+
+                            <div class="panel panel-default">
+
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                <a href="#"> <span class='glyphicon glyphicon-hand-up'></span> Advisory</a>
+                                <a class="accordion-toggle pull-right" data-toggle="collapse" data-parent="#navigationSolutions" href="#collapseAdvisory"><span class="glyphicon glyphicon-option-vertical" /></a>
+                            </h4>
+                                    <p class='description'>
+                                        Advisory description description description description description description description description
+                                    </p>
+                                </div>
+
+                                <div id="collapseAdvisory" class="panel-collapse collapse">
+
+                                    <ul>
+                                        <li><a href="#">Page 1</a>
+                                        </li>
+                                        <li><a href="#">Page 2</a>
+                                        </li>
+                                        <li><a href="#">Page 3</a>
+                                        </li>
+                                        <li><a href="#">Page 4</a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                <a href="#"><span class='glyphicon glyphicon-wrench'></span> Support</a>
+                                <a class="accordion-toggle pull-right" data-toggle="collapse" data-parent="#navigationSolutions" href="#collapseSupport"><span class="glyphicon glyphicon-option-vertical" /></a>
+                            </h4>
+                                    <p class='description'>
+                                        Support description description description description description description description description
+                                    </p>
+                                </div>
+
+                                <div id="collapseSupport" class="panel-collapse collapse">
+
+                                    <ul>
+                                        <li><a href="#">Page 1</a>
+                                        </li>
+                                        <li><a href="#">Page 2</a>
+                                        </li>
+                                        <li><a href="#">Page 3</a>
+                                        </li>
+                                        <li><a href="#">Page 4</a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                <a href="#"><span class='glyphicon glyphicon-cloud'></span> Outsourcing</a>
+                            </h4>
+                                    <p class='description'>
+                                        Outsourcing description description description description description description description description
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                    <a href="#"><span class='glyphicon glyphicon-briefcase'></span> Customers &amp; Cases</a>
+                    <a class="accordion-toggle pull-right" data-toggle="collapse" data-parent="#navigationAccordian" href="#collapseCustormersAndCases"><span class="glyphicon glyphicon-option-vertical" /></a>
+                </h4>
+                    <p class='description'>
+                        Customers &amp; Cases description description description description description description description description
+                    </p>
+
+                </div>
+                <div id="collapseCustormersAndCases" class="panel-collapse collapse">
+                    <div class="panel-body">
+
+                        <div class="panel-group" id="navigationCustormersAndCases">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                <a href="#"><span class='glyphicon glyphicon-user'></span> Custormers</a>
+                                </h4>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                <a href="#"><span class='glyphicon glyphicon-book'></span> Cases</a>
+                                </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                <a href="#"><span class='glyphicon glyphicon-education'></span> Your Career</a>
+                <a class="accordion-toggle pull-right" data-toggle="collapse" data-parent="#navigationAccordian" href="#collapseCareer"><span class="glyphicon glyphicon-option-vertical"></span></a>
+                </h4>
+                    <p class='description'>
+                        Your Career description description description description description description description description
+                    </p>
+                </div>
+                <div id="collapseCareer" class="panel-collapse collapse">
+                    <div class="panel-body">
+
+                        <div class="panel-group" id="navigationCareer">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                <a href="#"><span class='glyphicon glyphicon-user'></span> Vacancies</a>
+                                </h4>
+                                    <p class='description'>
+                                        Vacancies description description description description description description description description
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                <a href="#"><span class='glyphicon glyphicon-user'></span> Career routes</a>
+                                 <a class="accordion-toggle pull-right" data-toggle="collapse" data-parent="#navigationCareer" href="#collapseCareerRoutes"><span class="glyphicon glyphicon-option-vertical" /></a>
+                                </h4>
+                                    <p class='description'>
+                                        Career routes description description description description description description description description
+                                    </p>
+                                </div>
+
+                                <div id="collapseCareerRoutes" class="panel-collapse collapse">
+
+                                    <ul>
+                                        <li><a href="#">Page 1</a>
+                                        </li>
+                                        <li><a href="#">Page 2</a>
+                                        </li>
+                                        <li><a href="#">Page 3</a>
+                                        </li>
+                                        <li><a href="#">Page 4</a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                <a href="#"><span class='glyphicon glyphicon-map-marker'></span> Locations</a>
+                                </h4>
+                                    <p class='description'>
+                                        Locations description description description description description description description description
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+            </section>
             <script id='templateNavigation' type='text/x-handlebars-template'>
 
                 {{! Main navigation - supports upto 3 level nesting }}
