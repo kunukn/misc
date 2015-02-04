@@ -75,9 +75,7 @@
 
             <div class='clearfix'></div>
 
-            <div class="" id="navigationMegamenu">
-
-
+            <div id="navigationMegamenu">
                 <ul class="flex-container">
                     <li class="flex-item">
                         <a href="#">Solutions</a>
@@ -367,9 +365,96 @@
                 </div>
                 <div class="clearfix"></div>
             </section>
+
+            <script id='templateMegaMenu' type='text/x-handlebars-template'>
+                <ul class="flex-container">
+                    <li class="flex-item">
+                        <a href="#">Solutions</a>
+                        <ul class="my-dropdown-menu row">
+                            <li class='col-xs-12'>
+                                <a href="#">
+                                    <h3>Solutions</h3>
+                                    <p>solutions description description description description description description description description</p>
+                                </a>
+                            </li>
+                            <li class='col-xs-6'>
+                                <a href="#">
+                                    <h3>Advisory</h3>
+                                    <p>Advisory description description description description description description description description</p>
+                                </a>
+                            </li>
+                            <li class='col-xs-6'>
+                                <a href="#">
+                                    <h3>Support</h3>
+                                    <p>Support description description description description description description description description</p>
+                                </a>
+                            </li>
+                            <li class='col-xs-6'>
+                                <a href="#">
+                                    <h3>Outsourcing</h3>
+                                    <p>Outsourcing description description description description description description description description</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="flex-item">
+                        <a href="#">Customers &amp; Cases</a>
+                        <ul class="my-dropdown-menu row">
+                            <li class='col-xs-12'>
+                                <a href="#">
+                                    <h3>Customers &amp; Cases</h3>
+                                    <p>Customers &amp; Cases description description description description description description description description</p>
+                                </a>
+                            </li>
+                            <li class='col-xs-6'>
+                                <a href="#">
+                                    <h3>Custormers</h3>
+                                    <p>Custormers description description description description description description description description</p>
+                                </a>
+                            </li>
+                            <li class='col-xs-6'>
+                                <a href="#">
+                                    <h3>Cases</h3>
+                                    <p>Cases description description description description description description description description</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="flex-item">
+                        <a href="#">Your Career</a>
+                        <ul class="my-dropdown-menu row">
+                            <li class='col-xs-12'>
+                                <a href="#">
+                                    <h3>Your Career</h3>
+                                    <p>Your Career description description description description description description description description</p>
+                                </a>
+                            </li>
+                            <li class='col-xs-6'>
+                                <a href="#">
+                                    <h3>Vacancies</h3>
+                                    <p>Vacancies description description description description description description description description</p>
+                                </a>
+                            </li>
+                            <li class='col-xs-6'>
+                                <a href="#">
+                                    <h3>Career routes</h3>
+                                    <p>Career routes description description description description description description description description</p>
+                                </a>
+                            </li>
+                            <li class='col-xs-6'>
+                                <a href="#">
+                                    <h3>Locations</h3>
+                                    <p>Locations description description description description description description description description</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </script>
+
             <script id='templateNavigation' type='text/x-handlebars-template'>
 
-                {{! Main navigation - supports upto 3 level nesting }}
+                {{! Main navigation }}
                 <div class='navigation-container main-navigation-container'>
                     <h3 class='navigation-title main-navigation-title'>Main Navigation</h3>
                     <ul class='navigation-level1 main-navigation-level1'>
@@ -502,11 +587,11 @@
             <script id='templateTopPanelGlobalLinks' type='text/x-handlebars-template'>
                 {{! Global navigation - only 1 level nesting}}
                 <ul>
-                    {{#globalLinkItems}}
+                    {{#each globalLinkItems}}
                     <li>
                         <a href='{{urlFormat url}}'>{{text}}</a>
                     </li>
-                    {{/globalLinkItems}}
+                    {{/each}}
                 </ul>
             </script>
 
