@@ -164,9 +164,6 @@
             </div>
 
 
-
-
-
             <section id='renderedNavigation' class='template-rendered navbar-collapse collapse'>
                 <div class="panel-group" id="navigationAccordian">
 
@@ -505,22 +502,22 @@
             <script id='templateTopPanelGlobalLinks' type='text/x-handlebars-template'>
                 {{! Global navigation - only 1 level nesting}}
                 <ul>
-                    {{#globalNavigationItems}}
+                    {{#globalLinkItems}}
                     <li>
                         <a href='{{urlFormat url}}'>{{text}}</a>
                     </li>
-                    {{/globalNavigationItems}}
+                    {{/globalLinkItems}}
                 </ul>
             </script>
 
             <script id='templateLanguagesSupported' type='text/x-handlebars-template'>
                 {{! languages supported }}
                 <ul>
-                    {{#languagesSupportedForWebsite}}
+                    {{#each languagesSupportedForWebsite}}
                     <li>
                         <a href='{{urlFormat url}}'>{{text}}</a>
                     </li>
-                    {{/languagesSupportedForWebsite}}
+                    {{/each}}
                 </ul>
             </script>
 

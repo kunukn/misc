@@ -39,27 +39,23 @@
         //$('#renderedNavigation').append(templateNavigation(Site.Stub));
         $('#renderedTopPanelGlobalLinks').append(templateTopPanelGlobalLinks(Site.Stub));
 
-        // navigationIsOpenedByDefaultForDesktop();    	   	  
-        // leftNavigationIsAvailableExceptForFrontpage();
+        leftNavigationIsAvailableForDesktopExceptOnFrontpage();
+		enableForMegaMenuMouseOverAndOut();      
+    });
 
-        $('#navigationMegamenu .flex-item').on('mouseenter', function(e) {
+	function enableForMegaMenuMouseOverAndOut(){
+		  $('#navigationMegamenu .flex-item').on('mouseenter', function(e) {
             $(this).addClass('open');
         });
 
         $('#navigationMegamenu .flex-item').on('mouseleave', function(e) {
             $(this).removeClass('open');
         });
-    });
-
-    function navigationIsOpenedByDefaultForDesktop() {
-        if (Site.Api.isDesktop()) {
-            $('#renderedNavigation').removeClass('collapse');
-        }
-    }
-
-    function leftNavigationIsAvailableExceptForFrontpage() {
-        if ($('.body').attr('data-pagetype') !== 'frontpage') {
-            $('.left-navigation-container').css('display', 'block');
+	}
+   
+    function leftNavigationIsAvailableForDesktopExceptOnFrontpage() {
+        if (Site.Api.isDesktop() && $('.body').attr('data-pagetype') !== 'frontpage') {
+            $('#leftMenu').css('display', 'inline-block');
         }
     }
 

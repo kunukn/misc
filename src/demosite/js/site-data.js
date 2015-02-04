@@ -7,8 +7,7 @@
         languagesSupportedForWebsite: [{
             text: 'English',
             url: '#'
-        },
-        {
+        }, {
             text: 'Dansk',
             url: '#'
         }],
@@ -16,7 +15,8 @@
         htmlSpotTitleDefault: 'Wood advisory, development and design',
         htmlSpotBodyDefault: 'We are passionate people We are passionate people We are passionate people We are passionate people We are passionate people We are passionate people We are passionate people - Meet us here',
         htmlSpotIconDefault: 'glyphicon glyphicon-headphones',
-        globalNavigationItems: [{
+
+        globalLinkItems: [{
             text: 'Events',
             url: '#'
         }, {
@@ -30,57 +30,44 @@
             url: '#'
         }],
 
-        mainNavigationItems: [{
-            text: 'Industries & Solutions',
+        accordianMenuItems: [{
+            text: 'text'
+
+        }],
+
+        megaMenuItems: [{
+            text: 'Solutions',
             children: [{
-                text: 'Industries',
-                children: [{
-                    text: 'IT sciences',
-                    url: '#',
-                    description: 'With profound domain knowledge, Wood knows how to use IT to optimize business processes while staying compliant'
-                }, {
-                    text: 'Enterprise',
-                    url: '#',
-                    description: 'Wood has a proven track record of handling IT challenges, in terms of both size and complexity, for large enterprises'
-                }]
-            }, {
                 text: 'Solutions',
-                children: [{
-                    text: 'Advisory Services',
-                    url: '#',
-                    description: 'Wood’s advisory services span a variety of areas and are built to optimize your company’s use of IT'
-                }, {
-                    text: 'Application Design',
-                    url: '#',
-                    description: 'Based on best practices, we manage applications in a secure, flexible and scalable way, freeing you to focus on your core business'
-                }, {
-                    text: 'Application Design2',
-                    url: '#',
-                    description: 'Based on best practices, we manage applications in a secure, flexible and scalable way, freeing you to focus on your core business'
-                }, {
-                    text: 'Application Design3',
-                    url: '#',
-                    description: 'Based on best practices, we manage applications in a secure, flexible and scalable way, freeing you to focus on your core business'
-                }, {
-                    text: 'Application Design4',
-                    url: '#',
-                    description: 'Based on best practices, we manage applications in a secure, flexible and scalable way, freeing you to focus on your core business'
-                }]
+                description: 'Solutions description description description description description description description description'
+            }, {
+                text: 'Advisory',
+                description: 'Advisory description description description description description description description description'
+            }, {
+                text: 'Support',
+                description: 'Support description description description description description description description description'
+            }, {
+                text: 'Outsourcing',
+                description: 'Outsourcing description description description description description description description description'
             }]
         }, {
-            text: 'Customers & cases',
+            text: 'Customers and cases',
             children: [{
-                text: 'Cases',
+                text: 'Customers and cases',
                 url: '#',
-                description: 'main description 21'
+                description: 'Customers and cases description description description description description description description description'
             }, {
                 text: 'Customers',
                 url: '#',
-                description: 'main description 22'
+                description: 'Customers description description description description description description description description'
+            }, {
+                text: 'Cases',
+                url: '#',
+                description: 'Cases description description description description description description description description'
             }]
         }],
 
-        leftNavigationItems: [{
+        leftMenuItems: [{
             text: 'left text1',
             url: '#',
             children: [{

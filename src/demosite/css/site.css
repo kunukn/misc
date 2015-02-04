@@ -52,139 +52,134 @@ html, body {
 .top-panel-item a {
     color: white;
 }
-
 /* navigationMegamenu */
-    
-    #navigationMegamenu .flex-container {
-        position: relative;
-        padding: 0;
-        margin: 0;
-        list-style: none;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-flex-direction: row flex-direction: row;
-        -webkit-align-items: center;
-        align-items: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-    }
-    #navigationMegamenu .flex-item {
-        background-color: #f5f5f5;
-        padding: 15px;
-        margin: 0;
-        color: black;
-        font-weight: bold;
-        text-align: center;
-        flex: 1;
-    }
-    #navigationMegamenu .my-dropdown-menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        z-index: 10;
-        display: none;
-        float: left;
-        min-width: 160px;
-        margin: 0;
-        font-size: 14px;
-        text-align: left;
-        list-style: none;
-        background-color: #f5f5f5;
-        padding: 0;
-    }
-    #navigationMegamenu .open>.my-dropdown-menu {
-        display: block;
-    }
-    #navigationMegamenu .my-dropdown-menu li {
-        text-align: left;
-        min-height: 150px;
-        border: 1px solid white;
-    }
-    #navigationMegamenu .my-dropdown-menu li a {
-        display: block;
-        padding: 10px;
-    }
-    #navigationMegamenu {
-        display: none;
-    }
-    #navigationMegamenu a {
-        text-decoration: none;
-    }
-    #navigationMegamenu ul {
-        width: 100%;
-    }
 
-    /* navigationAccordian */
-
-    #navigationAccordian {
-        width: 100%;
-    }
-    #navigationAccordian .panel-title {
-        font-size: 18px;
-    }
-    #navigationAccordian .panel-body {
-        padding-right: 0;
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-    #navigationAccordian .panel-body ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 10px 0;
-        padding-left: 15px;
-        border-color: #ddd;
-    }
-    #navigationAccordian .panel-body ul li {
-        /*border-top: 1px solid #ddd;*/
-
-        background-color: rgb(245, 245, 245);
-        color: #333;
-        border-top: 1px solid #ddd;
-        border-bottom: 1px solid #ddd;
-        border-left: 1px solid #ddd;
-        border-top-left-radius: 3px;
-        border-bottom-left-radius: 3px;
-    }
-    #navigationAccordian a:active {
-        color: #8c0000;
-    }
-    #navigationAccordian a {
-        color: #333;
-    }
-    #navigationAccordian .panel-body ul a {
-        display: block;
-        padding: 10px;
-    }
-    #navigationAccordian.panel-group .panel+.panel {
-        margin-top: 0;
-    }
-    #navigationAccordian .panel-group {
-        margin-bottom: 0;
-    }
-    #navigationAccordian .description {
-        display: none;
-    }
-    #navigationAccordian .accordion-toggle {
-        padding-left: 10px;
-    }
-
-    #leftMenu {
-        display: none;
-        background-color: beige;
-        padding: 10px;
-    }
-    #leftMenu ul {
-        padding-left: 10px;
-    }
-    #leftMenu li {
-        list-style-type: none;
-    }
-
-#renderedNavigation.navbar-collapse{
-  padding-left: 0;
-  padding-right: 0;
+#navigationMegamenu .flex-container {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
 }
+#navigationMegamenu .flex-item {
+    background-color: #f5f5f5;
+    padding: 15px;
+    margin: 0;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    flex: 1;
+}
+#navigationMegamenu .my-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 10;
+    display: none;
+    float: left;
+    min-width: 160px;
+    margin: 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #f5f5f5;
+    padding: 0;
+}
+#navigationMegamenu .open>.my-dropdown-menu {
+    display: block;
+}
+#navigationMegamenu .my-dropdown-menu li {
+    text-align: left;
+    min-height: 150px;
+    border: 1px solid white;
+}
+#navigationMegamenu .my-dropdown-menu li a {
+    display: block;
+    padding: 10px;
+}
+#navigationMegamenu {
+    display: none;
+}
+#navigationMegamenu a {
+    text-decoration: none;
+}
+#navigationMegamenu ul {
+    width: 100%;
+}
+/* navigationAccordian */
 
+#navigationAccordian {
+    width: 100%;
+}
+#navigationAccordian .panel-title {
+    font-size: 18px;
+}
+#navigationAccordian .panel-body {
+    padding-right: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#navigationAccordian .panel-body ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 10px 0;
+    padding-left: 15px;
+    border-color: #ddd;
+}
+#navigationAccordian .panel-body ul li {
+    /*border-top: 1px solid #ddd;*/
+    
+    background-color: rgb(245, 245, 245);
+    color: #333;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+#navigationAccordian a:active {
+    color: #8c0000;
+}
+#navigationAccordian a {
+    color: #333;
+}
+#navigationAccordian .panel-body ul a {
+    display: block;
+    padding: 10px;
+}
+#navigationAccordian.panel-group .panel+.panel {
+    margin-top: 0;
+}
+#navigationAccordian .panel-group {
+    margin-bottom: 0;
+}
+#navigationAccordian .description {
+    display: none;
+}
+#navigationAccordian .accordion-toggle {
+    padding-left: 10px;
+}
+#leftMenu {
+    display: none;
+    background-color: beige;
+    padding: 10px;
+}
+#leftMenu ul {
+    padding-left: 10px;
+}
+#leftMenu li {
+    list-style-type: none;
+}
+#renderedNavigation.navbar-collapse {
+    padding-left: 0;
+    padding-right: 0;
+}
 #renderedTopPanelGlobalLinks {
     margin-right: 30px;
 }
@@ -395,33 +390,35 @@ a:link, a:visited, a:active {
     .body {
         width: 96%;
     }
-      #navigationAccordian {
-            /*width: 96%;*/
-            margin: 0 auto;
-        }
-        #navigationAccordian .description {
-            display: block;
-        }
+    #navigationAccordian {
+        /*width: 96%;*/
+        
+        margin: 0 auto;
+    }
+    #navigationAccordian .description {
+        display: block;
+    }
 }
 @media (min-width: 768px) {
     .device-info::after {
         content: " - Tablet";
     }
     body {
-        background: url("http://i.imgur.com/ndXts7z.jpg") no-repeat center center fixed;
+        background: url("../img/background/ndXts7z.jpg") no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         -ms-background-size: cover;
         background-size: cover;
     }
-     #navigationAccordian {
-            /*width: 90%;*/
-            margin: 0 auto;
-        }
-        #navigationAccordian .description {
-            display: block;
-        }
+    #navigationAccordian {
+        /*width: 90%;*/
+        
+        margin: 0 auto;
+    }
+    #navigationAccordian .description {
+        display: block;
+    }
     .main-page-container {
         margin: 0;
     }
@@ -472,18 +469,17 @@ a:link, a:visited, a:active {
     .body {
         width: 80%;
     }
-
-      #navigationAccordian {
-            display: none;
-        }
-        #navigationMegamenu {
-            display: block;
-          /*  width: 60%;*/
-            margin: 0 auto;
-        }
-        #leftMenu {
-            display: inline-block;
-        }
+    #navigationAccordian {
+        display: none;
+    }
+    #navigationMegamenu {
+        display: block;
+        /*  width: 60%;*/
+        
+        margin: 0 auto;
+    }
+    #leftMenu {
+        /*display: inline-block;*/
     }
     .main-navigation-container {
         background-color: red;
@@ -495,7 +491,7 @@ a:link, a:visited, a:active {
         content: ' - Desktop large';
     }
     body {
-        background: url("//i.imgur.com/isxWrsg.jpg") no-repeat center center fixed;
+        background: url("../img/background/isxWrsg.jpg") no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
