@@ -180,6 +180,11 @@ html, body {
         list-style-type: none;
     }
 
+#renderedNavigation.navbar-collapse{
+  padding-left: 0;
+  padding-right: 0;
+}
+
 #renderedTopPanelGlobalLinks {
     margin-right: 30px;
 }
@@ -391,7 +396,7 @@ a:link, a:visited, a:active {
         width: 96%;
     }
       #navigationAccordian {
-            width: 96%;
+            /*width: 96%;*/
             margin: 0 auto;
         }
         #navigationAccordian .description {
@@ -411,7 +416,7 @@ a:link, a:visited, a:active {
         background-size: cover;
     }
      #navigationAccordian {
-            width: 90%;
+            /*width: 90%;*/
             margin: 0 auto;
         }
         #navigationAccordian .description {
@@ -467,7 +472,7 @@ a:link, a:visited, a:active {
     .body {
         width: 80%;
     }
-   
+
       #navigationAccordian {
             display: none;
         }
