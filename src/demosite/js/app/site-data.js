@@ -124,7 +124,6 @@
             htmlSpot3: {
                 background: 'spot-background-green',
                 title: Stub.htmlSpotTitleDefault,
-                icon: 'fa fa-eye',
                 body: Stub.htmlSpotBodyDefault
             },
             htmlSpot4: {
@@ -135,13 +134,11 @@
             htmlSpot5: {
                 background: 'spot-background-turkish',
                 title: Stub.htmlSpotTitleDefault,
-                icon: 'fa fa-eye',
                 body: Stub.htmlSpotBodyDefault
             },
             htmlSpot6: {
                 background: 'spot-background-gray',
                 title: 'Responsive centered image',
-                icon2: 'fa fa-eye',
                 icon: 'glyphicon glyphicon-map-marker',
                 body: '',
                 imageUrl: 'http://placehold.it/200x150'
