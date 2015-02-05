@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Knockoutjs">
+    <meta name="author" content="">
+    <title>Knockoutjs</title>
+
+    <style type="text/css">
+    .demo{
+        background-color: tomato;
+    }
+    </style>
+</head>
+
+<body>
+    <h2>Knockoujs</h2>
+    <p>
+        In browser console type: app.demoViewModel.title('test')
+    </p>
+
+    <section class='demo' data-bind="with: demoViewModel">
+        <h3 data-bind="text: title"></h3>
+        <p data-bind="text: body"></p>
+    </section>
+
+    <script src='knockout-3.2.0.js'></script>
+    <script src='knockout.mapping-2.4.1.js'></script>
+    <script src='run-app.js'></script>
+
+</body>
+</html>
