@@ -8,7 +8,7 @@ var app;
             itemSelector: '.element-item',
             layoutMode: 'masonry',
             masonry: {
-                columnWidth: 210
+                columnWidth: 320
             }
         });
 
