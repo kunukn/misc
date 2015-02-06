@@ -14,14 +14,68 @@
 
 <body>
 
-    <section class='demo' data-bind="with: demoViewModel">
+    <h1>Isotope - layout modes</h1>
+
+
+    <div id="filters" class="button-group">
+        <button class="button is-checked" data-filter="*">show all</button>
+        <button class="button" data-filter=".default">default</button>
+        <button class="button" data-filter=".width2">width2</button>
+        <button class="button" data-filter=".height2">height2</button>
+        <button class="button" data-filter=".width2, .height2">width2 height2</button>
+    </div>
+
+
+    <div id="isotope-demo" class="isotope rainbowed">
+        <div class="element-item width2">
+            <p class="symbol">1</p>
+        </div>
+        <div class="element-item height2">
+            <p class="symbol">2</p>
+        </div>
+        <div class="element-item default">
+            <p class="symbol">3</p>
+        </div>
+        <div class="element-item default">
+            <p class="symbol">4</p>
+        </div>
+        <div class="element-item width2 height2">
+            <p class="symbol">5</p>
+        </div>
+        <div class="element-item width2">
+            <p class="symbol">6</p>
+        </div>
+        <div class="element-item height2">
+            <p class="symbol">7</p>
+        </div>
+        <div class="element-item default">
+            <p class="symbol">8</p>
+        </div>
+        <div class="element-item default">
+            <p class="symbol">9</p>
+        </div>
+        <div class="element-item width2">
+            <p class="symbol">10</p>
+        </div>
+        <div class="element-item default">
+            <p class="symbol">11</p>
+        </div>
+        <div class="element-item default">
+            <p class="symbol">12</p>
+        </div>
+    </div>
+
+    <section class='demo' data-bind="with: viewModel">
         <h3 data-bind="text: title"></h3>
         <p data-bind="text: body"></p>
     </section>
 
-    <script src='js/knockout-3.2.0.js'></script>
-    <script src='js/knockout.mapping-2.4.1.js'></script>
-    <script src='js/run-app.js'></script>
+    <script src='js/library/knockout-3.2.0.js'></script>
+    <script src='js/library/knockout.mapping-2.4.1.js'></script>
+    <script src='js/library/jquery.js'></script>
+    <script src='js/library/isotope.pkgd.min.js'></script>
 
+    <script src='js/app/run-app.js'></script>
 </body>
+
 </html>
