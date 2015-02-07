@@ -25,11 +25,15 @@ var app;
     app = new AppViewModel();
     ko.applyBindings(app);
 
-// http://stackoverflow.com/a/18090897/815507
-$(window).scroll(function () {
-        if ($(window).scrollTop() >= $(document).height() - $(window).height() - 20) {
+    var scrollLoad = true;
+    $(window).scroll(function() {
+        if (scrollLoad && $(window).scrollTop() >= $(document).height() - $(window).height() - 100) {
+            scrollLoad = false;
+            // ajax load data..
             app.load();
+
+            scrollLoad = true;
         }
-});
+    });
 
 })(jQuery);
