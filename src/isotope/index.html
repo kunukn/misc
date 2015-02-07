@@ -20,7 +20,7 @@
         <button class="button is-checked" data-filter="*">show all</button>
         <button class="button" data-filter=".height1">height1</button>
         <button class="button" data-filter=".height2">height2</button>
-        <button class="button" data-filter=".height2, .height2-5">height2 height2-5</button>
+        <button class="button" data-filter=".height2, .height3">height2 height3</button>
     </div>
 
 
@@ -37,10 +37,10 @@
         <div class="element-item height1">
             <p class="symbol">4</p>
         </div>
-        <div class="element-item height2-5">
+        <div class="element-item height3">
             <p class="symbol">5</p>
         </div>
-        <div class="element-item height2-5">
+        <div class="element-item height3">
             <p class="symbol">6</p>
         </div>
         <div class="element-item height2">
@@ -55,7 +55,7 @@
         <div class="element-item height1">
             <p class="symbol">10</p>
         </div>
-        <div class="element-item height1">
+        <div class="element-item height2">
             <p class="symbol">11</p>
         </div>
         <div class="element-item height1">
@@ -63,13 +63,6 @@
         </div>
     </div>
 
-    <section class='demo' data-bind="with: viewModel">
-        <h3 data-bind="text: title"></h3>
-        <p data-bind="text: body"></p>
-    </section>
-
-    <script src='js/library/knockout-3.2.0.js'></script>
-    <script src='js/library/knockout.mapping-2.4.1.js'></script>
     <script src='js/library/jquery.js'></script>
     <script src='js/library/isotope.pkgd.min.js'></script>
 
