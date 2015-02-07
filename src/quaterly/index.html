@@ -7,73 +7,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Isotope</title>
+    <title>Quaterly</title>
 
     <link rel="stylesheet" type="text/css" href="css/site.css">
 </head>
 
 <body>
+<div class='.body'>
 
-    <h1>Isotope masonry - fixed width, different heights </h1>
+    <header class='top-header'>
+        header
+    </header>
 
-    <div id="filters" class="button-group">
-        <button class="button is-checked" data-filter="*">show all</button>
-        <button class="button" data-filter=".height1">height1</button>
-        <button class="button" data-filter=".height2">height2</button>
-        <button class="button" data-filter=".height2, .height2-5">height2 height2-5</button>
-    </div>
+    <section class='filter-buttons-section'>
+        <ul>
+            <li><a href="#" class='filter-button' data-filter='tag-*'>All</a></li>
+            <li><a href="#" class='filter-button' data-filter='tag-business'>Business</a></li>
+            <li><a href="#" class='filter-button' data-filter='tag-corporate'>Corporate</a></li>
+            <li><a href="#" class='filter-button' data-filter='tag-customers'>Customers</a></li>
+            <li><a href="#" class='filter-button' data-filter='tag-nnit'>NNIT Way</a></li>
+        </ul>
+    </section>
+
+    <section class='articles-section'>
+        <div class='articles-container'>
+            <div class='article tag-business'>
+                tag-business
+            </div>
+
+            <div class='article tag-corporate'>
+                tag-corporate
+            </div>
+        </div>
+    </section>
 
 
-    <div id="isotope-demo" class="isotope rainbowed">
-        <div class="element-item height1">
-            <p class="symbol">1</p>
-        </div>
-        <div class="element-item height2">
-            <p class="symbol">2</p>
-        </div>
-        <div class="element-item height1">
-            <p class="symbol">3</p>
-        </div>
-        <div class="element-item height1">
-            <p class="symbol">4</p>
-        </div>
-        <div class="element-item height2-5">
-            <p class="symbol">5</p>
-        </div>
-        <div class="element-item height2-5">
-            <p class="symbol">6</p>
-        </div>
-        <div class="element-item height2">
-            <p class="symbol">7</p>
-        </div>
-        <div class="element-item height1">
-            <p class="symbol">8</p>
-        </div>
-        <div class="element-item height2">
-            <p class="symbol">9</p>
-        </div>
-        <div class="element-item height1">
-            <p class="symbol">10</p>
-        </div>
-        <div class="element-item height1">
-            <p class="symbol">11</p>
-        </div>
-        <div class="element-item height1">
-            <p class="symbol">12</p>
-        </div>
-    </div>
-
-    <section class='demo' data-bind="with: viewModel">
+     <section class='demo' data-bind="with: viewModel">
         <h3 data-bind="text: title"></h3>
         <p data-bind="text: body"></p>
     </section>
 
+    </div>
+
     <script src='js/library/knockout-3.2.0.js'></script>
     <script src='js/library/knockout.mapping-2.4.1.js'></script>
     <script src='js/library/jquery.js'></script>
-    <script src='js/library/isotope.pkgd.min.js'></script>
 
     <script src='js/app/run-app.js'></script>
+
 </body>
 
 </html>
