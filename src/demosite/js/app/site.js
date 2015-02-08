@@ -1,15 +1,17 @@
-﻿var Site;
+﻿;
+var Site, app;
 
 /* site.js */
 (function(d, $) {
     Site = Site || {}; // global var
+    app = {};
 
     Site.Api = {};
     Site.Api.isDesktop = function() {
         return $(document).width() >= 992;
     };
 
-    $(document).ready(function() {
+    $(function() {
         Handlebars.registerHelper('urlFormat', function(url) {
             return url ? url : '#';
         });
@@ -18,9 +20,7 @@
             return icon ? icon : '';
         });
 
-        var templateLanguagesSupported = Handlebars.compile($('#templateLanguagesSupported').html()),
-            //templateNavigation = Handlebars.compile($('#templateNavigation').html()),
-            templateTopPanelGlobalLinks = Handlebars.compile($('#templateTopPanelGlobalLinks').html()),
+        var
             templateHtmlSpot = Handlebars.compile($('#templateHtmlSpot').html()),
             templateHtmlImageSpot = Handlebars.compile($('#templateHtmlImageSpot').html());
 
@@ -34,29 +34,33 @@
         $('#placeholder7').append(templateHtmlSpot(Site.Stub.htmlSpots.htmlSpot7));
         $('#placeholder8').append(templateHtmlSpot(Site.Stub.htmlSpots.htmlSpot8));
 
-        // UI
-        $('#renderedLanguageSelection').append(templateLanguagesSupported(Site.Stub));
-        //$('#renderedNavigation').append(templateNavigation(Site.Stub));
-        $('#renderedTopPanelGlobalLinks').append(templateTopPanelGlobalLinks(Site.Stub));
-
         leftNavigationIsAvailableForDesktopExceptOnFrontpage();
-		enableForMegaMenuMouseOverAndOut();      
+        enableForMegaMenuMouseOverAndOut();
     });
 
-	function enableForMegaMenuMouseOverAndOut(){
-		  $('#navigationMegamenu .flex-item').on('mouseenter', function(e) {
+    function enableForMegaMenuMouseOverAndOut() {
+        $('#navigationMegamenu .navigation-item').on('mouseenter', function(e) {
             $(this).addClass('open');
         });
 
-        $('#navigationMegamenu .flex-item').on('mouseleave', function(e) {
+        $('#navigationMegamenu .navigation-item').on('mouseleave', function(e) {
             $(this).removeClass('open');
         });
-	}
-   
+    }
+
     function leftNavigationIsAvailableForDesktopExceptOnFrontpage() {
         if (Site.Api.isDesktop() && $('#body').attr('data-pagetype') !== 'frontpage') {
             $('#leftMenu').css('display', 'inline-block');
         }
     }
 
+    // Knockout
+    app.languagesSupported = ko.mapping.fromJS(Site.Stub.languagesSupported);
+    app.globalLinkItems = ko.mapping.fromJS(Site.Stub.globalLinkItems);
+    app.accordianMenuItems = ko.mapping.fromJS(Site.Stub.accordianMenuItems);
+    app.megaMenuItems = ko.mapping.fromJS(Site.Stub.megaMenuItems);
+    app.leftMenuItems = ko.mapping.fromJS(Site.Stub.leftMenuItems);
+
+    Site.app = app;
+    ko.applyBindings(Site.app);
 })(document, jQuery);

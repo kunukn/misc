@@ -1,15 +1,18 @@
-﻿var Site;
+﻿;
+var Site;
 
 /* site-data.js */
 (function() {
+
     Site = Site || {}; // global var
+
     Site.Stub = {
-        languagesSupportedForWebsite: [{
+        languagesSupported: [{
             text: 'English',
-            url: '#'
+            url: '#lang-en-us'
         }, {
             text: 'Dansk',
-            url: '#'
+            url: '#lang-da-dk'
         }],
         htmlSpots: {},
         htmlSpotTitleDefault: 'Wood advisory, development and design',
@@ -18,21 +21,90 @@
 
         globalLinkItems: [{
             text: 'Events',
-            url: '#'
+            url: '#global-events'
         }, {
             text: 'News & Media',
-            url: '#'
+            url: '#global-news'
         }, {
             text: 'Contact',
-            url: '#'
+            url: '#global-contact'
         }, {
             text: 'About us',
-            url: '#'
+            url: '#global-about-us'
         }],
 
         accordianMenuItems: [{
-            text: 'text'
-
+            text: 'Solutions',
+            url: '#',
+            children: [{
+                text: 'Advisory',
+                url: '#',
+                children: [{
+                    text: 'Page1',
+                    url: '#'
+                }, {
+                    text: 'Page2',
+                    url: '#'
+                }]
+            }, {
+                text: 'Support',
+                url: '#',
+                children: [{
+                    text: 'Page1',
+                    url: '#'
+                }, {
+                    text: 'Page2',
+                    url: '#'
+                }]
+            }]
+        }, {
+            text: 'Cases',
+            url: '#',
+            children: [{
+                text: 'Advisory',
+                url: '#',
+                children: [{
+                    text: 'Page1',
+                    url: '#'
+                }, {
+                    text: 'Page2',
+                    url: '#'
+                }]
+            }, {
+                text: 'Support',
+                url: '#',
+                children: [{
+                    text: 'Page1',
+                    url: '#'
+                }, {
+                    text: 'Page2',
+                    url: '#'
+                }]
+            }]
+        }, {
+            text: 'Your career',
+            url: '#',
+            children: [{
+                text: 'Advisory',
+                url: '#',
+                children: [{
+                    text: 'Page1',
+                    url: '#'
+                }, {
+                    text: 'Page2',
+                    url: '#'
+                }]
+            }, {
+                text: 'Support',
+                url: '#',
+                children: [{
+                    text: 'Page1',
+                    url: '#'
+                }, {
+                    text: 'Page2',
+                    url: '#'
+                }]
+            }]
         }],
 
         megaMenuItems: [{
@@ -51,19 +123,19 @@
                 description: 'Outsourcing description description description description description description description description'
             }]
         }, {
-            text: 'Customers and cases',
+            text: 'Cases',
             children: [{
-                text: 'Customers and cases',
-                url: '#',
-                description: 'Customers and cases description description description description description description description description'
-            }, {
-                text: 'Customers',
-                url: '#',
-                description: 'Customers description description description description description description description description'
-            }, {
                 text: 'Cases',
                 url: '#',
                 description: 'Cases description description description description description description description description'
+            }, {
+                text: 'Big Cases',
+                url: '#',
+                description: 'Big Cases description description description description description description description description'
+            }, {
+                text: 'Small Cases',
+                url: '#',
+                description: 'Small  Cases description description description description description description description description'
             }]
         }],
 
@@ -105,7 +177,6 @@
             }]
         }]
     };
-
     (function(Stub) {
         Stub.htmlSpots = {
             htmlSpot1: {

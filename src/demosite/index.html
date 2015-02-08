@@ -37,11 +37,22 @@
                 </div>
 
                 <div class='float-right'>
-
                     <div id='renderedTopPanelGlobalLinks' class='global-links template-rendered top-panel-links top-panel-item float-left hidden-xs'>
+                        <ul data-bind='foreach: globalLinkItems'>
+                            <li>
+                                <a href='#' data-bind='text: text, attr: { href: url}'></a>
+                            </li>
+
+                        </ul>
                     </div>
 
-                    <div id='renderedLanguageSelection' class='language-selection top-panel-item float-left top-panel-links hidden-xs'></div>
+                    <div id='renderedLanguageSelection' class='language-selection top-panel-item float-left top-panel-links hidden-xs'>
+                        <ul data-bind='foreach: languagesSupported'>
+                            <li>
+                                <a href='#' data-bind='text: text, attr: { href: url}'></a>
+                            </li>
+                        </ul>
+                    </div>
 
                     <button data-toggle='collapse' data-target='#searchInputContainer' class='main-search-toggle top-panel-item float-left top-panel-button navbar-toggle'>
                         <span class="glyphicon glyphicon-search"></span>
@@ -70,7 +81,7 @@
 
             <div id="navigationMegamenu">
                 <ul class="flex-container">
-                    <li class="flex-item">
+                    <li class="navigation-item">
                         <a href="#navigationMegamenu">Solutions</a>
                         <ul class="my-dropdown-menu row">
                             <li class='col-xs-12'>
@@ -93,13 +104,13 @@
                             </li>
                             <li class='col-xs-6'>
                                 <a href="#navigationMegamenu">
-                                    <h3>Outsourcing</h3>
-                                    <p>Outsourcing description description description description description description description description</p>
+                                    <h3>Design</h3>
+                                    <p>Design description description description description description description description description</p>
                                 </a>
                             </li>
                         </ul>
                     </li>
-                    <li class="flex-item">
+                    <li class="navigation-item">
                         <a href="#">Cases</a>
                         <ul class="my-dropdown-menu row">
                             <li class='col-xs-12'>
@@ -122,7 +133,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="flex-item">
+                    <li class="navigation-item">
                         <a href="#">Your Career</a>
                         <ul class="my-dropdown-menu row">
                             <li class='col-xs-12'>
@@ -406,28 +417,6 @@
 
             </section>
 
-
-            <script id='templateTopPanelGlobalLinks' type='text/x-handlebars-template'>
-                <ul>
-                    {{#each globalLinkItems}}
-                    <li>
-                        <a href='{{urlFormat url}}'>{{text}}</a>
-                    </li>
-                    {{/each}}
-                </ul>
-            </script>
-
-            <script id='templateLanguagesSupported' type='text/x-handlebars-template'>
-                <ul>
-                    {{#each languagesSupportedForWebsite}}
-                    <li>
-                        <a href='{{urlFormat url}}'>{{text}}</a>
-                    </li>
-                    {{/each}}
-                </ul>
-            </script>
-
-
             <script id='templateHtmlSpot' type='text/x-handlebars-template'>
                 <section class='spot html-spot {{background}}'>
                     <a href='{{urlFormat url}}' class='spot-link'>
@@ -446,6 +435,8 @@
                     </a>
                 </section>
             </script>
+
+
         </div>
         <!-- end .page-wrap -->
 
@@ -453,12 +444,11 @@
     </div>
     <!-- end .body -->
 
-    <!--
-      <script src="js/library/jquery.min.js"></script>
-     -->
     <script src="js/library/jquery-2.1.3.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src='js/library/handlebars.min.js'></script>
+    <script src='js/library/knockout-3.2.0.js'></script>
+    <script src='js/library/knockout.mapping-2.4.1.js'></script>
 
     <script src='js/app/site-data.js'></script>
     <script src='js/app/site.js'></script>

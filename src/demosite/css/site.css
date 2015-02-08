@@ -50,7 +50,7 @@ body {
   -webkit-justify-content: center;
   justify-content: center;
 }
-#navigationMegamenu .flex-item {
+#navigationMegamenu .navigation-item {
   padding: 15px;
   margin: 0;
   color: black;
@@ -363,16 +363,6 @@ a:active {
 }
 .main-page-container {
   margin-top: 10px;
-}
-.spot {
-  -moz-transition-property: all;
-  -o-transition-property: all;
-  -webkit-transition-property: all;
-  transition-property: all;
-  -moz-transition-duration: 1s;
-  -o-transition-duration: 1s;
-  -webkit-transition-duration: 1s;
-  transition-duration: 1s;
 }
 .left-navigation-container {
   display: none;
