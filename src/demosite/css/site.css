@@ -32,6 +32,9 @@ body {
   color: white;
 }
 /* navigationMegamenu */
+#navigationMegamenu {
+  display: none;
+}
 #navigationMegamenu .flex-container {
   position: relative;
   padding: 0;
@@ -82,16 +85,12 @@ body {
   display: block;
   padding: 10px;
 }
-#navigationMegamenu {
-  display: none;
-}
 #navigationMegamenu a {
   text-decoration: none;
 }
 #navigationMegamenu ul {
   width: 100%;
 }
-/* navigationAccordian */
 #navigationAccordian {
   width: 100%;
 }
@@ -371,7 +370,6 @@ a:active {
     width: 96%;
   }
   #navigationAccordian {
-    /*width: 96%;*/
     margin: 0 auto;
   }
   #navigationAccordian .description {
@@ -391,7 +389,6 @@ a:active {
     background-size: cover;
   }
   #navigationAccordian {
-    /*width: 90%;*/
     margin: 0 auto;
   }
   #navigationAccordian .description {
@@ -450,15 +447,7 @@ a:active {
   }
   #navigationMegamenu {
     display: block;
-    /*  width: 60%;*/
     margin: 0 auto;
-  }
-  #leftMenu {
-    /*display: inline-block;*/
-  }
-  .main-navigation-container {
-    background-color: red;
-    /* debug */
   }
 }
 @media (min-width: 1200px) {
@@ -472,7 +461,6 @@ a:active {
     -o-background-size: cover;
     -ms-background-size: cover;
     background-size: cover;
-    /*   margin-top: 10px;*/
   }
   .body {
     width: 70%;
