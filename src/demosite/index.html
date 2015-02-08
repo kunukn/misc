@@ -24,7 +24,7 @@
 
 <body>
     <!-- Author: Kunuk Nykjaer, builded from scratch -->
-    <div class='body' data-pagetype='frontpage'>
+    <div id='body' data-pagetype='frontpage'>
 
         <div class='page-wrap'>
 
@@ -71,28 +71,28 @@
             <div id="navigationMegamenu">
                 <ul class="flex-container">
                     <li class="flex-item">
-                        <a href="#">Solutions</a>
+                        <a href="#navigationMegamenu">Solutions</a>
                         <ul class="my-dropdown-menu row">
                             <li class='col-xs-12'>
-                                <a href="#">
+                                <a href="#navigationMegamenu">
                                     <h3>Solutions</h3>
                                     <p>solutions description description description description description description description description</p>
                                 </a>
                             </li>
                             <li class='col-xs-6'>
-                                <a href="#">
+                                <a href="#navigationMegamenu">
                                     <h3>Advisory</h3>
                                     <p>Advisory description description description description description description description description</p>
                                 </a>
                             </li>
                             <li class='col-xs-6'>
-                                <a href="#">
+                                <a href="#navigationMegamenu">
                                     <h3>Support</h3>
                                     <p>Support description description description description description description description description</p>
                                 </a>
                             </li>
                             <li class='col-xs-6'>
-                                <a href="#">
+                                <a href="#navigationMegamenu">
                                     <h3>Outsourcing</h3>
                                     <p>Outsourcing description description description description description description description description</p>
                                 </a>
@@ -430,7 +430,7 @@
 
             <script id='templateHtmlSpot' type='text/x-handlebars-template'>
                 <section class='spot html-spot {{background}}'>
-                    <a href='{{urlFormat url}}'>
+                    <a href='{{urlFormat url}}' class='spot-link'>
                         <h3>{{title}} <span class='{{iconFormat icon}}'></span></h3>
                         <p>{{body}}</p>
                     </a>
@@ -438,8 +438,8 @@
             </script>
 
             <script id='templateHtmlImageSpot' type='text/x-handlebars-template'>
-                <section class='spot html-spot {{background}}'>
-                    <a href='{{urlFormat url}}'>
+                <section class='spot html-image-spot {{background}}'>
+                    <a href='{{urlFormat url}}' class='spot-link'>
                         <h3>{{title}} <span class='{{iconFormat icon}}'></span></h3>
                         <img src={{imageUrl}} class='image-responsive img-responsive' />
                         <p>{{body}}</p>

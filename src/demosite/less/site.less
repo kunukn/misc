@@ -16,7 +16,7 @@ html, body {
 .float-right {
     float: right;
 }
-.body {
+#body {
     margin: 0 auto;
     height: 100%;
     -webkit-overflow-scrolling: touch;
@@ -37,6 +37,7 @@ html, body {
 
 #navigationMegamenu {
     display: none;
+    background-color: #f5f5f5;
     .flex-container {
         position: relative;
         padding: 0;
@@ -52,7 +53,6 @@ html, body {
         justify-content: center;
     }
     .flex-item {
-        background-color: #f5f5f5;
         padding: 15px;
         margin: 0;
         color: black;
@@ -246,12 +246,14 @@ html, body {
     margin-bottom: 0;
     /* override bootstrap */
 }
-#searchInputContainer .search-input {
-    width: auto;
-    display: inline;
-    max-width: 480px;
-    width: 100%;
-    float: right;
+#searchInputContainer {
+    .search-input {
+        width: auto;
+        display: inline;
+        max-width: 480px;
+        width: 100%;
+        float: right;
+    }
 }
 #searchInputContainer > a {
     display: inline;
@@ -267,19 +269,40 @@ html, body {
 .template-rendered .navigation-item-description {
     display: none;
 }
-.html-spot {
+.html-spot, .html-image-spot {
     color: white;
     padding: 10px;
     border: 1px solid #333;
     overflow: hidden;
-    /*margin-bottom: 15px;*/
 }
-.spot > a {
-    color: inherit;
-    text-decoration: none;
+.spot {
+    .spot-link {
+        color: inherit;
+        text-decoration: none;
+    }
+    .spot-link:hover {
+        color: inherit;
+    }
 }
-.spot > a:hover {
-    color: inherit;
+#navigationMegamenu:target {
+    -webkit-animation: highlight 1s ease-out;
+    animation: highlight 1s ease-out;
+}
+@-webkit-keyframes highlight {
+    0% {
+        background-color: #8c0000;
+    }
+    100% {
+        background-color: inherit;
+    }
+}
+@keyframes highlight {
+    0% {
+        background-color: red;
+    }
+    100% {
+        background-color: inherit;
+    }
 }
 a:link, a:visited, a:active {
     color: inherit;
@@ -367,7 +390,7 @@ a:link, a:visited, a:active {
     .device-info::after {
         content: ' - Phone large';
     }
-    .body {
+    #body {
         width: 96%;
     }
     #navigationAccordian {
@@ -414,7 +437,7 @@ a:link, a:visited, a:active {
     .collapse.in {
         display: block !important;
     }
-    .body {
+    #body {
         width: 90%;
         background-color: #C8CCCF;
         -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
@@ -444,7 +467,7 @@ a:link, a:visited, a:active {
     .device-info::after {
         content: ' - Desktop';
     }
-    .body {
+    #body {
         width: 80%;
     }
     #navigationAccordian {
@@ -469,7 +492,7 @@ a:link, a:visited, a:active {
         background-color: #333;
         background-blend-mode: soft-light;
     }
-    .body {
+    #body {
         width: 70%;
         -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=96)";
         filter: alpha(opacity=96);

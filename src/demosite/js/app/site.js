@@ -54,7 +54,7 @@
 	}
    
     function leftNavigationIsAvailableForDesktopExceptOnFrontpage() {
-        if (Site.Api.isDesktop() && $('.body').attr('data-pagetype') !== 'frontpage') {
+        if (Site.Api.isDesktop() && $('#body').attr('data-pagetype') !== 'frontpage') {
             $('#leftMenu').css('display', 'inline-block');
         }
     }

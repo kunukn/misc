@@ -14,7 +14,7 @@ body {
 .float-right {
   float: right;
 }
-.body {
+#body {
   margin: 0 auto;
   height: 100%;
   -webkit-overflow-scrolling: touch;
@@ -34,6 +34,7 @@ body {
 /* navigationMegamenu */
 #navigationMegamenu {
   display: none;
+  background-color: #f5f5f5;
 }
 #navigationMegamenu .flex-container {
   position: relative;
@@ -50,7 +51,6 @@ body {
   justify-content: center;
 }
 #navigationMegamenu .flex-item {
-  background-color: #f5f5f5;
   padding: 15px;
   margin: 0;
   color: black;
@@ -265,19 +265,39 @@ body {
 .template-rendered .navigation-item-description {
   display: none;
 }
-.html-spot {
+.html-spot,
+.html-image-spot {
   color: white;
   padding: 10px;
   border: 1px solid #333;
   overflow: hidden;
-  /*margin-bottom: 15px;*/
 }
-.spot > a {
+.spot .spot-link {
   color: inherit;
   text-decoration: none;
 }
-.spot > a:hover {
+.spot .spot-link:hover {
   color: inherit;
+}
+#navigationMegamenu:target {
+  -webkit-animation: highlight 1s ease-out;
+  animation: highlight 1s ease-out;
+}
+@-webkit-keyframes highlight {
+  0% {
+    background-color: #8c0000;
+  }
+  100% {
+    background-color: inherit;
+  }
+}
+@keyframes highlight {
+  0% {
+    background-color: red;
+  }
+  100% {
+    background-color: inherit;
+  }
 }
 a:link,
 a:visited,
@@ -366,7 +386,7 @@ a:active {
   .device-info::after {
     content: ' - Phone large';
   }
-  .body {
+  #body {
     width: 96%;
   }
   #navigationAccordian {
@@ -412,7 +432,7 @@ a:active {
   .collapse.in {
     display: block !important;
   }
-  .body {
+  #body {
     width: 90%;
     background-color: #C8CCCF;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
@@ -441,7 +461,7 @@ a:active {
   .device-info::after {
     content: ' - Desktop';
   }
-  .body {
+  #body {
     width: 80%;
   }
   #navigationAccordian {
@@ -466,7 +486,7 @@ a:active {
     background-color: #333;
     background-blend-mode: soft-light;
   }
-  .body {
+  #body {
     width: 70%;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=96)";
     filter: alpha(opacity=96);
