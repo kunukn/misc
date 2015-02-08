@@ -387,6 +387,8 @@ a:active {
     -o-background-size: cover;
     -ms-background-size: cover;
     background-size: cover;
+    background-color: #333;
+    background-blend-mode: soft-light;
   }
   #navigationAccordian {
     margin: 0 auto;
@@ -461,6 +463,8 @@ a:active {
     -o-background-size: cover;
     -ms-background-size: cover;
     background-size: cover;
+    background-color: #333;
+    background-blend-mode: soft-light;
   }
   .body {
     width: 70%;
