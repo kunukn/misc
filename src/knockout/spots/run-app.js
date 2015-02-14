@@ -1,18 +1,21 @@
-var app = {};
+var app =
+    (function() {
 
-(function() {
+        var spots = [];
 
-    var stub = {
-        spots: [{
-            title: 'spo1',
-            width: 'w1'
-        }, {
-            title: 'spo2',
-            width: 'w2'
-        }]
-    };
+        for (var i = 1; i <= 100; i++) {
+            spots.push({
+                title: ko.observable('spot ' + i),
+                size: Math.random() > 0.5 ? 'size1' : 'size2',
+                update: function() {
+                    this.title(this.title()+'+');
+                }
+            });
+        };
 
-    app = ko.mapping.fromJS(stub);
-    ko.applyBindings(app);
-
-})();
+        var data = {
+            spots: spots
+        };
+        ko.applyBindings(data);
+        return data;
+    })();

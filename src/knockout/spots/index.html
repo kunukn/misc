@@ -7,33 +7,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="spots">
     <meta name="author" content="kunukn">
-    <title>Knockoutjs</title>
+    <title>spots</title>
 
     <style type="text/css">
-    .spots-section {
-        background-color: #bada55;
-        padding: 10px;
+    * {
+        box-sizing: border-box;
+        margin: 0;
     }
-    .spot{
-        padding: 10px;
-        background-color: tomato;
+    .spots-section {
+        background-color: darkgray;
+    }
+    .spot {
+        text-align: center;
+        background-color: slategray;
+        background: linear-gradient(slategray, gray);
+        color: white;
+        xfont-weight: 600;
+        xfont-size: 120%;
         float: left;
         border: 1px solid black;
+    }
+    .center::before {
+        content: " ";
+        display: inline-block;
+        height: 40%;
+        vertical-align: middle;
+    }
+    .center::first-child {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .size1 {
+        width: 100px;
+        height: 100px;
+    }
+    .size2 {
+        width: 200px;
+        height: 200px;
+    }
+    .clearfix {
+        overflow: auto;
     }
     </style>
 </head>
 
 <body>
 
-    <section class='spots-section' data-bind='foreach: spots' >
-        <div  class='spot'>
+    <section class='spots-section clearfix' data-bind='foreach: spots'>
+        <div class='spot center' data-bind="css: size, click: update">
             <p data-bind="text: title"></p>
         </div>
-        <div style='clear: both'></div>
     </section>
 
-    <script src='..\js\knockout-3.2.0.js'></script>
-    <script src='..\js\knockout.mapping-2.4.1.js'></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js'></script>
+    <script>
+    window.ko || document.write('<script src="../js/knockout-3.2.0.js">\x3C/script>')
+    </script>
     <script src='run-app.js'></script>
 
 </body>
