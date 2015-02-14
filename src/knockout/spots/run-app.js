@@ -16,6 +16,6 @@ var app =
         var data = {
             spots: spots
         };
-        ko.applyBindings(data);
+        //ko.applyBindings(data);
         return data;
     })();

@@ -1,0 +1,59 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+.spots-section {
+  background-color: darkgray;
+  margin: 0 auto;
+  padding: 2px;
+  position: relative;
+}
+.spot {
+  text-align: center;
+  background-color: slategray;
+  background: linear-gradient(slategray, white);
+  float: left;
+  margin: 2px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  font-weight: bold;
+}
+.banana {
+  background: linear-gradient(yellow, white);
+  color: black;
+}
+.banana:before {
+  content: 'banana';
+}
+.orange {
+  background: linear-gradient(orange, white);
+  color: black;
+}
+.orange:before {
+  content: 'orange';
+}
+.apple {
+  background: linear-gradient(green, white);
+  color: white;
+}
+.apple:before {
+  content: 'apple';
+}
+.tomato {
+  background: linear-gradient(tomato, white);
+  color: white;
+}
+.tomato:before {
+  content: 'tomato';
+}
+.silver {
+  background: linear-gradient(slategray, white);
+  color: white;
+}
+.silver:before {
+  content: 'silver';
+}
+.clearfix {
+  overflow: auto;
+}

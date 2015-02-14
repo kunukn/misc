@@ -8,55 +8,42 @@
     <meta name='description' content='spots'>
     <meta name='author' content='kunukn'>
     <title>spots</title>
-
-    <style type="text/css">
-    * {
-        box-sizing: border-box;
-        margin: 0;
-    }
-    .spots-section {
-        background-color: darkgray;
-    }
-    .spot {
-        text-align: center;
-        background-color: slategray;
-        background: linear-gradient(slategray, gray);
-        color: white;
-        float: left;
-        border: 1px solid black;
-    }
-    .size1 {
-        width: 100px;
-        height: 100px;
-    }
-    .size2 {
-        width: 200px;
-        height: 200px;
-    }
-    .clearfix {
-        overflow: auto;
-    }
-    </style>
+    <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 
 <body>
-
+    <!-- 
     <section class='spots-section clearfix' data-bind='foreach: spots'>
         <div class='spot' data-bind="css: size, click: update">
             <p data-bind="text: title"></p>
         </div>
     </section>
+ -->
 
-    <script src='//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js'></script>
+    <section class='spots-section clearfix'>
+
+        <div class='spot apple'></div>
+        <div class='spot orange'></div>
+        <div class='spot banana'></div>
+        <div class='spot tomato'></div>
+        <div class='spot silver'></div>
+
+        <div class='spot apple'></div>
+        <div class='spot orange'></div>
+        <div class='spot banana'></div>
+        <div class='spot tomato'></div>
+        <div class='spot silver'></div>
+
+    </section>
+
     <script src='//cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js'></script>
-    <script>
-    window.ko || document.write('<script src="../js/knockout-3.2.0.js">\x3C/script>')
-    </script>
+
     <!--
      <script src='../js/knockout.mapping-2.4.1.js'></script>
      -->
+    <!-- 
     <script src='run-app.js'></script>
-
+ -->
 </body>
 
 </html>
