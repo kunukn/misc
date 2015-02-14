@@ -9,34 +9,35 @@
     <title>Processing js</title>
 
     <script src='//cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.8/processing.js'></script>
-    <script>
-    (function(d) {
-        var bound = false,
-            bindJavascript = function() {
-                var pjs = Processing.getInstanceById('processing');
-
-                if (pjs != null) {
-                    pjs.bindJavascript(this);
-                    bound = true;
-                }
-                if (!bound) setTimeout(bindJavascript, 250);
-            },
-            showXYCoordinates = function(x, y) {
-                d.getElementById('xcoord').value = x;
-                d.getElementById('ycoord').value = y;
-            }
-        bindJavascript();
-    })(document);
-    </script>
 </head>
 
 <body>
-    <canvas id='processing' data-processing-sources='processing.pde'></canvas>
-    <div id="coordinates">
-        x/y:
-        <input type="textfield" id="xcoord">/
-        <input type="textfield" id="ycoord">
-    </div>
+
+    <canvas id='processing' data-processing-sources='processing.pjs'></canvas>
+
+    <section> x/y:
+        <input type="text" id="xcoord">/
+        <input type="text" id="ycoord">
+    </section>
+
+
+    <script>
+    var app = {};
+    (function(d) {
+        app.showXYCoordinates = function(x, y) {
+            d.getElementById('xcoord').value = x;
+            d.getElementById('ycoord').value = y;
+        };
+        app.bindJavascript = function() {
+            var pjs = Processing.getInstanceById('processing');
+            if (pjs) {
+                pjs.bindJavascript(app);
+            }
+        };
+
+        setTimeout(app.bindJavascript, 300);
+    })(document);
+    </script>
 </body>
 
 </html>
