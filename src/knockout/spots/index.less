@@ -1,54 +1,83 @@
-﻿* {
+﻿@extra-small: ~" (min-width: 480px)";
+@small: ~" (min-width: 768px)";
+@medium: ~" (min-width: 992px)";
+@large: ~" (min-width: 1200px)";
+@light: #eee;
+@size: 100px;
+* {
     box-sizing: border-box;
     margin: 0;
 }
+body {
+    background-color: #333;
+}
 .spots-section {
-    background-color: darkgray;
     margin: 0 auto;
-    padding: 2px;
+    padding: 4px;
     position: relative;
 }
 .spot {
     text-align: center;
     background-color: slategray;
-    background: linear-gradient(slategray, white);
+    background: linear-gradient(slategray, @light);
     float: left;
-    margin: 2px;
-    width: 200px;
-    height: 200px;
+    margin: 4px;
+    width: @size;
+    height: @size;
     border-radius: 50%;
     font-weight: bold;
+    line-height: @size;
+    @media @extra-small {
+        width: @size + 20%;
+        height: @size + 20%;
+        line-height: @size + 20%;
+    }
+    @media @small {
+        width: @size + 50%;
+        height: @size + 50%;
+        line-height: @size + 50%;
+    }
+    @media @medium {
+        width: @size + 70%;
+        height: @size + 70%;
+        line-height: @size + 70%;
+    }
+    @media @large {
+        width: @size + 100%;
+        height: @size + 100%;
+        line-height: @size + 100%;
+    }
 }
 .banana {
-    background: linear-gradient(yellow, white);
+    background: linear-gradient(yellow, @light);
     color: black;
     &:before {
         content: 'banana';
     }
 }
 .orange {
-    background: linear-gradient(orange, white);
+    background: linear-gradient(orange, @light);
     color: black;
     &:before {
         content: 'orange';
     }
 }
 .apple {
-    background: linear-gradient(green, white);
+    background: linear-gradient(green, @light);
     color: white;
     &:before {
         content: 'apple';
     }
 }
 .tomato {
-    background: linear-gradient(tomato, white);
+    background: linear-gradient(tomato, @light);
     color: white;
     &:before {
         content: 'tomato';
     }
 }
 .silver {
-    background: linear-gradient(slategray, white);
+    background: linear-gradient(slategray, @light);
     color: white;
     &:before {
         content: 'silver';
