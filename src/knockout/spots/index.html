@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="spots">
-    <meta name="author" content="kunukn">
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta name='description' content='spots'>
+    <meta name='author' content='kunukn'>
     <title>spots</title>
 
     <style type="text/css">
@@ -22,20 +22,8 @@
         background-color: slategray;
         background: linear-gradient(slategray, gray);
         color: white;
-        xfont-weight: 600;
-        xfont-size: 120%;
         float: left;
         border: 1px solid black;
-    }
-    .center::before {
-        content: " ";
-        display: inline-block;
-        height: 40%;
-        vertical-align: middle;
-    }
-    .center::first-child {
-        display: inline-block;
-        vertical-align: middle;
     }
     .size1 {
         width: 100px;
@@ -54,15 +42,19 @@
 <body>
 
     <section class='spots-section clearfix' data-bind='foreach: spots'>
-        <div class='spot center' data-bind="css: size, click: update">
+        <div class='spot' data-bind="css: size, click: update">
             <p data-bind="text: title"></p>
         </div>
     </section>
 
+    <script src='//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js'></script>
     <script src='//cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js'></script>
     <script>
     window.ko || document.write('<script src="../js/knockout-3.2.0.js">\x3C/script>')
     </script>
+    <!--
+     <script src='../js/knockout.mapping-2.4.1.js'></script>
+     -->
     <script src='run-app.js'></script>
 
 </body>
