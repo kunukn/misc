@@ -18,6 +18,7 @@
     #svg {
         width: 400px;
         height: 400px;
+        border: 1px solid slategray;
     }
     </style>
 </head>
@@ -27,8 +28,15 @@
     <svg id='svg'></svg>
 
     <script>
-    var s = Snap("#svg");
-    var bigCircle = s.circle(150, 150, 100);
+    var snap = Snap("#svg");
+
+    var bigCircle = snap.circle(200, 200, 100);
+
+    bigCircle.attr({
+        fill: "#bada55",
+        stroke: "#333",
+        strokeWidth: 5
+    });
     </script>
 
 </body>
