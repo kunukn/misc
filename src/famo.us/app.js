@@ -1,28 +1,19 @@
-/*global famous*/
-
-// import dependencies
 var Engine = famous.core.Engine;
-var Modifier = famous.core.Modifier;
-var Transform = famous.core.Transform;
-var ImageSurface = famous.surfaces.ImageSurface;
+var Surface = famous.core.Surface;
 
-// create the main context
 var mainContext = Engine.createContext();
 
-// your app here
-var logo = new ImageSurface({
-    size: [200, 200],
-    content: 'http://code.famo.us/assets/famous_logo.png',
-    classes: ['double-sided']
+var firstSurface = new Surface({
+  content: "<h3>Hi!</h3><p>I'm a surface!<br>I live inside a context.</p><p>You can add <b>HTML</b> content to me and style me with <b>CSS!</b></p>",
+  size: [200, 200],
+  properties: {
+    backgroundColor: 'rgb(240, 238, 233)',
+    textAlign: 'center',
+    padding: '5px',
+    border: '2px solid rgb(210, 208, 203)',
+    marginTop: '50px',
+    marginLeft: '50px'
+  }
 });
 
-var initialTime = Date.now();
-var centerSpinModifier = new Modifier({
-    origin: [0.5, 0.5],
-    align: [0.5, 0.5],
-    transform: function() {
-        return Transform.rotateY(.002 * (Date.now() - initialTime));
-    }
-});
-
-mainContext.add(centerSpinModifier).add(logo);
+mainContext.add(firstSurface);
