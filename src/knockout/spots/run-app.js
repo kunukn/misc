@@ -1,21 +1,15 @@
 var app =
-    (function() {
-
-        var spots = [];
-
-        for (var i = 1; i <= 100; i++) {
-            spots.push({
-                title: ko.observable('spot ' + i),
-                size: Math.random() > 0.5 ? 'size1' : 'size2',
-                update: function() {
-                    this.title(this.title()+'+');
-                }
-            });
-        };
-
-        var data = {
-            spots: spots
-        };
-        //ko.applyBindings(data);
-        return data;
+    (function () {
+    	var spots = ko.observableArray([
+            { type: ko.observable('apple') },
+            { type: ko.observable('orange') },
+            { type: ko.observable('banana') },
+		    { type: ko.observable('tomato') },
+		    { type: ko.observable('silver') }
+    	]);
+    	var data = {
+    		spots: spots
+    	};
+    	ko.applyBindings(data);
+    	return data;
     })();
