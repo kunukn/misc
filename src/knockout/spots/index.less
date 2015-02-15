@@ -4,6 +4,13 @@
 @large: ~" (min-width: 1200px)";
 @light: #eee;
 @size: 100px;
+.background-linear(@from, @to) {
+    background-color: @from;
+    background: -webkit-linear-gradient(@from, @to);
+    background: -o-linear-gradient(@from, @to);
+    background: -moz-linear-gradient(@from, @to);
+    background: linear-gradient(@from, @to);
+}
 * {
     box-sizing: border-box;
     margin: 0;
@@ -19,7 +26,6 @@ body {
 .spot {
     text-align: center;
     background-color: slategray;
-    background: linear-gradient(slategray, @light);
     float: left;
     margin: 4px;
     width: @size;
@@ -48,36 +54,36 @@ body {
         line-height: @size + 100%;
     }
 }
-.banana {
-    background: linear-gradient(yellow, @light);
+.banana {    
+    .background-linear(yellow, @light);
     color: black;
     &:before {
         content: 'banana';
     }
 }
 .orange {
-    background: linear-gradient(orange, @light);
+    .background-linear(orange, @light);
     color: black;
     &:before {
         content: 'orange';
     }
 }
 .apple {
-    background: linear-gradient(green, @light);
+    .background-linear(green, @light);
     color: white;
     &:before {
         content: 'apple';
     }
 }
 .tomato {
-    background: linear-gradient(tomato, @light);
+    .background-linear(tomato, @light);
     color: white;
     &:before {
         content: 'tomato';
     }
 }
 .silver {
-    background: linear-gradient(slategray, @light);
+    .background-linear(slategray, @light);
     color: white;
     &:before {
         content: 'silver';
