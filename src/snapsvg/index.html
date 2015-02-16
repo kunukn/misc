@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta name='description' content='Snap.svg'>
+    <meta name='author' content='kunukn'>
+    <title>Snap.svg</title>
+
+    <script src='//cdnjs.cloudflare.com/ajax/libs/snap.svg/0.3.0/snap.svg-min.js'></script>
+    <script>
+    window.Snap || document.write('<script src="snap.svg-min.js">\x3C/script>')
+    </script>
+
+    <style type="text/css">
+    #svg {
+        width: 400px;
+        height: 400px;
+        border: 1px solid slategray;
+    }
+    </style>
+</head>
+
+<body>
+
+    <svg id='svg'></svg>
+
+    <script>
+    var snap = Snap("#svg");
+
+    var bigCircle = snap.circle(200, 200, 100);
+
+    bigCircle.attr({
+        fill: "#bada55",
+        stroke: "#333",
+        strokeWidth: 5
+    });
+    </script>
+
+</body>
+
+</html>

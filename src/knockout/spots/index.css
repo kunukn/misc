@@ -1,0 +1,109 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+body {
+  background-color: #333;
+}
+.spots-section {
+  margin: 0 auto;
+  padding: 4px;
+  position: relative;
+}
+.spot {
+  text-align: center;
+  background-color: slategray;
+  float: left;
+  margin: 4px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  font-weight: bold;
+  line-height: 100px;
+}
+@media  (min-width: 480px) {
+  .spot {
+    width: 120px;
+    height: 120px;
+    line-height: 120px;
+  }
+}
+@media  (min-width: 768px) {
+  .spot {
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
+  }
+}
+@media  (min-width: 992px) {
+  .spot {
+    width: 170px;
+    height: 170px;
+    line-height: 170px;
+  }
+}
+@media  (min-width: 1200px) {
+  .spot {
+    width: 200px;
+    height: 200px;
+    line-height: 200px;
+  }
+}
+.banana {
+  background-color: yellow;
+  background: -webkit-linear-gradient(yellow, #eeeeee);
+  background: -o-linear-gradient(yellow, #eeeeee);
+  background: -moz-linear-gradient(yellow, #eeeeee);
+  background: linear-gradient(yellow, #eeeeee);
+  color: black;
+}
+.banana:before {
+  content: 'banana';
+}
+.orange {
+  background-color: orange;
+  background: -webkit-linear-gradient(orange, #eeeeee);
+  background: -o-linear-gradient(orange, #eeeeee);
+  background: -moz-linear-gradient(orange, #eeeeee);
+  background: linear-gradient(orange, #eeeeee);
+  color: black;
+}
+.orange:before {
+  content: 'orange';
+}
+.apple {
+  background-color: green;
+  background: -webkit-linear-gradient(green, #eeeeee);
+  background: -o-linear-gradient(green, #eeeeee);
+  background: -moz-linear-gradient(green, #eeeeee);
+  background: linear-gradient(green, #eeeeee);
+  color: white;
+}
+.apple:before {
+  content: 'apple';
+}
+.tomato {
+  background-color: tomato;
+  background: -webkit-linear-gradient(tomato, #eeeeee);
+  background: -o-linear-gradient(tomato, #eeeeee);
+  background: -moz-linear-gradient(tomato, #eeeeee);
+  background: linear-gradient(tomato, #eeeeee);
+  color: white;
+}
+.tomato:before {
+  content: 'tomato';
+}
+.silver {
+  background-color: slategray;
+  background: -webkit-linear-gradient(slategray, #eeeeee);
+  background: -o-linear-gradient(slategray, #eeeeee);
+  background: -moz-linear-gradient(slategray, #eeeeee);
+  background: linear-gradient(slategray, #eeeeee);
+  color: white;
+}
+.silver:before {
+  content: 'silver';
+}
+.clearfix {
+  overflow: auto;
+}

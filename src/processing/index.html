@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <title>Processing js example</title>
+
+    <script src='//cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.8/processing.js'></script>
+</head>
+
+<body>
+
+    <canvas id='processing' data-processing-sources='processing.pde'></canvas>
+
+    <section> x/y:
+        <input type='text' id='xcoord' />
+        <input type='text' id='ycoord' />
+    </section>
+
+
+    <script>
+    var app = {};
+
+    (function(d) {
+        app.showXYCoordinates = function(x, y) {
+            d.getElementById('xcoord').value = x;
+            d.getElementById('ycoord').value = y;
+        };
+        app.bindJavascript = function() {
+            var processing = Processing.getInstanceById('processing');
+            if (processing) {
+                processing.bindJavascript(app);
+            }
+        };
+
+        setTimeout(app.bindJavascript, 300);
+    })(document);
+    </script>
+</body>
+
+</html>
