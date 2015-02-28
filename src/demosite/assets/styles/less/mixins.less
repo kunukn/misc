@@ -1,0 +1,43 @@
+.wrap() {
+    text-wrap: wrap;
+    white-space: -moz-pre-wrap;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+.box-shadow(@arg) {
+    -webkit-box-shadow: @arg;
+    -moz-box-shadow: @arg;
+    box-shadow: @arg;
+}
+.background-line(@from, @to) {
+    background-color: @to;
+    background: -webkit-linear-gradient(@from, @to);
+    background: -o-linear-gradient(@from, @to);
+    background: -moz-linear-gradient(@from, @to);
+    background: linear-gradient(@from, @to);
+}
+.transition(@arg1) {
+    -webkit-transition: @arg1;
+    -moz-transition: @arg1;
+    transition: @arg1;
+}
+.transition(@arg1, @arg2) {
+    -webkit-transition: @arg1, @arg2;
+    -moz-transition: @arg1, @arg2;
+    transition: @arg1, @arg2;
+}
+.transition(@arg1, @arg2, @arg3) {
+    -webkit-transition: @arg1, @arg2, @arg3;
+    -moz-transition: @arg1, @arg2, @arg3;
+    transition: @arg1, @arg2, @arg3;
+}
+.transform(@how) {
+    -ms-transform: @how;
+    -webkit-transform: @how;
+    transform: @how;
+}
+.body-font() {
+    font-family: Verdana, Geneva, sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
