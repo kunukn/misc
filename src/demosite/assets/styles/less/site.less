@@ -340,15 +340,10 @@ a:link, a:visited, a:active {
     font-size: 60%;
     float: right;
 }
-.device-info::after {
-    content: ' - Phone';
-}
 .image-responsive {
     display: block;
     margin: auto;
 }
-/* Bootstrap override */
-
 .container-fluid {
     padding: 0;
 }
@@ -369,15 +364,30 @@ a:link, a:visited, a:active {
 .left-navigation-container {
     display: none;
 }
-@media (orientation: landscape) {
-    .device-info::before {
+.device-info::before {
+    @media (orientation: landscape) {
         content: ' (landscape) ';
     }
 }
-@media (min-width: 480px) {
-    .device-info::after {
+.device-info::after {
+    content: ' - Phone';
+    @media @extra-small {
         content: ' - Phone large';
     }
+    @media @small {
+        content: " - Tablet";
+    }
+    @media @medium {
+        content: " - Desktop";
+    }
+    @media @large {
+        content: " - Widescreen";
+    }
+    @media @extra-large {
+        content: " - Super Widescreen";
+    }
+}
+@media @extra-small {
     #body {
         width: 96%;
     }
@@ -388,10 +398,7 @@ a:link, a:visited, a:active {
         display: block;
     }
 }
-@media (min-width: 768px) {
-    .device-info::after {
-        content: " - Tablet";
-    }
+@media @small {
     body {
         background: url("../../images/background/ndXts7z.jpg") no-repeat center center fixed;
         -webkit-background-size: cover;
@@ -451,10 +458,7 @@ a:link, a:visited, a:active {
         height: 100px;
     }
 }
-@media (min-width: 992px) {
-    .device-info::after {
-        content: ' - Desktop';
-    }
+@media @medium {
     #body {
         width: 80%;
     }
@@ -466,20 +470,7 @@ a:link, a:visited, a:active {
         margin: 0 auto;
     }
 }
-@media (min-width: 1200px) {
-    .device-info::after {
-        content: ' - Desktop large';
-    }
-    body {
-        xbackground: url("../../images/background/isxWrsg.jpg") no-repeat center center fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        -ms-background-size: cover;
-        background-size: cover;
-        background-color: #333;
-        // background-blend-mode: soft-light;
-    }
+@media @large {
     #body {
         width: 70%;
         -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=96)";
