@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>How to implement a programming language in JavaScript</title>
+
+    <style type="text/css">
+        #result{
+            background-color: beige;
+            min-height: 100px;
+            max-width: 600px;
+        }
+        .code{
+            background-color: #ddd;
+            max-width: 600px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>How to implement a programming language in JavaScript</h1>
+
+    <p>
+        <a href="http://lisperator.net/pltut/">http://lisperator.net/pltut/</a>
+    </p>
+
+<strong>result</strong>
+    <div id='result'></div>
+
+    <script src='lambda-eval1.js'></script>
+
+    <pre class='code'>
+        // some test code here
+        var code = "sum = lambda(x, y) x + y; print(sum(2, 3));";
+
+        // remember, parse takes a TokenStream which takes an InputStream
+        var ast = parse(TokenStream(InputStream(code)));
+
+        // create the global environment
+        var globalEnv = new Environment();
+
+        // define the "print" primitive function
+        globalEnv.def("print", function(txt){
+          document.getElementById('result').innerHTML = txt;
+          console.log(txt);
+        });
+
+        // run the evaluator
+        evaluate(ast, globalEnv); // will print 5
+    </pre>
+
+    <script>
+    // some test code here
+    var code = "sum = lambda(x, y) x + y; print(sum(2, 3));";
+
+    // remember, parse takes a TokenStream which takes an InputStream
+    var ast = parse(TokenStream(InputStream(code)));
+
+    // create the global environment
+    var globalEnv = new Environment();
+
+    // define the "print" primitive function
+    globalEnv.def("print", function(txt) {
+        document.getElementById('result').innerHTML = txt;
+        console.log(txt);
+    });
+
+    // run the evaluator
+    evaluate(ast, globalEnv); // will print 5
+    </script>
+
+</body>
+
+</html>
