@@ -2,26 +2,3 @@
 @-ms-viewport {
   width: device-width;
 }
-body {
-  background: powderblue;
-}
-@media  (min-width: 481px) {
-  body {
-    background: ghostWhite;
-  }
-}
-@media  (min-width: 768px) {
-  body {
-    background: gold;
-  }
-}
-@media  (min-width: 980px) {
-  body {
-    background: whiteSmoke;
-  }
-}
-@media  (min-width: 1200px) {
-  body {
-    background: snow;
-  }
-}
