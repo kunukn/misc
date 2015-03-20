@@ -1,0 +1,25 @@
+@extra-small: ~" (min-width: 481px)";
+@small: ~" (min-width: 768px)";
+@medium: ~" (min-width: 980px)";
+@large: ~" (min-width: 1200px)";
+/* Fix for MS-viewport */
+
+@-ms-viewport {
+    width: device-width
+}
+
+body {
+    background: powderblue;
+    @media @extra-small {
+        background: ghostWhite;
+    }
+    @media @small {
+        background: gold;
+    }
+    @media @medium {
+        background: whiteSmoke;
+    }
+    @media @large {
+        background: snow;
+    }
+}
