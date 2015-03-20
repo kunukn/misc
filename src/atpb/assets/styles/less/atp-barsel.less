@@ -1,0 +1,28 @@
+// http://getbootstrap.com/2.3.2/scaffolding.html#responsive
+@device-phone: ~" (min-width: 0)";
+@device-phablet: ~" (min-width: 481px)";
+@device-tablet: ~" (min-width: 768px)";
+@device-desktop: ~" (min-width: 980px)";
+@device-wide-screen: ~" (min-width: 1200px)";
+/* Fix for MS-viewport */
+
+@-ms-viewport {
+    width: device-width
+}
+
+.body {
+    margin: 0 auto;
+    max-width: 1000px;
+    //background: powderblue;
+}
+
+.maternity-overview {
+    .spot-maternity {
+        padding: 10px;
+        background-color: powderblue;
+        margin-bottom: 10px;
+        @media @device-tablet {
+            margin-bottom: 10px;
+        }
+    }
+}

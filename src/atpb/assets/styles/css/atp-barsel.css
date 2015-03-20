@@ -1,0 +1,18 @@
+/* Fix for MS-viewport */
+@-ms-viewport {
+  width: device-width;
+}
+.body {
+  margin: 0 auto;
+  max-width: 1000px;
+}
+.maternity-overview .spot-maternity {
+  padding: 10px;
+  background-color: powderblue;
+  margin-bottom: 10px;
+}
+@media  (min-width: 768px) {
+  .maternity-overview .spot-maternity {
+    margin-bottom: 10px;
+  }
+}
