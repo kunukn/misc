@@ -1,12 +1,13 @@
 // http://getbootstrap.com/2.3.2/scaffolding.html#responsive
-@device-phone: ~" (min-width: 0)";
-@device-phablet: ~" (min-width: 481px)";
-@device-tablet: ~" (min-width: 768px)";
-@device-desktop: ~" (min-width: 980px)";
-@device-wide-screen: ~" (min-width: 1200px)";
-/* Fix for MS-viewport */
+@device-phone: ~"only screen and (min-width: 0)";
+@device-phablet: ~"only screen and  (min-width: 481px)";
+@device-tablet: ~"only screen and  (min-width: 768px)";
+@device-desktop: ~"only screen and  (min-width: 980px)";
+@device-wide-screen: ~"only screen and (min-width: 1200px)";
+/* Bootstrap 2.3.2 break points */
 
 @-ms-viewport {
+    // Fix for MS-viewport
     width: device-width
 }
 

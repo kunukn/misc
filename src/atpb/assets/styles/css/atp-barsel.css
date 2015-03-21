@@ -1,4 +1,4 @@
-/* Fix for MS-viewport */
+/* Bootstrap 2.3.2 break points */
 @-ms-viewport {
   width: device-width;
 }
@@ -19,7 +19,7 @@
   display: block;
   text-decoration: none;
 }
-@media  (min-width: 768px) {
+@media only screen and  (min-width: 768px) {
   .maternity-overview .spot-maternity {
     margin-bottom: 10px;
   }
