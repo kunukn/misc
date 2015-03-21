@@ -6,10 +6,18 @@
   margin: 0 auto;
   max-width: 1000px;
 }
+.back-to-main-page a {
+  display: block;
+  text-decoration: none;
+}
 .maternity-overview .spot-maternity {
   padding: 10px;
   background-color: powderblue;
   margin-bottom: 10px;
+}
+.maternity-overview .spot-maternity a {
+  display: block;
+  text-decoration: none;
 }
 @media  (min-width: 768px) {
   .maternity-overview .spot-maternity {
