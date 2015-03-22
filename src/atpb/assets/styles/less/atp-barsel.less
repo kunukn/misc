@@ -2,17 +2,16 @@
 @import "variables.less";
 @import "mixins.less";
 
-// http://getbootstrap.com/2.3.2/scaffolding.html#responsive
-@device-phone: ~" (min-width: 0)";
-@device-phone-to-tablet: ~" (min-width: @{device-phone-to-tablet-width})";
-@device-tablet: ~" (min-width: @{device-tablet-width})";
-@device-desktop: ~"  (min-width: @{device-desktop-width})";
-@device-widescreen: ~"  (min-width: @{device-widescreen-width})";
-/* Bootstrap 2.3.2 break points */
-
 @-ms-viewport {
     // Fix for MS-viewport
     width: device-width
+}
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 .body {
@@ -20,24 +19,9 @@
     max-width: 1000px;
 }
 
-.back-to-main-page {    
+.back-to-main-page {
     a {
         display: block;
         text-decoration: none;
-    }
-}
-
-.maternity-overview {
-    .spot-maternity {
-        padding: 10px;
-        background-color: powderblue;
-        margin-bottom: 10px;
-        a {
-            display: block;
-            text-decoration: none;
-        }
-        @media @device-tablet {
-            margin-bottom: 10px;
-        }
     }
 }
