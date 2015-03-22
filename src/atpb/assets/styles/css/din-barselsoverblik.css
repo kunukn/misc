@@ -1,12 +1,45 @@
-.fokusfelt {
+.maternity-overview .fokusfelt {
   position: relative;
   max-height: 260px;
   overflow: hidden;
 }
-.fokusfelt a {
+.maternity-overview .fokusfelt .icon {
+  position: absolute;
+  min-width: 20px;
+  top: 10px;
+  left: 10px;
+}
+.maternity-overview .fokusfelt .icon i {
+  font-size: 16px;
+}
+.maternity-overview .fokusfelt .title {
+  padding: 10px 0;
+  width: auto;
+  text-align: center;
+}
+.maternity-overview .fokusfelt .call-to-action {
+  background: aqua;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.maternity-overview .fokusfelt hr {
+  margin: 0;
+}
+.maternity-overview .fokusfelt a {
   display: block;
   text-decoration: none;
   background-color: #F5F5F5;
+  color: #333;
   border-radius: 2px;
   min-height: 200px;
+}
+.maternity-overview .fokusfelt a:active,
+.maternity-overview .fokusfelt a :hover,
+.maternity-overview .fokusfelt a :visited {
+  color: inherit;
+}
+.maternity-overview footer {
+  background: lime;
+  min-height: 60px;
 }

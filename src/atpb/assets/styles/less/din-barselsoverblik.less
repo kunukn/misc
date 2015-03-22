@@ -1,15 +1,55 @@
 // Core variables and mixins
 @import "variables.less";
 @import "mixins.less";
-.fokusfelt {
-    position: relative;
-    max-height: 260px;
-    overflow: hidden;
-    a {
-        display: block;
-        text-decoration: none;
-        background-color: #F5F5F5;
-        border-radius: 2px;
-        min-height: 200px;
+.maternity-overview {
+    .fokusfelt {
+        position: relative;
+        max-height: 260px;
+        overflow: hidden;
+        .icon {
+            position: absolute;
+            min-width: 20px;
+            top: 10px;
+            left: 10px;
+            i{
+                font-size: 16px;
+            }
+        }
+        .title {
+            padding: 10px 0;
+            width: auto;
+            text-align: center;
+        }
+        .content{
+
+        }
+        .sub-content{
+
+        }
+        .call-to-action{
+            background: aqua;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+        hr{
+            margin: 0;
+        }
+        a {
+            display: block;
+            text-decoration: none;
+            background-color: #F5F5F5;
+            color: #333;
+            border-radius: 2px;
+            min-height: 200px;
+
+            &:active, :hover, :visited{
+                color: inherit;
+            }
+        }
+    }
+    footer  {
+        background: lime;
+        min-height: 60px;
     }
 }
