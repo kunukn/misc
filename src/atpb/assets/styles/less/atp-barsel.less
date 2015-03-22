@@ -1,9 +1,13 @@
+// Core variables and mixins
+@import "variables.less";
+@import "mixins.less";
+
 // http://getbootstrap.com/2.3.2/scaffolding.html#responsive
-@device-phone: ~"only screen and (min-width: 0)";
-@device-phablet: ~"only screen and  (min-width: 481px)";
-@device-tablet: ~"only screen and  (min-width: 768px)";
-@device-desktop: ~"only screen and  (min-width: 980px)";
-@device-wide-screen: ~"only screen and (min-width: 1200px)";
+@device-phone: ~" (min-width: 0)";
+@device-phone-to-tablet: ~" (min-width: @{device-phone-to-tablet-width})";
+@device-tablet: ~" (min-width: @{device-tablet-width})";
+@device-desktop: ~"  (min-width: @{device-desktop-width})";
+@device-widescreen: ~"  (min-width: @{device-widescreen-width})";
 /* Bootstrap 2.3.2 break points */
 
 @-ms-viewport {
@@ -16,7 +20,7 @@
     max-width: 1000px;
 }
 
-.back-to-main-page {
+.back-to-main-page {    
     a {
         display: block;
         text-decoration: none;
