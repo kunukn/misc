@@ -1,32 +1,38 @@
-.maternity-overview .fokusfelt {
+@media  (max-width: 767px) {
+  .maternity-overview [class*="span"] {
+    max-width: 320px;
+    margin: 0 auto !important;
+  }
+}
+.maternity-overview .spot {
   position: relative;
   max-height: 260px;
   overflow: hidden;
 }
-.maternity-overview .fokusfelt .icon {
+.maternity-overview .spot .icon {
   position: absolute;
   min-width: 20px;
   top: 10px;
   left: 10px;
 }
-.maternity-overview .fokusfelt .icon i {
+.maternity-overview .spot .icon i {
   font-size: 16px;
 }
-.maternity-overview .fokusfelt .title {
+.maternity-overview .spot .title {
   padding: 10px 0;
   width: auto;
   text-align: center;
 }
-.maternity-overview .fokusfelt .call-to-action {
+.maternity-overview .spot .call-to-action {
   background: aqua;
   position: absolute;
   bottom: 0;
   width: 100%;
 }
-.maternity-overview .fokusfelt hr {
+.maternity-overview .spot hr {
   margin: 0;
 }
-.maternity-overview .fokusfelt a {
+.maternity-overview .spot a {
   display: block;
   text-decoration: none;
   background-color: #F5F5F5;
@@ -34,9 +40,9 @@
   border-radius: 2px;
   min-height: 200px;
 }
-.maternity-overview .fokusfelt a:active,
-.maternity-overview .fokusfelt a :hover,
-.maternity-overview .fokusfelt a :visited {
+.maternity-overview .spot a:active,
+.maternity-overview .spot a :hover,
+.maternity-overview .spot a :visited {
   color: inherit;
 }
 .maternity-overview footer {
