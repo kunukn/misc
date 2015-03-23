@@ -1,0 +1,17 @@
+@-ms-viewport {
+  width: device-width; }
+html {
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+.body {
+  margin: 0 auto;
+  max-width: 1000px; }
+
+.back-to-main-page a {
+  display: block;
+  text-decoration: none; }
+
+/*# sourceMappingURL=atp-barsel.css.map */

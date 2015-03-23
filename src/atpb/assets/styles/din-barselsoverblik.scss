@@ -1,13 +1,14 @@
-// Core variables and mixins
-@import "variables.less";
-@import "mixins.less";
+@import 'variables';
+@import 'mixins';
+
 .maternity-overview {
-    @media @device-max-tablet {
+    @include device-max-tablet {
         [class*="span"] {
             max-width: 320px;
             margin: 0 auto !important;
         }
     }
+    
     .spot {
         position: relative;
         max-height: 260px;

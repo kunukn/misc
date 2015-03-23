@@ -1,0 +1,19 @@
+@import 'variables';
+
+// http://getbootstrap.com/2.3.2/scaffolding.html#responsive
+
+@mixin device-phone-to-tablet {
+ @media (min-width: #{$device-phone-to-tablet-width}) { @content; }
+}
+@mixin device-tablet-width {
+ @media (min-width: #{$device-tablet-width}) { @content; }
+}
+@mixin device-max-tablet {
+ @media (max-width: #{$device-max-tablet-width}) { @content; }
+}
+@mixin device-desktop-width {
+ @media (min-width: #{$device-desktop-width}) { @content; }
+}
+@mixin device-widescreen-width {
+ @media (min-width: #{$device-widescreen-width}) { @content; }
+}

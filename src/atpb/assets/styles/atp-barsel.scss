@@ -1,10 +1,9 @@
-// Core variables and mixins
-@import "variables.less";
-@import "mixins.less";
+@import 'variables';
+@import 'mixins';
 
 @-ms-viewport {
     // Fix for MS-viewport
-    width: device-width
+    width: device-width;
 }
 
 html {
