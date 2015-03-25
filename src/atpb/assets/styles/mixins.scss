@@ -5,15 +5,15 @@
 @mixin device-phone-to-tablet {
  @media (min-width: #{$device-phone-to-tablet-width}) { @content; }
 }
-@mixin device-tablet-width {
+@mixin device-tablet {
  @media (min-width: #{$device-tablet-width}) { @content; }
 }
 @mixin device-max-tablet {
  @media (max-width: #{$device-max-tablet-width}) { @content; }
 }
-@mixin device-desktop-width {
+@mixin device-desktop {
  @media (min-width: #{$device-desktop-width}) { @content; }
 }
-@mixin device-widescreen-width {
+@mixin device-widescreen {
  @media (min-width: #{$device-widescreen-width}) { @content; }
 }

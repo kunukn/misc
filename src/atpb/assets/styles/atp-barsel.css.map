@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAGA,aAGC;EADG,KAAK,EAAE,YAAY;AAGvB,IAAK;EACH,UAAU,EAAE,UAAU;;AAExB,oBAAqB;EACnB,UAAU,EAAE,OAAO;;AAGrB,KAAM;EACF,MAAM,EAAE,MAAM;EACd,SAAS,EAAE,MAAM;;AAIjB,oBAAE;EACE,OAAO,EAAE,KAAK;EACd,eAAe,EAAE,IAAI",
-"sources": ["atp-barsel.scss"],
-"names": [],
-"file": "atp-barsel.css"
-}

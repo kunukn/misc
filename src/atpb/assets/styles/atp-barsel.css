@@ -3,15 +3,31 @@
 html {
   box-sizing: border-box; }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit; }
 
 .body {
   margin: 0 auto;
-  max-width: 1000px; }
+  max-width: 1680px; }
 
-.back-to-main-page a {
-  display: block;
-  text-decoration: none; }
+.back-to-main-page {
+  color: black; }
+  .back-to-main-page a {
+    text-decoration: none;
+    color: inherit; }
+    .back-to-main-page a:active, .back-to-main-page a :visited, .back-to-main-page a :hover {
+      color: inherit; }
 
-/*# sourceMappingURL=atp-barsel.css.map */
+.position-relative {
+  position: relative; }
+
+.position-absolute {
+  position: absolute; }
+
+.display-none {
+  display: none; }
+
+.display-block {
+  display: block; }
