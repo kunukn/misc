@@ -7,38 +7,54 @@ function parse(input) {
         "=": 1,
         "||": 2,
         "&&": 3,
-        "<": 7, ">": 7, "<=": 7, ">=": 7, "==": 7, "!=": 7,
-        "+": 10, "-": 10,
-        "*": 20, "/": 20, "%": 20,
+        "<": 7,
+        ">": 7,
+        "<=": 7,
+        ">=": 7,
+        "==": 7,
+        "!=": 7,
+        "+": 10,
+        "-": 10,
+        "*": 20,
+        "/": 20,
+        "%": 20,
     };
     return parse_toplevel();
+
     function is_punc(ch) {
         var tok = input.peek();
         return tok && tok.type == "punc" && (!ch || tok.value == ch) && tok;
     }
+
     function is_kw(kw) {
         var tok = input.peek();
         return tok && tok.type == "kw" && (!kw || tok.value == kw) && tok;
     }
+
     function is_op(op) {
         var tok = input.peek();
         return tok && tok.type == "op" && (!op || tok.value == op) && tok;
     }
+
     function skip_punc(ch) {
         if (is_punc(ch)) input.next();
         else input.croak("Expecting punctuation: \"" + ch + "\"");
     }
+
     function skip_kw(kw) {
         if (is_kw(kw)) input.next();
         else input.croak("Expecting keyword: \"" + kw + "\"");
     }
+
     function skip_op(op) {
         if (is_op(op)) input.next();
         else input.croak("Expecting operator: \"" + op + "\"");
     }
+
     function unexpected() {
         input.croak("Unexpected token: " + JSON.stringify(input.peek()));
     }
+
     function maybe_binary(left, my_prec) {
         var tok = is_op();
         if (tok) {
@@ -46,27 +62,31 @@ function parse(input) {
             if (his_prec > my_prec) {
                 input.next();
                 return maybe_binary({
-                    type     : tok.value == "=" ? "assign" : "binary",
-                    operator : tok.value,
-                    left     : left,
-                    right    : maybe_binary(parse_atom(), his_prec)
+                    type: tok.value == "=" ? "assign" : "binary",
+                    operator: tok.value,
+                    left: left,
+                    right: maybe_binary(parse_atom(), his_prec)
                 }, my_prec);
             }
         }
         return left;
     }
+
     function delimited(start, stop, separator, parser) {
-        var a = [], first = true;
+        var a = [],
+            first = true;
         skip_punc(start);
         while (!input.eof()) {
             if (is_punc(stop)) break;
-            if (first) first = false; else skip_punc(separator);
+            if (first) first = false;
+            else skip_punc(separator);
             if (is_punc(stop)) break;
             a.push(parser());
         }
         skip_punc(stop);
         return a;
     }
+
     function parse_call(func) {
         return {
             type: "call",
@@ -74,19 +94,26 @@ function parse(input) {
             args: delimited("(", ")", ",", parse_expression),
         };
     }
+
     function parse_varname() {
         var name = input.next();
         if (name.type != "var") input.croak("Expecting variable name");
         return name.value;
     }
+
     function parse_vardef() {
-        var name = parse_varname(), def;
+        var name = parse_varname(),
+            def;
         if (is_op("=")) {
             input.next();
             def = parse_expression();
         }
-        return { name: name, def: def };
+        return {
+            name: name,
+            def: def
+        };
     }
+
     function parse_let() {
         skip_kw("let");
         if (input.peek().type == "var") {
@@ -97,10 +124,14 @@ function parse(input) {
                 func: {
                     type: "lambda",
                     name: name,
-                    vars: defs.map(function(def){ return def.name }),
+                    vars: defs.map(function(def) {
+                        return def.name
+                    }),
                     body: parse_expression(),
                 },
-                args: defs.map(function(def){ return def.def || FALSE })
+                args: defs.map(function(def) {
+                    return def.def || FALSE
+                })
             };
         }
         return {
@@ -109,6 +140,7 @@ function parse(input) {
             body: parse_expression(),
         };
     }
+
     function parse_if() {
         skip_kw("if");
         var cond = parse_expression();
@@ -125,6 +157,7 @@ function parse(input) {
         }
         return ret;
     }
+
     function parse_lambda() {
         return {
             type: "lambda",
@@ -133,27 +166,31 @@ function parse(input) {
             body: parse_expression()
         };
     }
+
     function parse_bool() {
         return {
-            type  : "bool",
-            value : input.next().value == "true"
+            type: "bool",
+            value: input.next().value == "true"
         };
     }
+
     function parse_raw() {
         skip_kw("js:raw");
         if (input.peek().type != "str")
             input.croak("js:raw must be a plain string");
         return {
-            type : "raw",
-            code : input.next().value
+            type: "raw",
+            code: input.next().value
         };
     }
+
     function maybe_call(expr) {
         expr = expr();
         return is_punc("(") ? parse_call(expr) : expr;
     }
+
     function parse_atom() {
-        return maybe_call(function(){
+        return maybe_call(function() {
             if (is_punc("(")) {
                 input.next();
                 var exp = parse_expression();
@@ -182,22 +219,31 @@ function parse(input) {
             unexpected();
         });
     }
+
     function parse_toplevel() {
         var prog = [];
         while (!input.eof()) {
             prog.push(parse_expression());
             if (!input.eof()) skip_punc(";");
         }
-        return { type: "prog", prog: prog };
+        return {
+            type: "prog",
+            prog: prog
+        };
     }
+
     function parse_prog() {
         var prog = delimited("{", "}", ";", parse_expression);
         if (prog.length == 0) return FALSE;
         if (prog.length == 1) return prog[0];
-        return { type: "prog", prog: prog };
+        return {
+            type: "prog",
+            prog: prog
+        };
     }
+
     function parse_expression() {
-        return maybe_call(function(){
+        return maybe_call(function() {
             return maybe_binary(parse_atom(), 0);
         });
     }
@@ -206,24 +252,31 @@ function parse(input) {
 /* -----[ parser utils ]----- */
 
 function InputStream(input) {
-    var pos = 0, line = 1, col = 0;
+    var pos = 0,
+        line = 1,
+        col = 0;
     return {
-        next  : next,
-        peek  : peek,
-        eof   : eof,
-        croak : croak,
+        next: next,
+        peek: peek,
+        eof: eof,
+        croak: croak,
     };
+
     function next() {
         var ch = input.charAt(pos++);
-        if (ch == "\n") line++, col = 0; else col++;
+        if (ch == "\n") line++, col = 0;
+        else col++;
         return ch;
     }
+
     function peek() {
         return input.charAt(pos);
     }
+
     function eof() {
         return peek() == "";
     }
+
     function croak(msg) {
         throw new Error(msg + " (" + line + ":" + col + ")");
     }
@@ -233,41 +286,50 @@ function TokenStream(input) {
     var current = null;
     var keywords = " let if then else lambda λ true false js:raw ";
     return {
-        next  : next,
-        peek  : peek,
-        eof   : eof,
-        croak : input.croak
+        next: next,
+        peek: peek,
+        eof: eof,
+        croak: input.croak
     };
+
     function is_keyword(x) {
         return keywords.indexOf(" " + x + " ") >= 0;
     }
+
     function is_digit(ch) {
         return /[0-9]/i.test(ch);
     }
+
     function is_id_start(ch) {
         return /[a-zλ_]/i.test(ch);
     }
+
     function is_id(ch) {
         return is_id_start(ch) || "?!-<:>=0123456789".indexOf(ch) >= 0;
     }
+
     function is_op_char(ch) {
         return "+-*/%=&|<>!".indexOf(ch) >= 0;
     }
+
     function is_punc(ch) {
         return ",;(){}[]:".indexOf(ch) >= 0;
     }
+
     function is_whitespace(ch) {
         return " \t\n".indexOf(ch) >= 0;
     }
+
     function read_while(predicate) {
         var str = "";
         while (!input.eof() && predicate(input.peek()))
             str += input.next();
         return str;
     }
+
     function read_number() {
         var has_dot = false;
-        var number = read_while(function(ch){
+        var number = read_while(function(ch) {
             if (ch == ".") {
                 if (has_dot) return false;
                 has_dot = true;
@@ -275,17 +337,23 @@ function TokenStream(input) {
             }
             return is_digit(ch);
         });
-        return { type: "num", value: parseFloat(number) };
+        return {
+            type: "num",
+            value: parseFloat(number)
+        };
     }
+
     function read_ident() {
         var id = read_while(is_id);
         return {
-            type  : is_keyword(id) ? "kw" : "var",
-            value : id
+            type: is_keyword(id) ? "kw" : "var",
+            value: id
         };
     }
+
     function read_escaped(end) {
-        var escaped = false, str = "";
+        var escaped = false,
+            str = "";
         input.next();
         while (!input.eof()) {
             var ch = input.next();
@@ -302,13 +370,21 @@ function TokenStream(input) {
         }
         return str;
     }
+
     function read_string() {
-        return { type: "str", value: read_escaped('"') };
+        return {
+            type: "str",
+            value: read_escaped('"')
+        };
     }
+
     function skip_comment() {
-        read_while(function(ch){ return ch != "\n" });
+        read_while(function(ch) {
+            return ch != "\n"
+        });
         input.next();
     }
+
     function read_next() {
         read_while(is_whitespace);
         if (input.eof()) return null;
@@ -321,23 +397,26 @@ function TokenStream(input) {
         if (is_digit(ch)) return read_number();
         if (is_id_start(ch)) return read_ident();
         if (is_punc(ch)) return {
-            type  : "punc",
-            value : input.next()
+            type: "punc",
+            value: input.next()
         };
         if (is_op_char(ch)) return {
-            type  : "op",
-            value : read_while(is_op_char)
+            type: "op",
+            value: read_while(is_op_char)
         };
         input.croak("Can't handle character: " + ch);
     }
+
     function peek() {
         return current || (current = read_next());
     }
+
     function next() {
         var tok = current;
         current = null;
         return tok || read_next();
     }
+
     function eof() {
         return peek() == null;
     }
@@ -350,58 +429,78 @@ function make_js(exp) {
 
     function js(exp) {
         switch (exp.type) {
-          case "num"    :
-          case "str"    :
-          case "bool"   : return js_atom   (exp);
-          case "var"    : return js_var    (exp);
-          case "not"    : return js_not    (exp);
-          case "binary" : return js_binary (exp);
-          case "assign" : return js_assign (exp);
-          case "let"    : return js_let    (exp);
-          case "lambda" : return js_lambda (exp);
-          case "if"     : return js_if     (exp);
-          case "prog"   : return js_prog   (exp);
-          case "call"   : return js_call   (exp);
-          case "raw"    : return js_raw    (exp);
-          default:
-            throw new Error("Dunno how to make_js for " + JSON.stringify(exp));
+            case "num":
+            case "str":
+            case "bool":
+                return js_atom(exp);
+            case "var":
+                return js_var(exp);
+            case "not":
+                return js_not(exp);
+            case "binary":
+                return js_binary(exp);
+            case "assign":
+                return js_assign(exp);
+            case "let":
+                return js_let(exp);
+            case "lambda":
+                return js_lambda(exp);
+            case "if":
+                return js_if(exp);
+            case "prog":
+                return js_prog(exp);
+            case "call":
+                return js_call(exp);
+            case "raw":
+                return js_raw(exp);
+            default:
+                throw new Error("Dunno how to make_js for " + JSON.stringify(exp));
         }
     }
+
     function js_raw(exp) {
-        return "(" + exp.code +")";
+        return "(" + exp.code + ")";
     }
+
     function js_atom(exp) {
         return JSON.stringify(exp.value); // cheating ;-)
     }
+
     function make_var(name) {
         return name;
     }
+
     function js_var(exp) {
         return make_var(exp.value);
     }
+
     function js_not(exp) {
         if (is_bool(exp.body))
             return "!" + js(exp.body);
         return "(" + js(exp.body) + " === false)";
     }
+
     function js_binary(exp) {
         var left = js(exp.left);
         var right = js(exp.right);
         switch (exp.operator) {
-          case "&&":
-            if (is_bool(exp.left)) break;
-            return "((" + left + " !== false) && " + right + ")";
-          case "||":
-            if (is_bool(exp.left)) break;
-            return "((β_TMP = " + left + ") !== false ? β_TMP : " + right + ")";
+            case "&&":
+                if (is_bool(exp.left)) break;
+                return "((" + left + " !== false) && " + right + ")";
+            case "||":
+                if (is_bool(exp.left)) break;
+                return "((β_TMP = " + left + ") !== false ? β_TMP : " + right + ")";
         }
         return "(" + left + exp.operator + right + ")";
     }
+
     function js_assign(exp) {
         return js_binary(exp);
     }
+
     function js_lambda(exp) {
-        var code = "(function ", CC;
+        var code = "(function ",
+            CC;
         if (!exp.unguarded) {
             CC = exp.name || "β_CC";
             code += make_var(CC);
@@ -422,6 +521,7 @@ function make_js(exp) {
         code += js(exp.body) + " })";
         return code;
     }
+
     function js_let(exp) {
         if (exp.vars.length == 0)
             return js(exp.body);
@@ -429,46 +529,46 @@ function make_js(exp) {
             type: "call",
             func: {
                 type: "lambda",
-                vars: [ exp.vars[0].name ],
+                vars: [exp.vars[0].name],
                 body: {
                     type: "let",
                     vars: exp.vars.slice(1),
                     body: exp.body
                 }
             },
-            args: [ exp.vars[0].def || FALSE ]
+            args: [exp.vars[0].def || FALSE]
         };
         return "(" + js(iife) + ")";
     }
+
     function is_bool(exp) {
         switch (exp.type) {
-          case "bool":
-          case "not":
-            return true;
-          case "if":
-            return is_bool(exp.then) || (exp.else && is_bool(exp.else));
-          case "binary":
-            if (",<,<=,==,!=,>=,>,".indexOf("," + exp.operator + ",") >= 0)
+            case "bool":
+            case "not":
                 return true;
-            if (exp.operator == "&&" || exp.operator == "||")
-                return is_bool(exp.left) && is_bool(exp.right);
-            break;
+            case "if":
+                return is_bool(exp.then) || (exp.else && is_bool(exp.else));
+            case "binary":
+                if (",<,<=,==,!=,>=,>,".indexOf("," + exp.operator + ",") >= 0)
+                    return true;
+                if (exp.operator == "&&" || exp.operator == "||")
+                    return is_bool(exp.left) && is_bool(exp.right);
+                break;
         }
         return false;
     }
+
     function js_if(exp) {
         var cond = js(exp.cond);
         if (!is_bool(exp.cond))
             cond += " !== false";
-        return "("
-            +      cond
-            +      " ? " + js(exp.then)
-            +      " : " + js(exp.else || FALSE)
-            +  ")";
+        return "(" + cond + " ? " + js(exp.then) + " : " + js(exp.else || FALSE) + ")";
     }
+
     function js_prog(exp) {
         return "(" + exp.prog.map(js).join(", ") + ")";
     }
+
     function js_call(exp) {
         return js(exp.func) + "(" + exp.args.map(js).join(", ") + ")";
     }
@@ -486,40 +586,37 @@ function gensym(name) {
 
 function has_side_effects(exp) {
     switch (exp.type) {
-      case "call":
-      case "assign":
-      case "raw":
-        return true;
+        case "call":
+        case "assign":
+        case "raw":
+            return true;
 
-      case "num":
-      case "str":
-      case "bool":
-      case "var":
-      case "lambda":
-        return false;
+        case "num":
+        case "str":
+        case "bool":
+        case "var":
+        case "lambda":
+            return false;
 
-      case "binary":
-        return has_side_effects(exp.left)
-            || has_side_effects(exp.right);
+        case "binary":
+            return has_side_effects(exp.left) || has_side_effects(exp.right);
 
-      case "if":
-        return has_side_effects(exp.cond)
-            || has_side_effects(exp.then)
-            || (exp.else && has_side_effects(exp.else));
+        case "if":
+            return has_side_effects(exp.cond) || has_side_effects(exp.then) || (exp.else && has_side_effects(exp.else));
 
-      case "let":
-        for (var i = 0; i < exp.vars.length; ++i) {
-            var v = exp.vars[i];
-            if (v.def && has_side_effects(v.def))
-                return true;
-        }
-        return has_side_effects(exp.body);
+        case "let":
+            for (var i = 0; i < exp.vars.length; ++i) {
+                var v = exp.vars[i];
+                if (v.def && has_side_effects(v.def))
+                    return true;
+            }
+            return has_side_effects(exp.body);
 
-      case "prog":
-        for (var i = 0; i < exp.prog.length; ++i)
-            if (has_side_effects(exp.prog[i]))
-                return true;
-        return false;
+        case "prog":
+            for (var i = 0; i < exp.prog.length; ++i)
+                if (has_side_effects(exp.prog[i]))
+                    return true;
+            return false;
     }
     return true;
 }
@@ -529,55 +626,74 @@ function to_cps(exp, k) {
 
     function cps(exp, k) {
         switch (exp.type) {
-          case "raw"    :
-          case "num"    :
-          case "str"    :
-          case "bool"   : return cps_atom   (exp, k);
+            case "raw":
+            case "num":
+            case "str":
+            case "bool":
+                return cps_atom(exp, k);
 
-          case "assign" :
-          case "binary" : return cps_binary (exp, k);
+            case "assign":
+            case "binary":
+                return cps_binary(exp, k);
 
-          case "not"    : return cps_not    (exp, k);
-          case "var"    : return cps_var    (exp, k);
-          case "let"    : return cps_let    (exp, k);
-          case "lambda" : return cps_lambda (exp, k);
-          case "if"     : return cps_if     (exp, k);
-          case "prog"   : return cps_prog   (exp, k);
-          case "call"   : return cps_call   (exp, k);
-          default:
-            throw new Error("Dunno how to CPS " + JSON.stringify(exp));
+            case "not":
+                return cps_not(exp, k);
+            case "var":
+                return cps_var(exp, k);
+            case "let":
+                return cps_let(exp, k);
+            case "lambda":
+                return cps_lambda(exp, k);
+            case "if":
+                return cps_if(exp, k);
+            case "prog":
+                return cps_prog(exp, k);
+            case "call":
+                return cps_call(exp, k);
+            default:
+                throw new Error("Dunno how to CPS " + JSON.stringify(exp));
         }
     }
+
     function cps_atom(exp, k) {
         return k(exp);
     }
+
     function cps_not(exp, k) {
-        return cps(exp.body, function(body){
-            return k({ type: "not", body: body });
-        });
-    }
-    function cps_var(exp, k) {
-        return k(exp);
-    }
-    function cps_binary(exp, k) {
-        return cps(exp.left, function(left){
-            return cps(exp.right, function(right){
-                return k({ type     : exp.type,
-                           operator : exp.operator,
-                           left     : left,
-                           right    : right });
+        return cps(exp.body, function(body) {
+            return k({
+                type: "not",
+                body: body
             });
         });
     }
+
+    function cps_var(exp, k) {
+        return k(exp);
+    }
+
+    function cps_binary(exp, k) {
+        return cps(exp.left, function(left) {
+            return cps(exp.right, function(right) {
+                return k({
+                    type: exp.type,
+                    operator: exp.operator,
+                    left: left,
+                    right: right
+                });
+            });
+        });
+    }
+
     function cps_let(exp, k) {
         if (exp.vars.length == 0)
             return cps(exp.body, k);
         return cps({
             type: "call",
-            args: [ exp.vars[0].def || FALSE ],
+            args: [exp.vars[0].def || FALSE],
             func: {
                 type: "lambda",
-                vars: [ exp.vars[0].name ],
+                vars: [exp.vars[0].name],
                 body: {
                     type: "let",
                     vars: exp.vars.slice(1),
@@ -586,34 +702,46 @@ function to_cps(exp, k) {
             }
         }, k);
     }
+
     function cps_lambda(exp, k) {
         var cont = gensym("K");
-        var body = cps(exp.body, function(body){
-            return { type: "call",
-                     func: { type: "var", value: cont },
-                     args: [ body ] };
+        var body = cps(exp.body, function(body) {
+            return {
+                type: "call",
+                func: {
+                    type: "var",
+                    value: cont
+                },
+                args: [body]
+            };
         });
-        return k({ type: "lambda",
-                   name: exp.name,
-                   vars: [ cont ].concat(exp.vars),
-                   body: body });
+        return k({
+            type: "lambda",
+            name: exp.name,
+            vars: [cont].concat(exp.vars),
+            body: body
+        });
     }
+
     function cps_if(exp, k) {
-        return cps(exp.cond, function(cond){
+        return cps(exp.cond, function(cond) {
             var cvar = gensym("I");
             var cast = make_continuation(k);
             k = function(ifresult) {
                 return {
                     type: "call",
-                    func: { type: "var", value: cvar },
-                    args: [ ifresult ]
+                    func: {
+                        type: "var",
+                        value: cvar
+                    },
+                    args: [ifresult]
                 };
             };
             return {
                 type: "call",
                 func: {
                     type: "lambda",
-                    vars: [ cvar ],
+                    vars: [cvar],
                     body: {
                         type: "if",
                         cond: cond,
@@ -621,42 +749,49 @@ function to_cps(exp, k) {
                         else: cps(exp.else || FALSE, k)
                     }
                 },
-                args: [ cast ]
+                args: [cast]
             };
         });
     }
+
     function cps_call(exp, k) {
-        return cps(exp.func, function(func){
-            return (function loop(args, i){
+        return cps(exp.func, function(func) {
+            return (function loop(args, i) {
                 if (i == exp.args.length) return {
-                    type : "call",
-                    func : func,
-                    args : args
+                    type: "call",
+                    func: func,
+                    args: args
                 };
-                return cps(exp.args[i], function(value){
+                return cps(exp.args[i], function(value) {
                     args[i + 1] = value;
                     return loop(args, i + 1);
                 });
-            })([ make_continuation(k) ], 0);
+            })([make_continuation(k)], 0);
         });
     }
+
     function make_continuation(k) {
         var cont = gensym("R");
-        return { type : "lambda",
-                 vars : [ cont ],
-                 body : k({ type  : "var",
-                            value : cont }) };
+        return {
+            type: "lambda",
+            vars: [cont],
+            body: k({
+                type: "var",
+                value: cont
+            })
+        };
     }
+
     function cps_prog(exp, k) {
-        return (function loop(body){
+        return (function loop(body) {
             if (body.length == 0) return k(FALSE);
             if (body.length == 1) return cps(body[0], k);
             if (!has_side_effects(body[0]))
                 return loop(body.slice(1));
-            return cps(body[0], function(first){
+            return cps(body[0], function(first) {
                 if (has_side_effects(first)) return {
                     type: "prog",
-                    prog: [ first, loop(body.slice(1)) ]
+                    prog: [first, loop(body.slice(1))]
                 };
                 return loop(body.slice(1));
             });
@@ -713,18 +848,26 @@ function optimize(exp) {
     function opt(exp) {
         if (changes) return exp;
         switch (exp.type) {
-          case "raw"    :
-          case "num"    :
-          case "str"    :
-          case "bool"   :
-          case "var"    : return exp;
-          case "not"    : return opt_not    (exp);
-          case "binary" : return opt_binary (exp);
-          case "assign" : return opt_assign (exp);
-          case "if"     : return opt_if     (exp);
-          case "prog"   : return opt_prog   (exp);
-          case "call"   : return opt_call   (exp);
-          case "lambda" : return opt_lambda (exp);
+            case "raw":
+            case "num":
+            case "str":
+            case "bool":
+            case "var":
+                return exp;
+            case "not":
+                return opt_not(exp);
+            case "binary":
+                return opt_binary(exp);
+            case "assign":
+                return opt_assign(exp);
+            case "if":
+                return opt_if(exp);
+            case "prog":
+                return opt_prog(exp);
+            case "call":
+                return opt_call(exp);
+            case "lambda":
+                return opt_lambda(exp);
         }
         throw new Error("I don't know how to optimize " + JSON.stringify(exp));
     }
@@ -734,9 +877,7 @@ function optimize(exp) {
     }
 
     function is_constant(exp) {
-        return exp.type == "num"
-            || exp.type == "str"
-            || exp.type == "bool";
+        return exp.type == "num" || exp.type == "str" || exp.type == "bool";
     }
 
     function num(exp) {
@@ -761,98 +902,98 @@ function optimize(exp) {
         exp.right = opt(exp.right);
         if (is_constant(exp.left) && is_constant(exp.right)) {
             switch (exp.operator) {
-              case "+":
-                changed();
-                return {
-                    type: "num",
-                    value: num(exp.left) + num(exp.right)
-                };
+                case "+":
+                    changed();
+                    return {
+                        type: "num",
+                        value: num(exp.left) + num(exp.right)
+                    };
 
-              case "-":
-                changed();
-                return {
-                    type: "num",
-                    value: num(exp.left) - num(exp.right)
-                };
+                case "-":
+                    changed();
+                    return {
+                        type: "num",
+                        value: num(exp.left) - num(exp.right)
+                    };
 
-              case "*":
-                changed();
-                return {
-                    type: "num",
-                    value: num(exp.left) * num(exp.right)
-                };
+                case "*":
+                    changed();
+                    return {
+                        type: "num",
+                        value: num(exp.left) * num(exp.right)
+                    };
 
-              case "/":
-                changed();
-                return {
-                    type: "num",
-                    value: num(exp.left) / div(exp.right)
-                };
+                case "/":
+                    changed();
+                    return {
+                        type: "num",
+                        value: num(exp.left) / div(exp.right)
+                    };
 
-              case "%":
-                changed();
-                return {
-                    type: "num",
-                    value: num(exp.left) % div(exp.right)
-                };
+                case "%":
+                    changed();
+                    return {
+                        type: "num",
+                        value: num(exp.left) % div(exp.right)
+                    };
 
-              case "<":
-                changed();
-                return {
-                    type: "bool",
-                    value: num(exp.left) < num(exp.right)
-                };
+                case "<":
+                    changed();
+                    return {
+                        type: "bool",
+                        value: num(exp.left) < num(exp.right)
+                    };
 
-              case ">":
-                changed();
-                return {
-                    type: "bool",
-                    value: num(exp.left) > num(exp.right)
-                };
+                case ">":
+                    changed();
+                    return {
+                        type: "bool",
+                        value: num(exp.left) > num(exp.right)
+                    };
 
-              case "<=":
-                changed();
-                return {
-                    type: "bool",
-                    value: num(exp.left) <= num(exp.right)
-                };
+                case "<=":
+                    changed();
+                    return {
+                        type: "bool",
+                        value: num(exp.left) <= num(exp.right)
+                    };
 
-              case ">=":
-                changed();
-                return {
-                    type: "bool",
-                    value: num(exp.left) >= num(exp.right)
-                };
+                case ">=":
+                    changed();
+                    return {
+                        type: "bool",
+                        value: num(exp.left) >= num(exp.right)
+                    };
 
-              case "==":
-                changed();
-                if (exp.left.type != exp.right.type)
-                    return FALSE;
-                return {
-                    type: "bool",
-                    value: exp.left.value === exp.right.value
-                };
+                case "==":
+                    changed();
+                    if (exp.left.type != exp.right.type)
+                        return FALSE;
+                    return {
+                        type: "bool",
+                        value: exp.left.value === exp.right.value
+                    };
 
-              case "!=":
-                changed();
-                if (exp.left.type != exp.right.type)
-                    return TRUE;
-                return {
-                    type: "bool",
-                    value: exp.left.value !== exp.right.value
-                };
+                case "!=":
+                    changed();
+                    if (exp.left.type != exp.right.type)
+                        return TRUE;
+                    return {
+                        type: "bool",
+                        value: exp.left.value !== exp.right.value
+                    };
 
-              case "||":
-                changed();
-                if (exp.left.value !== false)
-                    return exp.left;
-                return exp.right;
-
-              case "&&":
-                changed();
-                if (exp.left.value !== false)
+                case "||":
+                    changed();
+                    if (exp.left.value !== false)
+                        return exp.left;
                     return exp.right;
-                return FALSE;
+
+                case "&&":
+                    changed();
+                    if (exp.left.value !== false)
+                        return exp.right;
+                    return FALSE;
             }
         }
         return exp;
@@ -865,7 +1006,7 @@ function optimize(exp) {
                 // replace references to exp.left with references to
                 // exp.right, saving one var and the assignment.
                 changed();
-                exp.left.def.refs.forEach(function(node){
+                exp.left.def.refs.forEach(function(node) {
                     node.value = exp.right.value;
                 });
                 return opt(exp.right); // could be needed for the result.
@@ -909,8 +1050,8 @@ function optimize(exp) {
         if (!has_side_effects(exp.prog[0])) {
             changed();
             return opt({
-                type : "prog",
-                prog : exp.prog.slice(1)
+                type: "prog",
+                prog: exp.prog.slice(1)
             });
         }
         if (exp.prog.length == 2) return {
@@ -921,8 +1062,10 @@ function optimize(exp) {
         return opt({
             type: "prog",
             prog: [
-                exp.prog[0],
-                { type: "prog", prog: exp.prog.slice(1) }
+                exp.prog[0], {
+                    type: "prog",
+                    prog: exp.prog.slice(1)
+                }
             ]
         });
     }
@@ -939,29 +1082,29 @@ function optimize(exp) {
             func.unguarded = true;
         }
         return {
-            type : "call",
-            func : opt(func),
-            args : exp.args.map(opt)
+            type: "call",
+            func: opt(func),
+            args: exp.args.map(opt)
         };
     }
 
     function opt_lambda(f) {
         // λ(x...) y(x...)  ==>  y
         TCO: if (f.body.type == "call" &&
-                 f.body.func.type == "var" &&
-                 f.body.func.def.assigned == 0 &&
-                 f.body.func.env.parent &&
-                 f.vars.indexOf(f.body.func.value) < 0 &&
-                 f.vars.length == f.body.args.length) {
-            for (var i = 0; i < f.vars.length; ++i) {
-                var x = f.body.args[i];
-                if (x.type != "var" || x.value != f.vars[i])
-                    break TCO;
+                f.body.func.type == "var" &&
+                f.body.func.def.assigned == 0 &&
+                f.body.func.env.parent &&
+                f.vars.indexOf(f.body.func.value) < 0 &&
+                f.vars.length == f.body.args.length) {
+                for (var i = 0; i < f.vars.length; ++i) {
+                    var x = f.body.args[i];
+                    if (x.type != "var" || x.value != f.vars[i])
+                        break TCO;
+                }
+                changed();
+                return opt(f.body.func);
             }
-            changed();
-            return opt(f.body.func);
-        }
-        f.locs = f.locs.filter(function(name){
+        f.locs = f.locs.filter(function(name) {
             var def = f.env.get(name);
             return def.refs.length > 0;
         });
@@ -982,21 +1125,25 @@ function optimize(exp) {
         var func = exp.func;
         var argvalues = exp.args.map(opt);
         var body = opt(func.body);
+
         function rename(name) {
             var sym = name in defun.env.vars ? gensym(name + "$") : name;
             defun.locs.push(sym);
             defun.env.def(sym, true);
-            func.env.get(name).refs.forEach(function(ref){
+            func.env.get(name).refs.forEach(function(ref) {
                 ref.value = sym;
             });
             return sym;
         }
-        var prog = func.vars.map(function(name, i){
+        var prog = func.vars.map(function(name, i) {
             return {
-                type     : "assign",
-                operator : "=",
-                left     : { type: "var", value: rename(name) },
-                right    : argvalues[i] || FALSE
+                type: "assign",
+                operator: "=",
+                left: {
+                    type: "var",
+                    value: rename(name)
+                },
+                right: argvalues[i] || FALSE
             };
         });
         func.locs.forEach(rename);
@@ -1013,77 +1160,93 @@ function make_scope(exp) {
     exp.env = global;
     (function scope(exp, env) {
         switch (exp.type) {
-          case "num":
-          case "str":
-          case "bool":
-          case "raw":
-            break;
+            case "num":
+            case "str":
+            case "bool":
+            case "raw":
+                break;
 
-          case "var":
-            var s = env.lookup(exp.value);
-            if (!s) {
-                exp.env = global;
-                global.def(exp.value, { refs: [], assigned: 0 });
-            } else {
-                exp.env = s;
-            }
-            var def = exp.env.get(exp.value);
-            def.refs.push(exp);
-            exp.def = def;
-            break;
+            case "var":
+                var s = env.lookup(exp.value);
+                if (!s) {
+                    exp.env = global;
+                    global.def(exp.value, {
+                        refs: [],
+                        assigned: 0
+                    });
+                } else {
+                    exp.env = s;
+                }
+                var def = exp.env.get(exp.value);
+                def.refs.push(exp);
+                exp.def = def;
+                break;
 
-          case "not":
-            scope(exp.body, env);
-            break;
+            case "not":
+                scope(exp.body, env);
+                break;
 
-          case "assign":
-            scope(exp.left, env);
-            scope(exp.right, env);
-            if (exp.left.type == "var")
-                exp.left.def.assigned++;
-            break;
+            case "assign":
+                scope(exp.left, env);
+                scope(exp.right, env);
+                if (exp.left.type == "var")
+                    exp.left.def.assigned++;
+                break;
 
-          case "binary":
-            scope(exp.left, env);
-            scope(exp.right, env);
-            break;
+            case "binary":
+                scope(exp.left, env);
+                scope(exp.right, env);
+                break;
 
-          case "if":
-            scope(exp.cond, env);
-            scope(exp.then, env);
-            if (exp.else)
-                scope(exp.else, env);
-            break;
+            case "if":
+                scope(exp.cond, env);
+                scope(exp.then, env);
+                if (exp.else)
+                    scope(exp.else, env);
+                break;
 
-          case "prog":
-            exp.prog.forEach(function(exp){
-                scope(exp, env);
-            });
-            break;
+            case "prog":
+                exp.prog.forEach(function(exp) {
+                    scope(exp, env);
+                });
+                break;
 
-          case "call":
-            scope(exp.func, env);
-            exp.args.forEach(function(exp){
-                scope(exp, env);
-            });
-            break;
+            case "call":
+                scope(exp.func, env);
+                exp.args.forEach(function(exp) {
+                    scope(exp, env);
+                });
+                break;
 
-          case "lambda":
-            exp.env = env = env.extend();
-            if (exp.name)
-                env.def(exp.name, { refs: [], func: true, assigned: 0 });
-            exp.vars.forEach(function(name, i){
-                env.def(name, { refs: [], farg: true, assigned: 0, cont: i == 0 });
-            });
-            if (!exp.locs) exp.locs = [];
-            exp.locs.forEach(function(name){
-                env.def(name, { refs: [], floc: true, assigned: 0 });
-            });
-            scope(exp.body, env);
-            break;
+            case "lambda":
+                exp.env = env = env.extend();
+                if (exp.name)
+                    env.def(exp.name, {
+                        refs: [],
+                        func: true,
+                        assigned: 0
+                    });
+                exp.vars.forEach(function(name, i) {
+                    env.def(name, {
+                        refs: [],
+                        farg: true,
+                        assigned: 0,
+                        cont: i == 0
+                    });
+                });
+                if (!exp.locs) exp.locs = [];
+                exp.locs.forEach(function(name) {
+                    env.def(name, {
+                        refs: [],
+                        floc: true,
+                        assigned: 0
+                    });
+                });
+                scope(exp.body, env);
+                break;
 
-          default:
-            throw new Error("Can't handle node " + JSON.stringify(exp));
+            default:
+                throw new Error("Can't handle node " + JSON.stringify(exp));
         }
     })(exp, global);
     return exp.env;
@@ -1101,19 +1264,28 @@ function debug_js(exp) {
     sys.error("/*********************************************/");
 }
 
-var FALSE = { type: "bool", value: false };
-var TRUE = { type: "bool", value: true };
+var FALSE = {
+    type: "bool",
+    value: false
+};
+var TRUE = {
+    type: "bool",
+    value: true
+};
 
 /* -----[ stack guard ]----- */
 
 var STACKLEN, IN_EXECUTE = false;
+
 function GUARD(args, f) {
     if (--STACKLEN < 0) throw new Continuation(f, args);
 }
+
 function Continuation(f, args) {
     this.f = f;
     this.args = args;
 }
+
 function Execute(f, args) {
     if (IN_EXECUTE)
         return f.apply(null, args);
@@ -1122,7 +1294,7 @@ function Execute(f, args) {
         STACKLEN = 200;
         f.apply(null, args);
         break;
-    } catch(ex) {
+    } catch (ex) {
         if (ex instanceof Continuation) {
             f = ex.f, args = ex.args;
         } else {
@@ -1135,31 +1307,35 @@ function Execute(f, args) {
 
 /* -----[ NodeJS CLI test ]----- */
 
-if (typeof process != "undefined") (function(){
+if (typeof process != "undefined")(function() {
     var u2 = require("uglify-js");
     var sys = require("util");
     var print = function(k) {
         sys.puts([].slice.call(arguments, 1).join(" "));
         k(false);
     };
+
     function readStdin(callback) {
         var text = "";
         process.stdin.setEncoding("utf8");
-        process.stdin.on("readable", function(){
+        process.stdin.on("readable", function() {
             var chunk = process.stdin.read();
             if (chunk) text += chunk;
         });
-        process.stdin.on("end", function(){
+        process.stdin.on("end", function() {
             callback(text);
         });
     }
-    readStdin(function(code){
+    readStdin(function(code) {
         var ast = parse(TokenStream(InputStream(code)));
-        var cps = to_cps(ast, function(x){
+        var cps = to_cps(ast, function(x) {
             return {
                 type: "call",
-                func: { type: "var", value: "β_TOPLEVEL" },
-                args: [ x ]
+                func: {
+                    type: "var",
+                    value: "β_TOPLEVEL"
+                },
+                args: [x]
             };
         });
 
@@ -1174,7 +1350,7 @@ if (typeof process != "undefined") (function(){
         if (opt.env) {
             var vars = Object.keys(opt.env.vars);
             if (vars.length > 0) {
-                jsc = "var " + vars.map(function(name){
+                jsc = "var " + vars.map(function(name) {
                     return make_js({
                         type: "var",
                         value: name
@@ -1190,9 +1366,9 @@ if (typeof process != "undefined") (function(){
                 beautify: true,
                 indent_level: 2
             }));
-        } catch(ex) {
+        } catch (ex) {
             console.log(ex);
-            throw(ex);
+            throw (ex);
         }
 
         //sys.error(jsc);
@@ -1201,7 +1377,7 @@ if (typeof process != "undefined") (function(){
         var func = new Function("β_TOPLEVEL, GUARD, print, require, Execute", jsc);
         console.time("Runtime");
         Execute(func, [
-            function(result){
+            function(result) {
                 console.timeEnd("Runtime");
                 sys.error("***Result: " + result);
                 sys.error("*/");

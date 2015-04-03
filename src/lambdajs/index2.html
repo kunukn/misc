@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base target="_blank">
+    <title>How to implement a programming language in JavaScript</title>
+    <style type="text/css">
+    .result {
+        background-color: beige;
+        min-height: 100px;
+        max-width: 600px;
+    }
+    
+    .code {
+        background-color: #ddd;
+        max-width: 600px;
+    }
+    </style>
+</head>
+
+<body>
+    <h1>How to implement a programming language in JavaScript</h1>
+    <p>
+        <a href="http://lisperator.net/pltut/compiler/js-codegen">http://lisperator.net/pltut/compiler/js-codegen</a>
+    </p>
+    <strong>result</strong>
+    <div id='result' class="result"></div>
+    <script src='lambda.js'></script>
+    <pre class='code'>
+    window.print = function(arg) {
+        document.getElementById('result').innerHTML = arg;
+        return arg;
+    };
+
+    var code = "sum = lambda(x, y) print(x + y);";
+
+    var ast = parse(TokenStream(InputStream(code)));
+
+    var jsCodeAsString = make_js(ast);
+
+    // Parse js
+    var js_code = eval(jsCodeAsString);
+
+    // Execute it
+    js_code(2, 3);
+    </pre>
+    <script>
+    window.print = function(arg) {
+        document.getElementById('result').innerHTML = arg;
+        return arg;
+    };
+
+    var code = "sum = lambda(x, y) print(x + y);";
+
+    var ast = parse(TokenStream(InputStream(code)));
+
+    var jsCodeAsString = make_js(ast);
+
+    // Parse js
+    var js_code = eval(jsCodeAsString);
+
+    // Execute it
+    js_code(2, 3);
+    </script>
+</body>
+
+</html>
