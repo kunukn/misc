@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Angular UI router example</title>
+    <title>Single page app</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,8 +10,11 @@
     <script src="assets/scripts/lib/angular.js"></script>
     <script src="assets/scripts/lib/angular-ui-router.min.js"></script>
     <script>
-    document.write('<link rel="stylesheet" type="text/css" href="assets/styles/app/app.css?nocache=' + new Date().getTime() + '">');
-    document.write('<script src="assets/scripts/app/app.js?nocache=' + new Date().getTime() + '">\x3C/script>');
+    ! function() {
+    	var nocache = new Date().getTime();
+        document.write('<link rel="stylesheet" type="text/css" href="assets/styles/app/app.css?v=' + nocache + '">');
+        document.write('<script src="assets/scripts/app/app.js?v=' + nocache + '">\x3C/script>');
+    }();
     </script>
 </head>
 
