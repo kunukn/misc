@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Single page app</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/styles/lib/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/styles/app/app.css">
+    <!-- lib -->
+    <script src="assets/scripts/lib/jquery.min.js"></script>
+    <script>
+    $.noConflict();
+    </script>
+    <script src="assets/scripts/lib/angular.js"></script>
+    <script src="assets/scripts/lib/angular-ui-router.min.js"></script>
+    <!-- app -->
+    <script src="assets/scripts/app/app.js"></script>
+    <script src="assets/scripts/app/controllers/aboutCtrl.js"></script>
+    <script src="assets/scripts/app/controllers/homeCtrl.js"></script>
+    <script src="assets/scripts/app/services/friends.js"></script>
+</head>
+
+<body>
+    <div class="container" ng-app="app">
+        <header ng-include="'templates/nav.html'"></header>
+        <div ui-view></div>
+        <header ng-include="'templates/footer.html'"></header>
+    </div>
+</body>
+
+</html>
