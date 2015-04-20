@@ -1,3 +1,6 @@
+var appData = {title: 'angular testing'};
+
+
 (function() {
 
     var app =

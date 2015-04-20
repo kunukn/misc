@@ -7,6 +7,8 @@ angular
         $scope.selectedValue = 'contact';
 
         $scope.save = function(){
+            appData.friends = $scope.friends;
+
         	alert(JSON.stringify($scope.friends));
         }
     }]);
