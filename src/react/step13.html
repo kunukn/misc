@@ -7,6 +7,13 @@
     <script src="scripts/jquery-1.11.2.min.js"></script>
     <script src="scripts/marked.min.js"></script>
 
+
+<style>
+  .commentForm{
+    background-color: tomato;
+    padding: 1em;
+  }
+</style>
 </head>
 
 <body>
@@ -14,12 +21,23 @@
     <div id="content"></div>
     <script type="text/jsx">
 
+var data = [
+  {author: "Pete", text: "This is one comment"},
+  {author: "Jordan", text: "This is *another* comment"}
+];
+
 var CommentBox = React.createClass({
+  getInitialState: function() {
+    return {data: []};
+  },
+   componentDidMount: function() {
+    this.setState({data: data});
+  },
   render: function() {
     return (
       <div className="commentBox">
         <h1>Comments</h1>
-        <CommentList data={this.props.data} />
+        <CommentList data={this.state.data} />
         <CommentForm />
       </div>
     );
@@ -43,16 +61,6 @@ var CommentList = React.createClass({
   }
 });
 
-var CommentForm = React.createClass({
-  render: function() {
-    return (
-      <div className="commentForm">
-        Hello, world! I am a CommentForm.
-      </div>
-    );
-  }
-});
-
 var Comment = React.createClass({
   render: function() {
     var rawMarkup = marked(this.props.children.toString(), {sanitize: true});
@@ -67,14 +75,18 @@ var Comment = React.createClass({
   }
 });
 
-
-var data = [
-  {author: "Pete", text: "This is one comment"},
-  {author: "Jordan", text: "This is *another* comment"}
-];
+var CommentForm = React.createClass({
+  render: function() {
+    return (
+      <div className="commentForm">
+        Hello, world! I am a CommentForm.
+      </div>
+    );
+  }
+});
 
 React.render(
- <CommentBox data={data} />,
+ <CommentBox url="comments.json" />,
   document.getElementById('content')
 );
 
