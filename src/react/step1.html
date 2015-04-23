@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <title>Hello React</title>
+    <script src="//fb.me/react-0.12.2.js"></script>
+    <script src="//fb.me/JSXTransformer-0.12.2.js"></script>
+    <script src="//code.jquery.com/jquery-1.10.0.min.js"></script>
+
+</head>
+
+<body>
+ 
+    <div id="content"></div>
+    <script type="text/jsx">
+    
+var CommentBox = React.createClass({
+  render: function() {
+    return (
+      <div className="commentBox">
+        Hello, world! I am a CommentBox.
+      </div>
+    );
+  }
+});
+React.render(
+  <CommentBox />,
+  document.getElementById('content')
+);
+
+    </script>
+</body>
+
+</html>
