@@ -1,4 +1,4 @@
-var appData = {
+var app = {
     title: 'angular testing'
 };
 
@@ -8,12 +8,13 @@ var appData = {
     var app = angular
         .module('app', ['ui.router'])
 
-
     .run(
         ['$rootScope', '$state', '$stateParams',
             function($rootScope, $state, $stateParams) {
                 $rootScope.$state = $state;
                 $rootScope.$stateParams = $stateParams;
+
+                //$state.go($state.current, {}, {reload: true}); //second parameter is for $stateParams
             }
         ]
     )
@@ -27,11 +28,11 @@ var appData = {
                 url: '/',
                 templateUrl: 'templates/login.html',
                 controller: function($scope, $timeout) {
-                    //$state.go($state.current, {}, {reload: true}); //second parameter is for $stateParams
+
                     $scope.data = 'login';
 
                     (function update() {
-                        $timeout(update, 2000);
+                        $timeout(update, 5000);
                         $scope.data = 'login ' + new Date().getTime();
                     }());
 

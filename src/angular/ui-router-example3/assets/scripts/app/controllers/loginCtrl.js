@@ -1,7 +1,6 @@
 angular
     .module('app')
-    .controller('aboutCtrl', ['$scope','Friends', function($scope, Friends) {
-        $scope.title = "About";
-        $scope.friends = Friends.get();
+    .controller('loginCtrl', ['$scope', function($scope) {
+        $scope.title = "Login";
         $scope.items = ['a', 'b', 'c'];
     }]);
