@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
 
 <head>
-    <title>Single page app</title>
+    <title ng-bind="$state.current.name + ' - ui-router'">ui-router</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,17 +15,16 @@
     </script>
     <script src="assets/scripts/lib/angular.js"></script>
     <script src="assets/scripts/lib/angular-ui-router.min.js"></script>
+    <script src="assets/scripts/lib/modernizr.min.js"></script>
     <!-- app -->
     <script src="assets/scripts/app/app.js"></script>
-    <script src="assets/scripts/app/controllers/aboutCtrl.js"></script>
-    <script src="assets/scripts/app/controllers/homeCtrl.js"></script>
-    <script src="assets/scripts/app/services/friends.js"></script>
+    <script src="assets/scripts/app/controllers/frontpageCtrl.js"></script>
 </head>
 
 <body>
-    <div class="container" ng-app="app">
-        <header ng-include="'templates/nav.html'"></header>
-        <div ui-view></div>
+    <div class="body">
+        <header ng-include="'templates/header.html'"></header>
+        <div ui-view ui-sref-opts="{reload: true, notify: true}"></div>
         <footer ng-include="'templates/footer.html'"></footer>
     </div>
 </body>
