@@ -7,27 +7,23 @@ body {
   margin: 0 auto;
   max-width: 1400px; }
 
-/* line 10, app.scss */
+/* line 9, app.scss */
 .front-page {
   overflow: hidden; }
-  /* line 12, app.scss */
+  /* line 11, app.scss */
   .front-page .spot {
     width: 100%;
     float: left;
-    margin-bottom: 10px;
-    xbackground-color: #58a;
-    xmargin: 10px;
-    xpadding: 20px;
-    xmax-width: 300px; }
+    margin-bottom: 10px; }
     @media (min-width: 768px) {
-      /* line 12, app.scss */
+      /* line 11, app.scss */
       .front-page .spot {
         width: 49.99%; } }
     @media (min-width: 992px) {
-      /* line 12, app.scss */
+      /* line 11, app.scss */
       .front-page .spot {
         width: 33.33%; } }
-    /* line 28, app.scss */
+    /* line 22, app.scss */
     .front-page .spot > a {
       max-width: 90%;
       margin: 0 auto;
@@ -36,17 +32,17 @@ body {
       text-align: center;
       border: 1px solid black; }
 
-/* line 40, app.scss */
+/* line 34, app.scss */
 .login-page ul {
   list-style-type: none;
   margin: 0;
   padding: 0; }
-/* line 45, app.scss */
+/* line 39, app.scss */
 .login-page li {
   display: inline-block;
   padding: 30px;
   font-size: 200%; }
 
-/* line 52, app.scss */
+/* line 46, app.scss */
 .sub-page {
   background-color: beige; }
