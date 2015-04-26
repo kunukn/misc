@@ -1,15 +1,54 @@
 body {
-	//
+ 	background-color: white;
 }
-
 .body{
 	//
+	margin: 0 auto;
+	max-width: 1400px;
 }
 
-.special {
-    color: tomato;
+.front-page{
+	overflow: hidden;
+	.spot{
+		width: 100%;
+		@media (min-width: 768px){
+			width: 49.99%;
+		}
+		@media (min-width: 992px){
+			width: 33.33%;
+		}
+
+		float: left;
+		margin-bottom: 10px;
+		xbackground-color: #58a;
+		xmargin: 10px;
+		xpadding: 20px;
+		xmax-width: 300px;
+		
+		> a{
+			max-width: 90%;
+			margin: 0 auto;
+			display: block;
+			padding: 20px;
+			text-align: center;
+			border: 1px solid black;
+		}
+	}
 }
 
-.navbar {
-    border-radius: 0;
+.login-page{
+	ul{
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+	li{
+		display: inline-block;
+		padding: 30px;
+		font-size: 200%;
+	}
+}
+
+.sub-page{
+	background-color: beige;
 }

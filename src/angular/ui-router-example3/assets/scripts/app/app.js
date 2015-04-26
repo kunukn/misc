@@ -1,11 +1,11 @@
-var app = {
+window.app = {
     title: 'angular testing'
 };
 
 
 (function() {
 
-    var app = angular
+    var angularApp = angular
         .module('app', ['ui.router'])
 
     .run(
@@ -13,8 +13,6 @@ var app = {
             function($rootScope, $state, $stateParams) {
                 $rootScope.$state = $state;
                 $rootScope.$stateParams = $stateParams;
-
-                //$state.go($state.current, {}, {reload: true}); //second parameter is for $stateParams
             }
         ]
     )
@@ -26,38 +24,77 @@ var app = {
         $stateProvider
             .state('login', {
                 url: '/',
-                templateUrl: 'templates/login.html',
+                templateUrl: 'templates/login-page.html',
                 controller: function($scope, $timeout) {
 
                     $scope.data = 'login';
+                    $scope.setPerson = function(person){
+                        window.app.person = person;
+                    }
 
-                    (function update() {
-                        $timeout(update, 5000);
-                        $scope.data = 'login ' + new Date().getTime();
-                    }());
-
+                    // polling
+                    // (function update() {
+                    //     $timeout(update, 2000);
+                    //     $scope.data = 'login ' + new Date().getTime();
+                    // }());
                 }
             })
             .state('frontpage', {
                 url: '/frontpage',
-                templateUrl: 'templates/frontpage.html',
+                templateUrl: 'templates/front-page.html',
                 controller: function($scope) {
                     $scope.data = 'frontpage';
+                    $scope.person = window.app.person;
                 }
             })
             .state('subpage1', {
                 url: '/subpage1',
-                templateUrl: 'templates/subpage1.html',
+                templateUrl: 'templates/sub1-page.html',
                 controller: function($scope) {
-                    $scope.data = 'subpage1';
+                    $scope.data = 'sub1';
+                    $scope.person = window.app.person;
                 }
             })
             .state('subpage2', {
                 url: '/subpage2',
-                templateUrl: 'templates/subpage2.html',
+                templateUrl: 'templates/sub2-page.html',
                 controller: function($scope) {
-                    $scope.data = 'subpage2';
+                    $scope.data = 'sub2';
+                    $scope.person = window.app.person;
                 }
-            });
+            })
+            .state('subpage3', {
+                url: '/subpage3',
+                templateUrl: 'templates/sub3-page.html',
+                controller: function($scope) {
+                    $scope.data = 'sub3';
+                    $scope.person = window.app.person;
+                }
+            })
+            .state('subpage4', {
+                url: '/subpage4',
+                templateUrl: 'templates/sub4-page.html',
+                controller: function($scope) {
+                    $scope.data = 'sub4';
+                    $scope.person = window.app.person;
+                }
+            })
+            .state('subpage5', {
+                url: '/subpage5',
+                templateUrl: 'templates/sub5-page.html',
+                controller: function($scope) {
+                    $scope.data = 'sub5';
+                    $scope.person = window.app.person;
+                }
+            })
+            .state('subpage6', {
+                url: '/subpage6',
+                templateUrl: 'templates/sub6-page.html',
+                controller: function($scope) {
+                    $scope.data = 'sub6';
+                    $scope.person = window.app.person;
+                }
+            })
+            ;
     }]);
 })();

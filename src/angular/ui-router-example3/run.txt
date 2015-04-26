@@ -1,0 +1,1 @@
+browser-sync start --server --files "templates/*.html, assets/styles/app/*.css, assets/scritps/app/*.js"
