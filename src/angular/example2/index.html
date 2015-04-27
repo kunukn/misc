@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="nameApp">
+<html ng-app="app">
 
 <head>
     <base target="_blank">
@@ -9,30 +9,33 @@
     <title>Angular.js Example</title>
     <script src="angular.min.js"></script>
     <script>
-    var nameApp = angular.module('nameApp', []);
-    nameApp.controller('NameCtrl', function($scope) {
-        $scope.names = ['Larry', 'Curly', 'Moe'];
+    var app = angular.module('app', []);
 
-        $scope.addName = function() {
-            $scope.names.push($scope.enteredName);
-            $scope.enteredName = '';
-        };
+    app.controller('ItemCtrl', ['$scope', function($scope) {
+            $scope.items = ['a', 'b', 'c'];
 
-        $scope.removeName = function(name) {
-            var i = $scope.names.indexOf(name);
-            $scope.names.splice(i, 1);
-        };
-    });
+            $scope.addItem = function() {
+                $scope.items.push($scope.entered);
+                $scope.entered = '';
+            };
+
+            $scope.removeItem = function(item) {
+                var i = $scope.items.indexOf(item);
+                $scope.items.splice(i, 1);
+            };
+        }]
+
+    );
     </script>
 </head>
 
-<body ng-controller="NameCtrl">
+<body ng-controller="ItemCtrl">
     <ul>
-        <li ng-repeat="name in names">{{name}}
-            <a href="" ng-click="removeName(name)">remove</a></li>
+        <li ng-repeat="item in items">{{item}}
+            <a href="" ng-click="removeItem(item)">remove</a></li>
     </ul>
-    <form ng-submit="addName()">
-        <input type="text" ng-model="enteredName">
+    <form ng-submit="addItem()">
+        <input type="text" ng-model="entered">
         <input type="submit" value="add">
     </form>
 </body>
