@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="app">
+<html ng-app="app" lang="en">
 
 <head>
     <base target="_blank">
@@ -7,36 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Angular.js Example</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
     <script src="angular.min.js"></script>
-    <script>
-    var app = angular.module('app', []);
-
-    app.controller('ItemCtrl', ['$scope', function($scope) {
-            $scope.items = ['a', 'b', 'c'];
-
-            $scope.addItem = function() {
-                $scope.items.push($scope.entered);
-                $scope.entered = '';
-            };
-
-            $scope.removeItem = function(item) {
-                var i = $scope.items.indexOf(item);
-                $scope.items.splice(i, 1);
-            };
-        }]
-
-    );
-    </script>
+    <script src="index.js"></script>
 </head>
 
 <body ng-controller="ItemCtrl">
-    <ul>
-        <li ng-repeat="item in items">{{item}}
-            <a href="" ng-click="removeItem(item)">remove</a></li>
-    </ul>
+    <div ng-repeat="item in items" class="item">
+        <input type="text" /> <input type="text" /> <input type="text" /> <input type="text" />
+        <button type="button" ng-click="removeItem($index)" class="btn btn-default">Remove</button>
+    </div>
+
     <form ng-submit="addItem()">
-        <input type="text" ng-model="entered">
-        <input type="submit" value="add">
+        <button type="submit" class="btn btn-default">Add</button>
     </form>
 </body>
 

@@ -1,1 +1,1 @@
-autoreload-server ./ 8008
+browser-sync start --server --files "*.html, *.css, *.js"
