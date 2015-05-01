@@ -53,13 +53,13 @@
 
                     $scope.page = 'login';
                     $scope.setPerson = function(person) {
-                        if (person === 'person1'){
+                        if (person === 'person1') {
                             window.app.currentPerson = database.persons.person1;
                         }
-                        if (person === 'person2'){
+                        if (person === 'person2') {
                             window.app.currentPerson = database.persons.person2;
                         }
-                        if (person === 'person3'){
+                        if (person === 'person3') {
                             window.app.currentPerson = database.persons.person3;
                         }
                     }
@@ -75,50 +75,134 @@
             })
             .state('subpage1', {
                 url: '/subpage1',
-                templateUrl: 'templates/sub1-page.html',
-                controller: function($scope) {
-                    $scope.page = 'sub1';
-                    $scope.person = app.currentPerson;
+                views: {
+                    '': {
+                        templateUrl: 'templates/subpages/sub1-page.html',
+                        controller: function($scope) {
+                        }
+                    },
+                    'topbar-view@subpage1': {
+                        templateUrl: 'templates/subpages/topbar-view.html',
+                        controller: function($scope) {
+                            $scope.page = 'sub1';
+                        }
+                    },
+                    'person-view@subpage1': {
+                        templateUrl: 'templates/subpages/person-view.html',
+                        controller: function($scope) {
+                            $scope.person = app.currentPerson;
+                        }
+                    }
                 }
             })
             .state('subpage2', {
                 url: '/subpage2',
-                templateUrl: 'templates/sub2-page.html',
-                controller: function($scope) {
-                    $scope.page = 'sub2';
-                    $scope.person = app.currentPerson;
+                views: {
+                    '': {
+                        templateUrl: 'templates/subpages/sub2-page.html',
+                        controller: function($scope) {
+                        }
+                    },
+                    'topbar-view@subpage2': {
+                        templateUrl: 'templates/subpages/topbar-view.html',
+                        controller: function($scope) {
+                            $scope.page = 'sub2';
+                        }
+                    },
+                    'person-view@subpage2': {
+                        templateUrl: 'templates/subpages/person-view.html',
+                        controller: function($scope) {
+                            $scope.person = app.currentPerson;
+                        }
+                    }
                 }
             })
             .state('subpage3', {
                 url: '/subpage3',
-                templateUrl: 'templates/sub3-page.html',
-                controller: function($scope) {
-                    $scope.page = 'sub3';
-                    $scope.person = app.currentPerson;
+                views: {
+                    '': {
+                        templateUrl: 'templates/subpages/sub3-page.html',
+                        controller: function($scope) {
+                        }
+                    },
+                    'topbar-view@subpage3': {
+                        templateUrl: 'templates/subpages/topbar-view.html',
+                        controller: function($scope) {
+                            $scope.page = 'sub3';
+                        }
+                    },
+                    'person-view@subpage3': {
+                        templateUrl: 'templates/subpages/person-view.html',
+                        controller: function($scope) {
+                            $scope.person = app.currentPerson;
+                        }
+                    }
                 }
             })
             .state('subpage4', {
                 url: '/subpage4',
-                templateUrl: 'templates/sub4-page.html',
-                controller: function($scope) {
-                    $scope.page = 'sub4';
-                    $scope.person = app.currentPerson;
+                views: {
+                    '': {
+                        templateUrl: 'templates/subpages/sub4-page.html',
+                        controller: function($scope) {
+                        }
+                    },
+                    'topbar-view@subpage4': {
+                        templateUrl: 'templates/subpages/topbar-view.html',
+                        controller: function($scope) {
+                            $scope.page = 'sub4';
+                        }
+                    },
+                    'person-view@subpage4': {
+                        templateUrl: 'templates/subpages/person-view.html',
+                        controller: function($scope) {
+                            $scope.person = app.currentPerson;
+                        }
+                    }
                 }
             })
             .state('subpage5', {
                 url: '/subpage5',
-                templateUrl: 'templates/sub5-page.html',
-                controller: function($scope) {
-                    $scope.page = 'sub5';
-                    $scope.person = app.currentPerson;
+                views: {
+                    '': {
+                        templateUrl: 'templates/subpages/sub5-page.html',
+                        controller: function($scope) {
+                        }
+                    },
+                    'topbar-view@subpage5': {
+                        templateUrl: 'templates/subpages/topbar-view.html',
+                        controller: function($scope) {
+                            $scope.page = 'sub5';
+                        }
+                    },
+                    'person-view@subpage5': {
+                        templateUrl: 'templates/subpages/person-view.html',
+                        controller: function($scope) {
+                            $scope.person = app.currentPerson;
+                        }
+                    }
                 }
             })
             .state('subpage6', {
                 url: '/subpage6',
-                templateUrl: 'templates/sub6-page.html',
-                controller: function($scope) {
-                    $scope.page = 'sub6';
-                    $scope.person = app.currentPerson;
+                views: {
+                    '': {
+                        templateUrl: 'templates/subpages/sub6-page.html',
+                        controller: function($scope) {
+                        }
+                    },
+                    'topbar-view@subpage6': {
+                        templateUrl: 'templates/subpages/topbar-view.html',
+                        controller: function($scope) {
+                            $scope.page = 'sub6';
+                        }
+                    },
+                    'person-view@subpage6': {
+                        templateUrl: 'templates/subpages/person-view.html',
+                        controller: function($scope) {
+                            $scope.person = app.currentPerson;
+                        }
+                    }
                 }
             });
     }]);
