@@ -41,7 +41,11 @@
         ]
     )
 
-    .config(['$urlRouterProvider', '$stateProvider', '$locationProvider', function($urlRouterProvider, $stateProvider, $locationProvider) {
+    .config(['$urlRouterProvider', '$stateProvider', '$locationProvider', '$compileProvider', function($urlRouterProvider, $stateProvider, $locationProvider, $compileProvider) {
+
+        if (!location.host.match(/localhost/)) {
+            $compileProvider.debugInfoEnabled(false);
+        }
 
         $urlRouterProvider.otherwise('/');
 
@@ -83,13 +87,12 @@
                 }
             })
 
-            .state('subpage1', {
+        .state('subpage1', {
                 url: '/subpage1',
                 views: {
                     '': {
                         templateUrl: 'templates/subpages/sub1-page.html',
-                        controller: function($scope) {
-                        }
+                        controller: function($scope) {}
                     },
                     'topbar-view@subpage1': {
                         templateUrl: 'templates/subpages/topbar-view.html',
@@ -110,8 +113,7 @@
                 views: {
                     '': {
                         templateUrl: 'templates/subpages/sub2-page.html',
-                        controller: function($scope) {
-                        }
+                        controller: function($scope) {}
                     },
                     'topbar-view@subpage2': {
                         templateUrl: 'templates/subpages/topbar-view.html',
@@ -132,8 +134,7 @@
                 views: {
                     '': {
                         templateUrl: 'templates/subpages/sub3-page.html',
-                        controller: function($scope) {
-                        }
+                        controller: function($scope) {}
                     },
                     'topbar-view@subpage3': {
                         templateUrl: 'templates/subpages/topbar-view.html',
@@ -154,8 +155,7 @@
                 views: {
                     '': {
                         templateUrl: 'templates/subpages/sub4-page.html',
-                        controller: function($scope) {
-                        }
+                        controller: function($scope) {}
                     },
                     'topbar-view@subpage4': {
                         templateUrl: 'templates/subpages/topbar-view.html',
@@ -176,8 +176,7 @@
                 views: {
                     '': {
                         templateUrl: 'templates/subpages/sub5-page.html',
-                        controller: function($scope) {
-                        }
+                        controller: function($scope) {}
                     },
                     'topbar-view@subpage5': {
                         templateUrl: 'templates/subpages/topbar-view.html',
@@ -198,8 +197,7 @@
                 views: {
                     '': {
                         templateUrl: 'templates/subpages/sub6-page.html',
-                        controller: function($scope) {
-                        }
+                        controller: function($scope) {}
                     },
                     'topbar-view@subpage6': {
                         templateUrl: 'templates/subpages/topbar-view.html',
