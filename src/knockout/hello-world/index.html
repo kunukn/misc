@@ -8,9 +8,8 @@
     <meta name="description" content="Knockoutjs">
     <meta name="author" content="">
     <title>Knockoutjs</title>
-
     <style type="text/css">
-    .demo{
+    .demo {
         background-color: tomato;
     }
     </style>
@@ -21,7 +20,6 @@
     <p>
         In browser console type: app.demoViewModel.title('test')
     </p>
-
     <section class='demo' data-bind="with: demoViewModel">
         <h3 data-bind="text: title"></h3>
         <p data-bind="text: body"></p>
@@ -29,7 +27,33 @@
 
     <script src='..\js\knockout.min.js'></script>
     <script src='..\js\knockout.mapping-2.4.1.js'></script>
-    <script src='run-app.js'></script>
+    <script>
+    (function() {
 
+        function AppViewModel(model) {
+            this.demoViewModel = model.demoViewModel;
+        };
+
+        function DemoViewModel(model) {
+            this.title = model.title;
+            this.body = model.body;
+        };
+
+        var stub = {
+            demoViewModel: {
+                title: 'hello',
+                body: 'world'
+            }
+        };
+
+        var appViewModel = new AppViewModel(stub);
+
+        var appViewModelObservables = ko.mapping.fromJS(appViewModel);
+        ko.applyBindings(appViewModelObservables);
+        window.app = appViewModelObservables;
+
+    })();
+    </script>
 </body>
+
 </html>
