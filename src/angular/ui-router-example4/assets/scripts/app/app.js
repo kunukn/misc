@@ -2,12 +2,21 @@
 
 (function() {
     window.app = {
-        title: 'angular testing',
         database: {
             wizard1: {
-                date: '01.01.2015'
+                date: '01.01.2015',
+                parent: 'parent1',
+                workStatus: 'employed'
             },
-            data: ''
+            wizard2: {
+
+            },
+            wizard3: {
+
+            },
+            wizard4: {
+
+            }
         }
     };
 })();
@@ -45,13 +54,25 @@
                 url: '/',
                 templateUrl: 'templates/wizard/wizard1-page.html',
                 controller: function($scope, $timeout) {
-                    $scope.page = 'wizard1';
-                    $scope.date = app.database.wizard1.date;
-                    $scope.update = function(e) {
-                       // app.database.data = $scope.data;
+
+                    $scope.model = database.wizard1;
+                    $scope.dateChange = function() {
+                        //console.log(this);
+                        database.wizard1.date = this.model.date;
                     }
-                    $scope.dateChange = function(e) {
-                        app.database.wizard1.date = this.date;
+                    $scope.parentChange = function() {
+                        //console.log(this);
+                        database.wizard1.parent = this.model.parent;
+                    }
+                    $scope.workStatusChange = function() {
+                        //console.log(this);
+                        database.wizard1.workStatus = this.model.workStatus;
+                    }
+                    $scope.prevPage = function() {
+                        console.log('prevPage');
+                    }
+                    $scope.nextPage = function() {
+                        console.log('nextPage');
                     }
                 }
             })
@@ -59,15 +80,41 @@
                 url: '/wizard2',
                 templateUrl: 'templates/wizard/wizard2-page.html',
                 controller: function($scope, $timeout) {
-                    $scope.page = 'wizard2';
+                    $scope.model = database.wizard2;
+                    $scope.prevPage = function() {
+                        console.log('prevPage');
+                    }
+                    $scope.nextPage = function() {
+                        console.log('nextPage');
+                    }
                 }
             })
             .state('wizard3', {
                 url: '/wizard3',
                 templateUrl: 'templates/wizard/wizard3-page.html',
                 controller: function($scope, $timeout) {
-                    $scope.page = 'wizard3';
+                    $scope.model = database.wizard3;
+                    $scope.prevPage = function() {
+                        console.log('prevPage');
+                    }
+                    $scope.nextPage = function() {
+                        console.log('nextPage');
+                    }
                 }
-            });
+            })
+            .state('wizard4', {
+                url: '/wizard4',
+                templateUrl: 'templates/wizard/wizard4-page.html',
+                controller: function($scope, $timeout) {
+                    $scope.model = database.wizard4;
+                    $scope.prevPage = function() {
+                        console.log('prevPage');
+                    }
+                    $scope.nextPage = function() {
+                        console.log('nextPage');
+                    }
+                }
+            })
+            ;
     }]);
 })();

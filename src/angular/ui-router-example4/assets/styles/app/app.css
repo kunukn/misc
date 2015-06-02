@@ -1,22 +1,22 @@
 /*------------------GENEREL---------------------*/
-
 @viewport {
     width: 320px auto;
 }
 
-/** {
-    margin: 0;
-    padding: 0;
-    vertical-align: top;
+/*{
+    margin:0;
+    padding:0;
+    vertical-align:top;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-}*/
+}   */
 
 html,
 body {
     height: 100%;
 }
+
 
 a img {
     border: none;
@@ -25,8 +25,9 @@ a img {
 .btn {
     min-width: 100px;
 }
-/*------------------HEADER---------------------*/
 
+
+/*------------------HEADER---------------------*/
 header {
     border-bottom: 1px solid #a0bb70;
     padding: 5px;
@@ -34,16 +35,26 @@ header {
     text-align: right;
 }
 
-header img {
-    width: 100%;
-    max-width: 70px;
-}
+
+    header img {
+        width: 100%;
+        max-width: 70px;
+    }
+
+
 /*------------------CONTENT---------------------*/
 
-.plannerContainer {
+.planner-container {
     min-height: 100%;
     position: relative;
 }
+
+    .planner-container * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        vertical-align: top;
+    }
 
 .wrapper {
     padding: 30px 0 150px 0;
@@ -53,19 +64,21 @@ header img {
     position: relative;
 }
 
-.wrapper ul {
-    list-style: none;
-    margin-left: 0;
-}
 
-.wrapper .info {
-    background-color: #fcf1bd;
-    border: 1px solid #fad48c;
-    padding: 10px;
-    margin-bottom: 30px;
-}
+    .wrapper ul {
+        list-style: none;
+        margin-left: 0;
+    }
+
+    .wrapper .info {
+        background-color: #fcf1bd;
+        border: 1px solid #fad48c;
+        padding: 10px;
+        margin-bottom: 30px;
+    }
+
+
 /*Planner*/
-
 .planner article {
     background-color: #f5f5f5;
     border: 1px solid #E3E3E3;
@@ -73,14 +86,18 @@ header img {
     padding: 10px;
 }
 
+
 .planner div,
 .planner form {
     display: inline-block;
 }
 
+
 .planner div {
     width: 60%;
 }
+
+
 
 .planner form {
     width: 39%;
@@ -91,89 +108,117 @@ header img {
     margin-left: 10px;
 }
 
-.planner .radio,
-.planner .checkbox {
+.planner .radio, .planner .checkbox {
     margin-bottom: 3px;
 }
+
+
 /*timeline*/
+
+.timeline-end article,
+.timeline article {
+    display: inline-block;
+}
 
 .timeline {
     background: #DBEEEC;
     border: #A7D6C7;
 }
 
-.timeline article {
-    display: inline-block;
-    padding: 20px;
-    color: #fff;
+.timeline-end {
+    margin: 20px 0;
 }
 
-.threeElements article {
+
+
+
+.timeline article {
+    padding: 6px 20px;
+    color: #fff;
+    text-align: center;
+}
+
+.timeline-end article span {
+    padding: 5px 20px;
+}
+
+.three-elements article {
     width: 32.9%;
 }
 
+.four-elements article {
+    width: 24.6%;
+}
+
+.six-elements article {
+    width: 16.2%;
+}
+
 .blue {
-    background: -webkit-linear-gradient(top, #386d79, #305d68);
+    background: -webkit-linear-gradient(top,#386d79,#305d68);
 }
 
 .green {
-    background: -webkit-linear-gradient(top, #46650e, #46650e);
+    background: -webkit-linear-gradient(top,#46650e,#46650e);
 }
 
-.lightGreen {
+.light-green {
     background: #DEEAC8;
     border: #AFC686;
     color: #333;
 }
+
+
 /*tapcontent*/
 
 .tabContent {
     position: relative;
 }
+
+
 /*timeline*/
 
-.infoBoxEnd,
+
 .infoBox {
     padding: 15px;
     position: relative;
-}
-
-.infoBox {
     background: #DBEEEC;
     border: #A7D6C7;
     margin-top: 30px;
 }
 
-.infoBoxEnd {}
 
-.infoBox div {
-    margin-left: 50px;
-}
 
-.infoBox .icon-info-sign {
-    font-size: 4em;
-    position: absolute;
-    top: 20px;
-    left: 12px;
-}
 
-.infoBoxEnd article,
-.infoBox article {
-    display: inline-block;
-    padding: 15px;
-}
 
-.infoBox article {
-    width: 49%;
-}
+    .infoBox div {
+        margin-left: 50px;
+    }
 
-.infoBoxEnd article {
-    width: 20%;
-}
 
-.infoBox article:first-child {
-    border-right: 1px solid #A7D6C7;
-}
+
+    .infoBox .icon-info-sign {
+        font-size: 4em;
+        position: absolute;
+        top: 20px;
+        left: 12px;
+    }
+
+
+
+    .infoBox article {
+        display: inline-block;
+        padding: 15px;
+        width: 49%;
+    }
+
+
+
+
+
+        .infoBox article:first-child {
+            border-right: 1px solid #A7D6C7;
+        }
 
 .icons {
     position: absolute;
@@ -181,27 +226,29 @@ header img {
     top: 0;
 }
 
-.icons li {
-    display: inline-block;
-    margin: 0 14px;
-    font-size: 1.5em;
-}
+    .icons li {
+        display: inline-block;
+        margin: 0 14px;
+        font-size: 1.5em;
+    }
 
-.topText {
+
+
+.top-text {
     position: relative;
 }
 
-.topText h1 {
-    font-weight: bold;
-    line-height: 30px;
-    font-size: 28px;
-}
+    .top-text h1 {
+        font-weight: bold;
+        line-height: 30px;
+        font-size: 28px;
+    }
 
-.topText button {
-    position: absolute;
-    top: 0;
-    right: 0;
-}
+    .top-text button {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
 
 .result li {
     display: inline-block;
@@ -209,41 +256,50 @@ header img {
     width: 17%;
 }
 
-.result li:last-child {
-    margin-right: 0;
-    width: 20%;
-}
+    .result li:last-child {
+        margin-right: 0;
+        width: 20%;
+    }
 
-.result li span {
-    border: 1px solid #182E33;
-    border-radius: 5px;
-    padding: 5px 10px;
-    display: block;
-    line-height: 17px;
-}
 
-.tabNavigation {
+    .result li span {
+        border: 1px solid #182E33;
+        border-radius: 5px;
+        padding: 5px 10px;
+        display: block;
+        line-height: 17px;
+    }
+
+
+.tab-navigation {
     position: relative;
     margin-top: 30px;
 }
 
-.tabNavigation a {
-    position: absolute;
-}
+    .tab-navigation a {
+        position: absolute;
+    }
 
-.tabNavigation::after {
-    content: "";
-    display: block;
-    padding-bottom: 3%;
-}
+    .tab-navigation::after {
+        content: "";
+        display: block;
+        padding-bottom: 3%;
+    }
 
-.tabNavigation .btn-blue {
-    left: 0;
-}
 
-.tabNavigation .btn-oim {
-    right: 0;
-}
+
+    .tab-navigation .btn-blue {
+        left: 0;
+    }
+
+    .tab-navigation .btn-oim {
+        right: 0;
+    }
+
+
+
+
+
 /*------------------FOOTER---------------------*/
 
 footer {

@@ -1,6 +1,8 @@
-<div class="plannerContainer">
+<pre data-info="this is for debugging" xstyle="display:none">{{model|json}}</pre>
+
+<div class="planner-container">
     <header>
-        <img src="https://www.borger.dk/Style%20Library/gfx/logo-mini.png" alt="borger.dk's logo">
+        <img src="assets/borger-dk/img/logo-mini.png" alt="borger.dk's logo">
     </header>
     <section class="wrapper">
         <h1>Velkommen</h1> Her kan du lave en barselsplan og afprøve forskellige muligheder for at afholde din barsel
@@ -13,11 +15,11 @@
                 <form>
                     <label class="radio">
                         Mor til barnet
-                        <input type="radio" name="option" id="option1" value="o1" checked>
+                        <input type="radio" data-ng-model="model.parent" data-ng-change="parentChange()" name="option" id="option1" value="parent1">
                     </label>
                     <label class="radio">
                         Anden forælder
-                        <input type="radio" name="option" id="option2" value="o2">
+                        <input type="radio" data-ng-model="model.parent" data-ng-change="parentChange()" name="option" id="option2" value="parent2">
                     </label>
                 </form>
             </article>
@@ -25,7 +27,7 @@
                 <div>Først skal du indtaste den forventede fødselsdato / terminsdato</div>
                 <form>
                     <label class="radio">
-                        <input type="text" placeholder="Dato"  data-ng-model="date" data-ng-change="dateChange()">
+                        <input type="text" placeholder="Dato" data-ng-model="model.date" data-ng-change="dateChange()">
                     </label>
                 </form>
             </article>
@@ -34,15 +36,15 @@
                 <form>
                     <label class="radio">
                         Lønmodtager
-                        <input type="radio" name="option" id="option1" value="o1" checked>
+                        <input type="radio" data-ng-model="model.workStatus" data-ng-change="workStatusChange()" name="option" id="option1" value="employed">
                     </label>
                     <label class="radio">
                         Selvstændig
-                        <input type="radio" name="option" id="option2" value="o2">
+                        <input type="radio" data-ng-model="model.workStatus" data-ng-change="workStatusChange()" name="option" id="option2" value="independent">
                     </label>
                     <label class="radio">
                         Ledig
-                        <input type="radio" name="option" id="option2" value="o2">
+                        <input type="radio" data-ng-model="model.workStatus" data-ng-change="workStatusChange()" name="option" id="option2" value="unemployed">
                     </label>
                 </form>
             </article>
@@ -72,9 +74,9 @@
                 </form>
             </article>
         </section>
-        <ul class="tabNavigation">
+        <ul class="tab-navigation">
             <li></li>
-            <li><a ui-sref="wizard2" class="btn btn-oim" data-ng-click='update()'>Næste</a></li>
+            <li><a ui-sref="wizard2" class="btn btn-oim" data-ng-click='nextPage()'>Næste</a></li>
         </ul>
     </section>
     <footer>
