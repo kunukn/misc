@@ -3,22 +3,8 @@
 (function() {
     window.app = {
         title: 'angular testing',
-        currentPerson: {},
         database: {
-            persons: {
-                person1: {
-                    name: 'joe',
-                    age: 20
-                },
-                person2: {
-                    name: 'jim',
-                    age: 30
-                },
-                person3: {
-                    name: 'jack',
-                    age: 40
-                }
-            }
+            data: 'some data'
         }
     };
 })();
@@ -52,165 +38,29 @@
         // $locationProvider.html5Mode(true);
 
         $stateProvider
-            .state('welcome', {
+            .state('wizard1', {
                 url: '/',
-                templateUrl: 'templates/welcome-page.html',
-                controller: function($scope) {
-                    $scope.page = 'welcome';
-                }
-            })
-            .state('login', {
-                url: '/login',
-                templateUrl: 'templates/login-page.html',
+                templateUrl: 'templates/wizard/wizard1-page.html',
                 controller: function($scope, $timeout) {
-
-                    $scope.page = 'login';
-                    $scope.setPerson = function(person) {
-                        if (person === 'person1') {
-                            window.app.currentPerson = database.persons.person1;
-                        }
-                        if (person === 'person2') {
-                            window.app.currentPerson = database.persons.person2;
-                        }
-                        if (person === 'person3') {
-                            window.app.currentPerson = database.persons.person3;
-                        }
+                    $scope.page = 'wizard1';
+                    $scope.data = app.database.data;
+                    $scope.update = function() {
+                        app.database.data = $scope.data;
                     }
                 }
             })
-            .state('frontpage', {
-                url: '/frontpage',
-                templateUrl: 'templates/front-page.html',
-                controller: function($scope) {
-                    $scope.page = 'frontpage';
-                    $scope.person = app.currentPerson;
+            .state('wizard2', {
+                url: '/wizard2',
+                templateUrl: 'templates/wizard/wizard2-page.html',
+                controller: function($scope, $timeout) {
+                    $scope.page = 'wizard2';
                 }
             })
-
-        .state('subpage1', {
-                url: '/subpage1',
-                views: {
-                    '': {
-                        templateUrl: 'templates/subpages/sub1-page.html',
-                        controller: function($scope) {}
-                    },
-                    'topbar-view@subpage1': {
-                        templateUrl: 'templates/subpages/topbar-view.html',
-                        controller: function($scope) {
-                            $scope.page = 'sub1';
-                        }
-                    },
-                    'person-view@subpage1': {
-                        templateUrl: 'templates/subpages/person-view.html',
-                        controller: function($scope) {
-                            $scope.person = app.currentPerson;
-                        }
-                    }
-                }
-            })
-            .state('subpage2', {
-                url: '/subpage2',
-                views: {
-                    '': {
-                        templateUrl: 'templates/subpages/sub2-page.html',
-                        controller: function($scope) {}
-                    },
-                    'topbar-view@subpage2': {
-                        templateUrl: 'templates/subpages/topbar-view.html',
-                        controller: function($scope) {
-                            $scope.page = 'sub2';
-                        }
-                    },
-                    'person-view@subpage2': {
-                        templateUrl: 'templates/subpages/person-view.html',
-                        controller: function($scope) {
-                            $scope.person = app.currentPerson;
-                        }
-                    }
-                }
-            })
-            .state('subpage3', {
-                url: '/subpage3',
-                views: {
-                    '': {
-                        templateUrl: 'templates/subpages/sub3-page.html',
-                        controller: function($scope) {}
-                    },
-                    'topbar-view@subpage3': {
-                        templateUrl: 'templates/subpages/topbar-view.html',
-                        controller: function($scope) {
-                            $scope.page = 'sub3';
-                        }
-                    },
-                    'person-view@subpage3': {
-                        templateUrl: 'templates/subpages/person-view.html',
-                        controller: function($scope) {
-                            $scope.person = app.currentPerson;
-                        }
-                    }
-                }
-            })
-            .state('subpage4', {
-                url: '/subpage4',
-                views: {
-                    '': {
-                        templateUrl: 'templates/subpages/sub4-page.html',
-                        controller: function($scope) {}
-                    },
-                    'topbar-view@subpage4': {
-                        templateUrl: 'templates/subpages/topbar-view.html',
-                        controller: function($scope) {
-                            $scope.page = 'sub4';
-                        }
-                    },
-                    'person-view@subpage4': {
-                        templateUrl: 'templates/subpages/person-view.html',
-                        controller: function($scope) {
-                            $scope.person = app.currentPerson;
-                        }
-                    }
-                }
-            })
-            .state('subpage5', {
-                url: '/subpage5',
-                views: {
-                    '': {
-                        templateUrl: 'templates/subpages/sub5-page.html',
-                        controller: function($scope) {}
-                    },
-                    'topbar-view@subpage5': {
-                        templateUrl: 'templates/subpages/topbar-view.html',
-                        controller: function($scope) {
-                            $scope.page = 'sub5';
-                        }
-                    },
-                    'person-view@subpage5': {
-                        templateUrl: 'templates/subpages/person-view.html',
-                        controller: function($scope) {
-                            $scope.person = app.currentPerson;
-                        }
-                    }
-                }
-            })
-            .state('subpage6', {
-                url: '/subpage6',
-                views: {
-                    '': {
-                        templateUrl: 'templates/subpages/sub6-page.html',
-                        controller: function($scope) {}
-                    },
-                    'topbar-view@subpage6': {
-                        templateUrl: 'templates/subpages/topbar-view.html',
-                        controller: function($scope) {
-                            $scope.page = 'sub6';
-                        }
-                    },
-                    'person-view@subpage6': {
-                        templateUrl: 'templates/subpages/person-view.html',
-                        controller: function($scope) {
-                            $scope.person = app.currentPerson;
-                        }
-                    }
+            .state('wizard3', {
+                url: '/wizard3',
+                templateUrl: 'templates/wizard/wizard3-page.html',
+                controller: function($scope, $timeout) {
+                    $scope.page = 'wizard3';
                 }
             });
     }]);
