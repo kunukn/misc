@@ -1,7 +1,92 @@
-<div>
-    <h1>{{page}}</h1>
-
-	<a ui-sref="wizard1">previews</a>
-    <a ui-sref="wizard3">next</a>
-
+<div class="plannerContainer">
+    <!--Header-->
+    <header>
+        <img src="https://www.borger.dk/Style%20Library/gfx/logo-mini.png" alt="borger.dk's logo">
+    </header>
+    <!--Wrapper-->
+    <section class="wrapper">
+        <!--Tabs-->
+        <section class="tabContent">
+            <!--Right icons-->
+            <ul class="icons">
+                <li><i class="icon-envelope"></i> </li>
+                <li><i class="icon-print"></i></li>
+                <li><i class="icon-save"></i> </li>
+            </ul>
+            <article class="tabbable">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="index1.html">Mor</a></li>
+                    <li><a href="far/index6.html">Anden forælder</a></li>
+                </ul>
+                <article class="tab-content">
+                    <section class="topText">
+                        <h1>Benyttet barsel</h1>
+                        <button class="btn btn-gray">Vis i kalender <i class="icon-calendar"></i></button>
+                    </section>
+                    <!--Content Result-->
+                    <ul class="result">
+                        <li>
+                            <span>
+				1. barselsdag<br>
+				 12.12-2010
+			 </span>
+                        </li>
+                        <li>
+                            <span>
+				Fødselsdato/termin<br>
+			12.12-2010
+			</span>
+                        </li>
+                        <li>
+                            <span>
+				Sidste dag med løn<br>
+				12.12-2010
+			</span>
+                        </li>
+                        <li>
+                            <span>
+				Sidste barselsdag<br>
+				12.12-2010
+			</span>
+                        </li>
+                    </ul>
+                    <!--Timeline-->
+                    <section class="timeline">
+                        <article class="blue">
+                            4 uger Graviditetsorlov
+                        </article>
+                        <article>
+                        </article>
+                        <article>
+                        </article>
+                        <article>
+                        </article>
+                    </section>
+                    <section class="infoBox">
+                        <article>
+                            <div>
+                                <i class="icon-info-sign"></i> Du har ret til at gå på barsel 4 uger før termin. Føder du senere bliver orloven forlænget, føder du før bliver den forkortet. Du kan gå fra før men der vil du ikke være berettiget til barselsdagpenge.
+                            </div>
+                        </article>
+                        <article>
+                        </article>
+                        <a href="../index1.html">Start forfra</a>
+                    </section>
+                    <ul class="tabNavigation">
+                        <li>
+                            <a ui-sref="wizard1" class="btn btn-blue" data-ng-click=''>Forrige</a>
+                        </li>
+                        <li>
+                            <a ui-sref="wizard3" class="btn btn-oim" data-ng-click=''>Næste</a>
+                        </li>
+                    </ul>
+                </article>
+            </article>
+        </section>
+    </section>
+    <!--Footer-->
+    <footer>
+        Udbetaling Danmark Barseldagpenge Kongens Vænge 8 - 3400 Hillerød
+        <i class="icon icon-phone"></i> 7012 8064 <i class="icon icon-time"></i> Åbningstider
+    </footer>
 </div>

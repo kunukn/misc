@@ -1,16 +1,23 @@
 <!DOCTYPE html>
-<html ng-app="app" lang="da">
+<html data-ng-app="app" lang="da">
 
 <head>
-    <title ng-bind="$state.current.name + '' ">ui-router</title>
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" type="text/css" href="css/ie.css"/>
+    <![endif]-->
     <meta charset="utf-8">
+    <title ng-bind="$state.current.name + '' ">Portalservice linkskabelon</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <base href="/">
 
-    <link rel="stylesheet" href="assets/borger-dk/styles/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="assets/borger-dk/styles/bdk-app-master.min.css" type="text/css">
+    <link rel="stylesheet" href="assets/borger-dk/styles/bdk-app-master.min.css">
+     
     <link rel="stylesheet" href="assets/styles/app/app.css">
+    <!-- 
+    <link href="https://www.borger.dk/Style%20Library/css/bdk-app-master.min.css" rel="stylesheet">
+ -->
+
     <!-- lib -->
     <!--
     <script src="assets/scripts/lib/jquery.min.js"></script>
@@ -26,11 +33,16 @@
 </head>
 
 <body>
-    <div class="body">
+
+        <!--
         <header ng-include="'templates/header-view.html'"></header>
+        -->
         <div ui-view></div>
+        <!--
         <footer ng-include="'templates/footer-view.html'"></footer>
-    </div>
+        -->
+
+
 </body>
 
 </html>

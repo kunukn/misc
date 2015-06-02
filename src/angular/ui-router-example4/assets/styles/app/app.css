@@ -1,73 +1,258 @@
-/* line 1, app.scss */
+/*------------------GENEREL---------------------*/
+
+@viewport {
+    width: 320px auto;
+}
+
+/** {
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}*/
+
+html,
 body {
-  background-color: white; }
+    height: 100%;
+}
 
-/* line 5, app.scss */
-.body {
-  margin: 0 auto;
-  max-width: 1400px; }
+a img {
+    border: none;
+}
 
-/* line 10, app.scss */
-.primary-link {
-  text-transform: uppercase;
-  padding: 10px;
-  color: white;
-  background-color: #777; }
-  /* line 15, app.scss */
-  .primary-link:hover, .primary-link:focus {
-    text-decoration: none;
-    color: white; }
+.btn {
+    min-width: 100px;
+}
+/*------------------HEADER---------------------*/
 
-/* line 21, app.scss */
-.header-view {
-  margin-bottom: 10px; }
-  /* line 23, app.scss */
-  .header-view > .title {
-    display: inline-block;
-    margin-right: 20px; }
+header {
+    border-bottom: 1px solid #a0bb70;
+    padding: 5px;
+    margin: 0 20px;
+    text-align: right;
+}
 
-/* line 34, app.scss */
-.front-page {
-  overflow: hidden; }
-  /* line 36, app.scss */
-  .front-page .spot {
+header img {
     width: 100%;
-    float: left;
-    margin-bottom: 10px; }
-    @media (min-width: 768px) {
-      /* line 36, app.scss */
-      .front-page .spot {
-        width: 49.99%; } }
-    @media (min-width: 992px) {
-      /* line 36, app.scss */
-      .front-page .spot {
-        width: 33.33%; } }
-    /* line 46, app.scss */
-    .front-page .spot > a {
-      max-width: 90%;
-      margin: 0 auto;
-      display: block;
-      padding: 20px;
-      text-align: center;
-      border: 1px solid black; }
+    max-width: 70px;
+}
+/*------------------CONTENT---------------------*/
 
-/* line 58, app.scss */
-.login-page ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0; }
-/* line 63, app.scss */
-.login-page li {
-  display: inline-block;
-  padding: 30px;
-  font-size: 200%; }
+.plannerContainer {
+    min-height: 100%;
+    position: relative;
+}
 
-/* line 70, app.scss */
-.sub-page {
-  background-color: beige; }
-  /* line 72, app.scss */
-  .sub-page h1 {
-    display: inline-block; }
-  /* line 75, app.scss */
-  .sub-page__back-button {
-    float: right; }
+.wrapper {
+    padding: 30px 0 150px 0;
+    width: 100%;
+    max-width: 980px;
+    margin: 5px auto;
+    position: relative;
+}
+
+.wrapper ul {
+    list-style: none;
+    margin-left: 0;
+}
+
+.wrapper .info {
+    background-color: #fcf1bd;
+    border: 1px solid #fad48c;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+/*Planner*/
+
+.planner article {
+    background-color: #f5f5f5;
+    border: 1px solid #E3E3E3;
+    margin: 30px 0;
+    padding: 10px;
+}
+
+.planner div,
+.planner form {
+    display: inline-block;
+}
+
+.planner div {
+    width: 60%;
+}
+
+.planner form {
+    width: 39%;
+    margin: 0;
+}
+
+.planner .icon-question-sign {
+    margin-left: 10px;
+}
+
+.planner .radio,
+.planner .checkbox {
+    margin-bottom: 3px;
+}
+/*timeline*/
+
+.timeline {
+    background: #DBEEEC;
+    border: #A7D6C7;
+}
+
+.timeline article {
+    display: inline-block;
+    padding: 20px;
+    color: #fff;
+}
+
+.threeElements article {
+    width: 32.9%;
+}
+
+.blue {
+    background: -webkit-linear-gradient(top, #386d79, #305d68);
+}
+
+.green {
+    background: -webkit-linear-gradient(top, #46650e, #46650e);
+}
+
+.lightGreen {
+    background: #DEEAC8;
+    border: #AFC686;
+    color: #333;
+}
+/*tapcontent*/
+
+.tabContent {
+    position: relative;
+}
+/*timeline*/
+
+.infoBoxEnd,
+.infoBox {
+    padding: 15px;
+    position: relative;
+}
+
+.infoBox {
+    background: #DBEEEC;
+    border: #A7D6C7;
+    margin-top: 30px;
+}
+
+.infoBoxEnd {}
+
+.infoBox div {
+    margin-left: 50px;
+}
+
+.infoBox .icon-info-sign {
+    font-size: 4em;
+    position: absolute;
+    top: 20px;
+    left: 12px;
+}
+
+.infoBoxEnd article,
+.infoBox article {
+    display: inline-block;
+    padding: 15px;
+}
+
+.infoBox article {
+    width: 49%;
+}
+
+.infoBoxEnd article {
+    width: 20%;
+}
+
+.infoBox article:first-child {
+    border-right: 1px solid #A7D6C7;
+}
+
+.icons {
+    position: absolute;
+    right: -34px;
+    top: 0;
+}
+
+.icons li {
+    display: inline-block;
+    margin: 0 14px;
+    font-size: 1.5em;
+}
+
+.topText {
+    position: relative;
+}
+
+.topText h1 {
+    font-weight: bold;
+    line-height: 30px;
+    font-size: 28px;
+}
+
+.topText button {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.result li {
+    display: inline-block;
+    margin-right: 10px;
+    width: 17%;
+}
+
+.result li:last-child {
+    margin-right: 0;
+    width: 20%;
+}
+
+.result li span {
+    border: 1px solid #182E33;
+    border-radius: 5px;
+    padding: 5px 10px;
+    display: block;
+    line-height: 17px;
+}
+
+.tabNavigation {
+    position: relative;
+    margin-top: 30px;
+}
+
+.tabNavigation a {
+    position: absolute;
+}
+
+.tabNavigation::after {
+    content: "";
+    display: block;
+    padding-bottom: 3%;
+}
+
+.tabNavigation .btn-blue {
+    left: 0;
+}
+
+.tabNavigation .btn-oim {
+    right: 0;
+}
+/*------------------FOOTER---------------------*/
+
+footer {
+    position: absolute;
+    width: 98%;
+    bottom: 0;
+    height: 100px;
+    border-top: 1px solid #a0bb70;
+    text-align: center;
+    margin: 0 20px 14px 20px;
+    padding-top: 14px;
+}

@@ -1,9 +1,84 @@
-<div>
-
-    <h1>{{page}}</h1>
-	
-	<input ng-model="data" type="text" />
-	
-	<a ui-sref="wizard2" ng-click='update()'>next</a>
-
+<div class="plannerContainer">
+    <header>
+        <img src="https://www.borger.dk/Style%20Library/gfx/logo-mini.png" alt="borger.dk's logo">
+    </header>
+    <section class="wrapper">
+        <h1>Velkommen</h1> Her kan du lave en barselsplan og afprøve forskellige muligheder for at afholde din barsel
+        <article class="info">
+            Bemærk den plan du her kan afprøve kan du ikke bruge videre men kun printe eller sende til dig selv. Hvis du allerede har en barselssag kan du istedet logge ind din barseelsplan på borger.dk
+        </article>
+        <section class="planner">
+            <article>
+                <div>Hvem er du<i class="icon-question-sign"></i></div>
+                <form>
+                    <label class="radio">
+                        Mor til barnet
+                        <input type="radio" name="option" id="option1" value="o1" checked>
+                    </label>
+                    <label class="radio">
+                        Anden forælder
+                        <input type="radio" name="option" id="option2" value="o2">
+                    </label>
+                </form>
+            </article>
+            <article>
+                <div>Først skal du indtaste den forventede fødselsdato / terminsdato</div>
+                <form>
+                    <label class="radio">
+                        <input type="text" placeholder="Dato"  data-ng-model="date" data-ng-change="dateChange()">
+                    </label>
+                </form>
+            </article>
+            <article>
+                <div>Dit nuværende arbejdsforhold <i class="icon-question-sign"></i></div>
+                <form>
+                    <label class="radio">
+                        Lønmodtager
+                        <input type="radio" name="option" id="option1" value="o1" checked>
+                    </label>
+                    <label class="radio">
+                        Selvstændig
+                        <input type="radio" name="option" id="option2" value="o2">
+                    </label>
+                    <label class="radio">
+                        Ledig
+                        <input type="radio" name="option" id="option2" value="o2">
+                    </label>
+                </form>
+            </article>
+            <article>
+                <div>
+                    Uger med løn efter fødsel
+                    <i class="icon-question-sign"></i>
+                </div>
+                <form>
+                    <label class="radio">
+                        Ingenting
+                        <input type="radio" name="option" id="option1" value="o1" checked>
+                    </label>
+                    <label class="radio">
+                        24 uger
+                        <input type="radio" name="option" id="option2" value="o2">
+                    </label>
+                    <label class="radio">
+                        26 uger (primært kommunalt ansatte)
+                        <input type="radio" name="option" id="option2" value="o2">
+                    </label>
+                    <label class="radio">
+                        Andet
+                        <input type="radio" name="option" id="option2" value="o2">
+                    </label>
+                    <input type="text" placeholder="antal uger">
+                </form>
+            </article>
+        </section>
+        <ul class="tabNavigation">
+            <li></li>
+            <li><a ui-sref="wizard2" class="btn btn-oim" data-ng-click='update()'>Næste</a></li>
+        </ul>
+    </section>
+    <footer>
+        Udbetaling Danmark Barseldagpenge Kongens Vænge 8 - 3400 Hillerød
+        <i class="icon icon-phone"></i> 7012 8064 <i class="icon icon-time"></i> Åbningstider
+    </footer>
 </div>

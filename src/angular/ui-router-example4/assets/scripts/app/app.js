@@ -4,7 +4,10 @@
     window.app = {
         title: 'angular testing',
         database: {
-            data: 'some data'
+            wizard1: {
+                date: '01.01.2015'
+            },
+            data: ''
         }
     };
 })();
@@ -43,9 +46,12 @@
                 templateUrl: 'templates/wizard/wizard1-page.html',
                 controller: function($scope, $timeout) {
                     $scope.page = 'wizard1';
-                    $scope.data = app.database.data;
-                    $scope.update = function() {
-                        app.database.data = $scope.data;
+                    $scope.date = app.database.wizard1.date;
+                    $scope.update = function(e) {
+                       // app.database.data = $scope.data;
+                    }
+                    $scope.dateChange = function(e) {
+                        app.database.wizard1.date = this.date;
                     }
                 }
             })
