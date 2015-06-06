@@ -1,0 +1,4 @@
+<ul class="nav nav-tabs">
+	<li ng-class="{ 'active': model.user.isFirstParent() }" class="link-inactive"><a href="#">Mor</a></li>
+	<li ng-class="{ 'active': !model.user.isFirstParent() }" class="link-inactive"><a href="#">Anden forældre</a></li>
+</ul>

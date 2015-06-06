@@ -1,1 +1,3 @@
-browser-sync start --server --files "*.html, templates/*.html, assets/styles/app/*.css, assets/scritps/app/*.js"
+browser-sync start --server --files "*.html, templates/*.html, templates/wizard/*.html, templates/milestones/*.html, assets/styles/app/*.css, assets/scripts/app/*.js"
+
+
