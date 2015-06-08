@@ -59,4 +59,4 @@ StyleCop.*
 build-output/
 
 #npm
-node_module/
+node_modules/
