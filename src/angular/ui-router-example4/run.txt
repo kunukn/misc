@@ -1,3 +1,7 @@
+npm install
+gulp
+
+or 
+
+npm install browser-sync
 browser-sync start --server --files "*.html, templates/*.html, templates/wizard/*.html, templates/milestones/*.html, assets/styles/app/*.css, assets/scripts/app/*.js"
-
-
