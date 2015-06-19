@@ -1,0 +1,30 @@
+<ul class="result">
+	<li data-ng-show="model.user.isFirstParent()">
+		<span>
+			1. barselsdag<br>
+			{{model.user.firstMaternityDate}}
+		</span>
+	</li>
+	<li>
+		<span>
+			Fødselsdato/termin<br>
+			{{model.user.dueDate}}
+		</span>
+	</li>
+	<li>
+		<span>
+			Sidste dag med løn<br>
+			{{model.user.lastPayWithSalaryDate}}
+		</span>
+	</li>
+	<li>
+		<span>
+			Sidste barselsdag<br>
+			{{model.user.lastMaternityDate}}
+		</span>	 
+	</li>		 
+
+	<li data-ng-show="model.user.timelineRemainingWeeksAndDays">
+		<h1>REST: 0 uger 0 dage</h1>
+	</li>
+</ul>

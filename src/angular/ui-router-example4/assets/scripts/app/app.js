@@ -1,120 +1,158 @@
-;
+﻿;
 
-(function() {
+(function setupPrototypes() {
+    Date.prototype.addDays = function(days) {
+        this.setDate(this.getDate() + parseInt(days));
+        return this;
+    };
+
+    Date.prototype.getFormattedDate = function() {
+        var date = this;
+        var year = date.getFullYear();
+        var month = (1 + date.getMonth()).toString();
+        month = month.length > 1 ? month : '0' + month;
+        var day = date.getDate().toString();
+        day = day.length > 1 ? day : '0' + day;
+        return day + '.' + month + '.' + year;
+    }
+})();
+
+(function setupNamespaces() {
     window.app = {
-        database: {
-            wizard1: {
-                date: '01.01.2015',
-                parent: 'parent1',
-                workStatus: 'employed'
-            },
-            wizard2: {
+        isLocalhost: (function() {
+            return !!location.host.match(/localhost/);
+        })(),
 
-            },
-            wizard3: {
-
-            },
-            wizard4: {
-
-            }
-        }
+        database: {}
     };
 })();
 
-(function() {
+(function setupAngular() {
 
-    // Import
-    var app = window.app;
-    var database = window.app.database;
+    if (window.angular) {
+        // Import    
+        var database = window.app.database;
 
-    var angularApp = angular
-        .module('app', ['ui.router'])
+        var angularApp = angular
+            .module('app', ['ui.router'])
 
-    .run(
-        ['$rootScope', '$state', '$stateParams',
-            function($rootScope, $state, $stateParams) {
-                $rootScope.$state = $state;
-                $rootScope.$stateParams = $stateParams;
+        .run(
+                ['$rootScope', '$state', '$stateParams',
+                    function($rootScope, $state, $stateParams) {
+                        $rootScope.$state = $state;
+                        $rootScope.$stateParams = $stateParams;
+                    }
+                ]
+            )
+            // Shared across controllers
+            .factory("user", function() {
+
+                var today = new Date().getFormattedDate();
+
+                return {
+                    // page 1
+                    name: 'Jane',
+                    dueDate: today,
+                    parent: 'parent1',
+                    workStatus: 'employed',
+                    weekSalary: 'nothing',
+                    weeks: '',
+                    firstMaternityDate: today,
+
+                    isFirstParent: function() {
+                        return this.parent === 'parent1';
+                    }
+                };
+            })
+
+        .directive('jqdatepicker', function() {
+            // jQuery UI Calendar Danish theme with Angular
+            return {
+                restrict: 'A',
+                require: 'ngModel',
+                link: function(scope, element, attrs, ctrl) {
+                    $(element).datepicker({
+                        showWeek: true,
+                        dateFormat: 'dd.mm.yy',
+                        firstDay: 1,
+                        isRTL: false,
+                        showMonthAfterYear: false,
+                        yearSuffix: '',
+                        onSelect: function(date) {
+                            ctrl.$setViewValue(date);
+                            ctrl.$render();
+                            scope.$apply();
+                        }
+                    });
+                }
+            };
+        })
+
+        .config(['$urlRouterProvider', '$stateProvider', '$locationProvider', '$compileProvider', function($urlRouterProvider, $stateProvider, $locationProvider, $compileProvider) {
+
+            //if (!window.app.isLocalhost ) {
+            //    $compileProvider.debugInfoEnabled(false); // better perfomance
+            //}
+
+            $urlRouterProvider.otherwise('/');
+
+            // $locationProvider.html5Mode(true);  // mimic postback url even though it is a SPA
+
+            var reset = function(user) {
+                user.timelineRemainingWeeksAndDays = '';
             }
-        ]
-    )
 
-    .config(['$urlRouterProvider', '$stateProvider', '$locationProvider', '$compileProvider', function($urlRouterProvider, $stateProvider, $locationProvider, $compileProvider) {
+            $stateProvider
+                .state('wizard1', {
+                    url: '/',
+                    templateUrl: 'templates/wizard/wizard-layout.html',
+                    controller: function($scope, user) {
 
-        if (!location.host.match(/localhost/)) {
-            $compileProvider.debugInfoEnabled(false);
-        }
+                        reset(user);
 
-        $urlRouterProvider.otherwise('/');
+                        $scope.isLocalhost = window.app.isLocalhost;
+                        $scope.page = 'templates/wizard/wizard1-page.html';
 
-        // $locationProvider.html5Mode(true);
+                        $scope.model = {
+                            user: user
+                        };
 
-        $stateProvider
-            .state('wizard1', {
-                url: '/',
-                templateUrl: 'templates/wizard/wizard1-page.html',
-                controller: function($scope, $timeout) {
+                        $scope.parentChange = function(value) {
+                            if (value === 'parent1') {
+                                user.name = "Jane";
+                            }
+                            if (value === 'parent2') {
+                                user.name = "Jim";
+                            }
+                        };
 
-                    $scope.model = database.wizard1;
-                    $scope.dateChange = function() {
-                        //console.log(this);
-                        database.wizard1.date = this.model.date;
+                        $scope.nextPage = function() {
+                            if (user.dueDate) {
+                                var parts = user.dueDate.split('.');
+                                var date = new Date(parts[2], parts[0] - 1, parts[1]);
+
+                                date.addDays(1);
+                                user.firstMaternityDate = date.getFormattedDate();
+                            }
+                        };
                     }
-                    $scope.parentChange = function() {
-                        //console.log(this);
-                        database.wizard1.parent = this.model.parent;
+                })
+                .state('wizard2', {
+                    url: '/wizard2',
+                    templateUrl: 'templates/wizard/wizard-layout.html',
+                    controller: function($scope, user) {
+                        $scope.isLocalhost = window.app.isLocalhost;
+                        $scope.page = 'templates/wizard/wizard2-page.html';
+
+                        $scope.model = {
+                            user: user
+                        };
+
+                        $scope.prevPage = function() {};
+
+                        $scope.nextPage = function() {};
                     }
-                    $scope.workStatusChange = function() {
-                        //console.log(this);
-                        database.wizard1.workStatus = this.model.workStatus;
-                    }
-                    $scope.prevPage = function() {
-                        console.log('prevPage');
-                    }
-                    $scope.nextPage = function() {
-                        console.log('nextPage');
-                    }
-                }
-            })
-            .state('wizard2', {
-                url: '/wizard2',
-                templateUrl: 'templates/wizard/wizard2-page.html',
-                controller: function($scope, $timeout) {
-                    $scope.model = database.wizard2;
-                    $scope.prevPage = function() {
-                        console.log('prevPage');
-                    }
-                    $scope.nextPage = function() {
-                        console.log('nextPage');
-                    }
-                }
-            })
-            .state('wizard3', {
-                url: '/wizard3',
-                templateUrl: 'templates/wizard/wizard3-page.html',
-                controller: function($scope, $timeout) {
-                    $scope.model = database.wizard3;
-                    $scope.prevPage = function() {
-                        console.log('prevPage');
-                    }
-                    $scope.nextPage = function() {
-                        console.log('nextPage');
-                    }
-                }
-            })
-            .state('wizard4', {
-                url: '/wizard4',
-                templateUrl: 'templates/wizard/wizard4-page.html',
-                controller: function($scope, $timeout) {
-                    $scope.model = database.wizard4;
-                    $scope.prevPage = function() {
-                        console.log('prevPage');
-                    }
-                    $scope.nextPage = function() {
-                        console.log('nextPage');
-                    }
-                }
-            })
-            ;
-    }]);
+                });
+        }]);
+    }
 })();
