@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>conic gradient demo</title>
+    <script src="prefixfree.min.js"></script>
+    <script src="conic-gradient.js"></script>
+    <style>
+    img {
+        min-width: 10px;
+        min-height: 10px;
+    }
+    </style>
+</head>
+
+<body>
+    conic gradient demo
+    <img id="image" alt="conic" />
+
+    <script>
+    var gradient = new ConicGradient({
+        stops: "gray 40%, #f06 0", // required
+        repeating: false, // Default: false
+        size: 100 // Default: Math.max(innerWidth, innerHeight)
+    });
+
+    console.log(gradient.svg); // SVG markup
+    console.log(gradient.png); // PNG image (fixed dimensions) as a data URL
+    console.log(gradient.dataURL); // data URL
+    console.log(gradient.blobURL); // blog URL
+
+    //document.body.innerHTML += gradient.svg;
+    document.getElementById('image').setAttribute("src", gradient.png);
+    </script>
+</body>
+
+</html>
