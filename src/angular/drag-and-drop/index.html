@@ -1,0 +1,24 @@
+<!doctype html>
+<html ng-app="app">
+
+<head>
+    <base target="_blank">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="assets/scripts/lib/jquery.min.js"></script>
+    <script src="assets/scripts/lib/jquery-ui.min.js"></script>
+    <script src="assets/scripts/lib/angular.min.js"></script>
+    <script src="assets/scripts/lib/angular-dragdrop.min.js"></script>
+    <script src="assets/scripts/app/app.js"></script>
+    <link rel="stylesheet" href="assets/styles/app/app.css">
+    <title>drag and drop</title>
+</head>
+
+<body ng-controller="appCtrl">
+    <h1>Angular drag and drop</h1>
+    <input ng-model="data">
+    <p data-drag="true" class="draggable" jqyoui-draggable>{{data}}</p>
+</body>
+
+</html>
