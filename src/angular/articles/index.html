@@ -1,28 +1,31 @@
 ﻿<!DOCTYPE html>
-<html data-ng-app="app" lang="en">
+<html ng-app="app" lang="en">
 
 <head>
     <meta charset="utf-8">
     <title>Articles</title>
-      <!--<base href="/"> -->
+    <!--<base href="/"> -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="assets/styles/lib/normalize.min.css">
     <link rel="stylesheet" href="assets/styles/app/app.css?v=1">
-  
     <script src="assets/scripts/lib/jquery.min.js"></script>
     <script src="assets/scripts/lib/angular.min.js"></script>
     <script src="assets/scripts/lib/angular-ui-router.min.js"></script>
-
     <script src="assets/scripts/app/app.js?v=1"></script>
     <script src="assets/scripts/lib/modernizr.min.js"></script>
 </head>
 
 <body>
-    <header ng-include="'templates/header-view.html'"></header>
-    <div ui-view></div>
-    <footer ng-include="'templates/footer-view.html'"></footer>
+    <div class='body'>
+        <ng-include src="'templates/header-view.html'"></ng-include>
+        <div ui-view class="main-content"></div>
+        <ng-include src="'templates/footer-view.html'"></ng-include>
+        <script src="assets/scripts/lib/picturefill.min.js"></script>
+    </div>
 </body>
 
 </html>

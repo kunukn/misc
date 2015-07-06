@@ -1,20 +1,20 @@
 ﻿;
-
+'use strict';
 
 (function setupAngular() {
-        
-        var appVersion = 1;
 
-        var angularApp = angular
-            .module('app', ['ui.router'])
+    var appVersion = 1;
 
-        .run(
-                ['$rootScope', '$state', '$stateParams', '$templateCache', '$http',
-                function ($rootScope, $state, $stateParams, $templateCache, $http) {
+    var angularApp = angular
+        .module('app', ['ui.router'])
+
+    .run(
+            ['$rootScope', '$state', '$stateParams', '$templateCache', '$http',
+                function($rootScope, $state, $stateParams, $templateCache, $http) {
                     $rootScope.$state = $state;
                     $rootScope.$stateParams = $stateParams;
 
-                    $rootScope.$on('$stateChangeSuccess', function (ev, to, toParams, from, fromParams) {
+                    $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParams) {
                         $rootScope.previousState = from.name;
                         $rootScope.currentState = to.name;
                         //console.log('Previous state:' + $rootScope.previousState);
@@ -23,25 +23,47 @@
 
                     try {
                         // preload and cache template files
-                        $http.get('templates/header-view.html?v=' + appVersion, { cache: $templateCache });
-                        $http.get('templates/footer-view.html?v=' + appVersion, { cache: $templateCache });
-                        $http.get('templates/home-page.html?v=' + appVersion, { cache: $templateCache });
-                      
+                        $http.get('templates/header-view.html?v=' + appVersion, {
+                            cache: $templateCache
+                        });
+                        $http.get('templates/footer-view.html?v=' + appVersion, {
+                            cache: $templateCache
+                        });
+                        $http.get('templates/frontpage-articles-page.html?v=' + appVersion, {
+                            cache: $templateCache
+                        });
+
                     } catch (e) {
                         console.log(e);
                     }
                 }
             ]
-            )
-            // Shared across controllers
-            .factory('user', function() {
-                return {
-                    name: 'jimmy joe jane'
-                };
-            })
+        )
+        // Shared across controllers
+        .factory('cache', function() {
+            return {
 
-        .config(['$urlRouterProvider', '$stateProvider', '$locationProvider', '$compileProvider', 
-            function($urlRouterProvider, $stateProvider, $locationProvider, $compileProvider) {
+                frontpageArticles: [{
+                    type: 'basic',
+                    width: 'x1',
+                    title: 'article 1',
+                    description: 'description 1'
+                }, {
+                    type: 'popup',
+                    width: 'x2',
+                    title: 'article 2',
+                    description: 'description 2'
+                }, {
+                    type: 'video',
+                    width: 'x1',
+                    title: 'article 3',
+                    description: 'description 3'
+                }]
+            };
+        })
+
+    .config(['$urlRouterProvider', '$stateProvider', '$locationProvider', '$compileProvider',
+        function($urlRouterProvider, $stateProvider, $locationProvider, $compileProvider) {
 
             //if (!window.app.isLocalhost ) {
             //    $compileProvider.debugInfoEnabled(false); // better perfomance
@@ -54,12 +76,12 @@
             $stateProvider
                 .state('home', {
                     url: '/',
-                    templateUrl: 'templates/home-page.html',
-                    controller: function($scope, user) {
-                        $scope.user = user;
+                    templateUrl: 'templates/frontpage-articles-page.html',
+                    controller: function($scope, cache) {
+                        $scope.frontpageArticles = cache.frontpageArticles || [];
                     }
-                })
-                ;
-        }]);
-   
+                });
+        }
+    ]);
+
 })();

@@ -1,0 +1,12 @@
+@charset 'UTF-8';
+@import '_variables';
+
+@mixin device-min-width($min-width:"0") {
+ @media screen and (min-width: #{$min-width}) { @content; }
+}
+@mixin device-range($min-width:"0", $max-width:"9000px") {
+ @media screen and (min-width: #{$min-width}) and (max-width: #{$max-width}) { @content; }
+}
+@mixin device-max-width($max-width:"9000px") {
+ @media screen and (max-width: #{$max-width}) { @content; }
+}
