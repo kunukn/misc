@@ -17,8 +17,6 @@
                     $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParams) {
                         $rootScope.previousState = from.name;
                         $rootScope.currentState = to.name;
-                        //console.log('Previous state:' + $rootScope.previousState);
-                        //console.log('Current state:' + $rootScope.currentState);
                     });
 
                     try {
@@ -42,6 +40,26 @@
         // Shared across controllers
         .factory('cache', function() {
             return {
+                topics: [{
+                    title: 'All',
+                    value: '*'
+                }, {
+                    title: 'Corporate',
+                    value: 'tag-corporate'
+                }, {
+                    title: 'Customers',
+                    value: 'tag-customers'
+                }, {
+                    title: 'Financials',
+                    value: 'tag-financials'
+                }, {
+                    title: 'Technology',
+                    value: 'tag-technology'
+                }, {
+                    title: 'NNIT Way',
+                    value: 'tag-nnit-way'
+                }],
+
 
                 frontpageArticles: [{
                     type: 'basic',
@@ -58,6 +76,21 @@
                     width: 'x1',
                     title: 'article 3',
                     description: 'description 3'
+                }, {
+                    type: 'basic',
+                    width: 'x1',
+                    title: 'article 4',
+                    description: 'description 4'
+                }, {
+                    type: 'popup',
+                    width: 'x2',
+                    title: 'article 5',
+                    description: 'description 5'
+                }, {
+                    type: 'carousel',
+                    width: 'x2',
+                    title: 'article 6',
+                    description: 'description 6'
                 }]
             };
         })
@@ -77,11 +110,30 @@
                 .state('home', {
                     url: '/',
                     templateUrl: 'templates/frontpage-articles-page.html',
-                    controller: function($scope, cache) {
+                    controller: ['$scope', 'cache', function($scope, cache) {
                         $scope.frontpageArticles = cache.frontpageArticles || [];
-                    }
+
+                    }]
                 });
         }
-    ]);
+    ])
+
+    .controller('TopicsCtrl', function($scope, cache) {
+        $scope.topics = cache.topics;
+        $scope.topicClick = function(topic) {
+            toastr.info(topic);
+        };
+    })
+
+    ;
+
+    if (window.toastr) {
+        toastr.options.showMethod = 'slideDown';
+        toastr.options.progressBar = true;
+        toastr.options.positionClass = 'toast-bottom-right';
+        toastr.options.tapToDismiss = true;
+        toastr.options.fadeOut = 500;
+        toastr.options.timeOut = 1500;
+    }
 
 })();

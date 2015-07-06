@@ -1,3 +1,9 @@
-<header class="main-header">
-        <span class="icon-company"></span>
+<header class="main-header clearfix">
+    <span class="icon-company"></span>
+    <span class="brand">Interface</span>
+    <ul class="topics">
+        <li ng-repeat="topic in topics">
+            <a href="javascript:void(0)" ng-click="topicClick(topic.value)">{{topic.title}}</a>
+        </li>
+    </ul>
 </header>

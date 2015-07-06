@@ -12,20 +12,25 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="assets/styles/lib/normalize.min.css">
     <link rel="stylesheet" href="assets/styles/app/app.css?v=1">
-    <script src="assets/scripts/lib/jquery.min.js"></script>
-    <script src="assets/scripts/lib/angular.min.js"></script>
-    <script src="assets/scripts/lib/angular-ui-router.min.js"></script>
-    <script src="assets/scripts/app/app.js?v=1"></script>
     <script src="assets/scripts/lib/modernizr.min.js"></script>
 </head>
 
 <body>
     <div class='body'>
-        <ng-include src="'templates/header-view.html'"></ng-include>
-        <div ui-view class="main-content"></div>
+        <ng-include src="'templates/header-view.html'" ng-controller="TopicsCtrl"></ng-include>
+        <div ui-view class="main-content">
+            <h1>Loading articles..</h1>
+        </div>
         <ng-include src="'templates/footer-view.html'"></ng-include>
-        <script src="assets/scripts/lib/picturefill.min.js"></script>
     </div>
+    <script src="assets/scripts/lib/jquery.min.js"></script>
+    <script src="assets/scripts/lib/angular.min.js"></script>
+    <script src="assets/scripts/lib/angular-ui-router.min.js"></script>
+    <script src="assets/scripts/lib/isotope.pkgd.min.js"></script>
+    <script src="assets/components/toastr/toastr.min.js"></script>
+    <script src="assets/scripts/app/app.js?v=1"></script>
+    <script src="assets/scripts/lib/picturefill.min.js"></script>
+    <link rel="stylesheet" href="assets/components/toastr/toastr.min.css">
 </body>
 
 </html>
