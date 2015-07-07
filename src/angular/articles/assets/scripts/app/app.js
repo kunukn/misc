@@ -7,13 +7,18 @@
 
     var mainTemplates = {
             header: 'templates/header-view.html',
-            articles: 'templates/frontpage-articles-page.html',
             footer: 'templates/footer-view.html'
         },
         frontpageArticleTemplates = {
-            basic: 'templates/frontpage-article-basic-view.html',
-            popup: 'templates/frontpage-article-popup-view.html',
-            video: 'templates/frontpage-article-video-view.html'
+            articles: 'templates/frontpage/articles-page.html',
+            basic: 'templates/frontpage/article-basic-view.html',
+            popup: 'templates/frontpage/article-popup-view.html',
+            video: 'templates/frontpage/article-video-view.html'
+        },
+        articleDetailTemplates = {
+            bigImage: 'templates/article-detail/big-image-view.html',
+            smallImage: 'templates/article-detail/small-image-view.html',
+            carousel: 'templates/article-detail/carousel-view.html'
         };
 
     var angularApp = angular
@@ -32,13 +37,17 @@
 
                     try {
                         // preload and cache template files
+
+                        // main
                         $http.get(mainTemplates.header + '?v=' + appVersion, {
                             cache: $templateCache
                         });
-                        $http.get(mainTemplates.articles + '?v=' + appVersion, {
+                        $http.get(mainTemplates.footer + '?v=' + appVersion, {
                             cache: $templateCache
                         });
-                        $http.get(mainTemplates.footer + '?v=' + appVersion, {
+
+                        // frontpage
+                        $http.get(frontpageArticleTemplates.articles + '?v=' + appVersion, {
                             cache: $templateCache
                         });
                         $http.get(frontpageArticleTemplates.basic + '?v=' + appVersion, {
@@ -50,6 +59,18 @@
                         $http.get(frontpageArticleTemplates.video + '?v=' + appVersion, {
                             cache: $templateCache
                         });
+
+                        // article detail
+                        $http.get(articleDetailTemplates.bigImage + '?v=' + appVersion, {
+                            cache: $templateCache
+                        });
+                        $http.get(articleDetailTemplates.smallImage + '?v=' + appVersion, {
+                            cache: $templateCache
+                        });
+                        $http.get(articleDetailTemplates.carousel + '?v=' + appVersion, {
+                            cache: $templateCache
+                        });
+
 
 
                     } catch (e) {
@@ -136,7 +157,7 @@
             $stateProvider
                 .state('home', {
                     url: '/',
-                    templateUrl: 'templates/frontpage-articles-page.html',
+                    templateUrl: frontpageArticleTemplates.articles,
                     controller: ['$scope', 'cache', function($scope, cache) {
                         $scope.frontpageArticles = cache.frontpageArticles || [];
                         $scope.getFrontpageArticleTemplate = function(type) {
@@ -150,7 +171,9 @@
                             }
                             return frontpageArticleTemplates.basic;
                         };
-
+                        $scope.info = function(message) {
+                            toastr.info(message);
+                        }
                     }]
                 });
         }
@@ -158,9 +181,9 @@
 
     .controller('TopicsCtrl', function($scope, cache) {
         $scope.topics = cache.topics;
-        $scope.topicClick = function(topic) {
-            toastr.info(topic);
-        };
+        $scope.info = function(message) {
+            toastr.info(message);
+        }
     })
 
     ;
