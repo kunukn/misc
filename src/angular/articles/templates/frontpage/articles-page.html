@@ -1,4 +1,4 @@
-<div class="frontpage-articles">
-    <article class="{{article.width}} {{article.type}}" ng-repeat="article in frontpageArticles track by $index" ng-include="getFrontpageArticleTemplate(article.type)">
+<div class="frontpage-articles grid">
+    <article class="article {{article.width}} {{article.type}} {{article.tags.join(' ')}}" ng-repeat="article in frontpageArticles track by $index" ng-include="getFrontpageArticleTemplate(article.type)">
     </article>
 </div>

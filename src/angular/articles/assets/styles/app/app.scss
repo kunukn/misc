@@ -80,30 +80,26 @@ body {
         margin: 0 auto;
         padding: 10px;
         padding-bottom: $footer-height + 20;
-        
         .frontpage-articles {
             article {
+                box-sizing: border-box;
                 background: beige;
                 display: inline-block;
                 border: 1px solid black;
-                width: 99.9%;
+                width: 100%;
                 margin-right: 10px;
                 margin-bottom: 10px;
-                @include device-min-width('320px') {}
-                &.x1 {
-                    @include device-min-width('320px') {
-                        max-width: 310px;
-                        width: 100%;
-                    }
+                @include device-min-width('330px') {
+                    width: 310px;
                 }
+                &.x1 {}
                 &.x2 {
-                    @include device-min-width('320px') {
-                        max-width: 310px;
-                    }
                     @include device-min-width('640px') {
-                        max-width: 630px;
+                        width: 630px;
                     }
                 }
+                &.x3 {}
+                &.x4 {}
             }
         }
     }
