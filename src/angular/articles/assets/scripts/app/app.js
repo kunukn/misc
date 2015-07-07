@@ -132,7 +132,7 @@
                         width: 'x1',
                         title: 'article 4',
                         description: 'description 4',
-                        tags: ['tag-corporate', 'tag-financials']
+                        tags: ['tag-corporate', 'tag-customers']
                     }, {
                         type: 'popup',
                         width: 'x2',
@@ -197,7 +197,19 @@
             $scope.topics = cache.topics;
             $scope.info = function(message) {
                 toastr.info(message);
+
+                message = message !== '*' ? '.'+message : '*';
+
+                $containerForIsotope.isotope({
+                    filter: message
+                });
+                // quick test and see update, remove first item
+                // cache.frontpageArticles.splice(0, 1);
+                // $containerForIsotope.isotope();
             }
+
+
+
         });
     })();
 
@@ -213,9 +225,13 @@
                         layoutMode: 'masonry',
                         masonry: {
                             columnWidth: 320
-                        }
+                        },
+                        isInitLayout: false
                     });
-                }, 2000); // wait until dom has been populated with data
+
+                    $containerForIsotope.isotope();
+
+                }, 500); // wait until dom has been populated with data
             })();
 
             (function setupToastr() {
