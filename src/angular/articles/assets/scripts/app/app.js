@@ -5,6 +5,17 @@
 
     var appVersion = 1;
 
+    var mainTemplates = {
+            header: 'templates/header-view.html',
+            articles: 'templates/frontpage-articles-page.html',
+            footer: 'templates/footer-view.html'
+        },
+        frontpageArticleTemplates = {
+            basic: 'templates/frontpage-article-basic-view.html',
+            popup: 'templates/frontpage-article-popup-view.html',
+            video: 'templates/frontpage-article-video-view.html'
+        };
+
     var angularApp = angular
         .module('app', ['ui.router'])
 
@@ -21,15 +32,25 @@
 
                     try {
                         // preload and cache template files
-                        $http.get('templates/header-view.html?v=' + appVersion, {
+                        $http.get(mainTemplates.header + '?v=' + appVersion, {
                             cache: $templateCache
                         });
-                        $http.get('templates/footer-view.html?v=' + appVersion, {
+                        $http.get(mainTemplates.articles + '?v=' + appVersion, {
                             cache: $templateCache
                         });
-                        $http.get('templates/frontpage-articles-page.html?v=' + appVersion, {
+                        $http.get(mainTemplates.footer + '?v=' + appVersion, {
                             cache: $templateCache
                         });
+                        $http.get(frontpageArticleTemplates.basic + '?v=' + appVersion, {
+                            cache: $templateCache
+                        });
+                        $http.get(frontpageArticleTemplates.popup + '?v=' + appVersion, {
+                            cache: $templateCache
+                        });
+                        $http.get(frontpageArticleTemplates.video + '?v=' + appVersion, {
+                            cache: $templateCache
+                        });
+
 
                     } catch (e) {
                         console.log(e);
@@ -91,7 +112,13 @@
                     width: 'x2',
                     title: 'article 6',
                     description: 'description 6'
-                }]
+                }],
+
+                frontpageTemplates: {
+                    basic: 'templates/frontpage-article-basic-view.html',
+                    popup: 'templates/frontpage-article-popup-view.html',
+                    video: 'templates/frontpage-article-video-view.html'
+                }
             };
         })
 
@@ -112,6 +139,17 @@
                     templateUrl: 'templates/frontpage-articles-page.html',
                     controller: ['$scope', 'cache', function($scope, cache) {
                         $scope.frontpageArticles = cache.frontpageArticles || [];
+                        $scope.getFrontpageArticleTemplate = function(type) {
+                            switch (type) {
+                                case "basic":
+                                    return frontpageArticleTemplates.basic;
+                                case "popup":
+                                    return frontpageArticleTemplates.popup;
+                                case "video":
+                                    return frontpageArticleTemplates.video;
+                            }
+                            return frontpageArticleTemplates.basic;
+                        };
 
                     }]
                 });

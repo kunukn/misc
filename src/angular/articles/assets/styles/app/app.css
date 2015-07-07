@@ -60,7 +60,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 10px;
-    padding-bottom: 70px; }
+    padding-bottom: 120px; }
     .body .main-content .frontpage-articles article {
       background: beige;
       display: inline-block;
@@ -78,15 +78,16 @@ body {
       @media screen and (min-width: 640px) {
         .body .main-content .frontpage-articles article.x2 {
           max-width: 630px; } }
-  .body .main-footer {
-    text-align: center;
-    background: #23343e;
-    color: white;
-    min-height: 50px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0; }
+
+.main-footer {
+  text-align: center;
+  background: #23343e;
+  color: white;
+  min-height: 100px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0; }
 
 @font-face {
   font-family: 'nnit';

@@ -80,6 +80,7 @@ body {
         margin: 0 auto;
         padding: 10px;
         padding-bottom: $footer-height + 20;
+        
         .frontpage-articles {
             article {
                 background: beige;
@@ -106,16 +107,17 @@ body {
             }
         }
     }
-    .main-footer {
-        text-align: center;
-        background: rgb(35, 52, 62);
-        color: white;
-        min-height: $footer-height;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-    }
+}
+
+.main-footer {
+    text-align: center;
+    background: rgb(35, 52, 62);
+    color: white;
+    min-height: $footer-height;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 @font-face {
