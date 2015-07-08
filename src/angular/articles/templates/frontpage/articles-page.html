@@ -1,4 +1,11 @@
-<div class="frontpage-articles grid">
+<div class="volumes">
+    <ul>
+        <li ng-repeat="volume in volumes track by $index">
+            <a href="javascript:void(0)" ng-click="getVolume(volume.value)">{{volume.title}}</a>
+        </li>
+    </ul>
+</div>
+<div class="frontpage-articles">
     <article class="article {{article.width}} {{article.type}} {{article.tags.join(' ')}}" ng-repeat="article in frontpageArticles track by $index" ng-include="getFrontpageArticleTemplate(article.type)">
     </article>
 </div>

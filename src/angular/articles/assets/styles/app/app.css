@@ -79,6 +79,13 @@ body {
     .body .main-content > h1 {
       font-size: 300%;
       color: dimgray; }
+    .body .main-content .volumes ul {
+      list-style-type: none; }
+      .body .main-content .volumes ul > li {
+        display: inline-block;
+        margin: 0 10px; }
+        .body .main-content .volumes ul > li > a {
+          color: inherit; }
     .body .main-content .frontpage-articles {
       margin: 0 auto; }
       @media screen and (min-width: 310px) {

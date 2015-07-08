@@ -117,7 +117,17 @@
 
                             articleService.get(function articleService(data) {
                                 $scope.frontpageArticles = data[data.frontpageArticlesDefaultVolume] || [];
+                                $scope.volumes = data.frontpageArticlesAllVolumes || [];
                             });
+
+                            $scope.getVolume = function(volume) {
+                                articleService.get(function articleService(data) {
+                                    $scope.frontpageArticles = data[volume] || [];
+                                    setTimeout(function() {
+                                        window.app.isotope.arrange();
+                                    }, 100);
+                                });
+                            };
 
                             $scope.getFrontpageArticleTemplate = function(type) {
                                 switch (type) {
