@@ -5,6 +5,14 @@
   height: 0;
   clear: both; }
 
+.img-centered {
+  margin: 0 auto; }
+
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto; }
+
 html,
 body {
   height: 100%; }
@@ -61,20 +69,38 @@ body {
     margin: 0 auto;
     padding: 10px;
     padding-bottom: 120px; }
-    .body .main-content .frontpage-articles article {
-      box-sizing: border-box;
-      background: beige;
-      display: inline-block;
-      border: 1px solid black;
-      width: 100%;
-      margin-right: 10px;
-      margin-bottom: 10px; }
-      @media screen and (min-width: 330px) {
-        .body .main-content .frontpage-articles article {
-          width: 310px; } }
-      @media screen and (min-width: 640px) {
-        .body .main-content .frontpage-articles article.x2 {
-          width: 630px; } }
+    .body .main-content .frontpage-articles {
+      margin: 0 auto; }
+      @media screen and (min-width: 310px) {
+        .body .main-content .frontpage-articles {
+          max-width: 330px; } }
+      @media screen and (min-width: 630px) {
+        .body .main-content .frontpage-articles {
+          max-width: 640px; } }
+      @media screen and (min-width: 960px) {
+        .body .main-content .frontpage-articles {
+          max-width: 960px; } }
+      @media screen and (min-width: 1070px) {
+        .body .main-content .frontpage-articles {
+          max-width: 1080px; } }
+      .body .main-content .frontpage-articles article {
+        box-sizing: border-box;
+        background: transparent;
+        display: inline-block;
+        xborder: 1px solid whitesmoke;
+        width: 100%;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        padding: 15px; }
+        @media screen and (min-width: 330px) {
+          .body .main-content .frontpage-articles article {
+            width: 310px; } }
+        @media screen and (min-width: 640px) {
+          .body .main-content .frontpage-articles article.x2 {
+            width: 630px; } }
+        .body .main-content .frontpage-articles article.popup,
+        .body .main-content .frontpage-articles article.video {
+          box-shadow: 0 0 2px 0 #333; }
 
 .main-footer {
   text-align: center;

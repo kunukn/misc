@@ -85,7 +85,7 @@
                 ]
             )
             // Shared across controllers
-            .factory('cache', function() {
+            .factory('storage', function() {
                 return {
                     topics: [{
                         title: 'All',
@@ -113,20 +113,25 @@
                         width: 'x2',
                         title: 'article 1',
                         description: 'description 1',
-                        tags: ['tag-corporate', 'tag-nnit-way']
+                        tags: ['tag-corporate', 'tag-nnit-way'],
+                        image: 'content/images/image-2x.png'
                     }, {
                         type: 'popup',
                         width: 'x2',
                         title: 'article 2',
                         description: 'description 2',
                         tags: ['tag-corporate', 'tag-technology'],
-                        detail: 'big-image'
+                        detail: 'big-image',
+                        image: 'content/images/image-2x.png'
+
                     }, {
                         type: 'video',
                         width: 'x1',
                         title: 'article 3',
                         description: 'description 3',
-                        tags: ['tag-technology', 'tag-financials']
+                        tags: ['tag-technology', 'tag-financials'],
+                        image: 'content/images/image-1x.png'
+
                     }, {
                         type: 'basic',
                         width: 'x1',
@@ -172,8 +177,8 @@
                     .state('home', {
                         url: '/',
                         templateUrl: frontpageArticleTemplates.articles,
-                        controller: ['$scope', 'cache', function($scope, cache) {
-                            $scope.frontpageArticles = cache.frontpageArticles || [];
+                        controller: ['$scope', 'storage', function($scope, storage) {
+                            $scope.frontpageArticles = storage.frontpageArticles || [];
                             $scope.getFrontpageArticleTemplate = function(type) {
                                 switch (type) {
                                     case "basic":
@@ -193,12 +198,12 @@
             }
         ])
 
-        .controller('TopicsCtrl', function($scope, cache) {
-            $scope.topics = cache.topics;
+        .controller('TopicsCtrl', function($scope, storage) {
+            $scope.topics = storage.topics;
             $scope.info = function(message) {
                 toastr.info(message);
 
-                message = message !== '*' ? '.'+message : '*';
+                message = message !== '*' ? '.' + message : '*';
 
                 $containerForIsotope.isotope({
                     filter: message
@@ -213,38 +218,34 @@
         });
     })();
 
-    (function domReady($) {
+    $(function domReady() {
 
-        $(function() {
+        (function setupIsotope() {
+            setTimeout(function() {
 
-            (function setupIsotope() {
-                setTimeout(function() {
+                $containerForIsotope = $('.frontpage-articles').isotope({
+                    itemSelector: '.article',
+                    layoutMode: 'masonry',
+                    masonry: {
+                        columnWidth: 320
+                    },
+                    isInitLayout: false
+                });
 
-                    $containerForIsotope = $('.frontpage-articles').isotope({
-                        itemSelector: '.article',
-                        layoutMode: 'masonry',
-                        masonry: {
-                            columnWidth: 320
-                        },
-                        isInitLayout: false
-                    });
+                $containerForIsotope.isotope();
 
-                    $containerForIsotope.isotope();
+            }, 1000); // wait until dom has been populated with data
+        })();
 
-                }, 500); // wait until dom has been populated with data
-            })();
-
-            (function setupToastr() {
-                if (window.toastr) {
-                    toastr.options.showMethod = 'slideDown';
-                    toastr.options.progressBar = true;
-                    toastr.options.positionClass = 'toast-bottom-right';
-                    toastr.options.tapToDismiss = true;
-                    toastr.options.fadeOut = 500;
-                    toastr.options.timeOut = 1500;
-                }
-            })();
-        });
-    })(jQuery);
-
+        (function setupToastr() {
+            if (window.toastr) {
+                toastr.options.showMethod = 'slideDown';
+                toastr.options.progressBar = true;
+                toastr.options.positionClass = 'toast-bottom-right';
+                toastr.options.tapToDismiss = true;
+                toastr.options.fadeOut = 500;
+                toastr.options.timeOut = 1500;
+            }
+        })();
+    });
 })();
