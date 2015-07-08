@@ -1,7 +1,14 @@
  {
      "frontpageArticlesDefaultVolume": "frontpageArticlesVolume1",
 
-     "frontpageArticlesAllVolumes": ["frontpageArticlesVolume1", "frontpageArticlesVolume2"],
+     "frontpageArticlesAllVolumes": [{
+             "title": "volume 1",
+             "value": "frontpageArticlesVolume1"
+         }, {
+             "title": "volume 2",
+             "value": "frontpageArticlesVolume2"
+         }
+     ],
 
      "frontpageArticlesVolume1": [{
          "type": "basic",

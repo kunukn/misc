@@ -2,9 +2,10 @@
 'use strict';
 
 
-(function($, ng) {
+(function(ng) {
 
-    var $containerForIsotope;
+    window.app = window.app || {};
+    window.app.isotope = null;
 
     (function setupAngular() {
 
@@ -145,13 +146,18 @@
             });
 
             $scope.info = function(message) {
-                toastr.info(message);
 
                 message = message !== '*' ? '.' + message : '*';
 
-                $containerForIsotope.isotope({
+                window.app.isotope.arrange({
                     filter: message
                 });
+
+                toastr.info(message);
+
+                // $containerForIsotope.isotope({
+                //     filter: message
+                // });
                 // quick test and see update, remove first item
                 // cache.frontpageArticles.splice(0, 1);
                 // $containerForIsotope.isotope();
@@ -163,7 +169,9 @@
         (function setupIsotope() {
             setTimeout(function() {
 
-                $containerForIsotope = $('.frontpage-articles').isotope({
+                var articles = document.querySelector('.frontpage-articles');
+                window.app.isotope = new Isotope(articles, {
+                    // options
                     itemSelector: '.article',
                     layoutMode: 'masonry',
                     masonry: {
@@ -171,8 +179,7 @@
                     },
                     isInitLayout: false
                 });
-
-                $containerForIsotope.isotope();
+                window.app.isotope.layout();
 
             }, 1000); // wait until dom has been populated with data
 
@@ -190,4 +197,4 @@
         })();
     });
 
-})(jQuery, angular.element);
+})(angular.element);
