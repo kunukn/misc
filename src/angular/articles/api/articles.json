@@ -53,7 +53,7 @@
          "volume": "1"
      }, {
          "type": "popup",
-         "width": "x2",
+         "width": "x1",
          "title": "article 6",
          "description": "description 6",
          "tags": ["tag-financials"],
@@ -63,7 +63,7 @@
 
      "frontpageArticlesVolume2": [{
          "type": "basic",
-         "width": "x2",
+         "width": "x1",
          "title": "vol2 article 1",
          "description": "description 1",
          "tags": ["tag-corporate", "tag-nnit-way"],

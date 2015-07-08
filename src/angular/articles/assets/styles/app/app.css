@@ -36,9 +36,6 @@ body {
     background: #8c0000;
     color: white;
     min-height: 50px; }
-    .body .main-header--big {
-      min-height: 100px;
-      background: transparent; }
     .body .main-header .icon-company {
       float: left;
       margin-left: 10px;
@@ -47,17 +44,11 @@ body {
       background: transparent;
       font-size: 50px;
       color: white; }
-      .body .main-header .icon-company--big {
-        font-size: 23px;
-        transform: rotate(-5deg); }
     .body .main-header .brand {
       float: left;
       padding: 15px;
       text-transform: uppercase;
       font-size: 18px; }
-      .body .main-header .brand--big {
-        font-size: 23px;
-        transform: rotate(-5deg); }
     .body .main-header .topics {
       max-height: 50px;
       float: right;
@@ -71,8 +62,17 @@ body {
         .body .main-header .topics li > a {
           text-decoration: none;
           color: inherit; }
+    .body .main-header--foldout {
+      min-height: 100px;
+      background: transparent; }
+      .body .main-header--foldout .icon-company {
+        font-size: 23px;
+        transform: rotate(-5deg); }
+      .body .main-header--foldout .brand {
+        font-size: 23px;
+        transform: rotate(-5deg); }
   .body .main-content {
-    max-width: 1200px;
+    max-width: 1600px;
     margin: 0 auto;
     padding: 10px;
     padding-bottom: 120px; }
@@ -93,6 +93,9 @@ body {
       @media screen and (min-width: 1070px) {
         .body .main-content .frontpage-articles {
           max-width: 1080px; } }
+      @media screen and (min-width: 1390px) {
+        .body .main-content .frontpage-articles {
+          max-width: 1380px; } }
       .body .main-content .frontpage-articles article {
         box-sizing: border-box;
         background: transparent;
