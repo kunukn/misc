@@ -22,14 +22,25 @@
         </div>
         <ng-include src="'templates/footer-view.html'"></ng-include>
     </div>
+    <!-- delayed resource loading -->
+
     <script src="assets/scripts/lib/jquery2.min.js"></script>
     <script src="assets/scripts/lib/angular.min.js"></script>
     <script src="assets/scripts/lib/angular-ui-router.min.js"></script>
     <script src="assets/scripts/lib/isotope.pkgd.min.js"></script>
     <script src="assets/components/toastr/toastr.min.js"></script>
+    <script src="content/data.js?v=1"></script>
     <script src="assets/scripts/app/app.js?v=1"></script>
-    <script src="assets/scripts/lib/picturefill.min.js"></script>
     <link rel="stylesheet" href="assets/components/toastr/toastr.min.css">
+    <script>
+    (function() {
+        setTimeout(function() {
+            var file = document.createElement('script');
+            file.setAttribute('src', 'assets/scripts/lib/picturefill.min.js');
+            document.getElementsByTagName('head')[0].appendChild(file);
+        }, 0);
+    })();
+    </script>
 </body>
 
 </html>

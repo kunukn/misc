@@ -1,10 +1,21 @@
 @charset 'UTF-8';
 @import '_variables';
 @import '_mixins';
+
+// Animations
+@keyframes fadein {
+    from {
+        opacity: 0.5;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 // Utils
 .clearfix {
     &:after {
-        content: " ";
+        content: ' ';
         visibility: hidden;
         display: block;
         height: 0;
@@ -25,6 +36,7 @@
 html,
 body {
     height: 100%;
+    animation: fadein 2s;
 }
 
 body {
@@ -90,9 +102,12 @@ body {
         margin: 0 auto;
         padding: 10px;
         padding-bottom: $footer-height + 20;
+        > h1 {
+            font-size: 300%;
+            color: dimgray;
+        }
         .frontpage-articles {
             margin: 0 auto;
-            
             @include device-min-width('310px') {
                 max-width: 330px;
             }
@@ -109,7 +124,6 @@ body {
                 box-sizing: border-box;
                 background: transparent;
                 display: inline-block;
-                xborder: 1px solid whitesmoke;
                 width: 100%;
                 margin-right: 10px;
                 margin-bottom: 10px;
@@ -125,9 +139,15 @@ body {
                 }
                 &.x3 {}
                 &.x4 {}
+                &.basic {
+                    //border: 1px solid #8c0000;
+                }
                 &.popup,
                 &.video {
                     box-shadow: 0 0 2px 0 #333;
+                    &:hover {
+                        box-shadow: 0 0 10px 0 #333;
+                    }
                 }
             }
         }
@@ -145,6 +165,9 @@ body {
     right: 0;
 }
 
+
+
+// Custom fonts
 @font-face {
     font-family: 'nnit';
     src: url('../../fonts/nnit/nnit.eot?oqpvxl');

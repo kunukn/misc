@@ -2,7 +2,7 @@
 'use strict';
 
 
-(function() {
+(function($, ng) {
 
     var $containerForIsotope;
 
@@ -76,8 +76,6 @@
                                 cache: $templateCache
                             });
 
-
-
                         } catch (e) {
                             console.log(e);
                         }
@@ -86,80 +84,7 @@
             )
             // Shared across controllers
             .factory('storage', function() {
-                return {
-                    topics: [{
-                        title: 'All',
-                        value: '*'
-                    }, {
-                        title: 'Corporate',
-                        value: 'tag-corporate'
-                    }, {
-                        title: 'Customers',
-                        value: 'tag-customers'
-                    }, {
-                        title: 'Financials',
-                        value: 'tag-financials'
-                    }, {
-                        title: 'Technology',
-                        value: 'tag-technology'
-                    }, {
-                        title: 'NNIT Way',
-                        value: 'tag-nnit-way'
-                    }],
-
-
-                    frontpageArticles: [{
-                        type: 'basic',
-                        width: 'x2',
-                        title: 'article 1',
-                        description: 'description 1',
-                        tags: ['tag-corporate', 'tag-nnit-way'],
-                        image: 'content/images/image-2x.png'
-                    }, {
-                        type: 'popup',
-                        width: 'x2',
-                        title: 'article 2',
-                        description: 'description 2',
-                        tags: ['tag-corporate', 'tag-technology'],
-                        detail: 'big-image',
-                        image: 'content/images/image-2x.png'
-
-                    }, {
-                        type: 'video',
-                        width: 'x1',
-                        title: 'article 3',
-                        description: 'description 3',
-                        tags: ['tag-technology', 'tag-financials'],
-                        image: 'content/images/image-1x.png'
-
-                    }, {
-                        type: 'basic',
-                        width: 'x1',
-                        title: 'article 4',
-                        description: 'description 4',
-                        tags: ['tag-corporate', 'tag-customers']
-                    }, {
-                        type: 'popup',
-                        width: 'x2',
-                        title: 'article 5',
-                        description: 'description 5',
-                        tags: ['tag-corporate', 'tag-financials'],
-                        detail: 'small-image'
-                    }, {
-                        type: 'popup',
-                        width: 'x2',
-                        title: 'article 6',
-                        description: 'description 6',
-                        tags: ['tag-financials'],
-                        detail: 'carousel'
-                    }],
-
-                    frontpageTemplates: {
-                        basic: 'templates/frontpage-article-basic-view.html',
-                        popup: 'templates/frontpage-article-popup-view.html',
-                        video: 'templates/frontpage-article-video-view.html'
-                    }
-                };
+                return window.app.storage;
             })
 
         .config(['$urlRouterProvider', '$stateProvider', '$locationProvider', '$compileProvider',
@@ -178,7 +103,7 @@
                         url: '/',
                         templateUrl: frontpageArticleTemplates.articles,
                         controller: ['$scope', 'storage', function($scope, storage) {
-                            $scope.frontpageArticles = storage.frontpageArticles || [];
+                            $scope.frontpageArticles = storage[storage.frontpageArticlesDefaultVolume] || [];
                             $scope.getFrontpageArticleTemplate = function(type) {
                                 switch (type) {
                                     case "basic":
@@ -212,14 +137,10 @@
                 // cache.frontpageArticles.splice(0, 1);
                 // $containerForIsotope.isotope();
             }
-
-
-
         });
     })();
 
-    $(function domReady() {
-
+    ng(document).ready(function() {
         (function setupIsotope() {
             setTimeout(function() {
 
@@ -235,6 +156,7 @@
                 $containerForIsotope.isotope();
 
             }, 1000); // wait until dom has been populated with data
+
         })();
 
         (function setupToastr() {
@@ -248,4 +170,5 @@
             }
         })();
     });
-})();
+
+})(jQuery, angular.element);

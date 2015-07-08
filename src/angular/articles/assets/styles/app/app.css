@@ -1,5 +1,11 @@
+@keyframes fadein {
+  from {
+    opacity: 0.5; }
+  to {
+    opacity: 1; } }
+
 .clearfix:after {
-  content: " ";
+  content: ' ';
   visibility: hidden;
   display: block;
   height: 0;
@@ -15,7 +21,8 @@
 
 html,
 body {
-  height: 100%; }
+  height: 100%;
+  animation: fadein 2s; }
 
 body {
   background: white;
@@ -69,6 +76,9 @@ body {
     margin: 0 auto;
     padding: 10px;
     padding-bottom: 120px; }
+    .body .main-content > h1 {
+      font-size: 300%;
+      color: dimgray; }
     .body .main-content .frontpage-articles {
       margin: 0 auto; }
       @media screen and (min-width: 310px) {
@@ -87,7 +97,6 @@ body {
         box-sizing: border-box;
         background: transparent;
         display: inline-block;
-        xborder: 1px solid whitesmoke;
         width: 100%;
         margin-right: 10px;
         margin-bottom: 10px;
@@ -101,6 +110,9 @@ body {
         .body .main-content .frontpage-articles article.popup,
         .body .main-content .frontpage-articles article.video {
           box-shadow: 0 0 2px 0 #333; }
+          .body .main-content .frontpage-articles article.popup:hover,
+          .body .main-content .frontpage-articles article.video:hover {
+            box-shadow: 0 0 10px 0 #333; }
 
 .main-footer {
   text-align: center;
