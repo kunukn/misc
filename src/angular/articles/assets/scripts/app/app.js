@@ -27,7 +27,7 @@
             };
 
         var angularApp = angular
-            .module('app', ['ui.router'])
+            .module('app', ['ui.router', 'ngResource'])
 
         .run(
                 ['$rootScope', '$state', '$stateParams', '$templateCache', '$http',
@@ -76,6 +76,8 @@
                                 cache: $templateCache
                             });
 
+                            $http.get('api/topics.json?v=' + appVersion, {});
+                            $http.get('api/articles.json?v=' + appVersion, {});
                         } catch (e) {
                             console.log(e);
                         }
@@ -86,6 +88,14 @@
             .factory('storage', function() {
                 return window.app.storage;
             })
+
+        .factory('articleService', function($resource) {
+                return $resource('api/articles.json?v=' + appVersion);
+            })
+            .factory('topicService', function($resource) {
+                return $resource('api/topics.json?v=' + appVersion);
+            })
+
 
         .config(['$urlRouterProvider', '$stateProvider', '$locationProvider', '$compileProvider',
             function($urlRouterProvider, $stateProvider, $locationProvider, $compileProvider) {
@@ -102,8 +112,12 @@
                     .state('home', {
                         url: '/',
                         templateUrl: frontpageArticleTemplates.articles,
-                        controller: ['$scope', 'storage', function($scope, storage) {
-                            $scope.frontpageArticles = storage[storage.frontpageArticlesDefaultVolume] || [];
+                        controller: ['$scope', 'storage', 'articleService', function($scope, storage, articleService) {
+
+                            articleService.get(function articleService(data) {
+                                $scope.frontpageArticles = data[data.frontpageArticlesDefaultVolume] || [];
+                            });
+
                             $scope.getFrontpageArticleTemplate = function(type) {
                                 switch (type) {
                                     case "basic":
@@ -118,13 +132,18 @@
                             $scope.info = function(message) {
                                 toastr.info(message);
                             }
+
                         }]
                     });
             }
         ])
 
-        .controller('TopicsCtrl', function($scope, storage) {
-            $scope.topics = storage.topics;
+        .controller('TopicsCtrl', ['$scope', 'storage', 'topicService', function($scope, storage, topicService) {
+
+            topicService.get(function topicService(data) {
+                $scope.topics = data.topics;
+            });
+
             $scope.info = function(message) {
                 toastr.info(message);
 
@@ -137,7 +156,7 @@
                 // cache.frontpageArticles.splice(0, 1);
                 // $containerForIsotope.isotope();
             }
-        });
+        }]);
     })();
 
     ng(document).ready(function() {
