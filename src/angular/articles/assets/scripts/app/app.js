@@ -6,8 +6,7 @@
 
     window.app = window.app || {};
     window.app.storage = {
-        frontpageArticles: [],
-        frontpageArticlesUpdated: 1
+        frontpageArticles: []
     };
     window.app.isotope = null;
 
@@ -162,18 +161,17 @@
                                         //     window.app.$isotope.isotope();
                                         // }
 
-
-                                    }, 150); // give angular n millisecond to update data binding before invoking isotope update
+                                    }, 200); // give angular n millisecond to update data binding before invoking isotope update
                                 }
                             );
 
-                            articleService.get(function articleService(data) {
+                            articleService.get(function (data) {
                                 storage.frontpageArticles = data[data.frontpageArticlesDefaultVolume] || [];
                                 $scope.volumes = data.frontpageArticlesAllVolumes || [];
                             });
 
                             $scope.getVolume = function(volume) {
-                                articleService.get(function articleService(data) {
+                                articleService.get(function (data) {
                                     storage.frontpageArticles = data[volume] || [];
 
                                     // setTimeout(function() {
@@ -196,6 +194,9 @@
                             $scope.info = function(message) {
                                 console.log(message);
                             }
+                            $scope.popup = function(id) {
+                                console.log(id);
+                            }
 
                         }]
                     });
@@ -204,13 +205,13 @@
 
         .controller('TopicsCtrl', ['$scope', 'storage', 'topicService', 'articleService', function($scope, storage, topicService, articleService) {
 
-            topicService.get(function topicService(data) {
+            topicService.get(function(data) {
                 $scope.topics = data.topics;
             });
 
             $scope.getTopic = function(topic) {
 
-                articleService.get(function articleService(data) {
+                articleService.get(function(data) {
                     // todo refactor, cleanup
                     if (topic === '*') {
                         storage.frontpageArticles = data[data.frontpageArticlesDefaultVolume] || [];
