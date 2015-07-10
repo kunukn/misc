@@ -2,18 +2,18 @@
      "frontpageArticlesDefaultVolume": "frontpageArticlesVolume1",
 
      "frontpageArticlesAllVolumes": [{
-             "title": "IPO 2015",
-             "value": "frontpageArticlesVolume1"
-         }, {
-             "title": "Q1 2015",
-             "value": "frontpageArticlesVolume2"
-         }, {
-             "title": "Q2 2015",
-             "value": "frontpageArticlesVolume3"
-         }
-     ],
+         "title": "IPO 2015",
+         "value": "frontpageArticlesVolume1"
+     }, {
+         "title": "Q1 2015",
+         "value": "frontpageArticlesVolume2"
+     }, {
+         "title": "Q2 2015",
+         "value": "frontpageArticlesVolume3"
+     }],
 
      "frontpageArticlesVolume1": [{
+         "id": "1",
          "type": "basic",
          "width": "x2",
          "title": "article 1",
@@ -22,6 +22,7 @@
          "image": "content/images/image-2x.png",
          "volume": "1"
      }, {
+         "id": "2",
          "type": "popup",
          "width": "x2",
          "title": "article 2",
@@ -31,6 +32,7 @@
          "image": "content/images/image-2x.png",
          "volume": "1"
      }, {
+         "id": "3",
          "type": "video",
          "width": "x1",
          "title": "article 3",
@@ -40,6 +42,7 @@
          "volume": "1"
 
      }, {
+         "id": "4",
          "type": "basic",
          "width": "x1",
          "title": "article 4",
@@ -47,6 +50,7 @@
          "tags": ["tag-corporate", "tag-customers"],
          "volume": "1"
      }, {
+         "id": "5",
          "type": "popup",
          "width": "x2",
          "title": "article 5",
@@ -55,6 +59,7 @@
          "detail": "small-image",
          "volume": "1"
      }, {
+         "id": "6",
          "type": "popup",
          "width": "x1",
          "title": "article 6",
@@ -65,6 +70,7 @@
      }],
 
      "frontpageArticlesVolume2": [{
+         "id": "7",
          "type": "basic",
          "width": "x1",
          "title": "vol2 article 1",
@@ -73,6 +79,7 @@
          "image": "content/images/image-2x.png",
          "volume": "1"
      }, {
+         "id": "8",
          "type": "popup",
          "width": "x2",
          "title": "vol2 article 2",
@@ -82,6 +89,7 @@
          "image": "content/images/image-2x.png",
          "volume": "1"
      }, {
+         "id": "9",
          "type": "video",
          "width": "x1",
          "title": "vol2 article 3",
@@ -91,6 +99,7 @@
          "volume": "1"
 
      }, {
+         "id": "10",
          "type": "basic",
          "width": "x1",
          "title": "vol2 article 4",
@@ -106,6 +115,7 @@
          "detail": "small-image",
          "volume": "1"
      }, {
+         "id": "11",
          "type": "popup",
          "width": "x2",
          "title": "vol2 article 6",
@@ -116,6 +126,7 @@
      }],
 
      "frontpageArticlesVolume3": [{
+         "id": "12",
          "type": "basic",
          "width": "x1",
          "title": "vol3 article 1",
@@ -124,6 +135,7 @@
          "image": "content/images/image-2x.png",
          "volume": "1"
      }, {
+         "id": "13",
          "type": "popup",
          "width": "x1",
          "title": "vol3 article 2",
@@ -133,6 +145,7 @@
          "image": "content/images/image-2x.png",
          "volume": "1"
      }, {
+         "id": "14",
          "type": "video",
          "width": "x2",
          "title": "vol3 article 3",
@@ -142,6 +155,7 @@
          "volume": "1"
 
      }, {
+         "id": "15",
          "type": "basic",
          "width": "x2",
          "title": "vol3 article 4",
@@ -149,6 +163,7 @@
          "tags": ["tag-corporate", "tag-customers"],
          "volume": "1"
      }, {
+         "id": "16",
          "type": "popup",
          "width": "x1",
          "title": "vol3 article 5",
@@ -157,12 +172,63 @@
          "detail": "small-image",
          "volume": "1"
      }, {
+         "id": "17",
          "type": "popup",
          "width": "x2",
          "title": "vol3 article 6",
          "description": "description 6",
          "tags": ["tag-financials"],
          "detail": "carousel",
+         "volume": "1"
+     }],
+
+     "frontpageArticlesCorporate": [{
+         "id": "15",
+         "type": "basic",
+         "width": "x2",
+         "title": "vol3 article 4",
+         "description": "description 4",
+         "tags": ["tag-corporate", "tag-customers"],
+         "volume": "1"
+     }],
+     "frontpageArticlesCustomers": [{
+         "id": "10",
+         "type": "basic",
+         "width": "x1",
+         "title": "vol2 article 4",
+         "description": "description 4",
+         "tags": ["tag-corporate", "tag-customers"],
+         "volume": "1"
+     }],
+     "frontpageArticlesTechnology": [{
+         "id": "2",
+         "type": "popup",
+         "width": "x2",
+         "title": "article 2",
+         "description": "description 2",
+         "tags": ["tag-corporate", "tag-technology"],
+         "detail": "big-image",
+         "image": "content/images/image-2x.png",
+         "volume": "1"
+     }],
+     "frontpageArticlesFinancials": [{
+         "id": "6",
+         "type": "popup",
+         "width": "x1",
+         "title": "article 6",
+         "description": "description 6",
+         "tags": ["tag-financials"],
+         "detail": "carousel",
+         "volume": "1"
+     }],
+     "frontpageArticlesNnitWay": [{
+         "id": "7",
+         "type": "basic",
+         "width": "x1",
+         "title": "vol2 article 1",
+         "description": "description 1",
+         "tags": ["tag-corporate", "tag-nnit-way"],
+         "image": "content/images/image-2x.png",
          "volume": "1"
      }]
  }

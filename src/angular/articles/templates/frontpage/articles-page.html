@@ -6,6 +6,6 @@
     </ul>
 </div>
 <div class="frontpage-articles">
-    <article class="article {{article.width}} {{article.type}} {{article.tags.join(' ')}}" ng-repeat="article in frontpageArticles track by $index" ng-include="getFrontpageArticleTemplate(article.type)">
+    <article class="article {{article.width}} {{article.type}} {{article.tags.join(' ')}}" ng-repeat="article in frontpageArticles track by article.id" ng-include="getFrontpageArticleTemplate(article.type)">
     </article>
 </div>

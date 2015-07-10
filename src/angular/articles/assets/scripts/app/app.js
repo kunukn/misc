@@ -5,7 +5,10 @@
 (function(ng) {
 
     window.app = window.app || {};
-    window.app.storage = window.app.storage || {};
+    window.app.storage = {
+        frontpageArticles: [],
+        frontpageArticlesUpdated: 1
+    };
     window.app.isotope = null;
 
     (function setupAngular() {
@@ -79,8 +82,12 @@
                             });
 
                             // Stub, mimic data from server
-                            $http.get('api/topics.json?v=' + appVersion, {});
-                            $http.get('api/articles.json?v=' + appVersion, {});
+                            $http.get('api/topics.json?v=' + appVersion, {
+                                cache: true
+                            });
+                            $http.get('api/articles.json?v=' + appVersion, {
+                                cache: true
+                            });
                         } catch (e) {
                             console.log(e);
                         }
@@ -93,10 +100,20 @@
             })
 
         .factory('articleService', function($resource) {
-                return $resource('api/articles.json?v=' + appVersion);
+                return $resource('api/articles.json?v=' + appVersion, {}, {
+                    get: {
+                        method: "GET",
+                        cache: true
+                    }
+                });
             })
             .factory('topicService', function($resource) {
-                return $resource('api/topics.json?v=' + appVersion);
+                return $resource('api/topics.json?v=' + appVersion, {}, {
+                    get: {
+                        method: "GET",
+                        cache: true
+                    }
+                });
             })
 
 
@@ -117,17 +134,44 @@
                         templateUrl: frontpageArticleTemplates.articles,
                         controller: ['$scope', 'storage', 'articleService', function($scope, storage, articleService) {
 
+                            $scope.$watch(function() {
+                                    return storage.frontpageArticles;
+                                },
+                                function() {
+                                    $scope.frontpageArticles = storage.frontpageArticles;
+                                    setTimeout(function() {
+
+                                        var articles = document.querySelector('.frontpage-articles');
+                                        window.app.isotope = new Isotope(articles, {
+                                            // options
+                                            itemSelector: '.article',
+                                            layoutMode: 'masonry',
+                                            masonry: {
+                                                columnWidth: 320
+                                            },
+                                            isInitLayout: true
+                                        });
+                                        // window.app.isotope.layout();
+                                        // if (window.app.isotope) {
+                                        //     window.app.isotope.arrange();
+                                        // }
+
+                                    }, 150); // give angular n millisecond to update data binding before invoking isotope update
+                                }
+                            );
+
                             articleService.get(function articleService(data) {
-                                $scope.frontpageArticles = data[data.frontpageArticlesDefaultVolume] || [];
+                                storage.frontpageArticles = data[data.frontpageArticlesDefaultVolume] || [];
                                 $scope.volumes = data.frontpageArticlesAllVolumes || [];
                             });
 
                             $scope.getVolume = function(volume) {
                                 articleService.get(function articleService(data) {
-                                    $scope.frontpageArticles = data[volume] || [];
-                                    setTimeout(function() {
-                                        window.app.isotope.arrange();
-                                    }, 100);
+                                    storage.frontpageArticles = data[volume] || [];
+
+                                    // setTimeout(function() {
+                                    //     window.app.isotope.arrange();
+                                    // }, 100); // give angular n millisecond to update data binding before invoking isotope update
                                 });
                             };
 
@@ -151,47 +195,49 @@
             }
         ])
 
-        .controller('TopicsCtrl', ['$scope', 'storage', 'topicService', function($scope, storage, topicService) {
+        .controller('TopicsCtrl', ['$scope', 'storage', 'topicService', 'articleService', function($scope, storage, topicService, articleService) {
 
             topicService.get(function topicService(data) {
                 $scope.topics = data.topics;
             });
 
-            $scope.info = function(message) {
+            $scope.getTopic = function(topic) {
 
-                message = message !== '*' ? '.' + message : '*';
-
-                window.app.isotope.arrange({
-                    filter: message
+                articleService.get(function articleService(data) {
+                    // todo refactor, cleanup
+                    if (topic === '*') {
+                        storage.frontpageArticles = data[data.frontpageArticlesDefaultVolume] || [];
+                    } else if (topic === 'tag-corporate') {
+                        storage.frontpageArticles = data.frontpageArticlesCorporate;
+                    } else if (topic === 'tag-customers') {
+                        storage.frontpageArticles = data.frontpageArticlesCustomers
+                    } else if (topic === 'tag-financials') {
+                        storage.frontpageArticles = data.frontpageArticlesFinancials
+                    } else if (topic === 'tag-technology') {
+                        storage.frontpageArticles = data.frontpageArticlesTechnology
+                    } else if (topic === 'tag-nnit-way') {
+                        storage.frontpageArticles = data.frontpageArticlesNnitWay
+                    }
                 });
-
-                console.log(message);
-
-                // $containerForIsotope.isotope({
-                //     filter: message
-                // });
-                // quick test and see update, remove first item
-                // cache.frontpageArticles.splice(0, 1);
-                // $containerForIsotope.isotope();
-            }
+            };
         }]);
     })();
 
     ng(document).ready(function() {
         (function setupIsotope() {
-            setTimeout(function() {
+            setTimeout(function timeout() {
 
-                var articles = document.querySelector('.frontpage-articles');
-                window.app.isotope = new Isotope(articles, {
-                    // options
-                    itemSelector: '.article',
-                    layoutMode: 'masonry',
-                    masonry: {
-                        columnWidth: 320
-                    },
-                    isInitLayout: false
-                });
-                window.app.isotope.layout();
+                // var articles = document.querySelector('.frontpage-articles');
+                // window.app.isotope = new Isotope(articles, {
+                //     // options
+                //     itemSelector: '.article',
+                //     layoutMode: 'masonry',
+                //     masonry: {
+                //         columnWidth: 320
+                //     },
+                //     isInitLayout: false
+                // });
+                // window.app.isotope.layout();
 
             }, 1000); // wait until dom has been populated with data
 
