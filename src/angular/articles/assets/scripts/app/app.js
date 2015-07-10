@@ -5,6 +5,7 @@
 (function(ng) {
 
     window.app = window.app || {};
+    window.app.storage = window.app.storage || {};
     window.app.isotope = null;
 
     (function setupAngular() {
@@ -32,7 +33,7 @@
 
         .run(
                 ['$rootScope', '$state', '$stateParams', '$templateCache', '$http',
-                    function($rootScope, $state, $stateParams, $templateCache, $http) {
+                    function run($rootScope, $state, $stateParams, $templateCache, $http) {
                         $rootScope.$state = $state;
                         $rootScope.$stateParams = $stateParams;
 
@@ -77,6 +78,7 @@
                                 cache: $templateCache
                             });
 
+                            // Stub, mimic data from server
                             $http.get('api/topics.json?v=' + appVersion, {});
                             $http.get('api/articles.json?v=' + appVersion, {});
                         } catch (e) {
@@ -99,7 +101,7 @@
 
 
         .config(['$urlRouterProvider', '$stateProvider', '$locationProvider', '$compileProvider',
-            function($urlRouterProvider, $stateProvider, $locationProvider, $compileProvider) {
+            function config($urlRouterProvider, $stateProvider, $locationProvider, $compileProvider) {
 
                 //if (!window.app.isLocalhost ) {
                 //    $compileProvider.debugInfoEnabled(false); // better perfomance
@@ -141,7 +143,7 @@
                                 return frontpageArticleTemplates.basic;
                             };
                             $scope.info = function(message) {
-                                toastr.info(message);
+                                console.log(message);
                             }
 
                         }]
@@ -163,7 +165,7 @@
                     filter: message
                 });
 
-                toastr.info(message);
+                console.log(message);
 
                 // $containerForIsotope.isotope({
                 //     filter: message
@@ -193,17 +195,6 @@
 
             }, 1000); // wait until dom has been populated with data
 
-        })();
-
-        (function setupToastr() {
-            if (window.toastr) {
-                toastr.options.showMethod = 'slideDown';
-                toastr.options.progressBar = true;
-                toastr.options.positionClass = 'toast-bottom-right';
-                toastr.options.tapToDismiss = true;
-                toastr.options.fadeOut = 500;
-                toastr.options.timeOut = 1500;
-            }
         })();
     });
 

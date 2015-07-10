@@ -10,7 +10,9 @@ gulp.task('default', ['sass:watch'], function() {
         server: {
             baseDir: ["./"]
         },
-        files: ["*.html", "templates/*.html", "assets/styles/app/*.css", "assets/scripts/app/*.js"]
+        files: ["*.html", "templates/*.html", "templates/article-detail/*.html",
+            "templates/frontpage/*.html", "assets/styles/app/*.css", "assets/scripts/app/*.js", "api/*.json"
+        ]
     });
 });
 
