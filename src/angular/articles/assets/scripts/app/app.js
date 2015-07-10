@@ -149,12 +149,19 @@
                                             masonry: {
                                                 columnWidth: 320
                                             },
-                                            isInitLayout: true
+                                            isInitLayout: false
                                         });
+                                        window.app.isotope.arrange();
+
                                         // window.app.isotope.layout();
                                         // if (window.app.isotope) {
                                         //     window.app.isotope.arrange();
                                         // }
+
+                                        // if (window.app.$isotope) {
+                                        //     window.app.$isotope.isotope();
+                                        // }
+
 
                                     }, 150); // give angular n millisecond to update data binding before invoking isotope update
                                 }
@@ -226,6 +233,16 @@
     ng(document).ready(function() {
         (function setupIsotope() {
             setTimeout(function timeout() {
+
+                // window.app.$isotope = $('.frontpage-articles').isotope({
+                //     itemSelector: '.article',
+                //     layoutMode: 'masonry',
+                //     masonry: {
+                //         columnWidth: 320
+                //     },
+                //     isInitLayout: false
+                // });
+                // window.app.$isotope.isotope();
 
                 // var articles = document.querySelector('.frontpage-articles');
                 // window.app.isotope = new Isotope(articles, {
