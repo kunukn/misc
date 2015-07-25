@@ -131,14 +131,14 @@
                     .state('home', {
                         url: '/',
                         templateUrl: frontpageArticleTemplates.articles,
-                        controller: ['$scope', 'storage', 'articleService', function($scope, storage, articleService) {
+                        controller: ['$scope', '$timeout','storage', 'articleService', function($scope, $timeout, storage, articleService) {
 
                             $scope.$watch(function() {
                                     return storage.frontpageArticles;
                                 },
                                 function() {
                                     $scope.frontpageArticles = storage.frontpageArticles;
-                                    setTimeout(function() {
+                                    $timeout(function() {
 
                                         var articles = document.querySelector('.frontpage-articles');
                                         window.app.isotope = new Isotope(articles, {
@@ -173,10 +173,6 @@
                             $scope.getVolume = function(volume) {
                                 articleService.get(function (data) {
                                     storage.frontpageArticles = data[volume] || [];
-
-                                    // setTimeout(function() {
-                                    //     window.app.isotope.arrange();
-                                    // }, 100); // give angular n millisecond to update data binding before invoking isotope update
                                 });
                             };
 

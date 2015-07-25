@@ -132,7 +132,25 @@ body {
   position: absolute;
   bottom: 0;
   left: 0;
-  right: 0; }
+  right: 0;
+  padding-top: 10px; }
+  .main-footer a {
+    color: white; }
+  .main-footer > div {
+    width: 33%;
+    text-align: center;
+    display: inline-block; }
+  .main-footer .social > a {
+    margin: 5px;
+    background-color: #8c0000;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: inline-block;
+    font-size: 20px;
+    line-height: 40px; }
+    .main-footer .social > a .fa {
+      color: white; }
 
 @font-face {
   font-family: 'nnit';

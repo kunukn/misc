@@ -104,13 +104,13 @@ body {
             font-size: 300%;
             color: dimgray;
         }
-        .volumes{
-            ul{
+        .volumes {
+            ul {
                 list-style-type: none;
-                > li{
+                > li {
                     display: inline-block;
                     margin: 0 10px;
-                    > a{
+                    > a {
                         color: inherit;
                     }
                 }
@@ -130,7 +130,7 @@ body {
             @include device-min-width('1070px') {
                 max-width: 1080px;
             }
-             @include device-min-width('1390px') {
+            @include device-min-width('1390px') {
                 max-width: 1380px;
             }
             article {
@@ -176,6 +176,36 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
+    padding-top: 10px;
+
+    a {
+        color: white;
+    }
+
+    > div {
+        width: 33%;
+        text-align: center;
+        display: inline-block;
+    }
+    .copyright {}
+    .social {
+        > a {
+            margin: 5px;
+            background-color: #8c0000;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-block;
+            font-size: 20px;
+            line-height: 40px;
+            .fa {
+                color: white;
+            }
+        }
+    }
+    .contact {
+       
+    }
 }
 
 // Custom fonts
