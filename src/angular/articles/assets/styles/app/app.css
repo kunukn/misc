@@ -28,6 +28,15 @@ body {
   background: white;
   color: black; }
 
+a {
+  color: black; }
+  a:visited {
+    color: inherit; }
+
+button {
+  border: 0;
+  background-color: inherit; }
+
 .body {
   position: relative;
   min-height: 100%; }
@@ -36,7 +45,19 @@ body {
     background: #8c0000;
     color: white;
     min-height: 50px; }
-    .body .main-header .icon-company {
+    @media screen and (min-width: 800px) {
+      .body .main-header__company {
+        float: left; } }
+    .body .main-header__company button {
+      position: absolute;
+      font-size: 20px;
+      right: 10px;
+      height: 100%;
+      overflow: hidden; }
+      @media screen and (min-width: 800px) {
+        .body .main-header__company button {
+          display: none; } }
+    .body .main-header__company > .icon-company {
       float: left;
       margin-left: 10px;
       margin-right: 30px;
@@ -44,24 +65,29 @@ body {
       background: transparent;
       font-size: 50px;
       color: white; }
-    .body .main-header .brand {
+    .body .main-header__company > .brand {
       float: left;
       padding: 15px;
       text-transform: uppercase;
       font-size: 18px; }
-    .body .main-header .topics {
-      max-height: 50px;
-      float: right;
-      margin: 0;
-      padding: 6px;
-      display: inline-block;
-      list-style-type: none; }
-      .body .main-header .topics li {
+    .body .main-header__topics {
+      display: none; }
+      @media screen and (min-width: 800px) {
+        .body .main-header__topics {
+          display: block; } }
+      .body .main-header__topics > ul {
+        max-height: 50px;
+        float: right;
+        margin: 0;
+        padding: 6px;
         display: inline-block;
-        padding: 10px; }
-        .body .main-header .topics li > a {
-          text-decoration: none;
-          color: inherit; }
+        list-style-type: none; }
+        .body .main-header__topics > ul li {
+          display: inline-block;
+          padding: 10px; }
+          .body .main-header__topics > ul li > a {
+            text-decoration: none;
+            color: inherit; }
     .body .main-header--foldout {
       min-height: 100px;
       background: transparent; }
@@ -75,7 +101,7 @@ body {
     max-width: 1600px;
     margin: 0 auto;
     padding: 10px;
-    padding-bottom: 120px; }
+    padding-bottom: 300px; }
     .body .main-content > h1 {
       font-size: 300%;
       color: dimgray; }
@@ -126,21 +152,19 @@ body {
 
 .main-footer {
   text-align: center;
-  background: #23343e;
-  color: white;
   min-height: 100px;
   position: absolute;
   bottom: 0;
   left: 0;
-  right: 0;
-  padding-top: 10px; }
-  .main-footer a {
-    color: white; }
+  right: 0; }
   .main-footer > div {
-    width: 33%;
     text-align: center;
-    display: inline-block; }
-  .main-footer .social > a {
+    margin-bottom: 20px; }
+    @media screen and (min-width: 920px) {
+      .main-footer > div {
+        width: 33%;
+        display: inline-block; } }
+  .main-footer .social__link {
     margin: 5px;
     background-color: #8c0000;
     width: 40px;
@@ -149,7 +173,7 @@ body {
     display: inline-block;
     font-size: 20px;
     line-height: 40px; }
-    .main-footer .social > a .fa {
+    .main-footer .social__link .fa {
       color: white; }
 
 @font-face {

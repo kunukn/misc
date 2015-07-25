@@ -1,9 +1,16 @@
 <header class="main-header clearfix">
-    <span class="icon-company"></span>
-    <span class="brand">Interface</span>
-    <ul class="topics">
-        <li ng-repeat="topic in topics">
-            <a href="javascript:void(0)" ng-click="getTopic(topic.value)">{{topic.title}}</a>
-        </li>
-    </ul>
+    <div class="main-header__company">
+        <span class="icon-company"> </span>
+        <span class="brand">Interface</span>
+        <button ng-click="toggleMenu()">
+            <i class="fa fa-bars"></i>
+        </button>
+    </div>
+    <div class="main-header__topics">
+        <ul>
+            <li ng-repeat="topic in topics">
+                <a href="javascript:void(0)" ng-click="getTopic(topic.value)">{{topic.title}}</a>
+            </li>
+        </ul>
+    </div>
 </header>

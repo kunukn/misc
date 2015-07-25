@@ -45,22 +45,21 @@
 
 <body>
     <div class='body'>
-        <ng-include src="'templates/header-view.html'" ng-controller="TopicsCtrl"></ng-include>
+        <ng-include src="'templates/header-view.html'" ng-controller="HeaderCtrl"></ng-include>
         <div ui-view class="main-content">
             <h1>Loading articles..</h1>
         </div>
         <ng-include src="'templates/footer-view.html'"></ng-include>
     </div>
     <!-- delayed resource loading -->
-    <!-- 
-    <script src="assets/scripts/lib/jquery2.min.js"></script>
-     -->
     <script src="assets/scripts/lib/angular.min.js"></script>
     <script src="assets/scripts/lib/angular-resource.min.js"></script>
     <script src="assets/scripts/lib/angular-ui-router.min.js"></script>
     <script src="assets/scripts/lib/isotope.pkgd.min.js"></script>
     <script src="assets/scripts/app/app.js?v=1"></script>
+    <!-- 
     <script async src="assets/scripts/lib/picturefill.min.js"></script>
+     -->
     <script>
     loadCSS('assets/fonts/font-awesome/css/font-awesome.min.css');
     </script>

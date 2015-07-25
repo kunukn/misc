@@ -9,6 +9,11 @@
         frontpageArticles: []
     };
     window.app.isotope = null;
+    window.app.util = {
+        getClientWidth: function() {
+            return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        }
+    };
 
     (function setupAngular() {
 
@@ -99,21 +104,22 @@
             })
 
         .factory('articleService', function($resource) {
-                return $resource('api/articles.json?v=' + appVersion, {}, {
-                    get: {
-                        method: "GET",
-                        cache: true
-                    }
-                });
-            })
-            .factory('topicService', function($resource) {
-                return $resource('api/topics.json?v=' + appVersion, {}, {
-                    get: {
-                        method: "GET",
-                        cache: true
-                    }
-                });
-            })
+            return $resource('api/articles.json?v=' + appVersion, {}, {
+                getFrontpageArticles: {
+                    method: "GET",
+                    cache: true
+                }
+            });
+        })
+
+        .factory('topicService', function($resource) {
+            return $resource('api/topics.json?v=' + appVersion, {}, {
+                get: {
+                    method: "GET",
+                    cache: true
+                }
+            });
+        })
 
 
         .config(['$urlRouterProvider', '$stateProvider', '$locationProvider', '$compileProvider',
@@ -131,7 +137,7 @@
                     .state('home', {
                         url: '/',
                         templateUrl: frontpageArticleTemplates.articles,
-                        controller: ['$scope', '$timeout','storage', 'articleService', function($scope, $timeout, storage, articleService) {
+                        controller: ['$scope', '$timeout', 'storage', 'articleService', function($scope, $timeout, storage, articleService) {
 
                             $scope.$watch(function() {
                                     return storage.frontpageArticles;
@@ -157,21 +163,19 @@
                                         //     window.app.isotope.arrange();
                                         // }
 
-                                        // if (window.app.$isotope) {
-                                        //     window.app.$isotope.isotope();
-                                        // }
 
-                                    }, 200); // give angular n millisecond to update data binding before invoking isotope update
+
+                                    }, 250); // give angular n millisecond to update data binding before invoking isotope update
                                 }
                             );
 
-                            articleService.get(function (data) {
+                            articleService.getFrontpageArticles(function(data) {
                                 storage.frontpageArticles = data[data.frontpageArticlesDefaultVolume] || [];
                                 $scope.volumes = data.frontpageArticlesAllVolumes || [];
                             });
 
                             $scope.getVolume = function(volume) {
-                                articleService.get(function (data) {
+                                articleService.getFrontpageArticles(function(data) {
                                     storage.frontpageArticles = data[volume] || [];
                                 });
                             };
@@ -199,11 +203,17 @@
             }
         ])
 
-        .controller('TopicsCtrl', ['$scope', 'storage', 'topicService', 'articleService', function($scope, storage, topicService, articleService) {
+        .controller('HeaderCtrl', ['$scope', 'storage', 'topicService', 'articleService', function($scope, storage, topicService, articleService) {
 
             topicService.get(function(data) {
                 $scope.topics = data.topics;
             });
+
+            $scope.isMenuOpen = false;
+            $scope.toggleMenu = function() {
+                $scope.isMenuOpen = !$scope.isMenuOpen;
+                console.log("toggle menu - " + $scope.isMenuOpen);
+            }
 
             $scope.getTopic = function(topic) {
 
