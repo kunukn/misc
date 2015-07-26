@@ -12,6 +12,9 @@
     window.app.util = {
         getClientWidth: function() {
             return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        },
+        isMenuButtonVisible: function() {
+            return this.getClientWidth() < 800; // breakpoint
         }
     };
 
@@ -203,19 +206,21 @@
             }
         ])
 
-        .controller('HeaderCtrl', ['$scope', 'storage', 'topicService', 'articleService', function($scope, storage, topicService, articleService) {
+        .controller('TopicsCtrl', ['$scope', 'storage', 'topicService', 'articleService', function($scope, storage, topicService, articleService) {
 
             topicService.get(function(data) {
                 $scope.topics = data.topics;
             });
 
-            $scope.isMenuOpen = false;
+            $scope.isMenuDisplayed = true;
             $scope.toggleMenu = function() {
-                $scope.isMenuOpen = !$scope.isMenuOpen;
-                console.log("toggle menu - " + $scope.isMenuOpen);
+                $scope.isMenuDisplayed = !$scope.isMenuDisplayed;
+                console.log("toggle menu - " + $scope.isMenuDisplayed);
             }
 
             $scope.getTopic = function(topic) {
+
+
 
                 articleService.get(function(data) {
                     // todo refactor, cleanup
@@ -233,6 +238,10 @@
                         storage.frontpageArticles = data.frontpageArticlesNnitWay
                     }
                 });
+
+                if (window.app.util.isMenuButtonVisible()) {
+                    $scope.isMenuDisplayed = false;
+                }
             };
         }]);
     })();

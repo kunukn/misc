@@ -45,11 +45,11 @@
 
 <body>
     <div class='body'>
-        <ng-include src="'templates/header-view.html'" ng-controller="HeaderCtrl"></ng-include>
+        <ng-include src="'templates/header-view.html'" ng-controller="TopicsCtrl"></ng-include>
         <div ui-view class="main-content">
             <h1>Loading articles..</h1>
         </div>
-        <ng-include src="'templates/footer-view.html'"></ng-include>
+        <ng-include src="'templates/footer-view.html'" ng-controller="TopicsCtrl"></ng-include>
     </div>
     <!-- delayed resource loading -->
     <script src="assets/scripts/lib/angular.min.js"></script>
