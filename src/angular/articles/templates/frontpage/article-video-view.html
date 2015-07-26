@@ -1,6 +1,8 @@
-<a href="javascript:void(0)" ng-click="info(article.type)">
-	video
-    <h2>{{article.title}}</h2>
-    <p>{{article.description}}</p>
-    <img ng-src="{{article.image || null}}" alt="" class="img-centered img-responsive" />
+<a href="javascript:void(0)" ng-click="video(article.type)">
+    <div>
+        video
+        <h2>{{article.title}}</h2>
+        <p>{{article.description}}</p>
+        <img ng-src="{{article.image || null}}" alt="" class="img-centered img-responsive" />
+    </div>
 </a>

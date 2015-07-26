@@ -198,22 +198,24 @@ button {
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.5);
     z-index: 10;
     opacity: 1;
-    transition: opacity 0.4s ease-in; }
+    transition: opacity 0.4s ease-in;
+    transform: translate(0, 0); }
     .body .article-detail-popup-view .article-detail {
       position: relative;
       background: #fff;
       margin: 0 auto;
-      margin-top: 50px;
       padding: 10px;
       padding-top: 40px;
       min-height: 400px; }
       @media screen and (min-width: 768px) {
         .body .article-detail-popup-view .article-detail {
-          max-width: 80%;
-          margin-top: 100px; } }
+          border-radius: 6px;
+          width: 80%;
+          max-width: 900px;
+          margin-top: 16px; } }
 
 .main-footer {
   text-align: center;

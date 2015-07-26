@@ -235,6 +235,9 @@
                                         $scope.showPopupWindow = true;
                                         $scope.articleDetailView = articleDetailTemplates.bigImage;
                                     }
+                                    $scope.video = function(id) {
+                                        console.log('video ' + id);
+                                    }
 
                                 }]
                             },
