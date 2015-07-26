@@ -9,5 +9,5 @@
     <article class="article {{article.width}} {{article.type}} {{article.tags.join(' ')}}" ng-repeat="article in frontpageArticles track by article.id" ng-include="getFrontpageArticleTemplate(article.type)">
     </article>
 </div>
-<div ng-if="articleDetailTemplate" ng-include="articleDetailTemplate" class="article-detail-popup">
-</div>
+
+<ng-include src="articleDetailTemplate" ng-if="showPopupWindow"></ng-include>

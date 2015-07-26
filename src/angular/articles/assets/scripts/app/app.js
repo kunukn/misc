@@ -153,7 +153,7 @@
 
                             // todo load data for detail and use the correct template and set scope data
                             console.log($stateParams.id);
-                            $scope.view = articleDetailTemplates.bigImage;
+                            $scope.articleDetailView = articleDetailTemplates.bigImage;
                         }]
                     })
                     .state('home', {
@@ -223,17 +223,17 @@
                                     };
 
                                     $scope.closeArticleDetail = function() {
-                                        // todo close popup window
+                                        $scope.showPopupWindow = false;
                                     };
+
+                                    $scope.articleDetailTemplate = articleDetailTemplates.layout;
 
                                     $scope.popup = function(id) {
 
                                         // todo load data for detail and use the correct template and set scope data
-
                                         console.log(id);
-                                        $scope.articleDetailTemplate = articleDetailTemplates.bigImage;
-
-
+                                        $scope.showPopupWindow = true;
+                                        $scope.articleDetailView = articleDetailTemplates.bigImage;
                                     }
 
                                 }]

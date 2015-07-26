@@ -249,6 +249,30 @@ button {
             }
         }
     }
+    .article-detail-popup-view {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 10;
+        opacity: 1;
+        transition: opacity 0.4s ease-in;
+        .article-detail {
+            position: relative;
+            background: #fff;
+            margin: 0 auto;
+            margin-top: 50px;
+            @include device-min-width('768px') {
+                max-width: 80%;
+                margin-top: 100px;
+            }
+            padding: 10px;
+            padding-top: 40px;
+            min-height: 400px;
+        }
+    }
 }
 
 .main-footer {
