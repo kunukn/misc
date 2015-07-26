@@ -147,6 +147,12 @@
                                 },
                                 function() {
                                     $scope.frontpageArticles = storage.frontpageArticles;
+
+                                    $scope.fadein = true;
+                                    $timeout(function() {
+                                        $scope.fadein = false;
+                                    }, 3000);
+
                                     $timeout(function() {
 
                                         var articles = d.querySelector('.frontpage-articles');
@@ -171,6 +177,11 @@
                             });
 
                             $scope.getVolume = function(volume) {
+                                $scope.fadein = true;
+                                $timeout(function() {
+                                    $scope.fadein = false;
+                                }, 3000);
+
                                 articleService.getFrontpageArticles(function(data) {
                                     storage.frontpageArticles = data[volume] || [];
                                 });
@@ -187,9 +198,9 @@
                                 }
                                 return frontpageArticleTemplates.basic;
                             };
-                            $scope.info = function(message) {
-                                console.log(message);
-                            }
+                            // $scope.info = function(message) {
+                            //     console.log(message);
+                            // }
                             $scope.popup = function(id) {
                                 console.log(id);
                             }
@@ -229,42 +240,16 @@
                     }
                 });
 
-                if (window.app.util.isMenuButtonVisible()) {
+                if (w.app.util.isMenuButtonVisible()) {
                     $scope.isMenuDisplayed = false;
                 }
             };
         }]);
     })();
 
+    // document ready
     ng(d).ready(function() {
-        (function setupIsotope() {
-            setTimeout(function timeout() {
 
-                // window.app.$isotope = $('.frontpage-articles').isotope({
-                //     itemSelector: '.article',
-                //     layoutMode: 'masonry',
-                //     masonry: {
-                //         columnWidth: 320
-                //     },
-                //     isInitLayout: false
-                // });
-                // window.app.$isotope.isotope();
-
-                // var articles = document.querySelector('.frontpage-articles');
-                // window.app.isotope = new Isotope(articles, {
-                //     // options
-                //     itemSelector: '.article',
-                //     layoutMode: 'masonry',
-                //     masonry: {
-                //         columnWidth: 320
-                //     },
-                //     isInitLayout: false
-                // });
-                // window.app.isotope.layout();
-
-            }, 1000); // wait until dom has been populated with data
-
-        })();
     });
 
 })(angular.element, document, window, undefined);

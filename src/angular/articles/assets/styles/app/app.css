@@ -1,6 +1,6 @@
 @keyframes fadein {
   from {
-    opacity: 0.5; }
+    opacity: 0.4; }
   to {
     opacity: 1; } }
 
@@ -8,7 +8,7 @@
   from {
     opacity: 1; }
   to {
-    opacity: 0.5; } }
+    opacity: 0.4; } }
 
 .clearfix:after {
   content: ' ';
@@ -26,10 +26,10 @@
   height: auto; }
 
 .fadein {
-  animation: fadein 2s; }
+  animation: fadein 3s; }
 
 .fadeout {
-  animation: fadeout 2s; }
+  animation: fadeout 3s; }
 
 html,
 body {
@@ -57,6 +57,11 @@ button {
     background-color: #8c0000;
     color: white;
     min-height: 50px; }
+    .body .main-header__company a {
+      text-decoration: none;
+      color: inherit; }
+      .body .main-header__company a:visited, .body .main-header__company a:hover, .body .main-header__company a:active, .body .main-header__company a:focus {
+        color: inherit; }
     @media screen and (min-width: 800px) {
       .body .main-header__company {
         float: left; } }
@@ -144,20 +149,20 @@ button {
     .body .main-content > h1 {
       font-size: 300%;
       color: dimgray; }
-    .body .main-content .volumes ul {
+    .body .main-content .volumes > ul {
       text-align: center;
       padding-bottom: 40px;
       list-style-type: none; }
-      .body .main-content .volumes ul > li {
+      .body .main-content .volumes > ul > li {
         display: inline-block;
-        margin: 0 10px; }
-        .body .main-content .volumes ul > li > a {
+        margin: 10px; }
+        .body .main-content .volumes > ul > li > a {
           color: inherit; }
     .body .main-content .frontpage-articles {
       margin: 0 auto; }
       @media screen and (min-width: 320px) {
         .body .main-content .frontpage-articles {
-          max-width: 320px; } }
+          max-width: 660px; } }
       @media screen and (min-width: 660px) {
         .body .main-content .frontpage-articles {
           max-width: 660px; } }
@@ -175,8 +180,8 @@ button {
         margin-right: 10px;
         margin-bottom: 10px;
         padding: 15px; }
-        @media screen and (min-width: 330px) {
-          .body .main-content .frontpage-articles article {
+        @media screen and (min-width: 660px) {
+          .body .main-content .frontpage-articles article.x1 {
             width: 310px; } }
         @media screen and (min-width: 660px) {
           .body .main-content .frontpage-articles article.x2 {
