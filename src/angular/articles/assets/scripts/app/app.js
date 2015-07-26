@@ -2,16 +2,16 @@
 'use strict';
 
 
-(function(ng) {
+(function(ng, d, w) {
 
-    window.app = window.app || {};
-    window.app.storage = {
+    w.app = w.app || {};
+    w.app.storage = {
         frontpageArticles: []
     };
-    window.app.isotope = null;
-    window.app.util = {
+    w.app.isotope = null;
+    w.app.util = {
         getClientWidth: function() {
-            return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            return w.innerWidth || d.documentElement.clientWidth || d.body.clientWidth;
         },
         isMenuButtonVisible: function() {
             return this.getClientWidth() < 800; // breakpoint
@@ -39,7 +39,7 @@
             };
 
         var angularApp = angular
-            .module('app', ['ui.router', 'ngResource'])
+            .module('app', ['ui.router', 'ngResource', 'ngAnimate'])
 
         .run(
                 ['$rootScope', '$state', '$stateParams', '$templateCache', '$http',
@@ -103,7 +103,7 @@
             )
             // Shared across controllers
             .factory('storage', function() {
-                return window.app.storage;
+                return w.app.storage;
             })
 
         .factory('articleService', function($resource) {
@@ -159,7 +159,7 @@
                                             },
                                             isInitLayout: false
                                         });
-                                        window.app.isotope.arrange();
+                                        w.app.isotope.arrange();
 
                                         // window.app.isotope.layout();
                                         // if (window.app.isotope) {
@@ -274,4 +274,4 @@
         })();
     });
 
-})(angular.element);
+})(angular.element, document, window, undefined);

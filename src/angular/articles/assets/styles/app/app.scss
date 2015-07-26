@@ -10,6 +10,7 @@
         opacity: 1;
     }
 }
+
 @keyframes fadeout {
     from {
         opacity: 1;
@@ -40,6 +41,14 @@
     height: auto;
 }
 
+.fadein {
+    animation: fadein 2s;
+}
+
+.fadeout {
+    animation: fadeout 2s;
+}
+
 html,
 body {
     height: 100%;
@@ -68,7 +77,7 @@ button {
     min-height: 100%;
     .main-header {
         position: relative;
-        background: $color-background-main;
+        background-color: $color-background-main;
         color: white;
         min-height: 50px;
         $menu-breakpoint: 800px;
@@ -77,6 +86,7 @@ button {
                 float: left;
             }
             button {
+                background-color: transparent;
                 position: absolute;
                 font-size: 20px;
                 right: 10px;
@@ -92,7 +102,7 @@ button {
                 margin-left: 10px;
                 margin-right: 30px;
                 line-height: 1;
-                background: transparent;
+                background-color: transparent;
                 font-size: 50px;
                 color: white;
             }
@@ -104,6 +114,13 @@ button {
             }
         }
         &__topics {
+            &.hidden {
+                height: 0;
+                opacity: 0;
+            }
+            height: 240px;
+            transition:all linear 0.2s;
+            opacity: 1;
             clear: left;
             display: block;
             background-color: black;
@@ -114,6 +131,7 @@ button {
                 color: inherit;
                 position: absolute;
                 right: 0;
+                height: auto;
             }
             > ul {
                 width: 100%;

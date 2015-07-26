@@ -5,7 +5,7 @@
         </li>
     </ul>
 </div>
-<div class="frontpage-articles">
+<div class="frontpage-articles" ng-class="{'fadein': fadein}">
     <article class="article {{article.width}} {{article.type}} {{article.tags.join(' ')}}" ng-repeat="article in frontpageArticles track by article.id" ng-include="getFrontpageArticleTemplate(article.type)">
     </article>
 </div>
