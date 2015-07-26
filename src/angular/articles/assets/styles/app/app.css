@@ -26,10 +26,10 @@
   height: auto; }
 
 .fadein {
-  animation: fadein 3s; }
+  animation: fadein 2s; }
 
 .fadeout {
-  animation: fadeout 3s; }
+  animation: fadeout 2s; }
 
 html,
 body {

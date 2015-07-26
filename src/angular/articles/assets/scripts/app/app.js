@@ -1,7 +1,6 @@
 ﻿;
 'use strict';
 
-
 (function(ng, d, w) {
 
     w.app = w.app || {};
@@ -15,7 +14,8 @@
         },
         isMenuButtonVisible: function() {
             return this.getClientWidth() < 800; // breakpoint
-        }
+        },
+        isLocalhost: !!location.host.match(/localhost/)
     };
 
     (function setupAngular() {
@@ -33,11 +33,13 @@
                 video: 'templates/frontpage/article-video-view.html'
             },
             articleDetailTemplates = {
+                layout: 'templates/article-detail/layout-page.html',
                 bigImage: 'templates/article-detail/big-image-view.html',
                 smallImage: 'templates/article-detail/small-image-view.html',
                 carousel: 'templates/article-detail/carousel-view.html'
             };
 
+        // todo manybe ngAnimate is not needed
         var angularApp = angular
             .module('app', ['ui.router', 'ngResource', 'ngAnimate'])
 
@@ -78,6 +80,9 @@
                             });
 
                             // article detail
+                            $http.get(articleDetailTemplates.layout + '?v=' + appVersion, {
+                                cache: $templateCache
+                            });
                             $http.get(articleDetailTemplates.bigImage + '?v=' + appVersion, {
                                 cache: $templateCache
                             });
@@ -137,76 +142,112 @@
                 // $locationProvider.html5Mode(true);  // mimic postback url even though it is a SPA
 
                 $stateProvider
+
+                    .state('article', {
+                        url: '/article/{id}',
+                        templateUrl: articleDetailTemplates.layout,
+                        controller: ['$scope', '$state', '$timeout', '$stateParams', 'storage', 'articleService', function($scope, $state, $timeout, $stateParams, storage, articleService) {
+                            $scope.closeArticleDetail = function() {
+                                $state.go('home');
+                            };
+
+                            // todo load data for detail and use the correct template and set scope data
+                            console.log($stateParams.id);
+                            $scope.view = articleDetailTemplates.bigImage;
+                        }]
+                    })
                     .state('home', {
                         url: '/',
-                        templateUrl: frontpageArticleTemplates.articles,
-                        controller: ['$scope', '$timeout', 'storage', 'articleService', function($scope, $timeout, storage, articleService) {
+                        views: {
+                            '': {
+                                templateUrl: frontpageArticleTemplates.articles,
+                                controller: ['$scope', '$timeout', 'storage', 'articleService', function($scope, $timeout, storage, articleService) {
+                                    $scope.$watch(function() {
+                                            return storage.frontpageArticles;
+                                        },
+                                        function() {
+                                            $scope.frontpageArticles = storage.frontpageArticles;
 
-                            $scope.$watch(function() {
-                                    return storage.frontpageArticles;
-                                },
-                                function() {
-                                    $scope.frontpageArticles = storage.frontpageArticles;
+                                            $scope.fadein = true;
+                                            $timeout(function() {
+                                                $scope.fadein = false;
+                                            }, 2000);
 
-                                    $scope.fadein = true;
-                                    $timeout(function() {
-                                        $scope.fadein = false;
-                                    }, 3000);
+                                            // Articles must exists in DOM first.
+                                            // Give angular n millisecond to update data binding before invoking isotope update
+                                            $timeout(function() {
+                                                var articles = d.querySelector('.frontpage-articles');
+                                                w.app.isotope = new Isotope(articles, {
+                                                    // options
+                                                    itemSelector: '.article',
+                                                    layoutMode: 'masonry',
+                                                    masonry: {
+                                                        columnWidth: 320
+                                                    },
+                                                    isInitLayout: false
+                                                });
+                                                w.app.isotope.arrange();
 
-                                    $timeout(function() {
+                                            }, 500);
+                                        }
+                                    );
 
-                                        var articles = d.querySelector('.frontpage-articles');
-                                        w.app.isotope = new Isotope(articles, {
-                                            // options
-                                            itemSelector: '.article',
-                                            layoutMode: 'masonry',
-                                            masonry: {
-                                                columnWidth: 320
-                                            },
-                                            isInitLayout: false
-                                        });
-                                        w.app.isotope.arrange();
+                                    articleService.getFrontpageArticles(function(data) {
+                                        storage.frontpageArticles = data[data.frontpageArticlesDefaultVolume] || [];
+                                        $scope.volumes = data.frontpageArticlesAllVolumes || [];
+                                    });
 
-                                    }, 500); // give angular n millisecond to update data binding before invoking isotope update
-                                }
-                            );
+                                    $scope.getVolume = function(volume) {
+                                        $scope.fadein = true;
+                                        $timeout(function() {
+                                            $scope.fadein = false;
+                                        }, 2000);
 
-                            articleService.getFrontpageArticles(function(data) {
-                                storage.frontpageArticles = data[data.frontpageArticlesDefaultVolume] || [];
-                                $scope.volumes = data.frontpageArticlesAllVolumes || [];
-                            });
+                                        $timeout(function() {
+                                            articleService.getFrontpageArticles(function(data) {
+                                                storage.frontpageArticles = data[volume] || [];
+                                            });
+                                        }, 0);
+                                    };
 
-                            $scope.getVolume = function(volume) {
-                                $scope.fadein = true;
-                                $timeout(function() {
-                                    $scope.fadein = false;
-                                }, 3000);
-
-                                articleService.getFrontpageArticles(function(data) {
-                                    storage.frontpageArticles = data[volume] || [];
-                                });
-                            };
-
-                            $scope.getFrontpageArticleTemplate = function(type) {
-                                switch (type) {
-                                    case "basic":
+                                    $scope.getFrontpageArticleTemplate = function(type) {
+                                        switch (type) {
+                                            case "basic":
+                                                return frontpageArticleTemplates.basic;
+                                            case "popup":
+                                                return frontpageArticleTemplates.popup;
+                                            case "video":
+                                                return frontpageArticleTemplates.video;
+                                        }
                                         return frontpageArticleTemplates.basic;
-                                    case "popup":
-                                        return frontpageArticleTemplates.popup;
-                                    case "video":
-                                        return frontpageArticleTemplates.video;
-                                }
-                                return frontpageArticleTemplates.basic;
-                            };
-                            // $scope.info = function(message) {
-                            //     console.log(message);
-                            // }
-                            $scope.popup = function(id) {
-                                console.log(id);
-                            }
+                                    };
 
-                        }]
-                    });
+                                    $scope.closeArticleDetail = function() {
+                                        // todo close popup window
+                                    };
+
+                                    $scope.popup = function(id) {
+
+                                        // todo load data for detail and use the correct template and set scope data
+
+                                        console.log(id);
+                                        $scope.articleDetailTemplate = articleDetailTemplates.bigImage;
+
+
+                                    }
+
+                                }]
+                            },
+                            'subpage@home': {
+                                template: 'I am a dummy subpage'
+                            }
+                        }
+
+
+                    })
+
+
+                ;
             }
         ])
 
@@ -219,7 +260,6 @@
             $scope.isMenuDisplayed = !w.app.util.isMenuButtonVisible();
             $scope.toggleMenu = function() {
                 $scope.isMenuDisplayed = !$scope.isMenuDisplayed;
-                console.log("toggle menu - " + $scope.isMenuDisplayed);
             }
 
             $scope.getTopic = function(topic) {

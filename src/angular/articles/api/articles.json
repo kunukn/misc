@@ -55,7 +55,7 @@
          "volume": "1"
      }, {
          "id": "3",
-         "type": "video",
+         "type": "popup",
          "width": "x1",
          "title": "article 3",
          "description": "description 3",
@@ -73,7 +73,7 @@
          "volume": "1"
      }, {
          "id": "5",
-         "type": "popup",
+         "type": "video",
          "width": "x2",
          "title": "article 5",
          "description": "description 5",
