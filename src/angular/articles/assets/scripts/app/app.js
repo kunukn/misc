@@ -212,16 +212,13 @@
                 $scope.topics = data.topics;
             });
 
-            $scope.isMenuDisplayed = true;
+            $scope.isMenuDisplayed = !window.app.util.isMenuButtonVisible();
             $scope.toggleMenu = function() {
                 $scope.isMenuDisplayed = !$scope.isMenuDisplayed;
                 console.log("toggle menu - " + $scope.isMenuDisplayed);
             }
 
             $scope.getTopic = function(topic) {
-
-
-
                 articleService.get(function(data) {
                     // todo refactor, cleanup
                     if (topic === '*') {
