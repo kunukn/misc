@@ -199,20 +199,17 @@ button {
         }
         .frontpage-articles {
             margin: 0 auto;
-            @include device-min-width('310px') {
-                max-width: 330px;
+            @include device-min-width('320px') {
+                max-width: 320px;
             }
-            @include device-min-width('630px') {
-                max-width: 640px;
+            @include device-min-width('660px') {
+                max-width: 660px;
             }
-            @include device-min-width('960px') {
-                max-width: 960px;
+            @include device-min-width('998px') {
+                max-width: 998px;
             }
-            @include device-min-width('1070px') {
-                max-width: 1080px;
-            }
-            @include device-min-width('1390px') {
-                max-width: 1380px;
+            @include device-min-width('1300px') {
+                max-width: 1300px;
             }
             article {
                 box-sizing: border-box;
@@ -227,7 +224,7 @@ button {
                 }
                 &.x1 {}
                 &.x2 {
-                    @include device-min-width('640px') {
+                    @include device-min-width('660px') {
                         width: 630px;
                     }
                 }

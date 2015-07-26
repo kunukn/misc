@@ -6,7 +6,7 @@
             <i class="fa fa-bars"></i>
         </button>
     </div>
-    <div class="main-header__topics" xng-show="isMenuDisplayed" ng-class="{'hidden': !isMenuDisplayed}">
+    <div class="main-header__topics" ng-class="{'hidden': !isMenuDisplayed}">
         <ul>
             <li ng-repeat="topic in topics">
                 <a href="javascript:void(0)" ng-click="getTopic(topic.value)">{{topic.title}}</a>

@@ -149,8 +149,8 @@
                                     $scope.frontpageArticles = storage.frontpageArticles;
                                     $timeout(function() {
 
-                                        var articles = document.querySelector('.frontpage-articles');
-                                        window.app.isotope = new Isotope(articles, {
+                                        var articles = d.querySelector('.frontpage-articles');
+                                        w.app.isotope = new Isotope(articles, {
                                             // options
                                             itemSelector: '.article',
                                             layoutMode: 'masonry',
@@ -161,14 +161,7 @@
                                         });
                                         w.app.isotope.arrange();
 
-                                        // window.app.isotope.layout();
-                                        // if (window.app.isotope) {
-                                        //     window.app.isotope.arrange();
-                                        // }
-
-
-
-                                    }, 250); // give angular n millisecond to update data binding before invoking isotope update
+                                    }, 500); // give angular n millisecond to update data binding before invoking isotope update
                                 }
                             );
 
@@ -212,7 +205,7 @@
                 $scope.topics = data.topics;
             });
 
-            $scope.isMenuDisplayed = !window.app.util.isMenuButtonVisible();
+            $scope.isMenuDisplayed = !w.app.util.isMenuButtonVisible();
             $scope.toggleMenu = function() {
                 $scope.isMenuDisplayed = !$scope.isMenuDisplayed;
                 console.log("toggle menu - " + $scope.isMenuDisplayed);
@@ -243,7 +236,7 @@
         }]);
     })();
 
-    ng(document).ready(function() {
+    ng(d).ready(function() {
         (function setupIsotope() {
             setTimeout(function timeout() {
 
