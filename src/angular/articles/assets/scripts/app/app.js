@@ -39,6 +39,15 @@
                 carousel: 'templates/article-detail/carousel-view.html'
             };
 
+
+        var gotoElement = function($location, anchorSmoothScroll) {
+            return function(elementId) {
+                $location.hash(elementId);
+                anchorSmoothScroll.scrollTo(elementId);
+            };
+
+        }
+
         // todo manybe ngAnimate is not needed
         var angularApp = angular
             .module('app', ['ui.router', 'ngResource', 'ngAnimate'])
@@ -106,10 +115,68 @@
                     }
                 ]
             )
-            // Shared across controllers
-            .factory('storage', function() {
-                return w.app.storage;
+            .service('anchorSmoothScroll', function() {
+
+                this.scrollTo = function(eID) {
+
+                    var startY = currentYPosition();
+                    var stopY = elmYPosition(eID);
+                    var distance = stopY > startY ? stopY - startY : startY - stopY;
+                    if (distance < 100) {
+                        scrollTo(0, stopY);
+                        return;
+                    }
+                    var speed = Math.round(distance / 100);
+                    if (speed >= 20) speed = 20;
+                    var step = Math.round(distance / 25);
+                    var leapY = stopY > startY ? startY + step : startY - step;
+                    var timer = 0;
+                    if (stopY > startY) {
+                        for (var i = startY; i < stopY; i += step) {
+                            setTimeout("window.scrollTo(0, " + leapY + ")", timer * speed);
+                            leapY += step;
+                            if (leapY > stopY) leapY = stopY;
+                            timer++;
+                        }
+                        return;
+                    }
+                    for (var i = startY; i > stopY; i -= step) {
+                        setTimeout("window.scrollTo(0, " + leapY + ")", timer * speed);
+                        leapY -= step;
+                        if (leapY < stopY) leapY = stopY;
+                        timer++;
+                    }
+
+                    function currentYPosition() {
+                        // Firefox, Chrome, Opera, Safari
+                        if (self.pageYOffset) return self.pageYOffset;
+                        // Internet Explorer 6 - standards mode
+                        if (document.documentElement && document.documentElement.scrollTop)
+                            return document.documentElement.scrollTop;
+                        // Internet Explorer 6, 7 and 8
+                        if (document.body.scrollTop) return document.body.scrollTop;
+                        return 0;
+                    }
+
+                    function elmYPosition(eID) {
+                        var elm = document.getElementById(eID);
+                        var y = elm.offsetTop;
+                        var node = elm;
+                        while (node.offsetParent && node.offsetParent != document.body) {
+                            node = node.offsetParent;
+                            y += node.offsetTop;
+                        }
+                        return y;
+                    }
+
+                };
+
             })
+
+        // Shared across controllers
+        .factory('storage', function() {
+            return w.app.storage;
+        })
 
         .factory('articleService', function($resource) {
             return $resource('api/articles.json?v=' + appVersion, {}, {
@@ -142,7 +209,6 @@
                 // $locationProvider.html5Mode(true);  // mimic postback url even though it is a SPA
 
                 $stateProvider
-
                     .state('article', {
                         url: '/article/{id}',
                         templateUrl: articleDetailTemplates.layout,
@@ -161,133 +227,135 @@
                         views: {
                             '': {
                                 templateUrl: frontpageArticleTemplates.articles,
-                                controller: ['$scope', '$timeout', 'storage', 'articleService', function($scope, $timeout, storage, articleService) {
-                                    $scope.$watch(function() {
-                                            return storage.frontpageArticles;
-                                        },
-                                        function() {
-                                            $scope.frontpageArticles = storage.frontpageArticles;
+                                controller: ['$scope', '$timeout', '$location', 'anchorSmoothScroll', 'storage', 'articleService',
+                                    function($scope, $timeout, $location, anchorSmoothScroll, storage, articleService) {
+                                        $scope.$watch(function() {
+                                                return storage.frontpageArticles;
+                                            },
+                                            function() {
+                                                $scope.frontpageArticles = storage.frontpageArticles;
 
+                                                $scope.fadein = true;
+                                                $timeout(function() {
+                                                    $scope.fadein = false;
+                                                }, 2000);
+
+                                                // Articles must exists in DOM first.
+                                                // Give angular n millisecond to update data binding before invoking isotope update
+                                                $timeout(function() {
+                                                    var articles = d.querySelector('.frontpage-articles');
+                                                    w.app.isotope = new Isotope(articles, {
+                                                        // options
+                                                        itemSelector: '.article',
+                                                        layoutMode: 'masonry',
+                                                        masonry: {
+                                                            columnWidth: 320
+                                                        },
+                                                        isInitLayout: false
+                                                    });
+                                                    w.app.isotope.arrange();
+
+                                                }, 500);
+                                            }
+                                        );
+
+                                        articleService.getFrontpageArticles(function(data) {
+                                            storage.frontpageArticles = data[data.frontpageArticlesDefaultVolume] || [];
+                                            $scope.volumes = data.frontpageArticlesAllVolumes || [];
+                                        });
+
+                                        $scope.getVolume = function(volume) {
                                             $scope.fadein = true;
                                             $timeout(function() {
                                                 $scope.fadein = false;
                                             }, 2000);
 
-                                            // Articles must exists in DOM first.
-                                            // Give angular n millisecond to update data binding before invoking isotope update
                                             $timeout(function() {
-                                                var articles = d.querySelector('.frontpage-articles');
-                                                w.app.isotope = new Isotope(articles, {
-                                                    // options
-                                                    itemSelector: '.article',
-                                                    layoutMode: 'masonry',
-                                                    masonry: {
-                                                        columnWidth: 320
-                                                    },
-                                                    isInitLayout: false
+                                                articleService.getFrontpageArticles(function(data) {
+                                                    storage.frontpageArticles = data[volume] || [];
                                                 });
-                                                w.app.isotope.arrange();
+                                            }, 0);
+                                        };
 
-                                            }, 500);
+                                        $scope.getFrontpageArticleTemplate = function(type) {
+                                            switch (type) {
+                                                case "basic":
+                                                    return frontpageArticleTemplates.basic;
+                                                case "popup":
+                                                    return frontpageArticleTemplates.popup;
+                                                case "video":
+                                                    return frontpageArticleTemplates.video;
+                                            }
+                                            return frontpageArticleTemplates.basic;
+                                        };
+
+                                        $scope.closeArticleDetail = function() {
+                                            $scope.showPopupWindow = false;
+                                        };
+
+                                        $scope.articleDetailTemplate = articleDetailTemplates.layout;
+
+                                        $scope.popup = function(id) {
+
+                                            // todo load data for detail and use the correct template and set scope data
+                                            console.log(id);
+                                            $scope.showPopupWindow = true;
+                                            $scope.articleDetailView = articleDetailTemplates.bigImage;
                                         }
-                                    );
-
-                                    articleService.getFrontpageArticles(function(data) {
-                                        storage.frontpageArticles = data[data.frontpageArticlesDefaultVolume] || [];
-                                        $scope.volumes = data.frontpageArticlesAllVolumes || [];
-                                    });
-
-                                    $scope.getVolume = function(volume) {
-                                        $scope.fadein = true;
-                                        $timeout(function() {
-                                            $scope.fadein = false;
-                                        }, 2000);
-
-                                        $timeout(function() {
-                                            articleService.getFrontpageArticles(function(data) {
-                                                storage.frontpageArticles = data[volume] || [];
-                                            });
-                                        }, 0);
-                                    };
-
-                                    $scope.getFrontpageArticleTemplate = function(type) {
-                                        switch (type) {
-                                            case "basic":
-                                                return frontpageArticleTemplates.basic;
-                                            case "popup":
-                                                return frontpageArticleTemplates.popup;
-                                            case "video":
-                                                return frontpageArticleTemplates.video;
+                                        $scope.video = function(id) {
+                                            console.log('video ' + id);
                                         }
-                                        return frontpageArticleTemplates.basic;
-                                    };
 
-                                    $scope.closeArticleDetail = function() {
-                                        $scope.showPopupWindow = false;
-                                    };
-
-                                    $scope.articleDetailTemplate = articleDetailTemplates.layout;
-
-                                    $scope.popup = function(id) {
-
-                                        // todo load data for detail and use the correct template and set scope data
-                                        console.log(id);
-                                        $scope.showPopupWindow = true;
-                                        $scope.articleDetailView = articleDetailTemplates.bigImage;
+                                        $scope.gotoElement = gotoElement($location, anchorSmoothScroll);
                                     }
-                                    $scope.video = function(id) {
-                                        console.log('video ' + id);
-                                    }
-
-                                }]
+                                ]
                             },
                             'subpage@home': {
                                 template: 'I am a dummy subpage'
                             }
                         }
-
-
-                    })
-
-
-                ;
+                    });
             }
         ])
 
-        .controller('TopicsCtrl', ['$scope', 'storage', 'topicService', 'articleService', function($scope, storage, topicService, articleService) {
+        .controller('TopicsCtrl', ['$scope', '$location', '$anchorScroll', 'anchorSmoothScroll', 'storage', 'topicService', 'articleService',
+            function($scope, $location, $anchorScroll, anchorSmoothScroll, storage, topicService, articleService) {
 
-            topicService.get(function(data) {
-                $scope.topics = data.topics;
-            });
-
-            $scope.isMenuDisplayed = !w.app.util.isMenuButtonVisible();
-            $scope.toggleMenu = function() {
-                $scope.isMenuDisplayed = !$scope.isMenuDisplayed;
-            }
-
-            $scope.getTopic = function(topic) {
-                articleService.get(function(data) {
-                    // todo refactor, cleanup
-                    if (topic === '*') {
-                        storage.frontpageArticles = data[data.frontpageArticlesDefaultVolume] || [];
-                    } else if (topic === 'tag-corporate') {
-                        storage.frontpageArticles = data.frontpageArticlesCorporate;
-                    } else if (topic === 'tag-customers') {
-                        storage.frontpageArticles = data.frontpageArticlesCustomers
-                    } else if (topic === 'tag-financials') {
-                        storage.frontpageArticles = data.frontpageArticlesFinancials
-                    } else if (topic === 'tag-technology') {
-                        storage.frontpageArticles = data.frontpageArticlesTechnology
-                    } else if (topic === 'tag-nnit-way') {
-                        storage.frontpageArticles = data.frontpageArticlesNnitWay
-                    }
+                topicService.get(function(data) {
+                    $scope.topics = data.topics;
                 });
 
-                if (w.app.util.isMenuButtonVisible()) {
-                    $scope.isMenuDisplayed = false;
-                }
-            };
-        }]);
+                $scope.isMenuDisplayed = !w.app.util.isMenuButtonVisible();
+                $scope.toggleMenu = function() {
+                    $scope.isMenuDisplayed = !$scope.isMenuDisplayed;
+                };
+
+                $scope.getTopic = function(topic) {
+                    articleService.get(function(data) {
+                        // todo refactor, cleanup
+                        if (topic === '*') {
+                            storage.frontpageArticles = data[data.frontpageArticlesDefaultVolume] || [];
+                        } else if (topic === 'tag-corporate') {
+                            storage.frontpageArticles = data.frontpageArticlesCorporate;
+                        } else if (topic === 'tag-customers') {
+                            storage.frontpageArticles = data.frontpageArticlesCustomers
+                        } else if (topic === 'tag-financials') {
+                            storage.frontpageArticles = data.frontpageArticlesFinancials
+                        } else if (topic === 'tag-technology') {
+                            storage.frontpageArticles = data.frontpageArticlesTechnology
+                        } else if (topic === 'tag-nnit-way') {
+                            storage.frontpageArticles = data.frontpageArticlesNnitWay
+                        }
+                    });
+
+                    if (w.app.util.isMenuButtonVisible()) {
+                        $scope.isMenuDisplayed = false;
+                    }
+                };
+
+                $scope.gotoElement = gotoElement($location, anchorSmoothScroll);
+            }
+        ]);
     })();
 
     // document ready

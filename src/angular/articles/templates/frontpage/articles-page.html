@@ -4,6 +4,8 @@
             <a href="javascript:void(0)" ng-click="getVolume(volume.value)">{{volume.title}}</a>
         </li>
     </ul>
+                <a href="javascript:void(0)" ng-click="gotoElement('page-bottom')">Bottom</a>
+
 </div>
 <div class="frontpage-articles" ng-class="{'fadein': fadein}">
     <article class="article {{article.width}} {{article.type}} {{article.tags.join(' ')}}" ng-repeat="article in frontpageArticles track by article.id" ng-include="getFrontpageArticleTemplate(article.type)">

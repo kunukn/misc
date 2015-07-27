@@ -43,10 +43,10 @@
     <script src="assets/scripts/lib/modernizr.min.js"></script>
 </head>
 
-<body>
+<body id="page-top">
     <div class='body'>
         <ng-include src="'templates/header-view.html'" ng-controller="TopicsCtrl"></ng-include>
-        <div ui-view class="main-content">
+        <div ui-view class="main-content" id="page-articles">
             <h1>Loading articles..</h1>
         </div>
         <ng-include src="'templates/footer-view.html'" ng-controller="TopicsCtrl"></ng-include>
@@ -55,12 +55,13 @@
     <script src="assets/scripts/lib/angular.min.js"></script>
     <script src="assets/scripts/lib/angular-ui-router.min.js"></script>
     <script src="assets/scripts/lib/angular-resource.min.js"></script>
+<!-- 
+    <script src="assets/scripts/lib/angular-smooth-scroll.min.js"></script>
+     -->
     <script src="assets/scripts/lib/angular-animate.min.js"></script>
     <script src="assets/scripts/lib/isotope.pkgd.min.js"></script>
     <script src="assets/scripts/app/app.js?v=1"></script>
-    <!--
-    <script async src="assets/scripts/lib/picturefill.min.js"></script>
-     -->
+    <script async src="assets/scripts/bundle.min.js?v=1"></script>
     <script>
     loadCSS('assets/fonts/font-awesome/css/font-awesome.min.css');
     </script>
