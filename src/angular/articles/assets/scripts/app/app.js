@@ -40,13 +40,7 @@
             };
 
 
-        var gotoElement = function($location, anchorSmoothScroll) {
-            return function(elementId) {
-                $location.hash(elementId);
-                anchorSmoothScroll.scrollTo(elementId);
-            };
-
-        }
+      
 
         // todo manybe ngAnimate is not needed
         var angularApp = angular
@@ -115,63 +109,7 @@
                     }
                 ]
             )
-            .service('anchorSmoothScroll', function() {
-
-                this.scrollTo = function(eID) {
-
-                    var startY = currentYPosition();
-                    var stopY = elmYPosition(eID);
-                    var distance = stopY > startY ? stopY - startY : startY - stopY;
-                    if (distance < 100) {
-                        scrollTo(0, stopY);
-                        return;
-                    }
-                    var speed = Math.round(distance / 100);
-                    if (speed >= 20) speed = 20;
-                    var step = Math.round(distance / 25);
-                    var leapY = stopY > startY ? startY + step : startY - step;
-                    var timer = 0;
-                    if (stopY > startY) {
-                        for (var i = startY; i < stopY; i += step) {
-                            setTimeout("window.scrollTo(0, " + leapY + ")", timer * speed);
-                            leapY += step;
-                            if (leapY > stopY) leapY = stopY;
-                            timer++;
-                        }
-                        return;
-                    }
-                    for (var i = startY; i > stopY; i -= step) {
-                        setTimeout("window.scrollTo(0, " + leapY + ")", timer * speed);
-                        leapY -= step;
-                        if (leapY < stopY) leapY = stopY;
-                        timer++;
-                    }
-
-                    function currentYPosition() {
-                        // Firefox, Chrome, Opera, Safari
-                        if (self.pageYOffset) return self.pageYOffset;
-                        // Internet Explorer 6 - standards mode
-                        if (document.documentElement && document.documentElement.scrollTop)
-                            return document.documentElement.scrollTop;
-                        // Internet Explorer 6, 7 and 8
-                        if (document.body.scrollTop) return document.body.scrollTop;
-                        return 0;
-                    }
-
-                    function elmYPosition(eID) {
-                        var elm = document.getElementById(eID);
-                        var y = elm.offsetTop;
-                        var node = elm;
-                        while (node.offsetParent && node.offsetParent != document.body) {
-                            node = node.offsetParent;
-                            y += node.offsetTop;
-                        }
-                        return y;
-                    }
-
-                };
-
-            })
+         
 
         // Shared across controllers
         .factory('storage', function() {
@@ -227,8 +165,8 @@
                         views: {
                             '': {
                                 templateUrl: frontpageArticleTemplates.articles,
-                                controller: ['$scope', '$timeout', '$location', 'anchorSmoothScroll', 'storage', 'articleService',
-                                    function($scope, $timeout, $location, anchorSmoothScroll, storage, articleService) {
+                                controller: ['$scope', '$timeout', '$location', 'storage', 'articleService',
+                                    function($scope, $timeout, $location, storage, articleService) {
                                         $scope.$watch(function() {
                                                 return storage.frontpageArticles;
                                             },
@@ -306,7 +244,9 @@
                                             console.log('video ' + id);
                                         }
 
-                                        $scope.gotoElement = gotoElement($location, anchorSmoothScroll);
+                                        $scope.scrollToBottom = function(){
+                                             jQuery("html, body").animate({ scrollTop: jQuery(document).height()-jQuery(window).height() }, "slow");
+                                        };
                                     }
                                 ]
                             },
@@ -318,8 +258,8 @@
             }
         ])
 
-        .controller('TopicsCtrl', ['$scope', '$location', '$anchorScroll', 'anchorSmoothScroll', 'storage', 'topicService', 'articleService',
-            function($scope, $location, $anchorScroll, anchorSmoothScroll, storage, topicService, articleService) {
+        .controller('TopicsCtrl', ['$scope', '$location', '$anchorScroll', 'storage', 'topicService', 'articleService',
+            function($scope, $location, $anchorScroll, storage, topicService, articleService) {
 
                 topicService.get(function(data) {
                     $scope.topics = data.topics;
@@ -353,7 +293,11 @@
                     }
                 };
 
-                $scope.gotoElement = gotoElement($location, anchorSmoothScroll);
+                $scope.scrollToTop = function() {
+                    jQuery("html, body").animate({
+                        scrollTop: 0
+                    }, "slow");
+                };
             }
         ]);
     })();
