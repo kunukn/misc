@@ -80,6 +80,7 @@ button {
         background-color: $color-background-main;
         color: white;
         min-height: 50px;
+        overflow: hidden;
         $menu-breakpoint: 800px;
         &__company {
             a {

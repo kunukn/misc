@@ -56,7 +56,8 @@ button {
     position: relative;
     background-color: #8c0000;
     color: white;
-    min-height: 50px; }
+    min-height: 50px;
+    overflow: hidden; }
     .body .main-header__company a {
       text-decoration: none;
       color: inherit; }
