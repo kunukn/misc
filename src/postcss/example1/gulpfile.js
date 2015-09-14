@@ -2,6 +2,7 @@
 
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
+    notify = require('gulp-notify'),
     browserSync = require('browser-sync').create();
 
 // --- postcss
@@ -22,7 +23,7 @@ gulp.task('default', ['sass:watch'], function() {
 gulp.task('sass', function() {
     var processors = [
         autoprefixer({
-            browsers: ['last 1 version']
+            browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4']
         }),
         writesvg({ /* options */ })
     ];
@@ -30,7 +31,10 @@ gulp.task('sass', function() {
     gulp.src('./assets/styles/app/*.scss')
         .pipe(sass.sync().on('error', sass.logError))
         .pipe(postcss(processors))
-        .pipe(gulp.dest('./assets/styles/app'));
+        .pipe(gulp.dest('./assets/styles/app'))
+        .pipe(notify({
+            message: 'postcss task complete'
+        }));
 });
 
 gulp.task('sass:watch', function() {
