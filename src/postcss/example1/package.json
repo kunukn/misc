@@ -14,6 +14,7 @@
     "es6-promise": "^3.0.2",
     "gulp": "^3.9.0",
     "gulp-postcss": "^6.0.0",
-    "gulp-sass": "^2.0.1"
+    "gulp-sass": "^2.0.1",
+    "postcss-write-svg": "^1.1.2"
   }
 }
