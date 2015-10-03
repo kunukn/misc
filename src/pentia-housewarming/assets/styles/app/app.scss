@@ -18,8 +18,8 @@ $color-notify-text: #D0E8F0;
 /* Utilities */
 
 .ng-hide {
-  /* Angular Framework */
-  display: none !important;
+    /* Angular Framework */
+    display: none !important;
 }
 
 .responsive-image {
@@ -77,7 +77,6 @@ body {
     position: relative;
     max-width: inherit;
     background: gray;
-    // fallback
     background: linear-gradient(to bottom, $color-theme-background, white);
     @include responsive($breakpoint-small-device-width) {
         background: gray;
@@ -180,10 +179,10 @@ body {
                     &:-ms-input-placeholder {
                         color: $color-form-text;
                     }
-                }              
+                }
                 > label {
                     font-size: 80%;
-                    display: inline-block;                    
+                    display: inline-block;
                     position: absolute;
                     right: 6px;
                     top: 6px;
@@ -238,16 +237,16 @@ body {
             border: 0;
             padding: 10px;
             border-radius: 4px;
-            text-align: center;          
-          &[type="submit"]{
-            width: 100%;
-            &.disabled{
-              color: $color-notify-text;
-              &::after{
-                content: attr(data-label-incomplete);
-              }
-            } 
-          }
+            text-align: center;
+            &[type="submit"] {
+                width: 100%;
+                &.disabled {
+                    color: $color-notify-text;
+                    &::after {
+                        content: attr(data-label-incomplete);
+                    }
+                }
+            }
         }
     }
     &__clouds {
@@ -268,6 +267,29 @@ body {
         @include responsive($breakpoint-small-device-width) {
             display: block;
         }
+
+        > img {
+            animation: move-up-and-down 2.1s 2s infinite;
+        }
+    }
+    &__sun {
+        @include responsive($breakpoint-small-device-width) {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            opacity: 0.9;
+            &__drawing {
+                background: yellow;
+                background: radial-gradient(yellow, gold);
+                border-radius: 50%;
+                width: inherit;
+                height: inherit;
+                animation-delay: 2s;
+                animation-duration: 3s;
+            }
+        }
     }
 }
 
@@ -287,14 +309,14 @@ body {
 
 @keyframes scale-up-and-down {
     0% {
-        transform: scale3d(1, 1, 1);
+        transform: scale(1);
         animation-timing-function: ease-in-out;
         transform-origin: 0 0;
     }
     50% {
-        transform: scale3d(1.05, 1.05, 1);
+        transform: scale(1.05);
     }
     100% {
-        transform: scale3d(1, 1, 1);
+        transform: scale(1);
     }
 }

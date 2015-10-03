@@ -20,8 +20,12 @@
                 guests: 0
             };
 
-            // Start hovering zepperliner after other animation effect
-            $timeout( function(){
+
+            /*
+            Start hovering zepperliner after other animation effect.
+            I could avoid this if I didn't use animate.css library and extracted the needed part, but that takes time...
+            */
+            $timeout(function() {
                 $scope.zeppelinerAnimation = {
                     'animation': 'move-up-and-down 2.1s 2s infinite'
                 };

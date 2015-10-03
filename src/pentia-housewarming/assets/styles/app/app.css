@@ -198,6 +198,24 @@ body {
     @media (min-width: 768px) {
       .housewarming__zeppeliner {
         display: block; } }
+    .housewarming__zeppeliner > img {
+      animation: move-up-and-down 2.1s 2s infinite; }
+  @media (min-width: 768px) {
+    .housewarming__sun {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 80px;
+      height: 80px;
+      opacity: 0.9; }
+      .housewarming__sun__drawing {
+        background: yellow;
+        background: radial-gradient(yellow, gold);
+        border-radius: 50%;
+        width: inherit;
+        height: inherit;
+        animation-delay: 2s;
+        animation-duration: 3s; } }
 
 @keyframes move-up-and-down {
   0% {
@@ -210,10 +228,10 @@ body {
 
 @keyframes scale-up-and-down {
   0% {
-    transform: scale3d(1, 1, 1);
+    transform: scale(1);
     animation-timing-function: ease-in-out;
     transform-origin: 0 0; }
   50% {
-    transform: scale3d(1.05, 1.05, 1); }
+    transform: scale(1.05); }
   100% {
-    transform: scale3d(1, 1, 1); } }
+    transform: scale(1); } }
