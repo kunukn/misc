@@ -7,269 +7,261 @@
 /* Variables */
 $breakpoint-small-device-width: 768px;
 $breakpoint-large-device-width: 1200px;
-$page-max-width: 1280px; // taken from background image width
+
+$page-max-width: 1280px;
+
 $color-theme-blue: #5C98AD;
 $color-theme-background: #9BCEDE;
 $color-form-text: #7CBBD1;
 $color-notify-text: #D0E8F0;
 
-
 /* Utilities */
+
+.ng-hide {
+  /* Angular Framework */
+  display: none !important;
+}
+
 .responsive-image {
-  max-width: 100%;
-  height: auto;
+    max-width: 100%;
+    height: auto;
 }
+
 .handwritten-font {
-  // Taken from Google fonts
-  font-family: 'Pacifico', cursive;
+    font-family: 'Pacifico', cursive;
 }
+
 @mixin text-shadow-theme($color) {
-   text-shadow: 0 2px 2px $color;
+    text-shadow: 0 2px 2px $color;
 }
+
 @mixin responsive($width) {
- @media (min-width: #{$width}) { @content; }
+    @media (min-width: #{$width}) {
+        @content;
+    }
 }
 
 /* Page */
 
 ::-webkit-input-placeholder {
-   color: $color-form-text;
+    color: $color-form-text;
 }
+
 ::-moz-placeholder {
-   color: $color-form-text;
+    color: $color-form-text;
 }
 
 html {
     height: 100%;
     box-sizing: border-box;
 }
+
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+    box-sizing: inherit;
 }
 
 body {
-  position: relative;  
-  max-width: $page-max-width;  
-  height: 100%;
-  font-size: 20px;
-  background: #333;
-  margin: 0 auto;
+    position: relative;
+    max-width: $page-max-width;
+    height: 100%;
+    font-size: 20px;
+    background: #333;
+    margin: 0 auto;
 }
 
 .housewarming {
     min-height: 100%;
-    overflow: hidden;    
-    position: relative;       
-    max-width: inherit;  
-    background: gray; // fallback
+    overflow: hidden;
+    position: relative;
+    max-width: inherit;
+    background: gray;
+    // fallback
     background: linear-gradient(to bottom, $color-theme-background, white);
-    
-  @include responsive($breakpoint-small-device-width) {
-    background: gray; // fallback
-    background: url(//s3-us-west-2.amazonaws.com/s.cdpn.io/157670/building.png) no-repeat bottom / auto, linear-gradient(to bottom, $color-theme-background 20%, white);  
-  }
-            
-  &__headline-text {        
-    position: relative; 
-    background: $color-theme-blue;
-    margin: 2em 0 1em 0;
-    color: white;
-    transform: rotate(-15deg) skewX(-15deg);
-    transform-origin: 0 0;    
-    width: 100%;
-    @include text-shadow-theme(#333);
-    
-    @include responsive($breakpoint-large-device-width) {
-      position: absolute; 
-      margin-bottom: 0;      
+    @include responsive($breakpoint-small-device-width) {
+        background: gray;
+        background: url(//s3-us-west-2.amazonaws.com/s.cdpn.io/157670/building.png) no-repeat bottom / auto, linear-gradient(to bottom, $color-theme-background 20%, white);
     }
-        
-    &__event {      
-      text-transform: uppercase;
-      font-size: 180%;
-      font-weight: 700;
-    }
-    &__location-and-date {
-      text-transform: uppercase;
-      padding-left: 60px;
-      animation: scale-up-and-down 10s infinite;
-    }
-  }  
-    &__arrangement-text {
-      display: table;                        
-      color: white;
-      transition: 1s;
-      transform: rotate(-5deg);
-      position: relative;      
-      margin: 30px auto 20px;      
-      padding-bottom: 10px;
-      @include text-shadow-theme($color-theme-blue);
-                  
-      @include responsive($breakpoint-large-device-width) {
-         font-size: 200%;
-      }
-      
-      &__teaser {
-         padding-left: 10px;         
-         transform: skewX(-10deg);
-      }
-       &__location {
-        text-transform: uppercase;
-        transform: skewX(-10deg) scale(1, 1.2);
-        font-weight: 700;
-        font-size: 200%;
-        letter-spacing: -1px;
-      }
-    }    
-    
-    &__form {
-      font-size: 90%;
-      border-radius: 4px;
-      padding: 20px 30px;
-      color: #fff;
-      background: rgb(124,187,209); // fallback
-      background: linear-gradient(to bottom, rgba(124,187,209, 0.8), rgba(124,187,209, 0.9));      
-      position: relative;  
-      max-width: 400px;
-      min-height: 300px;
-      margin: 0 auto;
-            
-      input {           
-          color: $color-form-text;
-          padding: 10px;
-          border-radius: 4px;
-          border: 0;
-          margin-bottom: 10px;
-      }
-      
-      &__headline {
+
+    &__headline-text {
         position: relative;
-        margin-bottom: 10px;
-        > label{
-          display: inline-block;          
-          &:nth-child(2){
-            // notify requirements
+        background: $color-theme-blue;
+        margin: 2em 0 1em 0;
+        color: white;
+        transform: rotate(-15deg) skewX(-15deg);
+        transform-origin: 0 0;
+        width: 100%;
+        @include text-shadow-theme(#333);
+        @include responsive($breakpoint-large-device-width) {
             position: absolute;
-            right: 0;
-            bottom: 0;
-            color: $color-notify-text;
-            font-size: 80%;
-          }
-        }
-      }     
-      
-      &__contact-info {
-        margin-bottom: 12px;                    
-        
-        > span {
-          position: relative;
-          display: block;
-          
-         >  input {           
-          position: relative;
-          width: 100%;
-           color: black;
-           
-           &:-ms-input-placeholder{
-             color: $color-form-text;
-           }
-        }
-          
-          > label {
-           font-size: 80%; 
-          display: inline-block;
-          position: absolute;
-          right: 6px;
-          top: 6px; // fallback
-          top: calc(50% - 1em);
-          color: white;
-            background: $color-form-text;     
-            border-radius: 4px;
-            padding: 2px 4px;
-        }
+            margin-bottom: 0;
         }
 
-      }
-            
-      &__time-question {                       
-        margin-bottom: 12px;
-        
-        > label {
-          display: block;         
+        &__event {
+            text-transform: uppercase;
+            font-size: 180%;
+            font-weight: 700;
         }
-        &__headline{          
-          margin-bottom: 10px;
+        &__location-and-date {
+            text-transform: uppercase;
+            padding-left: 60px;
+            animation: scale-up-and-down 10s infinite;
         }
-        &__time-choice{
-          display: inline-block;
-          font-size: 80%;
-          position: relative;
-          margin-left: 10px;
-          
-          > input[type="radio"] {
-              margin-right: 10px;     
-          }
-        }
-      }
-            
-      &__guest-question {
-        margin-bottom: 10px;
-        
-         > label {    
-           display: inline-block;
-           margin-bottom: 10px;
-           &:not(:last-child) {
-            display: block;
-          }
-        }
-        
-        &__max-guests-info {
-          color: $color-notify-text;
-        }
-                    
-        input {           
-          text-align: center;
-          width: 50px;
-          margin-right: 10px;
-          color: black;
-        }
-      }
-              
-      button {        
-        display: block;
-        background: $color-theme-blue;
-        border: 0;
-        padding: 10px;
-        border-radius: 4px;
-        text-align: center;
-        width: 100%;                  
-      }
     }
-  
-    &__clouds {            
-      position: absolute;      
-      animation: move-up-and-down 3.3s infinite;
-      left: 30px;
-      bottom: 230px;
-      
-      display: none;
-      @include responsive($breakpoint-small-device-width) {
-        display: block;
-      }
-    }    
-      
-  &__zeppeliner {      
-      position: absolute;
-      left: 180px;
-      bottom: 320px;            
-      display: none;  
-      @include responsive($breakpoint-small-device-width) {
-        display: block;
-      }
-    }    
-  }
+    &__arrangement-text {
+        display: table;
+        color: white;
+        transition: 1s;
+        transform: rotate(-5deg);
+        position: relative;
+        margin: 30px auto 20px;
+        padding-bottom: 10px;
+        @include text-shadow-theme($color-theme-blue);
+        @include responsive($breakpoint-large-device-width) {
+            font-size: 200%;
+        }
+
+        &__teaser {
+            padding-left: 10px;
+            transform: skewX(-10deg);
+        }
+        &__location {
+            text-transform: uppercase;
+            transform: skewX(-10deg) scale(1, 1.2);
+            font-weight: 700;
+            font-size: 200%;
+            letter-spacing: -1px;
+        }
+    }
+    &__form {
+        font-size: 90%;
+        border-radius: 4px;
+        padding: 20px 30px;
+        color: #fff;
+        background: rgb(124, 187, 209);
+        // fallback
+        background: linear-gradient(to bottom, rgba(124, 187, 209, 0.9), rgba(124, 187, 209, 0.8));
+        position: relative;
+        max-width: 400px;
+        min-height: 300px;
+        margin: 0 auto;
+        input {
+            color: $color-form-text;
+            padding: 10px;
+            border-radius: 4px;
+            border: 0;
+            margin-bottom: 10px;
+        }
+        &__headline {
+            position: relative;
+            margin-bottom: 10px;
+            > label {
+                display: inline-block;
+                &:nth-child(2) {
+                    // notify requirements
+                    position: absolute;
+                    right: 0;
+                    bottom: 0;
+                    color: $color-notify-text;
+                    font-size: 80%;
+                }
+            }
+        }
+        &__contact-info {
+            margin-bottom: 12px;
+            > span {
+                position: relative;
+                display: block;
+                > input {
+                    position: relative;
+                    width: 100%;
+                    color: black;
+                    &:-ms-input-placeholder {
+                        color: $color-form-text;
+                    }
+                }
+                > label {
+                    font-size: 80%;
+                    display: inline-block;
+                    position: absolute;
+                    right: 6px;
+                    top: 6px;
+                    top: calc(50% - 1em);
+                    color: white;
+                    background: $color-form-text;
+                    border-radius: 4px;
+                    padding: 2px 4px;
+                }
+            }
+        }
+        &__time-question {
+            margin-bottom: 12px;
+            > label {
+                display: block;
+            }
+            &__headline {
+                margin-bottom: 10px;
+            }
+            &__time-choice {
+                display: inline-block;
+                font-size: 80%;
+                position: relative;
+                margin-left: 10px;
+                > input[type="radio"] {
+                    margin-right: 10px;
+                }
+            }
+        }
+        &__guest-question {
+            margin-bottom: 10px;
+            > label {
+                display: inline-block;
+                margin-bottom: 10px;
+                &:not(:last-child) {
+                    display: block;
+                }
+            }
+            &__max-guests-info {
+                color: $color-notify-text;
+            }
+            input {
+                text-align: center;
+                width: 50px;
+                margin-right: 10px;
+                color: black;
+            }
+        }
+        button {
+            display: block;
+            background: $color-theme-blue;
+            border: 0;
+            padding: 10px;
+            border-radius: 4px;
+            text-align: center;
+            width: 100%;
+        }
+    }
+    &__clouds {
+        position: absolute;
+        animation: move-up-and-down 3.3s infinite;
+        left: 30px;
+        bottom: 230px;
+        display: none;
+        @include responsive($breakpoint-small-device-width) {
+            display: block;
+        }
+    }
+    &__zeppeliner {
+        position: absolute;
+        left: 180px;
+        bottom: 320px;
+        display: none;
+        @include responsive($breakpoint-small-device-width) {
+            display: block;
+        }
+    }
+}
 
 @keyframes move-up-and-down {
     0% {
@@ -283,6 +275,7 @@ body {
         transform: translate3d(0, 0, 0);
     }
 }
+
 
 @keyframes scale-up-and-down {
     0% {

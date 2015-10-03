@@ -33,12 +33,12 @@
             </div>
             <div class="housewarming__form__contact-info">
                 <span>
-                        <input type="text" placeholder="Navn *" aria-label="Navn" data-ng-model="signupModel.name" required />
-                    <label data-ng-show="signupModel.name" aria-hidden="true">Navn</label>
+                    <input type="text" placeholder="Navn *" aria-label="Navn" data-ng-model="signupModel.name" required />
+                    <label aria-hidden="true" data-ng-show="signupModel.name" class="ng-hide">Navn</label>
                   </span>
                 <span>
         <input type="text" placeholder="E-mail *" aria-label="E-mail" data-ng-model="signupModel.email" name="email" required />
-        <label aria-hidden="true" data-ng-show="signupModel.email">E-mail</label>
+        <label aria-hidden="true" data-ng-show="signupModel.email" class="ng-hide">E-mail</label>
       </span>
             </div>
             <div class="housewarming__form__time-question">
