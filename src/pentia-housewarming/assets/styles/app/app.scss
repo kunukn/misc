@@ -188,9 +188,18 @@ body {
                     top: 6px;
                     top: calc(50% - 1em);
                     color: white;
-                    background: $color-form-text;
+                    background: $color-theme-background;
                     border-radius: 4px;
                     padding: 2px 4px;
+                    &::before{
+                        content: "\2717  ";
+                    }
+                    &.valid {
+                        background: #0c0;
+                        &::before {
+                            content: "\2713  ";
+                        }
+                    }
                 }
             }
         }

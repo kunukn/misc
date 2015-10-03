@@ -40,11 +40,11 @@
             <div class="housewarming__form__contact-info">
                 <span>
         <input type="text" placeholder="Navn" aria-label="Navn" data-ng-model="signupModel.name" name="name" required />
-        <label aria-hidden="true" data-ng-show="signupModel.name" class="ng-hide">Navn</label>
+        <label aria-hidden="true" data-ng-show="signupModel.name" class="ng-hide" data-ng-class="{'valid': signupModel.name.length > 1}">Navn</label>
       </span>
-                <span>        
+                <span>
         <input type="text" placeholder="E-mail" aria-label="E-mail" data-ng-model="signupModel.email" name="email" required />
-        <label aria-hidden="true" data-ng-show="signupModel.email" class="ng-hide">E-mail</label>
+        <label aria-hidden="true" data-ng-show="signupModel.email" class="ng-hide" data-ng-class="{'valid': emailValidate(signupModel.email)}">E-mail</label>
       </span>
             </div>
             <div class="housewarming__form__time-question">

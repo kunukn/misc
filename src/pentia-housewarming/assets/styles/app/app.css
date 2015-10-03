@@ -138,9 +138,15 @@ body {
           top: 6px;
           top: calc(50% - 1em);
           color: white;
-          background: #7CBBD1;
+          background: #9BCEDE;
           border-radius: 4px;
           padding: 2px 4px; }
+          .housewarming__form__contact-info > span > label::before {
+            content: "\2717  "; }
+          .housewarming__form__contact-info > span > label.valid {
+            background: #0c0; }
+            .housewarming__form__contact-info > span > label.valid::before {
+              content: "\2713  "; }
     .housewarming__form__time-question {
       margin-bottom: 12px; }
       .housewarming__form__time-question > label {
