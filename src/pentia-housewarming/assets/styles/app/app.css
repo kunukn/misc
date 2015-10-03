@@ -1,0 +1,210 @@
+/**
+  Responsive signup page with fixed page width
+*/
+/* Variables */
+/* Utilities */
+.responsive-image {
+  max-width: 100%;
+  height: auto; }
+
+.handwritten-font {
+  font-family: 'Pacifico', cursive; }
+
+/* Page */
+::-webkit-input-placeholder {
+  color: #7CBBD1; }
+
+::-moz-placeholder {
+  color: #7CBBD1; }
+
+html {
+  height: 100%;
+  box-sizing: border-box; }
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit; }
+
+body {
+  position: relative;
+  max-width: 1280px;
+  height: 100%;
+  font-size: 20px;
+  background: #333;
+  margin: 0 auto; }
+
+.housewarming {
+  min-height: 100%;
+  overflow: hidden;
+  position: relative;
+  max-width: inherit;
+  background: gray;
+  background: linear-gradient(to bottom, #9BCEDE, white); }
+  @media (min-width: 768px) {
+    .housewarming {
+      background: gray;
+      background: url(//s3-us-west-2.amazonaws.com/s.cdpn.io/157670/building.png) no-repeat bottom/auto, linear-gradient(to bottom, #9BCEDE 20%, white); } }
+  .housewarming__headline-text {
+    position: relative;
+    background: #5C98AD;
+    margin: 2em 0 1em 0;
+    color: white;
+    transform: rotate(-15deg) skewX(-15deg);
+    transform-origin: 0 0;
+    width: 100%;
+    text-shadow: 0 2px 2px #333; }
+    @media (min-width: 1200px) {
+      .housewarming__headline-text {
+        position: absolute;
+        margin-bottom: 0; } }
+    .housewarming__headline-text__event {
+      text-transform: uppercase;
+      font-size: 180%;
+      font-weight: 700; }
+    .housewarming__headline-text__location-and-date {
+      text-transform: uppercase;
+      padding-left: 60px;
+      animation: scale-up-and-down 10s infinite; }
+  .housewarming__arrangement-text {
+    display: table;
+    color: white;
+    transition: 1s;
+    transform: rotate(-5deg);
+    position: relative;
+    margin: 30px auto 20px;
+    padding-bottom: 10px;
+    text-shadow: 0 2px 2px #5C98AD; }
+    @media (min-width: 1200px) {
+      .housewarming__arrangement-text {
+        font-size: 200%; } }
+    .housewarming__arrangement-text__teaser {
+      padding-left: 10px;
+      transform: skewX(-10deg); }
+    .housewarming__arrangement-text__location {
+      text-transform: uppercase;
+      transform: skewX(-10deg) scale(1, 1.2);
+      font-weight: 700;
+      font-size: 200%;
+      letter-spacing: -1px; }
+  .housewarming__form {
+    font-size: 90%;
+    border-radius: 4px;
+    padding: 20px 30px;
+    color: #fff;
+    background: #7cbbd1;
+    background: linear-gradient(to bottom, rgba(124, 187, 209, 0.8), rgba(124, 187, 209, 0.9));
+    position: relative;
+    max-width: 400px;
+    min-height: 300px;
+    margin: 0 auto; }
+    .housewarming__form input {
+      color: #7CBBD1;
+      padding: 10px;
+      border-radius: 4px;
+      border: 0;
+      margin-bottom: 10px; }
+    .housewarming__form__headline {
+      position: relative;
+      margin-bottom: 10px; }
+      .housewarming__form__headline > label {
+        display: inline-block; }
+        .housewarming__form__headline > label:nth-child(2) {
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          color: #D0E8F0;
+          font-size: 80%; }
+    .housewarming__form__contact-info {
+      margin-bottom: 12px; }
+      .housewarming__form__contact-info > span {
+        position: relative;
+        display: block; }
+        .housewarming__form__contact-info > span > input {
+          position: relative;
+          width: 100%;
+          color: black; }
+          .housewarming__form__contact-info > span > input:-ms-input-placeholder {
+            color: #7CBBD1; }
+        .housewarming__form__contact-info > span > label {
+          font-size: 80%;
+          display: inline-block;
+          position: absolute;
+          right: 6px;
+          top: 6px;
+          top: calc(50% - 1em);
+          color: white;
+          background: #7CBBD1;
+          border-radius: 4px;
+          padding: 2px 4px; }
+    .housewarming__form__time-question {
+      margin-bottom: 12px; }
+      .housewarming__form__time-question > label {
+        display: block; }
+      .housewarming__form__time-question__headline {
+        margin-bottom: 10px; }
+      .housewarming__form__time-question__time-choice {
+        display: inline-block;
+        font-size: 80%;
+        position: relative;
+        margin-left: 10px; }
+        .housewarming__form__time-question__time-choice > input[type="radio"] {
+          margin-right: 10px; }
+    .housewarming__form__guest-question {
+      margin-bottom: 10px; }
+      .housewarming__form__guest-question > label {
+        display: inline-block;
+        margin-bottom: 10px; }
+        .housewarming__form__guest-question > label:not(:last-child) {
+          display: block; }
+      .housewarming__form__guest-question__max-guests-info {
+        color: #D0E8F0; }
+      .housewarming__form__guest-question input {
+        text-align: center;
+        width: 50px;
+        margin-right: 10px;
+        color: black; }
+    .housewarming__form button {
+      display: block;
+      background: #5C98AD;
+      border: 0;
+      padding: 10px;
+      border-radius: 4px;
+      text-align: center;
+      width: 100%; }
+  .housewarming__clouds {
+    position: absolute;
+    animation: move-up-and-down 3.3s infinite;
+    left: 30px;
+    bottom: 230px;
+    display: none; }
+    @media (min-width: 768px) {
+      .housewarming__clouds {
+        display: block; } }
+  .housewarming__zeppeliner {
+    position: absolute;
+    left: 180px;
+    bottom: 320px;
+    display: none; }
+    @media (min-width: 768px) {
+      .housewarming__zeppeliner {
+        display: block; } }
+
+@keyframes move-up-and-down {
+  0% {
+    transform: translate3d(0, 0, 0);
+    animation-timing-function: ease-in-out; }
+  50% {
+    transform: translate3d(0, 6px, 0); }
+  100% {
+    transform: translate3d(0, 0, 0); } }
+
+@keyframes scale-up-and-down {
+  0% {
+    transform: scale3d(1, 1, 1);
+    animation-timing-function: ease-in-out;
+    transform-origin: 0 0; }
+  50% {
+    transform: scale3d(1.05, 1.05, 1); }
+  100% {
+    transform: scale3d(1, 1, 1); } }
