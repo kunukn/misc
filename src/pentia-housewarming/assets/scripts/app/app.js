@@ -16,11 +16,11 @@
             $scope.signupModel = {
                 name: '',
                 email: '',
-                time: 0,
+                time: '14',
                 guests: 0
             };
 
-            // start hovering zepperliner after other animation effect
+            // Start hovering zepperliner after other animation effect
             $timeout( function(){
                 $scope.zeppelinerAnimation = {
                     'animation': 'move-up-and-down 2.1s 2s infinite'

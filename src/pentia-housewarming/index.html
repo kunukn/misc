@@ -12,52 +12,61 @@
 </head>
 
 <body>
-    <div class="housewarming" data-ng-app="app" data-ng-controller="appController">
-        <img src="assets/images/clouds.png" class="housewarming__clouds responsive-image" alt="clouds" aria-hidden="true" />
-        <img src="assets/images/zeppeliner.png" class="housewarming__zeppeliner responsive-image animated fadeInLeft" alt="zeppeliner" aria-hidden="true" data-ng-style="zeppelinerAnimation" />
-        <div class="housewarming__headline-text">
-            <div class="handwritten-font housewarming__headline-text__teaser">Kom frisk &amp; glad til</div>
-            <div class="housewarming__headline-text__event">Housewarming</div>
-            <div class="housewarming__headline-text__location-and-date">Hos Pentia den 23. maj</div>
-        </div>
-        <div class="housewarming__arrangement-text">
-            <div class="animated bounce">
-                <div class="handwritten-font housewarming__arrangement-text__teaser">Kom til arrangement</div>
-                <div class="housewarming__arrangement-text__location">Hos Pentia</div>
-            </div>
-        </div>
-        <form name="signupForm" class="housewarming__form" method="post" data-ng-submit="signup()">
-            <div class="housewarming__form__headline">
-                <label>Tilmelding</label>
-                <label>Alle felter med * skal udfyldes</label>
-            </div>
-            <div class="housewarming__form__contact-info">
-                <span>
-                    <input type="text" placeholder="Navn *" aria-label="Navn" data-ng-model="signupModel.name" name="name" required />
-                    <label aria-hidden="true" data-ng-show="signupModel.name" class="ng-hide">Navn</label>
-                  </span>
-                <span>
-        <input type="text" placeholder="E-mail *" aria-label="E-mail" data-ng-model="signupModel.email" name="email" required />
+<div class="housewarming" data-ng-app="app" data-ng-controller="appController">
+  <img src="//s3-us-west-2.amazonaws.com/s.cdpn.io/157670/clouds.png" class="housewarming__clouds responsive-image" alt="clouds" aria-hidden="true" />
+
+  <img src="//s3-us-west-2.amazonaws.com/s.cdpn.io/157670/zeppeliner.png" class="housewarming__zeppeliner responsive-image animated fadeInLeft" alt="zeppeliner" aria-hidden="true" data-ng-style="zeppelinerAnimation" />
+
+  <div class="housewarming__headline-text">
+    <div class="handwritten-font housewarming__headline-text__teaser">Kom frisk &amp; glad til</div>
+    <div class="housewarming__headline-text__event">Housewarming</div>
+    <div class="housewarming__headline-text__location-and-date">Hos Pentia den 23. maj</div>
+  </div>
+
+  <div class="housewarming__arrangement-text">
+    <div class="animated bounce">
+      <div class="handwritten-font housewarming__arrangement-text__teaser">Kom til arrangement</div>
+      <div class="housewarming__arrangement-text__location">Hos Pentia</div>
+    </div>
+  </div>
+
+  <form name="signupForm" class="housewarming__form" method="post" data-ng-submit="signup()">
+    <div class="housewarming__form__headline">
+      <label>Tilmelding</label>
+      <label>Alle felter skal udfyldes</label>
+    </div>
+
+    <div class="housewarming__form__contact-info">
+      <span>
+        <input type="text" placeholder="Navn" aria-label="Navn" data-ng-model="signupModel.name" name="name" required />
+        <label aria-hidden="true" data-ng-show="signupModel.name" class="ng-hide">Navn</label>
+      </span>
+      <span>        
+        <input type="text" placeholder="E-mail" aria-label="E-mail" data-ng-model="signupModel.email" name="email" required />
         <label aria-hidden="true" data-ng-show="signupModel.email" class="ng-hide">E-mail</label>
       </span>
-            </div>
-            <div class="housewarming__form__time-question">
-                <label class="housewarming__form__time-question__headline">Hvad tid ses vi?</label>
-                <label class="housewarming__form__time-question__time-choice">
-                    <input type="radio" name="time-selection" value="14" data-ng-model="signupModel.time" />14.00 - 17.30, kunder og venner af huset
-                </label>
-                <label class="housewarming__form__time-question__time-choice">
-                    <input type="radio" name="time-selection" value="18" data-ng-model="signupModel.time" />18.00 - 21.00, familie og venner
-                </label>
-            </div>
-            <div class="housewarming__form__guest-question">
-                <label>Hvor mange gæster tager du med?</label>
-                <input type="number" name="quantity" min="0" max="4" value="0" data-ng-model="signupModel.guests" required />
-                <label class="housewarming__form__guest-question__max-guests-info">(max 4 gæster)</label>
-            </div>
-            <button type="submit" data-ng-disabled="signupForm.$invalid">Tilmeld</button>
-        </form>
     </div>
+
+    <div class="housewarming__form__time-question">
+      <label class="housewarming__form__time-question__headline">Hvad tid ses vi?</label>
+      <label class="housewarming__form__time-question__time-choice">
+        <input type="radio" name="timeSelection" value="14" data-ng-model="signupModel.time" required />14.00 - 17.30, kunder og venner af huset
+      </label>
+      <label class="housewarming__form__time-question__time-choice">
+        <input type="radio" name="timeSelection" value="18" data-ng-model="signupModel.time" required />18.00 - 21.00, familie og venner
+      </label>
+    </div>
+
+    <div class="housewarming__form__guest-question">
+      <label>Hvor mange gæster tager du med?</label>
+      <input type="number" name="quantity" min="0" max="4" value="0" data-ng-model="signupModel.guests" required />
+      <label class="housewarming__form__guest-question__max-guests-info">(max 4 gæster)</label>
+    </div>
+
+    <button type="submit" data-ng-disabled="signupForm.$invalid" data-ng-class="{'disabled': signupForm.$invalid}" data-label-incomplete="? klik her når felterne er udfyldt">Tilmeld</button>
+
+  </form>
+</div>
     <script src="assets/scripts/lib/angular.min.js"></script>
     <script src="assets/scripts/app/app.js?v=1"></script>
 </body>

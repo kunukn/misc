@@ -81,7 +81,7 @@ body {
     background: linear-gradient(to bottom, $color-theme-background, white);
     @include responsive($breakpoint-small-device-width) {
         background: gray;
-        background: url(//s3-us-west-2.amazonaws.com/s.cdpn.io/157670/building.png) no-repeat bottom / auto, linear-gradient(to bottom, $color-theme-background 20%, white);
+        background: url(//s3-us-west-2.amazonaws.com/s.cdpn.io/157670/building.png) no-repeat bottom / auto, linear-gradient(to bottom, $color-theme-background 80%, white);
     }
 
     &__headline-text {
@@ -141,7 +141,7 @@ body {
         color: #fff;
         background: rgb(124, 187, 209);
         // fallback
-        background: linear-gradient(to bottom, rgba(124, 187, 209, 0.9), rgba(124, 187, 209, 0.8));
+        background: linear-gradient(to bottom, rgba(124, 187, 209, 0.9), rgba(124, 187, 209, 0.85));
         position: relative;
         max-width: 400px;
         min-height: 300px;
@@ -180,10 +180,10 @@ body {
                     &:-ms-input-placeholder {
                         color: $color-form-text;
                     }
-                }
+                }              
                 > label {
                     font-size: 80%;
-                    display: inline-block;
+                    display: inline-block;                    
                     position: absolute;
                     right: 6px;
                     top: 6px;
@@ -238,8 +238,16 @@ body {
             border: 0;
             padding: 10px;
             border-radius: 4px;
-            text-align: center;
+            text-align: center;          
+          &[type="submit"]{
             width: 100%;
+            &.disabled{
+              color: $color-notify-text;
+              &::after{
+                content: attr(data-label-incomplete);
+              }
+            } 
+          }
         }
     }
     &__clouds {

@@ -48,7 +48,7 @@ body {
   @media (min-width: 768px) {
     .housewarming {
       background: gray;
-      background: url(//s3-us-west-2.amazonaws.com/s.cdpn.io/157670/building.png) no-repeat bottom/auto, linear-gradient(to bottom, #9BCEDE 20%, white); } }
+      background: url(//s3-us-west-2.amazonaws.com/s.cdpn.io/157670/building.png) no-repeat bottom/auto, linear-gradient(to bottom, #9BCEDE 80%, white); } }
   .housewarming__headline-text {
     position: relative;
     background: #5C98AD;
@@ -97,7 +97,7 @@ body {
     padding: 20px 30px;
     color: #fff;
     background: #7cbbd1;
-    background: linear-gradient(to bottom, rgba(124, 187, 209, 0.9), rgba(124, 187, 209, 0.8));
+    background: linear-gradient(to bottom, rgba(124, 187, 209, 0.9), rgba(124, 187, 209, 0.85));
     position: relative;
     max-width: 400px;
     min-height: 300px;
@@ -174,8 +174,13 @@ body {
       border: 0;
       padding: 10px;
       border-radius: 4px;
-      text-align: center;
-      width: 100%; }
+      text-align: center; }
+      .housewarming__form button[type="submit"] {
+        width: 100%; }
+        .housewarming__form button[type="submit"].disabled {
+          color: #D0E8F0; }
+          .housewarming__form button[type="submit"].disabled::after {
+            content: attr(data-label-incomplete); }
   .housewarming__clouds {
     position: absolute;
     animation: move-up-and-down 3.3s infinite;
