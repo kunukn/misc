@@ -16,7 +16,7 @@
             $scope.signupModel = {
                 name: '',
                 email: '',
-                time: '14',
+                time: '',
                 guests: 0
             };
 

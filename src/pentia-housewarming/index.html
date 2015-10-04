@@ -35,35 +35,36 @@
         <form name="signupForm" class="housewarming__form" method="post" data-ng-submit="signup()">
             <div class="housewarming__form__headline">
                 <label>Tilmelding</label>
-                <label>Alle felter skal udfyldes</label>
+                <label>Alle felter med * skal udfyldes</label>
             </div>
             <div class="housewarming__form__contact-info">
                 <span>
-        <input type="text" placeholder="Navn" aria-label="Navn" data-ng-model="signupModel.name" name="name" required />
+        <input type="text" placeholder="Navn *" aria-label="Navn" data-ng-model="signupModel.name" name="name" required />
         <label aria-hidden="true" data-ng-show="signupModel.name" class="ng-hide" data-ng-class="{'valid': signupModel.name.length > 1}">Navn</label>
       </span>
                 <span>
-        <input type="text" placeholder="E-mail" aria-label="E-mail" data-ng-model="signupModel.email" name="email" required />
+        <input type="text" placeholder="E-mail *" aria-label="E-mail" data-ng-model="signupModel.email" name="email" required />
         <label aria-hidden="true" data-ng-show="signupModel.email" class="ng-hide" data-ng-class="{'valid': emailValidate(signupModel.email)}">E-mail</label>
       </span>
             </div>
             <div class="housewarming__form__time-question">
                 <label class="housewarming__form__time-question__headline">Hvad tid ses vi?</label>
                 <label class="housewarming__form__time-question__time-choice">
-                    <input type="radio" name="timeSelection" value="14" data-ng-model="signupModel.time" required />14.00 - 17.30, kunder og venner af huset
+                    <input type="radio" name="timeSelection" value="14" data-ng-model="signupModel.time"  />14.00 - 17.30, kunder og venner af huset
                 </label>
                 <label class="housewarming__form__time-question__time-choice">
-                    <input type="radio" name="timeSelection" value="18" data-ng-model="signupModel.time" required />18.00 - 21.00, familie og venner
+                    <input type="radio" name="timeSelection" value="18" data-ng-model="signupModel.time"  />18.00 - 21.00, familie og venner
                 </label>
             </div>
             <div class="housewarming__form__guest-question">
                 <label>Hvor mange gæster tager du med?</label>
-                <input type="number" name="quantity" min="0" max="4" value="0" data-ng-model="signupModel.guests" required />
+                <input type="number" name="quantity" min="0" max="4" value="0" data-ng-model="signupModel.guests"  />
                 <label class="housewarming__form__guest-question__max-guests-info">(max 4 gæster)</label>
             </div>
             <button type="submit" data-ng-disabled="signupForm.$invalid" data-ng-class="{'disabled': signupForm.$invalid}" data-label-incomplete="? klik her når felterne er udfyldt">Tilmeld</button>
         </form>
     </div>
+    <!-- Lazy loading because this works without JS by default -->
     <script src="assets/scripts/lib/angular.min.js"></script>
     <script src="assets/scripts/app/app.js?v=1"></script>
 </body>
