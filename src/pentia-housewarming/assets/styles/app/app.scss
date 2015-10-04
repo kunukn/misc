@@ -19,7 +19,7 @@ $color-notify-text: #D0E8F0;
 
 .ng-hide {
     /* Angular Framework */
-    display: none !important;
+    display: none;
 }
 
 .responsive-image {
@@ -76,11 +76,14 @@ body {
     overflow: hidden;
     position: relative;
     max-width: inherit;
-    background: gray;
-    background: linear-gradient(to bottom, $color-theme-background, white);
+    background: $color-theme-background;
+    background-image: linear-gradient(to bottom, $color-theme-background 80%, white);
+    
     @include responsive($breakpoint-small-device-width) {
-        background: gray;
-        background: url(//s3-us-west-2.amazonaws.com/s.cdpn.io/157670/building.png) no-repeat bottom / auto, linear-gradient(to bottom, $color-theme-background 80%, white);
+      background-repeat: no-repeat;
+      background-position: bottom; 
+      background-size: auto;
+      background-image: url('//s3-us-west-2.amazonaws.com/s.cdpn.io/157670/building.png'), linear-gradient($color-theme-background 80%, white);
     }
 
     &__headline-text {
@@ -139,7 +142,6 @@ body {
         padding: 20px 30px;
         color: #fff;
         background: rgb(124, 187, 209);
-        // fallback
         background: linear-gradient(to bottom, rgba(124, 187, 209, 0.9), rgba(124, 187, 209, 0.85));
         position: relative;
         max-width: 400px;
@@ -291,7 +293,7 @@ body {
             opacity: 0.9;
             &__drawing {
                 background: yellow;
-                background: radial-gradient(yellow, gold);
+                background: radial-gradient(circle closest-side, yellow, gold);
                 border-radius: 50%;
                 width: inherit;
                 height: inherit;

@@ -5,7 +5,7 @@
 /* Utilities */
 .ng-hide {
   /* Angular Framework */
-  display: none !important; }
+  display: none; }
 
 .responsive-image {
   max-width: 100%;
@@ -43,12 +43,14 @@ body {
   overflow: hidden;
   position: relative;
   max-width: inherit;
-  background: gray;
-  background: linear-gradient(to bottom, #9BCEDE, white); }
+  background: #9BCEDE;
+  background-image: linear-gradient(to bottom, #9BCEDE 80%, white); }
   @media (min-width: 768px) {
     .housewarming {
-      background: gray;
-      background: url(//s3-us-west-2.amazonaws.com/s.cdpn.io/157670/building.png) no-repeat bottom/auto, linear-gradient(to bottom, #9BCEDE 80%, white); } }
+      background-repeat: no-repeat;
+      background-position: bottom;
+      background-size: auto;
+      background-image: url("//s3-us-west-2.amazonaws.com/s.cdpn.io/157670/building.png"), linear-gradient(#9BCEDE 80%, white); } }
   .housewarming__headline-text {
     position: relative;
     background: #5C98AD;
@@ -216,7 +218,7 @@ body {
       opacity: 0.9; }
       .housewarming__sun__drawing {
         background: yellow;
-        background: radial-gradient(yellow, gold);
+        background: radial-gradient(circle closest-side, yellow, gold);
         border-radius: 50%;
         width: inherit;
         height: inherit;
