@@ -19,7 +19,7 @@ $color-notify-text: #D0E8F0;
 
 .ng-hide {
     /* Angular Framework */
-    display: none;
+    display: none !important;
 }
 
 .responsive-image {

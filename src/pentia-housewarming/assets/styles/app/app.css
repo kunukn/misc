@@ -5,7 +5,7 @@
 /* Utilities */
 .ng-hide {
   /* Angular Framework */
-  display: none; }
+  display: none !important; }
 
 .responsive-image {
   max-width: 100%;
