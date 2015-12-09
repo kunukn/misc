@@ -1,0 +1,29 @@
+// Resets
+*,*:before, *:after{
+  box-sizing: border-box;  
+}
+
+// Angular
+[ng-cloak] {
+  display: none;
+}
+
+// Utils
+
+// Layout
+html,
+body{
+  padding-top: 2em;  
+  font: 20px arial, sans-serif;
+  animation: fadeIn 2s;
+}
+
+main{
+ text-align: center;
+}
+
+// Keyframes
+@keyframes fadeIn{
+  from {opacity: 0.1;}
+  to {opacity: 1;}
+}

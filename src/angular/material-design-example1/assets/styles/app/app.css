@@ -1,0 +1,20 @@
+*, *:before, *:after {
+  box-sizing: border-box; }
+
+[ng-cloak] {
+  display: none; }
+
+html,
+body {
+  padding-top: 2em;
+  font: 20px arial, sans-serif;
+  animation: fadeIn 2s; }
+
+main {
+  text-align: center; }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.1; }
+  to {
+    opacity: 1; } }
