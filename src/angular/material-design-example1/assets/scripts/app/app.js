@@ -1,12 +1,15 @@
 'use strict';
 
-var app = undefined;
+window.app = (function (angular) {
 
-(function (angular) {
+    var appVersion = 1;
+    var app = angular.module('app', ['ngMaterial']);
 
-    app = angular.module('app', ['ngMaterial']).controller('mainController', ['$scope', function ($scope) {
+    app.controller('mainController', ['$scope', function ($scope) {
         $scope.btnClick = function (e) {
             $scope.message = "clicked: " + new Date().toLocaleString();
         };
     }]);
+
+    return app;
 })(angular, undefined);

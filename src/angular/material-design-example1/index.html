@@ -5,22 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
     <title>App</title>
-    
+    <!-- 
     <link rel="stylesheet" href="assets/styles/lib/normalize.min.css">
+    -->
     <link rel="stylesheet" href="assets/styles/lib/angular/angular-material.min.css">
     <link rel="stylesheet" href="assets/styles/app/app.css">
+    <!--
+    <script src="assets/scripts/lib/modernizr.min.js"></script>
+     -->
 </head>
 
 <body>
     <main ng-cloak ng-controller="mainController">
-
-		  <md-button class="md-raised" ng-click="btnClick()">Click</md-button>
-          <div>{{message}}</div>
-
+        <md-button class="md-raised" ng-click="btnClick()">Click</md-button>
+        <div>{{message}}</div>
     </main>
-    
     <!-- lib -->
     <script src="assets/scripts/lib/jquery.min.js"></script>
     <script src="assets/scripts/lib/angular/angular.min.js"></script>
@@ -29,7 +29,6 @@
     <script src="assets/scripts/lib/angular/angular-resource.min.js"></script>
     <script src="assets/scripts/lib/angular/angular-route.min.js"></script>
     <script src="assets/scripts/lib/angular/angular-material.min.js"></script>
-    
     <!-- app -->
     <script src="assets/scripts/app/app.js"></script>
 </body>
