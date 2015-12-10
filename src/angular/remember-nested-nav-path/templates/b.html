@@ -1,0 +1,14 @@
+<div class="view-b" ng-controller="B_Controller">
+    <div>{{message}}</div>
+    <div>{{subPage}}</div>
+
+    <nav>
+        <ul>
+            <li><a ng-click="subPage=templates.b.ba" href="#">Page ba</a></li>
+            <li><a ng-click="subPage=templates.b.bb" href="#">Page bb</a></li>
+            <li><a ng-click="subPage=templates.b.bc" href="#">Page bc</a></li>
+        </ul>
+    </nav>
+    
+    <section class="content-b" ng-include src="subPage"></section>
+</div>

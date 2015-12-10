@@ -1,0 +1,60 @@
+@charset "UTF-8";
+// Resets
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+// Angular
+[ng-cloak] {
+    display: none;
+}
+
+// Layout
+body {
+    font: 20px arial, sans-serif;
+}
+
+ul {
+    list-style-type: none;
+    li {
+        display: inline-block;
+        padding: 1em;
+    }
+}
+
+a {
+    color: black;
+    font-size: 120%;
+}
+
+[class^="view-"] {
+    min-height: 10em;
+}
+
+main {
+    .content-main {
+        background: lightgray;
+        .view-a {
+            background: yellowgreen;
+            .content-a {
+                background: darken(yellowgreen, 10%);
+            }
+        }
+        .view-b {
+            background: teal;
+            .content-b {
+                background: darken(teal, 10%);
+            }
+        }
+        .view-c {
+            background: orange;
+            .content-c {
+                background: darken(orange, 10%);
+            }
+        }
+    }
+}

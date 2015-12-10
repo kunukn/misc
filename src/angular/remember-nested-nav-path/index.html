@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js" ng-app="app">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>App</title>
+    <link rel="stylesheet" href="assets/styles/app/app.css?v=1">
+    <script src="assets/scripts/lib/angular/angular.min.js"></script>
+    <script src="assets/scripts/lib/angular/angular-route.min.js"></script>    
+    <script src="assets/scripts/app/app.js?v=1"></script>
+</head>
+
+<body>
+    <main ng-cloak ng-controller="mainController">
+        <div>
+            {{message}}
+        </div>
+        <nav>
+            <ul>
+                <li><a ng-click="page=templates.home" href="#">Home</a></li>
+                <li><a ng-click="page=templates.a.index" href="#">Page a</a></li>
+                <li><a ng-click="page=templates.b.index" href="#">Page b</a></li>
+                <li><a ng-click="page=templates.c.index" href="#">Page c</a></li>
+            </ul>
+        </nav>
+        <section class="content-main" ng-include src="page"></section>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+[ng-cloak] {
+  display: none; }
+
+body {
+  font: 20px arial, sans-serif; }
+
+ul {
+  list-style-type: none; }
+  ul li {
+    display: inline-block;
+    padding: 1em; }
+
+a {
+  color: black;
+  font-size: 120%; }
+
+[class^="view-"] {
+  min-height: 10em; }
+
+main .content-main {
+  background: lightgray; }
+  main .content-main .view-a {
+    background: yellowgreen; }
+    main .content-main .view-a .content-a {
+      background: #7ba428; }
+  main .content-main .view-b {
+    background: teal; }
+    main .content-main .view-b .content-b {
+      background: #004d4d; }
+  main .content-main .view-c {
+    background: orange; }
+    main .content-main .view-c .content-c {
+      background: #cc8400; }
