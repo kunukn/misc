@@ -2,8 +2,6 @@
 
 window.app = (function (ng) {
 
-    var appVersion = 1;
-
     var templates = {
         home: 'templates/home.html',
         a: {
@@ -59,9 +57,9 @@ window.app = (function (ng) {
         return {
             path: {
                 root: templates.home,
-                a: ['', '', ''], // subpage, subsubpage, subsubsubpage
-                b: ['', '', ''],
-                c: ['', '', '']
+                a: ['', ''], // subpage, subsubpage
+                b: ['', ''],
+                c: ['', '']
             }
         };
     });
@@ -69,20 +67,20 @@ window.app = (function (ng) {
     app.controller('mainController', ['$scope', 'storage', function ($scope, storage) {
         $scope.message = 'this is root';
         $scope.templates = templates;
-        $scope.page = storage.path.root;
+        $scope.page = storage.path.root; //load from storage
 
         $scope.pageClick = function (value) {
-            $scope.page = value;
-            storage.path.root = value;
+            $scope.page = value; //update view
+            storage.path.root = value; //update storage
         };
     }]).controller('A_Controller', ['$scope', 'storage', function ($scope, storage) {
         $scope.message = "this is a";
         $scope.templates = templates;
-        $scope.subPage = storage.path.a[0];
+        $scope.subPage = storage.path.a[0]; //load from storage           
 
         $scope.subPageClick = function (value) {
-            $scope.subPage = value;
-            storage.path.a[0] = value;
+            $scope.subPage = value; //update view
+            storage.path.a[0] = value; //update storage
         };
     }]).controller('AA_Controller', ['$scope', 'storage', function ($scope, storage) {
         $scope.message = "this is aa";

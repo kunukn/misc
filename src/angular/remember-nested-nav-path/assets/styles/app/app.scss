@@ -32,7 +32,7 @@ a {
 }
 
 [class^="view-"] {
-    min-height: 10em;
+    min-height: 4em;
 }
 
 main {
@@ -40,20 +40,29 @@ main {
         background: lightgray;
         .view-a {
             background: yellowgreen;
-            .content-a {
-                background: darken(yellowgreen, 10%);
+            .subpage {
+                background: darken(yellowgreen, 4%);
+            }
+            .subsubpage {
+                background: darken(yellowgreen, 8%);
             }
         }
         .view-b {
             background: teal;
-            .content-b {
-                background: darken(teal, 10%);
+            .subpage {
+                background: darken(teal, 4%);
+            }
+            .subsubpage {
+                background: darken(teal, 8%);
             }
         }
         .view-c {
             background: orange;
-            .content-c {
-                background: darken(orange, 10%);
+            .subpage {
+                background: darken(orange, 4%);
+            }
+            .subsubpage {
+                background: darken(orange, 8%);
             }
         }
     }

@@ -22,19 +22,25 @@ a {
   font-size: 120%; }
 
 [class^="view-"] {
-  min-height: 10em; }
+  min-height: 4em; }
 
 main .content-main {
   background: lightgray; }
   main .content-main .view-a {
     background: yellowgreen; }
-    main .content-main .view-a .content-a {
-      background: #7ba428; }
+    main .content-main .view-a .subpage {
+      background: #8ebd2e; }
+    main .content-main .view-a .subsubpage {
+      background: #81ac2a; }
   main .content-main .view-b {
     background: teal; }
-    main .content-main .view-b .content-b {
-      background: #004d4d; }
+    main .content-main .view-b .subpage {
+      background: #006c6c; }
+    main .content-main .view-b .subsubpage {
+      background: #005757; }
   main .content-main .view-c {
     background: orange; }
-    main .content-main .view-c .content-c {
-      background: #cc8400; }
+    main .content-main .view-c .subpage {
+      background: #eb9800; }
+    main .content-main .view-c .subsubpage {
+      background: #d68b00; }

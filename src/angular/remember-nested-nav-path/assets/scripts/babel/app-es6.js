@@ -1,7 +1,5 @@
 window.app = ((ng) => {
 
-    const appVersion = 1;
-
     const templates = {
         home: 'templates/home.html',
         a: {
@@ -51,16 +49,15 @@ window.app = ((ng) => {
         }
     };
 
-
     let app = angular.module('app', []);
 
-    app.factory("storage", function() {
+    app.factory("storage", () => {
         return {
             path: {
                 root: templates.home,
-                a: ['','',''], // subpage, subsubpage, subsubsubpage
-                b: ['','',''],
-                c: ['','','']
+                a: ['',''], // subpage, subsubpage
+                b: ['',''],
+                c: ['','']
             }
         };
     });
@@ -68,21 +65,21 @@ window.app = ((ng) => {
     app.controller('mainController', ['$scope', 'storage', ($scope, storage) => {
             $scope.message = 'this is root';
             $scope.templates = templates;
-            $scope.page = storage.path.root;
+            $scope.page = storage.path.root; //load from storage
             
             $scope.pageClick = (value) => {
-                $scope.page = value;
-                storage.path.root = value;
+                $scope.page = value; //update view
+                storage.path.root = value; //update storage
             };
         }])
         .controller('A_Controller', ['$scope', 'storage', ($scope, storage) => {
             $scope.message = "this is a";
             $scope.templates = templates;
-            $scope.subPage = storage.path.a[0];            
+            $scope.subPage = storage.path.a[0]; //load from storage            
             
             $scope.subPageClick = (value) => {
-                $scope.subPage = value;
-                storage.path.a[0] = value;
+                $scope.subPage = value; //update view
+                storage.path.a[0] = value; //update storage
             };
         }])
         .controller('AA_Controller', ['$scope', 'storage', ($scope, storage) => {

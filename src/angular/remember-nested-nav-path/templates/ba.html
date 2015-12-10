@@ -1,3 +1,11 @@
-<div class="view-ba" ng-controller="BA_Controller">
-    {{message}}
+<div class="view-ba subpage" ng-controller="BA_Controller">
+<div>{{message}}</div>
+    <nav>
+        <ul>
+            <li><a ng-click="subSubPageClick(templates.b.baa)" href="#">Page baa</a></li>
+            <li><a ng-click="subSubPageClick(templates.b.bab)" href="#">Page bab</a></li>
+            <li><a ng-click="subSubPageClick(templates.b.bac)" href="#">Page bac</a></li>
+        </ul>
+    </nav>
+    <section class="content-ba" ng-include src="subSubPage"></section>
 </div>
