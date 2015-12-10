@@ -2,9 +2,9 @@
 	<div>{{message}}</div>
     <nav>
         <ul>
-            <li><a ng-click="subSubPage=templates.aaa" href="#">Page aaa</a></li>
-            <li><a ng-click="subSubPage=templates.aab" href="#">Page aab</a></li>
-            <li><a ng-click="subSubPage=templates.aac" href="#">Page aac</a></li>
+            <li><a ng-click="subSubPageClick(templates.a.aaa)" href="#">Page aaa</a></li>
+            <li><a ng-click="subSubPageClick(templates.a.aab)" href="#">Page aab</a></li>
+            <li><a ng-click="subSubPageClick(templates.a.aac)" href="#">Page aac</a></li>
         </ul>
     </nav>
     <section class="content-aa" ng-include src="subSubPage"></section>

@@ -19,10 +19,10 @@
         </div>
         <nav>
             <ul>
-                <li><a ng-click="page=templates.home" href="#">Home</a></li>
-                <li><a ng-click="page=templates.a.index" href="#">Page a</a></li>
-                <li><a ng-click="page=templates.b.index" href="#">Page b</a></li>
-                <li><a ng-click="page=templates.c.index" href="#">Page c</a></li>
+                <li><a ng-click="pageClick(templates.home)" href="#">Home</a></li>
+                <li><a ng-click="pageClick(templates.a.index)" href="#">Page a</a></li>
+                <li><a ng-click="pageClick(templates.b.index)" href="#">Page b</a></li>
+                <li><a ng-click="pageClick(templates.c.index)" href="#">Page c</a></li>
             </ul>
         </nav>
         <section class="content-main" ng-include src="page"></section>
@@ -30,3 +30,4 @@
 </body>
 
 </html>
+

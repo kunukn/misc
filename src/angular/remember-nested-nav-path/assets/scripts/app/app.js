@@ -61,28 +61,40 @@ window.app = (function (ng) {
             subPage: '',
             subSubPage: '',
             subSubSubPage: '',
-            data: 'some data'
+            data: 'some data',
+            path: {
+                a: '',
+                b: '',
+                c: ''
+            }
         };
     });
-
-    function setPagesFromStorageToScope($scope, storage) {
-        $scope.page = storage.page;
-        $scope.subPage = storage.subPage;
-        $scope.subSubPage = storage.subSubPage;
-    };
 
     app.controller('mainController', ['$scope', 'storage', function ($scope, storage) {
         $scope.message = 'this is root';
         $scope.templates = templates;
         $scope.page = storage.page;
+
+        $scope.pageClick = function (value) {
+            $scope.page = value;
+            console.log(value);
+        };
     }]).controller('A_Controller', ['$scope', 'storage', function ($scope, storage) {
         $scope.message = "this is a";
         $scope.templates = templates;
-        $scope.subPage = storage.subPage;
+
+        $scope.subPageClick = function (value) {
+            $scope.subPage = value;
+            console.log(value);
+        };
     }]).controller('AA_Controller', ['$scope', 'storage', function ($scope, storage) {
         $scope.message = "this is aa";
         $scope.templates = templates;
-        storage.subPage = templates.a.aa;
+
+        $scope.subSubPageClick = function (value) {
+            $scope.subSubPage = value;
+            console.log(value);
+        };
     }]).controller('AB_Controller', ['$scope', 'storage', function ($scope, storage) {
         $scope.message = "this is ab";
         $scope.templates = templates;
@@ -95,6 +107,11 @@ window.app = (function (ng) {
         $scope.message = "this is b";
         $scope.templates = templates;
         $scope.subPage = storage.subPage;
+
+        $scope.subPageClick = function (value) {
+            $scope.subPage = value;
+            console.log(value);
+        };
     }]).controller('BA_Controller', ['$scope', 'storage', function ($scope, storage) {
         $scope.message = "this is ba";
         $scope.templates = templates;
@@ -111,6 +128,11 @@ window.app = (function (ng) {
         $scope.message = "this is c";
         $scope.templates = templates;
         $scope.subPage = storage.subPage;
+
+        $scope.subPageClick = function (value) {
+            $scope.subPage = value;
+            console.log(value);
+        };
     }]).controller('CA_Controller', ['$scope', 'storage', function ($scope, storage) {
         $scope.message = "this is ca";
         $scope.templates = templates;

@@ -57,33 +57,45 @@ window.app = ((ng) => {
     app.factory("storage", function() {
         return {
             page: templates.home,
-            subPage: '',            
+            subPage: '',
             subSubPage: '',
             subSubSubPage: '',
-            data: 'some data'
+            data: 'some data',
+            path: {
+                a: '',
+                b: '',
+                c: ''
+            }
         };
     });
 
-    function setPagesFromStorageToScope($scope, storage) {
-        $scope.page = storage.page;
-        $scope.subPage = storage.subPage;
-        $scope.subSubPage = storage.subSubPage;
-    };
-
     app.controller('mainController', ['$scope', 'storage', ($scope, storage) => {
             $scope.message = 'this is root';
-            $scope.templates = templates;            
+            $scope.templates = templates;
             $scope.page = storage.page;
+            
+            $scope.pageClick = (value) => {
+                $scope.page = value;
+                console.log(value);
+            };
         }])
         .controller('A_Controller', ['$scope', 'storage', ($scope, storage) => {
             $scope.message = "this is a";
-            $scope.templates = templates; 
-            $scope.subPage = storage.subPage;               
+            $scope.templates = templates;
+            
+            $scope.subPageClick = (value) => {
+                $scope.subPage = value;
+                console.log(value);
+            };
         }])
         .controller('AA_Controller', ['$scope', 'storage', ($scope, storage) => {
             $scope.message = "this is aa";
             $scope.templates = templates;            
-            storage.subPage = templates.a.aa;
+
+            $scope.subSubPageClick = (value) => {
+                $scope.subSubPage = value;
+                console.log(value);
+            };
         }])
         .controller('AB_Controller', ['$scope', 'storage', ($scope, storage) => {
             $scope.message = "this is ab";
@@ -97,8 +109,13 @@ window.app = ((ng) => {
         }])
         .controller('B_Controller', ['$scope', 'storage', ($scope, storage) => {
             $scope.message = "this is b";
-            $scope.templates = templates;                                
+            $scope.templates = templates;
             $scope.subPage = storage.subPage;
+
+            $scope.subPageClick = (value) => {
+                $scope.subPage = value;
+                console.log(value);
+            };
         }])
         .controller('BA_Controller', ['$scope', 'storage', ($scope, storage) => {
             $scope.message = "this is ba";
@@ -119,6 +136,11 @@ window.app = ((ng) => {
             $scope.message = "this is c";
             $scope.templates = templates;
             $scope.subPage = storage.subPage;
+
+            $scope.subPageClick = (value) => {
+                $scope.subPage = value;
+                console.log(value);
+            };
         }])
         .controller('CA_Controller', ['$scope', 'storage', ($scope, storage) => {
             $scope.message = "this is ca";

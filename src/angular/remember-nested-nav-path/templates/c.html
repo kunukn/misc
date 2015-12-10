@@ -1,3 +1,14 @@
 <div class="view-c" ng-controller="C_Controller">
-    {{message}}
+    <div>{{message}}</div>
+    <div>{{subPage}}</div>
+
+    <nav>
+        <ul>
+            <li><a ng-click="subPageClick(templates.c.ca)" href="#">Page ca</a></li>
+            <li><a ng-click="subPageClick(templates.c.cb)" href="#">Page cb</a></li>
+            <li><a ng-click="subPageClick(templates.c.cc)" href="#">Page cc</a></li>
+        </ul>
+    </nav>
+    
+    <section class="content-c" ng-include src="subPage"></section>
 </div>
