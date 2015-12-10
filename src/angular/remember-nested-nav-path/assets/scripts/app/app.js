@@ -24,30 +24,30 @@ window.app = (function (ng) {
             ba: 'templates/ba.html',
             bb: 'templates/bb.html',
             bc: 'templates/bc.html',
-            baa: 'templates/aaa.html',
-            bab: 'templates/aab.html',
-            bac: 'templates/aac.html',
-            bba: 'templates/aba.html',
-            bbb: 'templates/abb.html',
-            bbc: 'templates/abc.html',
-            bca: 'templates/aca.html',
-            bcb: 'templates/acb.html',
-            bcc: 'templates/acc.html'
+            baa: 'templates/baa.html',
+            bab: 'templates/bab.html',
+            bac: 'templates/bac.html',
+            bba: 'templates/bba.html',
+            bbb: 'templates/bbb.html',
+            bbc: 'templates/bbc.html',
+            bca: 'templates/bca.html',
+            bcb: 'templates/bcb.html',
+            bcc: 'templates/bcc.html'
         },
         c: {
             index: 'templates/c.html',
             ca: 'templates/ca.html',
             cb: 'templates/cb.html',
             cc: 'templates/cc.html',
-            caa: 'templates/aaa.html',
-            cab: 'templates/aab.html',
-            cac: 'templates/aac.html',
-            cba: 'templates/aba.html',
-            cbb: 'templates/abb.html',
-            cbc: 'templates/abc.html',
-            cca: 'templates/aca.html',
-            ccb: 'templates/acb.html',
-            ccc: 'templates/acc.html'
+            caa: 'templates/caa.html',
+            cab: 'templates/cab.html',
+            cac: 'templates/cac.html',
+            cba: 'templates/cba.html',
+            cbb: 'templates/cbb.html',
+            cbc: 'templates/cbc.html',
+            cca: 'templates/cca.html',
+            ccb: 'templates/ccb.html',
+            ccc: 'templates/ccc.html'
         }
     };
 
