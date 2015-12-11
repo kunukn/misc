@@ -31,38 +31,43 @@ a {
     font-size: 120%;
 }
 
-[class^="subsubpage"] {
+[class^="view-"], [class^="page"], [class^="subpage"], [class^="subsubpage"] {
     min-height: 4em;
 }
 
 main {
     .content-main {
         background: lightgray;
+        
+        $color-a: yellowgreen;
+        $color-b: teal;
+        $color-c: orange;
+
         .view-a {
-            background: yellowgreen;
+            background: $color-a;
             .subpage {
-                background: darken(yellowgreen, 4%);
+                background: darken($color-a, 4%);
             }
             .subsubpage {
-                background: darken(yellowgreen, 8%);
+                background: darken($color-a, 8%);
             }
         }
         .view-b {
-            background: teal;
+            background: $color-b;
             .subpage {
-                background: darken(teal, 4%);
+                background: darken($color-b, 4%);
             }
             .subsubpage {
-                background: darken(teal, 8%);
+                background: darken($color-b, 8%);
             }
         }
         .view-c {
-            background: orange;
+            background: $color-c;
             .subpage {
-                background: darken(orange, 4%);
+                background: darken($color-c, 4%);
             }
             .subsubpage {
-                background: darken(orange, 8%);
+                background: darken($color-c, 8%);
             }
         }
     }

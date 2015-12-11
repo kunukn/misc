@@ -21,7 +21,7 @@ a {
   color: black;
   font-size: 120%; }
 
-[class^="subsubpage"] {
+[class^="view-"], [class^="page"], [class^="subpage"], [class^="subsubpage"] {
   min-height: 4em; }
 
 main .content-main {
