@@ -1,3 +1,11 @@
-<div class="view-cc subpage" ng-controller="CC_Controller">
-    {{message}}
+<div class="subpage" ng-controller="CC_Controller">
+    <div>{{message}}</div>
+    <nav>
+        <ul>
+            <li><a ng-click="subSubPageClick(templates.c.cca)" href="#">Page cca</a></li>
+            <li><a ng-click="subSubPageClick(templates.c.ccb)" href="#">Page ccb</a></li>
+            <li><a ng-click="subSubPageClick(templates.c.ccc)" href="#">Page ccc</a></li>
+        </ul>
+    </nav>
+    <section ng-include src="subSubPage"></section>
 </div>
