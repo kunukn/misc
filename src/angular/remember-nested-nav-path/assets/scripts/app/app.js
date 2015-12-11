@@ -53,133 +53,134 @@ window.app = (function (ng) {
 
     var app = angular.module('app', []);
 
+    var buildNavigation = function buildNavigation() {
+        var navigation = [];
+        navigation['root'] = templates.home;
+        return navigation;
+    };
+
     app.factory("storage", function () {
         return {
-            path: {
-                root: templates.home,
-                a: ['', ''], // subpage, subsubpage
-                b: ['', ''],
-                c: ['', '']
-            }
+            navigation: buildNavigation()
         };
     });
 
     app.controller('mainController', ['$scope', 'storage', function ($scope, storage) {
         $scope.message = 'this is root';
         $scope.templates = templates;
-        $scope.page = storage.path.root; //load from storage
+        $scope.page = storage.navigation['root']; //load from storage
 
         $scope.pageClick = function (value) {
             $scope.page = value; //update view
-            storage.path.root = value; //update storage
+            storage.navigation['root'] = value; //update storage
         };
     }]).controller('A_Controller', ['$scope', 'storage', function ($scope, storage) {
         $scope.message = "this is a";
         $scope.templates = templates;
-        $scope.subPage = storage.path.a[0]; //load from storage           
+        $scope.subPage = storage.navigation['a']; //load from storage           
 
         $scope.subPageClick = function (value) {
-            $scope.subPage = value; //update view
-            storage.path.a[0] = value; //update storage
+            $scope.subPage = value; //update view               
+            storage.navigation['a'] = value;
         };
     }]).controller('AA_Controller', ['$scope', 'storage', function ($scope, storage) {
         $scope.message = "this is aa";
         $scope.templates = templates;
-        $scope.subSubPage = storage.path.a[1];
+        $scope.subSubPage = storage.navigation['aa'];
 
         $scope.subSubPageClick = function (value) {
             $scope.subSubPage = value;
-            storage.path.a[1] = value;
+            storage.navigation['aa'] = value;
         };
     }]).controller('AB_Controller', ['$scope', 'storage', function ($scope, storage) {
         $scope.message = "this is ab";
         $scope.templates = templates;
-        $scope.subSubPage = storage.path.a[1];
+        $scope.subSubPage = storage.navigation['ab'];
 
         $scope.subSubPageClick = function (value) {
             $scope.subSubPage = value;
-            storage.path.a[1] = value;
+            storage.navigation['ab'] = value;
         };
     }]).controller('AC_Controller', ['$scope', 'storage', function ($scope, storage) {
         $scope.message = "this is ac";
         $scope.templates = templates;
-        $scope.subSubPage = storage.path.a[1];
+        $scope.subSubPage = storage.navigation['ac'];
 
         $scope.subSubPageClick = function (value) {
             $scope.subSubPage = value;
-            storage.path.a[1] = value;
+            storage.navigation['ac'] = value;
         };
     }]).controller('B_Controller', ['$scope', 'storage', function ($scope, storage) {
         $scope.message = "this is b";
         $scope.templates = templates;
-        $scope.subPage = storage.path.b[0];
+        $scope.subPage = storage.navigation['b'];
 
         $scope.subPageClick = function (value) {
             $scope.subPage = value;
-            storage.path.b[0] = value;
+            storage.navigation['b'] = value;
         };
     }]).controller('BA_Controller', ['$scope', 'storage', function ($scope, storage) {
         $scope.message = "this is ba";
         $scope.templates = templates;
-        $scope.subSubPage = storage.path.b[1];
+        $scope.subSubPage = storage.navigation['ba'];
 
         $scope.subSubPageClick = function (value) {
             $scope.subSubPage = value;
-            storage.path.b[1] = value;
+            storage.navigation['ba'] = value;
         };
     }]).controller('BB_Controller', ['$scope', 'storage', function ($scope, storage) {
         $scope.message = "this is bb";
         $scope.templates = templates;
-        $scope.subSubPage = storage.path.b[1];
+        $scope.subSubPage = storage.navigation['bb'];
 
         $scope.subSubPageClick = function (value) {
             $scope.subSubPage = value;
-            storage.path.b[1] = value;
+            storage.navigation['bb'] = value;
         };
     }]).controller('BC_Controller', ['$scope', 'storage', function ($scope, storage) {
         $scope.message = "this is bc";
         $scope.templates = templates;
-        $scope.subSubPage = storage.path.b[1];
+        $scope.subSubPage = storage.navigation['bc'];
 
         $scope.subSubPageClick = function (value) {
             $scope.subSubPage = value;
-            storage.path.b[1] = value;
+            storage.navigation['bc'] = value;
         };
     }]).controller('C_Controller', ['$scope', 'storage', function ($scope, storage) {
         $scope.message = "this is c";
         $scope.templates = templates;
-        $scope.subPage = storage.path.c[0];
+        $scope.subPage = storage.navigation['c'];
 
         $scope.subPageClick = function (value) {
             $scope.subPage = value;
-            storage.path.c[0] = value;
+            storage.navigation['c'] = value;
         };
     }]).controller('CA_Controller', ['$scope', 'storage', function ($scope, storage) {
         $scope.message = "this is ca";
         $scope.templates = templates;
-        $scope.subSubPage = storage.path.c[1];
+        $scope.subSubPage = storage.navigation['ca'];
 
         $scope.subSubPageClick = function (value) {
             $scope.subSubPage = value;
-            storage.path.c[1] = value;
+            storage.navigation['ca'] = value;
         };
     }]).controller('CB_Controller', ['$scope', 'storage', function ($scope, storage) {
         $scope.message = "this is cb";
         $scope.templates = templates;
-        $scope.subSubPage = storage.path.c[1];
+        $scope.subSubPage = storage.navigation['cb'];
 
         $scope.subSubPageClick = function (value) {
             $scope.subSubPage = value;
-            storage.path.c[1] = value;
+            storage.navigation['cb'] = value;
         };
     }]).controller('CC_Controller', ['$scope', 'storage', function ($scope, storage) {
         $scope.message = "this is cc";
         $scope.templates = templates;
-        $scope.subSubPage = storage.path.c[1];
+        $scope.subSubPage = storage.navigation['cc'];
 
         $scope.subSubPageClick = function (value) {
             $scope.subSubPage = value;
-            storage.path.c[1] = value;
+            storage.navigation['cc'] = value;
         };
     }]);
 
