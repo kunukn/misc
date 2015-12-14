@@ -1,13 +1,12 @@
 {
   "name": "webapp",
   "version": "1.0.0",
-  "description": "webapp",
-  "main": "index.js",
+  "description": "webapp",  
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "browser-sync": "^2.7.6",
     "gulp": "^3.9.0",
