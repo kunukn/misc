@@ -2,7 +2,7 @@
 
 var paths = {
     babel: {
-        from: './assets/scripts/babel/*-es6.js',
+        from: './assets/scripts/app-es6/*-es6.js',
         to: './assets/scripts/app'
     },
     sass: {
