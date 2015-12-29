@@ -69,7 +69,8 @@ window.app = (() => {
             to: '?',
             getInfo: function() {
                 return 'from {0} to {1}'.format(this.from || '?', this.to || '?');
-            }
+            },
+            input: ''
         };
     });
 
@@ -120,9 +121,7 @@ window.app = (() => {
             .state('home', {
                 url: '/home',
                 templateUrl: templates.home,
-                controller: ['$scope', 'storage', function($scope, storage) {
-                    $scope.path = '{0} - {1}'.format(storage.from, storage.to);
-                }]
+                controller: ['$scope', 'storage', function($scope, storage) {}]
             })
             .state('a', {
                 url: '/a',
@@ -137,12 +136,22 @@ window.app = (() => {
             .state('a.aa.aaa', {
                 url: '/aaa',
                 templateUrl: templates.a.aaa,
-                controller: ['$scope', function($scope) {}]
+                controller: ['$scope', 'storage', function($scope, storage) {
+                    $scope.input = storage.input;
+                    $scope.update = () => {
+                        storage.input = $scope.input;
+                    };
+                }]
             })
             .state('a.aa.aab', {
                 url: '/aab',
                 templateUrl: templates.a.aab,
-                controller: ['$scope', function($scope) {}]
+                controller: ['$scope', 'storage', function($scope, storage) {
+                    $scope.input = storage.input;
+                    $scope.update = () => {
+                        storage.input = $scope.input;
+                    };
+                }]
             })
             .state('a.ab', {
                 url: '/ab',
@@ -177,7 +186,12 @@ window.app = (() => {
             .state('b.ba.baa', {
                 url: '/baa',
                 templateUrl: templates.b.baa,
-                controller: ['$scope', function($scope) {}]
+                controller: ['$scope', 'storage', function($scope, storage) {
+                    $scope.input = storage.input;
+                    $scope.update = () => {
+                        storage.input = $scope.input;
+                    };
+                }]
             })
             .state('b.ba.bab', {
                 url: '/bab',
@@ -205,7 +219,7 @@ window.app = (() => {
 
     app.controller('mainController', ['$scope', 'storage', function($scope, storage) {
         $scope.info = '';
-        $scope.$watch( () => {
+        $scope.$watch(() => {
             return storage.from;
         }, () => {
             $scope.info = storage.getInfo();

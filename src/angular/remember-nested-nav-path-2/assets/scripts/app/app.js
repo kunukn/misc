@@ -71,7 +71,8 @@ window.app = (function () {
             to: '?',
             getInfo: function getInfo() {
                 return 'from {0} to {1}'.format(this.from || '?', this.to || '?');
-            }
+            },
+            input: ''
         };
     });
 
@@ -117,9 +118,7 @@ window.app = (function () {
         $stateProvider.state('home', {
             url: '/home',
             templateUrl: templates.home,
-            controller: ['$scope', 'storage', function ($scope, storage) {
-                $scope.path = '{0} - {1}'.format(storage.from, storage.to);
-            }]
+            controller: ['$scope', 'storage', function ($scope, storage) {}]
         }).state('a', {
             url: '/a',
             templateUrl: templates.a.index,
@@ -131,11 +130,21 @@ window.app = (function () {
         }).state('a.aa.aaa', {
             url: '/aaa',
             templateUrl: templates.a.aaa,
-            controller: ['$scope', function ($scope) {}]
+            controller: ['$scope', 'storage', function ($scope, storage) {
+                $scope.input = storage.input;
+                $scope.update = function () {
+                    storage.input = $scope.input;
+                };
+            }]
         }).state('a.aa.aab', {
             url: '/aab',
             templateUrl: templates.a.aab,
-            controller: ['$scope', function ($scope) {}]
+            controller: ['$scope', 'storage', function ($scope, storage) {
+                $scope.input = storage.input;
+                $scope.update = function () {
+                    storage.input = $scope.input;
+                };
+            }]
         }).state('a.ab', {
             url: '/ab',
             templateUrl: templates.a.ab,
@@ -163,7 +172,12 @@ window.app = (function () {
         }).state('b.ba.baa', {
             url: '/baa',
             templateUrl: templates.b.baa,
-            controller: ['$scope', function ($scope) {}]
+            controller: ['$scope', 'storage', function ($scope, storage) {
+                $scope.input = storage.input;
+                $scope.update = function () {
+                    storage.input = $scope.input;
+                };
+            }]
         }).state('b.ba.bab', {
             url: '/bab',
             templateUrl: templates.b.bab,
