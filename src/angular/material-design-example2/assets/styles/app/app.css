@@ -1,0 +1,33 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box; }
+
+[ng-cloak] {
+  display: none; }
+
+@keyframes fade-in {
+  to {
+    opacity: 1; } }
+
+html,
+body {
+  height: 100vh; }
+
+body {
+  margin: 0;
+  font: 20px arial, sans-serif;
+  background: #1d1f20;
+  opacity: 0;
+  animation: fade-in 2s forwards; }
+
+main {
+  padding: 3rem;
+  min-height: 100vh; }
+  main .component {
+    align-items: center;
+    background: white;
+    min-height: 50vh; }
+  main .md-button {
+    max-width: 20rem;
+    margin: 1rem; }
