@@ -32,7 +32,8 @@ body {
 }
 
 main {
-    padding: 3rem;
+	display: block; // Because IE11
+    padding: 2rem;
     min-height: 100vh;
     .component {
         align-items: center; // flex

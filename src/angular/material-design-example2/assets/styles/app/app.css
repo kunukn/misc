@@ -22,7 +22,8 @@ body {
   animation: fade-in 2s forwards; }
 
 main {
-  padding: 3rem;
+  display: block;
+  padding: 2rem;
   min-height: 100vh; }
   main .component {
     align-items: center;
