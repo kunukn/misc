@@ -1,0 +1,72 @@
+@charset "UTF-8";
+// Resets
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+// Angular
+[ng-cloak] {
+    display: none;
+}
+
+// Layout
+body {
+    font: 20px arial, sans-serif;
+}
+
+ul {
+    list-style-type: none;
+    li {
+        display: inline-block;
+        padding: 1em;
+    }
+}
+
+a {
+    color: black;
+    font-size: 120%;
+}
+
+[class^="view-"],
+[class^="page"],
+[class^="subpage"] {
+    min-height: 4em;
+}
+
+input {
+    margin: 1em;
+}
+
+$color-a: yellowgreen;
+$color-b: orange;
+main {
+    display: block;
+    background: lightgray;
+    > .info {
+        margin-bottom: 1em;
+        color: tomato;
+    }
+    nav {
+        border-bottom: 1px solid black;
+    }
+    .view-a {
+        &.page {
+            background: $color-a;
+        }
+        &.subpage {
+            background: darken($color-a, 4%);
+        }
+    }
+    .view-b {
+        &.page {
+            background: $color-b;
+        }
+        &.subpage {
+            background: darken($color-b, 4%);
+        }
+    }
+}

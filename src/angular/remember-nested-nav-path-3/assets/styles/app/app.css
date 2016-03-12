@@ -1,0 +1,47 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+[ng-cloak] {
+  display: none; }
+
+body {
+  font: 20px arial, sans-serif; }
+
+ul {
+  list-style-type: none; }
+  ul li {
+    display: inline-block;
+    padding: 1em; }
+
+a {
+  color: black;
+  font-size: 120%; }
+
+[class^="view-"],
+[class^="page"],
+[class^="subpage"] {
+  min-height: 4em; }
+
+input {
+  margin: 1em; }
+
+main {
+  display: block;
+  background: lightgray; }
+  main > .info {
+    margin-bottom: 1em;
+    color: tomato; }
+  main nav {
+    border-bottom: 1px solid black; }
+  main .view-a.page {
+    background: yellowgreen; }
+  main .view-a.subpage {
+    background: #8ebd2e; }
+  main .view-b.page {
+    background: orange; }
+  main .view-b.subpage {
+    background: #eb9800; }
