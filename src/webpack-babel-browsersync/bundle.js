@@ -54,7 +54,7 @@
 
 	var account = new _account2.default();
 	var format = function format(transaction) {
-	  return ['<li>', transaction.amount, ' (', transaction.date, ') ', '</li>'].join('');
+	  return '<li> ' + transaction.amount + ' (' + transaction.date + ') </li>';
 	};
 	var list = document.querySelector('.js-top-transactions');
 
@@ -63,7 +63,6 @@
 	account.deposit(100000, '2015-03-01');
 	account.withdraw(300000, '2015-04-01');
 
-	// Top 3: 500000, -300000, 200000
 	list.innerHTML = account.getTopTransactions(3).map(format).join('');
 
 /***/ },

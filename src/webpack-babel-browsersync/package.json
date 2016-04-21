@@ -1,5 +1,5 @@
 {
-  "name": "webpack",
+  "name": "webpack-babel-browsersync",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,7 +13,7 @@
     "babel-core": "latest",
     "babel-loader": "latest",
     "babel-preset-es2015": "latest",
-    "browser-sync": "^2.12.3",
+    "browser-sync": "latest",
     "browser-sync-webpack-plugin": "latest",
     "underscore": "latest"
   }
