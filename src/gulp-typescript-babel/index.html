@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Babel and Typescript</title>
+    <style>
+    *,*:before,*:after{
+        box-sizing: border-box;
+    }
+    html,body{
+        height: 100%;
+    }
+    body{        
+        margin: 0;
+        padding: 10px;
+        font: 16px sans-serif;
+        min-height: 100%;
+    }
+    .body{
+        margin: 0 auto;
+        max-width: 1366px;
+        background: teal;
+        padding: 10px;
+        color: white;
+        min-height: inherit;
+    }
+    .info{
+        padding: 10px;
+    }
+    .feedback{
+        background: tomato;
+        margin: 10px;
+    }
+    </style>
+</head>
+
+<body>
+    <section class="body">
+        <div class="info">
+            Test application
+        </div>
+        
+        <div class="info feedback es6"></div>
+        <div class="info feedback typescript"></div>
+    </section>    
+    <script src="assets/scripts/typescript-output.js"></script>
+    <script src="assets/scripts/hello-world.js"></script>
+</body>
+</html>

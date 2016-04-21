@@ -1,0 +1,21 @@
+{
+  "name": "typescript2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+	  "start": "gulp serve"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {    
+	"babel-preset-es2015": "latest",
+	"gulp": "latest",    	
+	"gulp-babel": "latest",
+	"browser-sync": "latest",
+	"gulp-util": "latest",
+	"gulp-typescript": "latest",
+	"gulp-notify": "latest"
+  }
+}

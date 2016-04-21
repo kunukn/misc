@@ -1,0 +1,1 @@
+document.querySelector('.es6').innerHTML = 'edit and save the hello-world.js file in src folder';
