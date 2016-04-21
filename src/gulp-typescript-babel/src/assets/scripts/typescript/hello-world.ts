@@ -10,5 +10,5 @@ class HelloWorld {
     }
 }
 
-let helloWorld = new HelloWorld('Typescript can compile x');
+let helloWorld = new HelloWorld('Typescript can compile');
 document.querySelector('.typescript').innerHTML = helloWorld.getMessage();

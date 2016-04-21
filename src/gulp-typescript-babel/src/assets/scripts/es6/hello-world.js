@@ -7,6 +7,6 @@ class HelloWorld {
     }
 }
 
-let helloWorld = new HelloWorld('ES6 can compile x');
+let helloWorld = new HelloWorld('ES6 can compile');
 document.querySelector('.es6').innerHTML = helloWorld.getMessage();
 	
