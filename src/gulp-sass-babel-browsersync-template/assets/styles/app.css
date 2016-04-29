@@ -1,0 +1,9 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0; }
+
+body {
+  padding: 1em;
+  background-color: #333;
+  color: white;
+  font: 4vmin sans-serif; }
