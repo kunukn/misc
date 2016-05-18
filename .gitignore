@@ -63,3 +63,6 @@ node_modules/
 
 #bower
 bower_components/
+
+#typescript definitions
+typings/
