@@ -22,7 +22,10 @@ module.exports = {
 
     // context: __dirname + '/app',
 
-    entry: './app/core/bootstrap.ts',
+    entry: {
+        app: './app/core/bootstrap.ts',
+        'vendor.js': ['jquery', 'angular', 'angular-ui-router'],
+    },
 
     output: {
         devtoolLineToLine: true,
@@ -100,7 +103,9 @@ module.exports = {
 
         new ngAnnotatePlugin({
             add: true
-        })
+        }),
+
+        new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor.js", /* filename= */"vendor.bundle.js", Infinity) // https://github.com/webpack/webpack/issues/368
 
         // ,
         // new webpack.optimize.UglifyJsPlugin({
