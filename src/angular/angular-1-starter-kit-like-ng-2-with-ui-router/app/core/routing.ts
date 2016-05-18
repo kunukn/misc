@@ -1,6 +1,8 @@
+'use strict';
+
 angular
     .module('app')
-    .config(function($stateProvider, $urlRouterProvider) {  
+    .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 		  $urlRouterProvider.otherwise("/state1");
 		  
 		  $stateProvider
@@ -13,5 +15,5 @@ angular
 		      template: '<h1>state 2</h1>'
 		    })
 		    ;
-		});
+		}]);
 

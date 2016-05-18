@@ -17,7 +17,7 @@ module.exports = {
 
     // target: 'node', // important in order not to bundle built-in modules like path, fs, etc. 
     // externals: [nodeExternals({        
-    //     whitelist: ['jquery', 'webpack/hot/dev-server', /^angular*/ ]
+    //     whitelist: [/^webpack*/, 'jquery', /^angular*/, /^webpack*/]
     // })],
 
     // context: __dirname + '/app',
@@ -25,11 +25,14 @@ module.exports = {
     entry: './app/core/bootstrap.ts',
 
     output: {
+        devtoolLineToLine: true,
+        sourceMapFilename: './bundle.js.map',
         path: __dirname + '/build',
+        pathinfo: true,
         filename: 'bundle.js'
     },
 
-    devtool: 'source-map',
+    devtool: 'eval', //'source-map', //'eval', //
 
     resolve: {
         extensions: ['', '.webpack.js', '.web.js', '.ts', '.js']
@@ -83,25 +86,30 @@ module.exports = {
     },
 
     plugins: [
+
         new HtmlWebpackPlugin({
             title: 'Application Framework',
             filename: './index.html',
             template: './app/index.html',
             inject: false
         }),
+
         new webpack.ProvidePlugin({
             jQuery: "jquery"
         }),
+
         new ngAnnotatePlugin({
             add: true
-        }),
-        new webpack.optimize.UglifyJsPlugin({
-            sourceMap: false,
-            mangle: false,
-            minimize: true,
-            compress: {
-                warnings: false
-            }
         })
+
+        // ,
+        // new webpack.optimize.UglifyJsPlugin({
+        //     sourceMap: false,
+        //     mangle: false,
+        //     minimize: true,
+        //     compress: {
+        //         warnings: false
+        //     }
+        // })
     ]
 };
