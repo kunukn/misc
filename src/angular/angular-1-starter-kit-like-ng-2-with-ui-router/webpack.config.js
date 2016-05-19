@@ -23,7 +23,7 @@ module.exports = {
 
     entry: {
         app: './app/core/bootstrap.ts',
-        'vendorjs': ['jquery', 'angular', 'angular-ui-router', 'bootstrap-loader' ],
+        'vendorjs': ['jquery', 'angular', 'angular-ui-router' ], // 'bootstrap-loader'
     },
 
     output: {

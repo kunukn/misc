@@ -1,4 +1,4 @@
-require('bootstrap-loader');
+//require('bootstrap-loader');
 
 import '../index.scss';
 import './modules.ts';
