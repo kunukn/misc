@@ -2,8 +2,9 @@ import './dropdown.scss';
 
 import {BaseComponent} from "../../common/component";
 import {BindingType} from '../../common/bindingTypes';
-import {StockService} from "../../services/stock-service";
-import {Quote} from "../../services/stock-service";
+import {StockService} from "../../services/stock.service";
+import {GithubStatusService} from "../../services/github-status.service";
+import {Quote} from "../../services/stock.service";
 
 interface DropDownItem {
     href: string,
@@ -14,13 +15,26 @@ class DropDownController {
 
     items: DropDownItem[];
     stockService: StockService;
+    githubStatusService: GithubStatusService;
 
-    static $inject = ['$scope', '$attrs', 'stockService'];
+    static $inject = ['$scope', '$attrs', 'stockService', 'githubStatusService'];
 
-    constructor($scope: ng.IScope, $attrs, stockService: StockService) {
-        this.items = $scope.$eval($attrs.items);
+    constructor($scope: ng.IScope, $attrs, stockService: StockService, githubStatusService: any) {
+        this.items = $scope.$eval($attrs.items);        
+        this.githubStatusService = githubStatusService;
+        this.stockService = stockService;
 
-        stockService.getQuote('AAPL').then( (response: ng.IHttpPromiseCallbackArg<Quote>) => {
+        //this.githubStatus();
+                
+        //this.getQuote();
+    }
+
+    githubStatus(){
+        this.githubStatusService.getStatus().then(status => { console.log(status); });
+    }
+    
+    getQuote(){
+          this.stockService.getQuote('AAPL').then( (response: ng.IHttpPromiseCallbackArg<Quote>) => {
 
             var quoteResponse: any = response.data;
 
