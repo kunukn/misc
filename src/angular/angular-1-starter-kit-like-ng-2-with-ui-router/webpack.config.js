@@ -7,7 +7,9 @@ var path = require("path"),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     autoprefixer = require('autoprefixer'),
     ngAnnotatePlugin = require('ng-annotate-webpack-plugin'),
-    nodeExternals = require('webpack-node-externals');
+    nodeExternals = require('webpack-node-externals')
+    //,noopLoader = require('noop-loader')
+    ;
 
 module.exports = {
 
@@ -69,19 +71,22 @@ module.exports = {
             test: /\.scss$/,
             loader: 'style!css!postcss!sass',
             include: [path.resolve(__dirname, "app"), path.resolve(__dirname, "build")]
-        }, {
-            test: /bootstrap-sass\/assets\/javascripts\//,
-            loader: 'imports?jQuery=jquery',            
-            cacheDirectory: true
-        }, {
-            test: /\.(woff2?|svg)$/,
-            loader: 'url?limit=10000',            
-            cacheDirectory: true
-        }, {
-            test: /\.(ttf|eot)$/,
-            loader: 'file',            
-            cacheDirectory: true
-        }, ]
+        },
+        //  {
+        //     test: /bootstrap-sass\/assets\/javascripts\//,
+        //     loader: 'imports?jQuery=jquery',            
+        //     cacheDirectory: true
+        // },
+        //  {
+        //     test: /\.(woff2?|svg)$/,
+        //     loader: 'url?limit=10000',            
+        //     cacheDirectory: true
+        // }, {
+        //     test: /\.(ttf|eot)$/,
+        //     loader: 'file',            
+        //     cacheDirectory: true
+        // }, 
+        ]
     },
 
     postcss: function() {
