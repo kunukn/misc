@@ -9,12 +9,11 @@ var path = require("path"),
     ngAnnotatePlugin = require('ng-annotate-webpack-plugin'),
     nodeExternals = require('webpack-node-externals');
 
-
-
 module.exports = {
 
     cache: true,
 
+    // Uptimize bundle time by only looking at the needed folders
     // target: 'node', // important in order not to bundle built-in modules like path, fs, etc. 
     // externals: [nodeExternals({        
     //     whitelist: [/^webpack*/, 'jquery', /^angular*/, /^webpack*/]
@@ -24,18 +23,26 @@ module.exports = {
 
     entry: {
         app: './app/core/bootstrap.ts',
-        'vendor.js': ['jquery', 'angular', 'angular-ui-router'],
+        'vendorjs': ['jquery', 'angular', 'angular-ui-router', 'bootstrap-loader' ],
     },
 
     output: {
         devtoolLineToLine: true,
         sourceMapFilename: './bundle.js.map',
         path: __dirname + '/build',
+        //publicPath: '/',
         pathinfo: true,
-        filename: 'bundle.js'
+        filename: 'app.bundle.js'
     },
 
     devtool: 'eval', //'source-map', //'eval', //
+    // devServer: {
+    //     colors: true,
+    //     historyApiFallback: true,
+    //     inline: true,
+    //     hot: true,
+    //     //contentBase: './public'
+    // },
 
     resolve: {
         extensions: ['', '.webpack.js', '.web.js', '.ts', '.js']
@@ -64,18 +71,15 @@ module.exports = {
             include: [path.resolve(__dirname, "app"), path.resolve(__dirname, "build")]
         }, {
             test: /bootstrap-sass\/assets\/javascripts\//,
-            loader: 'imports?jQuery=jquery',
-            include: [path.resolve(__dirname, "app"), path.resolve(__dirname, "build")],
+            loader: 'imports?jQuery=jquery',            
             cacheDirectory: true
         }, {
             test: /\.(woff2?|svg)$/,
-            loader: 'url?limit=10000',
-            include: [path.resolve(__dirname, "app"), path.resolve(__dirname, "build")],
+            loader: 'url?limit=10000',            
             cacheDirectory: true
         }, {
             test: /\.(ttf|eot)$/,
-            loader: 'file',
-            include: [path.resolve(__dirname, "app"), path.resolve(__dirname, "build")],
+            loader: 'file',            
             cacheDirectory: true
         }, ]
     },
@@ -105,7 +109,7 @@ module.exports = {
             add: true
         }),
 
-        new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor.js", /* filename= */"vendor.bundle.js", Infinity) // https://github.com/webpack/webpack/issues/368
+        new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendorjs", /* filename= */"vendor.bundle.js", Infinity) // https://github.com/webpack/webpack/issues/368
 
         // ,
         // new webpack.optimize.UglifyJsPlugin({

@@ -1,8 +1,8 @@
-//require('bootstrap-loader');
+require('bootstrap-loader');
 
 import '../index.scss';
 import './modules.ts';
-//import './services.ts';
+import './services.ts';
 import './components.ts';
 import './routing.ts';
 

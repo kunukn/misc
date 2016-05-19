@@ -2,7 +2,7 @@
 
 angular
     .module('app')
-    .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+    .config(['$stateProvider', '$urlRouterProvider', ($stateProvider, $urlRouterProvider) => {
 		  $urlRouterProvider.otherwise("/state1");
 		  
 		  $stateProvider

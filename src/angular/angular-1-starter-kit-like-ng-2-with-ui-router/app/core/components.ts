@@ -1,4 +1,4 @@
-//require('../components/dropdown/dropdown.ts');
+require('../components/dropdown/dropdown.ts');
 
 require('../components/main-header/main-header.ts');
 
