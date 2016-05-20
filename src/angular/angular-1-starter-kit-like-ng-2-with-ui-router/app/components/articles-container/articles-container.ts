@@ -1,4 +1,4 @@
-import './main-header.scss';
+import './articles-container.scss';
 
 import {BaseComponent} from "../../common/component";
 import {BindingType} from '../../common/bindingTypes';
@@ -9,7 +9,7 @@ import {Quote} from "../../services/stock.service";
 
 
 
-class MainHeaderController {   
+class ArticlesContainerController {   
 
 	
     stockService: StockService;
@@ -51,21 +51,21 @@ class MainHeaderController {
 
 }
 
-class MainHeader extends BaseComponent {
+class ArticlesContainer extends BaseComponent {
 
     public scope = {
         name: BindingType.ONE_WAY
     };
 
-    public controllerAs = 'mainHeaderCtrl';
+    public controllerAs = 'articlesContainerCtrl';
 
-    public controller = MainHeaderController;
+    public controller = ArticlesContainerController;
 
-    public template = require('./main-header.html');
+    public template = require('./articles-container.html');
 
     public replace = true;
 }
 
 angular
     .module('app')
-    .directive('mainHeader', () => new MainHeader());
+    .directive('articlesContainer', () => new ArticlesContainer());

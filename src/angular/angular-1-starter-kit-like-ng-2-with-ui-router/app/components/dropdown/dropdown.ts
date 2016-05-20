@@ -63,6 +63,8 @@ class DropDown extends BaseComponent {
     public controller = DropDownController;
 
     public template = require('./dropdown.html');
+
+    public replace = true;
 }
 
 angular

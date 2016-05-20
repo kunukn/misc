@@ -17,6 +17,8 @@ class MainLayout extends BaseComponent {
     public controller = MainLayoutController;
 
     public template = require('./main-layout.html');
+
+	public replace = true;
 }
 
 angular

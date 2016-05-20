@@ -17,6 +17,8 @@ class MainFooter extends BaseComponent {
     public controller = MainFooterController;
 
     public template = require('./main-footer.html');
+
+    public replace = true;
 }
 
 angular

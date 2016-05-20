@@ -1,16 +1,25 @@
 // Normalize
-
-*,*:before,*:after{
-	box-sizing: border-box;
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
 }
 
-body {  
-  margin: 0;
+html,
+body {
+    min-height: 100%;
 }
 
+body {
+    margin: 0;
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+	background-color: pink;
+}
 
-ul{
-	padding: 0;
-	margin: 0;
-	list-style: none;
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
 }
