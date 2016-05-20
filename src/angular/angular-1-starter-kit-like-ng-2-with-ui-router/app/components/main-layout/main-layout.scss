@@ -1,8 +1,14 @@
-[component="main-layout"] {    
+@charset "UTF-8";
+@import "../../styles/_base";
+[component="main-layout"] {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
     flex: 1 1 auto;
     width: 100%;
     max-width: 100%;
+    background-color: lime;
+    @include device(large) {
+        background-color: pink;
+    }
 }

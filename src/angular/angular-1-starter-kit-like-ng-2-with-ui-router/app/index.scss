@@ -1,3 +1,6 @@
+@charset "UTF-8";
+@import "styles/_base";
+
 // Normalize
 *,
 *:before,
@@ -14,8 +17,7 @@ body {
     margin: 0;
     display: flex;
     min-height: 100%;
-    flex-direction: column;
-	background-color: pink;
+    flex-direction: column;	
 }
 
 ul {
