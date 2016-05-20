@@ -1,3 +1,45 @@
 [component="main-header"] {  
   background-color: lightgray;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 40px;
+
+	> .logo{
+		background: pink;
+		padding: 0 10px;
+		line-height: 40px;
+	}
+	> .brand{
+		background: hotpink;
+		padding: 0 10px;
+		line-height: 40px;
+
+	}
+	> [ui-view]{
+		margin: 0 10px;
+	}
+
+  ul{
+  	margin-left: auto;
+  	height: 100%;
+  	display: flex;
+  	justify-content: flex-start;
+  	align-items: center;
+  }
+
+  li{
+  	display: inline-block;
+  	display: flex;
+  	align-items: center;
+  	height: 100%;
+  	padding: 0 10px;
+  	margin-right: 10px;
+
+  	a{
+  		color: black;
+  		text-decoration: none;
+  		text-transform: uppercase;
+  	}
+  }
 }

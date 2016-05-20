@@ -22,9 +22,9 @@ class MainHeaderController {
         this.githubStatusService = githubStatusService;
         this.stockService = stockService;
 
-        this.githubStatus();
+        //this.githubStatus();
 
-        this.getQuote();
+        //this.getQuote();
     }
 
     githubStatus() {

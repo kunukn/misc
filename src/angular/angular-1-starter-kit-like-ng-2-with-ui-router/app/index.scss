@@ -1,7 +1,16 @@
-body {
-  color: red;
+// Normalize
+
+*,*:before,*:after{
+	box-sizing: border-box;
 }
 
-:fullscreen a {
-  display: flex;
+body {  
+  margin: 0;
+}
+
+
+ul{
+	padding: 0;
+	margin: 0;
+	list-style: none;
 }
