@@ -9,7 +9,7 @@
     "clean-build": "rimraf build/**/*",
     "clean": "npm run clean-docs && npm run clean-build",
     "build": "npm run clean && webpack --progress --colors",
-    "serve": "webpack-dev-server --content-base app/ --progress --colors --inline --hot --profile",
+    "serve": "webpack-dev-server --hot",
     "test": "karma start"
   },
   "keywords": [

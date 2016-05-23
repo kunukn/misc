@@ -24,27 +24,30 @@ module.exports = {
     // context: __dirname + '/app',
 
     entry: {
-        app: './app/core/bootstrap.ts',
-        'vendorjs': ['jquery', 'angular', 'angular-ui-router' ], // 'bootstrap-loader'
+        app: ['./app/core/bootstrap.ts', 'webpack/hot/only-dev-server'],
+        vendorjs: ['jquery', 'angular', 'angular-ui-router'], // 'bootstrap-loader'
     },
 
     output: {
         devtoolLineToLine: true,
         sourceMapFilename: './bundle.js.map',
         path: __dirname + '/build',
-        //publicPath: '/',
+        //publicPath: './app',
         pathinfo: true,
         filename: 'app.bundle.js'
     },
 
     devtool: 'eval', //'source-map', //'eval', //
-    // devServer: {
-    //     colors: true,
-    //     historyApiFallback: true,
-    //     inline: true,
-    //     hot: true,
-    //     //contentBase: './public'
-    // },
+    devServer: {
+        colors: true,
+        profile: true,
+        progress: true,
+        //historyApiFallback: true,
+        inline: true,
+        //hot: true,
+        contentBase: './app',
+        headers: { "Access-Control-Allow-Origin": "*" }
+    },
 
     resolve: {
         extensions: ['', '.webpack.js', '.web.js', '.ts', '.js']
@@ -64,32 +67,35 @@ module.exports = {
             loader: 'raw',
             include: [path.resolve(__dirname, "app"), path.resolve(__dirname, "build")]
         }, {
-            test: /\.ts$/,
-            loader: 'ts',
-            include: [path.resolve(__dirname, "app"), path.resolve(__dirname, "build")]
-        }, {
-            test: /\.scss$/,
-            loader: 'style!css!postcss!sass',
-            include: [path.resolve(__dirname, "app"), path.resolve(__dirname, "build")]
-        },
-        //  {
-        //     test: /bootstrap-sass\/assets\/javascripts\//,
-        //     loader: 'imports?jQuery=jquery',            
-        //     cacheDirectory: true
-        // },
-        //  {
-        //     test: /\.(woff2?|svg)$/,
-        //     loader: 'url?limit=10000',            
-        //     cacheDirectory: true
-        // }, {
-        //     test: /\.(ttf|eot)$/,
-        //     loader: 'file',            
-        //     cacheDirectory: true
-        // }, 
+                test: /\.ts$/,
+                loader: 'ts',
+                include: [path.resolve(__dirname, "app"), path.resolve(__dirname, "build")]
+            }, {
+                test: /\.scss$/,
+                loader: 'style!css!postcss!sass',
+                include: [path.resolve(__dirname, "app"), path.resolve(__dirname, "build")]
+            },
+            //  {
+            //     test: /bootstrap-sass\/assets\/javascripts\//,
+            //     loader: 'imports?jQuery=jquery',            
+            //     cacheDirectory: true
+            // },
+            {
+                test: /\.(woff2?|svg)$/,
+                loader: 'url?limit=10000',
+                cacheDirectory: true,
+                include: [path.resolve(__dirname, "app"), path.resolve(__dirname, "build")]
+            },
+            {
+                test: /\.(ttf|eot)$/,
+                loader: 'file',
+                cacheDirectory: true,
+                include: [path.resolve(__dirname, "app"), path.resolve(__dirname, "build")]
+            },
         ]
     },
 
-    postcss: function() {
+    postcss: function () {
         return [autoprefixer];
     },
 

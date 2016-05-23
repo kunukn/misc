@@ -25,10 +25,14 @@ var gulp = require('gulp'),
     autoprefixer = require('autoprefixer'),
     browserSync = require('browser-sync').create();
 
-gulp.task('default', ['watch'], function() {
+gulp.task('default', ['watch'], function () {
     return browserSync.init({
         server: {
-            baseDir: ["./"]
+            baseDir: ["./"],
+            middleware: function (req, res, next) {
+                res.setHeader('Access-Control-Allow-Origin', '*');
+                next();
+            }
         },
         port: 3333,
         ui: {
@@ -44,7 +48,7 @@ gulp.task('default', ['watch'], function() {
 });
 
 
-gulp.task('sass', function() {
+gulp.task('sass', function () {
     return gulp.src(paths.sass.from)
         .pipe(sass.sync().on('error', sass.logError))
         .pipe(gulp.dest(paths.sass.to))
@@ -54,17 +58,17 @@ gulp.task('sass', function() {
 });
 
 
-gulp.task("babel", function() {
-    return gulp.src(paths.babel.from)        
+gulp.task("babel", function () {
+    return gulp.src(paths.babel.from)
         .pipe(babel({
             presets: ['es2015']
         }))
-         .on('error', function (err) {            
+        .on('error', function (err) {
             console.log(err.message);
             // end this stream
             this.emit('end');
         })
-        .pipe(rename(function(path) {
+        .pipe(rename(function (path) {
             path.basename = path.basename.replace(/-es6$/, '');
         }))
         .pipe(gulp.dest(paths.babel.to))
@@ -73,7 +77,7 @@ gulp.task("babel", function() {
         }));
 });
 
-gulp.task('postcss', function() {
+gulp.task('postcss', function () {
     var processors = [
         autoprefixer({ browsers: ['last 1 version'] })
     ];
@@ -82,7 +86,7 @@ gulp.task('postcss', function() {
         .pipe(gulp.dest(paths.postcss.to));
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', function () {
     gulp.watch(paths.sass.from, ['sass']);
     gulp.watch(paths.babel.from, ['babel']);
 });
