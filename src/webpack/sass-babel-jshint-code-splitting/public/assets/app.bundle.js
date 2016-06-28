@@ -1,0 +1,1 @@
+var App=webpackJsonpApp([1],[function(o,n,p){o.exports=p(5)},,,function(o,n){},,function(o,n,p){(function(n){n("#myid").text("hello from jQuery"),console.log("app"),p(3),o.exports={name:"i am an object"}}).call(n,p(1))}]);
