@@ -1,14 +1,13 @@
 var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var HtmlWebpackPlugin =  require('html-webpack-plugin');
+var WebpackStrip = require('strip-loader');
 
 
 module.exports = {
-    devtool: 'eval',
     context: path.resolve('src'),
     entry: {
-        app: ['webpack-dev-server/client?http://localhost:8080/', './assets/scripts/app'],
+        app: ['./assets/scripts/app'],
         vendors: ['jquery', 'knockout']
     },
     output: {
@@ -23,28 +22,26 @@ module.exports = {
         noInfo: true,
     },
     plugins: [
-        new ExtractTextPlugin('app.css'),
+        new ExtractTextPlugin('[name].css'),
         new webpack.ProvidePlugin({
             $: 'jquery',
             jquery: 'jQuery',
             'windows.jQuery': 'jquery'
         }),
         new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.bundle.js', Infinity),
-        new HtmlWebpackPlugin({
-            template: '../index.html'
+        new webpack.optimize.UglifyJsPlugin({
+            compress: { warnings: false, },
+            output: { comments: false },
         }),
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.DedupePlugin(),
     ],
     module: {
-        preLoaders: [{
-            test: /\.js$/,
-            //exclude: /node_modules/,
-            include: getPath('src/assets/scrips'),
-            loader: 'jshint-loader',
-        }],
+        preLoaders: [],
         loaders: [{
-            test: require.resolve('jquery'),
-            include: getPath('node_modules'),
-            loader: 'expose?jQuery!expose?$',
+            test: /\.js$/,
+            include: getPath('src/assets/scrips'),
+            loader: WebpackStrip.loader('debug', 'console.log')
         }, {
             test: /\.es6$/,
             //exclude: /node_modules/,

@@ -1,3 +1,11 @@
-npm install
+> npm install -g webpack webpack-dev-server
 
-npm start or node dev-server.js
+> npm install
+
+Task scripts are in package.json
+
+Either one will start a dev server
+> npm start 
+> node dev-server.js
+
+-----
