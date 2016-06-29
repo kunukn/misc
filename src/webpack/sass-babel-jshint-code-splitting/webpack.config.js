@@ -41,6 +41,7 @@ module.exports = {
         }],
         loaders: [{
             test: require.resolve('jquery'),
+            include: getPath('node_modules'),
             loader: 'expose?jQuery!expose?$',
         }, {
             test: /\.es6$/,
