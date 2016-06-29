@@ -1,1 +1,3 @@
-body{background:-webkit-linear-gradient(rgba(255,255,0,.5),orange);background:linear-gradient(rgba(255,255,0,.5),orange)}
+body {
+  background: -webkit-linear-gradient(rgba(255, 255, 0, 0.5), orange);
+  background: linear-gradient(rgba(255, 255, 0, 0.5), orange); }
