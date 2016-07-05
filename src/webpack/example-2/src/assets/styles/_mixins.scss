@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+/* Major breakpoints */
+@mixin bp($point) {
+    $bp-small: "(max-width: 767px)";
+    $bp-medium: "(min-width: 768px)";
+    $bp-large: "(min-width: 1024px)";
+    @if $point==large {
+        @media #{$bp-large} {
+            @content;
+        }
+    }
+    @else if $point==medium {
+        @media #{$bp-medium} {
+            @content;
+        }
+    }
+        @else if $point==only-small {
+        @media #{$bp-small} {
+            @content;
+        }
+    }
+}
+
+@function calculateRem($size) {
+    $remSize: $size / 16px;
+    @return $remSize * 1rem;
+}
+
+@mixin text-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@mixin flex {
+    flex: 1 1 auto;
+}
+
+%clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}

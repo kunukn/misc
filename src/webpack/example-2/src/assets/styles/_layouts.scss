@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+html {
+    height: 100%;
+    font-size: 100%;
+}
+
+html,
+body {
+    min-height: 100%;
+    min-height: 100vh;
+}
+
+body {
+    margin: 0;
+    min-height: 100%;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.body-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    animation: fade-in 2s forwards;
+    min-height: 100%;
+    min-height: 100vh;
+    // Make sticky footer work with IE11
+    // http://stackoverflow.com/questions/31835164/how-do-i-fix-a-flexbox-sticky-footer-in-ie11
+}
+
+@keyframes fade-in{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
