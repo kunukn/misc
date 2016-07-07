@@ -9,7 +9,7 @@ var path = require("path"),
     ngAnnotatePlugin = require('ng-annotate-webpack-plugin'),
     nodeExternals = require('webpack-node-externals')
     //,noopLoader = require('noop-loader')
-    ;
+;
 
 module.exports = {
 
@@ -39,9 +39,9 @@ module.exports = {
 
     devtool: 'eval', //'source-map', //'eval', //
     devServer: {
-        colors: true,
-        profile: true,
-        progress: true,
+        //colors: true,
+        //profile: true,
+        //progress: true,
         //historyApiFallback: true,
         inline: true,
         //hot: true,
@@ -63,10 +63,10 @@ module.exports = {
         // }],
 
         loaders: [{
-            test: /\.html$/,
-            loader: 'raw',
-            include: [path.resolve(__dirname, "app"), path.resolve(__dirname, "build")]
-        }, {
+                test: /\.html$/,
+                loader: 'raw',
+                include: [path.resolve(__dirname, "app"), path.resolve(__dirname, "build")]
+            }, {
                 test: /\.ts$/,
                 loader: 'ts',
                 include: [path.resolve(__dirname, "app"), path.resolve(__dirname, "build")]
@@ -83,19 +83,18 @@ module.exports = {
             {
                 test: /\.(woff2?|svg)$/,
                 loader: 'url?limit=10000',
-                cacheDirectory: true,
+             //   cacheDirectory: true,
                 include: [path.resolve(__dirname, "app"), path.resolve(__dirname, "build")]
-            },
-            {
+            }, {
                 test: /\.(ttf|eot)$/,
                 loader: 'file',
-                cacheDirectory: true,
+             //   cacheDirectory: true,
                 include: [path.resolve(__dirname, "app"), path.resolve(__dirname, "build")]
             },
         ]
     },
 
-    postcss: function () {
+    postcss: function() {
         return [autoprefixer];
     },
 
@@ -120,7 +119,7 @@ module.exports = {
             add: true
         }),
 
-        new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendorjs", /* filename= */"vendor.bundle.js", Infinity) // https://github.com/webpack/webpack/issues/368
+        new webpack.optimize.CommonsChunkPlugin( /* chunkName= */ "vendorjs", /* filename= */ "vendor.bundle.js", Infinity) // https://github.com/webpack/webpack/issues/368
 
         // ,
         // new webpack.optimize.UglifyJsPlugin({
@@ -133,3 +132,8 @@ module.exports = {
         // })
     ]
 };
+
+
+function getPath(relativePath) {
+    return path.resolve(__dirname, relativePath);
+}

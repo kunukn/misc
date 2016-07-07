@@ -77,7 +77,8 @@
     "webpack-config": "^3.1.0",
     "webpack-dev-server": "^1.14.0",
     "webpack-node-externals": "^1.2.0",
-    "webpack-stream": "^3.1.0"
+    "webpack-stream": "^3.1.0",
+    "webpack-validator": "^2.2.2"
   },
   "dependencies": {
     "angular": "^1.5.3",
