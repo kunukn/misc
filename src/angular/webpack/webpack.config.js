@@ -19,6 +19,10 @@ module.exports = {
             test: /\.js$/,
             loaders: ['babel-loader'],
             exclude: /node_modules/
+        }, {
+            test: /\.html$/,
+            loaders: ['raw-loader'],
+            exclude: /node_modules/
         }]
     },
     resolve: {
