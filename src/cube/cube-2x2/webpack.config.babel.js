@@ -25,11 +25,14 @@ export default {
     },
     plugins: [
         new ExtractTextPlugin('[name].css'),
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin(),
+        // new webpack.HotModuleReplacementPlugin(),
+        // new webpack.NoErrorsPlugin(),
 
         new HtmlWebpackPlugin({
-            template: 'src/index.html'
+            template: url('src/index.html'),
+            hash: true,
+            //filename: 'index.html',
+            environment: process.env.NODE_ENV
         })
     ],
     module: {
@@ -64,9 +67,4 @@ export default {
 
 function url(filepath) {
     return path.join(__dirname, filepath || '');
-}
-
-
-function getPath(relativePath) {
-    return path.join(__dirname, relativePath);
 }
