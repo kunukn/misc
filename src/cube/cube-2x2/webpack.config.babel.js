@@ -13,12 +13,12 @@ module.exports = {
         app: [
             //'eventsource-polyfill', // necessary for hot reloading with IE
             //'webpack-hot-middleware/client?reload=true', //note that it reloads the page if hot module reloading fails.
-            './src/index.js'
+            './src/assets/scripts/index.js'
         ]
     },
     target: 'web',
     output: {
-        path: __dirname + '/dist', // Note: Physical files are only output by the production build task `npm run build`.
+        path: url('dist'), 
         publicPath: '/',
         filename: '[name].bundle.js'
     },
@@ -36,9 +36,9 @@ module.exports = {
     ],
     module: {
         loaders: [
-            { test: /(\.js$|\.jsx$)/, include: [url('src')], loaders: ['babel'] },
-            { test: /(\.css)$/, include: [url('src')], loaders: ['style', 'css'] },
-            { test: /(\.scss)$/, include: [url('src')], loaders: ['style', 'css', 'sass'] },
+            { test: /(\.js$|\.es6$)/, include: [url('src/assets')], loaders: ['babel'] },
+            { test: /(\.css)$/, include: [url('src/assets')], loaders: ['style', 'css'] },
+            { test: /(\.scss)$/, include: [url('src/assets')], loaders: ['style', 'css', 'sass'] },
         ]
     },
     resolve: {
