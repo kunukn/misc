@@ -1,7 +1,26 @@
 @charset "UTF-8";
 .c-cube {
+    transform-style: preserve-3d;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: 50% 50%;
     width: $cube-size;
     height: $cube-size;
+    .cube-display {
+
+    transform-style: preserve-3d;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .face {
+
+    transform-style: preserve-3d;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
     &.front.top-left {
         .cube-display {
             transform: translateZ($cube-size/2);
@@ -43,8 +62,6 @@
         }
     }
     .face {
-        top: 0;
-        left: 0;
         width: $cube-size;
         height: $cube-size;
         border-radius: 4px;
@@ -81,7 +98,7 @@
             // right
             transform: rotateX(90deg) translateY($cube-size / 2);
             transform-origin: bottom center;
-             @include colors(300);
+            @include colors(300);
         }
     }
 }
