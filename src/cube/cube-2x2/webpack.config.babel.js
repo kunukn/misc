@@ -1,12 +1,10 @@
-//import webpack from 'webpack';
+import path from 'path';
+import webpack from 'webpack';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+let CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 
-var path = require('path'),
-    webpack = require('webpack'),
-    CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin,
-    ExtractTextPlugin = require('extract-text-webpack-plugin'),
-    HtmlWebpackPlugin = require('html-webpack-plugin');
-
-module.exports = {
+export default {
     //context: path.resolve('src'),
     debug: true,
     devtool: 'eval-source-map',
@@ -36,30 +34,29 @@ module.exports = {
     ],
     module: {
         loaders: [{
-                test: /(\.js$|\.es6$)/,
-                include: [url('src/assets')],
-                loaders: ['babel']
-            }, {
-                test: /\.scss$/,
-                include: url('src/assets/styles'),
-                loader: ExtractTextPlugin.extract('style-loader', 'css-loader!autoprefixer-loader?browsers=last 2 versions!sass-loader'),
-            }, {
-                test: /\.css$/,
-                include: url('node_modules/normalize.css'),
-                loader: ExtractTextPlugin.extract('style-loader', 'css-loader'),
-            }, {
-                test: /\.ico$/,
-                include: url('src/assets/images'),
-                loader: 'file-loader?name=favicon.ico&context=/',
-            }, {
-                test: /\.(jpg|png|svg)$/,
-                include: url('src/assets/images'),
-                loader: 'url-loader?limit=10000',
-            }
-        ]
+            test: /(\.js$|\.es6$)/,
+            include: [url('src/assets')],
+            loaders: ['babel']
+        }, {
+            test: /\.scss$/,
+            include: url('src/assets/styles'),
+            loader: ExtractTextPlugin.extract('style', 'css!autoprefixer?browsers=last 2 versions!sass'),
+        }, {
+            test: /\.css$/,
+            include: url('node_modules/normalize.css'),
+            loader: ExtractTextPlugin.extract('style', 'css'),
+        }, {
+            test: /\.ico$/,
+            include: url('src/assets/images'),
+            loader: 'file?name=favicon.ico&context=/',
+        }, {
+            test: /\.(jpg|png|svg)$/,
+            include: url('src/assets/images'),
+            loader: 'url?limit=10000',
+        }]
     },
     resolve: {
-        extensions: ['', '.es6', '.js']
+        extensions: ['', '.es6', '.js', 'scss']
     },
     externals: {}
 };
