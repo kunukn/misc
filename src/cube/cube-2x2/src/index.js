@@ -1,0 +1,1 @@
+console.log('cube 2x2');
