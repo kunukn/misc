@@ -1,3 +1,5 @@
+//import webpack from 'webpack';
+
 var path = require('path'),
     webpack = require('webpack'),
     CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin,
@@ -11,14 +13,12 @@ module.exports = {
     noInfo: false,
     entry: {
         app: [
-            //'eventsource-polyfill', // necessary for hot reloading with IE
-            //'webpack-hot-middleware/client?reload=true', //note that it reloads the page if hot module reloading fails.
             './src/assets/scripts/index.js'
         ]
     },
     target: 'web',
     output: {
-        path: url('dist'), 
+        path: url('dist'),
         publicPath: '/',
         filename: '[name].bundle.js'
     },
@@ -35,10 +35,27 @@ module.exports = {
         })
     ],
     module: {
-        loaders: [
-            { test: /(\.js$|\.es6$)/, include: [url('src/assets')], loaders: ['babel'] },
-            { test: /(\.css)$/, include: [url('src/assets')], loaders: ['style', 'css'] },
-            { test: /(\.scss)$/, include: [url('src/assets')], loaders: ['style', 'css', 'sass'] },
+        loaders: [{
+                test: /(\.js$|\.es6$)/,
+                include: [url('src/assets')],
+                loaders: ['babel']
+            }, {
+                test: /\.scss$/,
+                include: url('src/assets/styles'),
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader!autoprefixer-loader?browsers=last 2 versions!sass-loader'),
+            }, {
+                test: /\.css$/,
+                include: url('node_modules/normalize.css'),
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader'),
+            }, {
+                test: /\.ico$/,
+                include: url('src/assets/images'),
+                loader: 'file-loader?name=favicon.ico&context=/',
+            }, {
+                test: /\.(jpg|png|svg)$/,
+                include: url('src/assets/images'),
+                loader: 'url-loader?limit=10000',
+            }
         ]
     },
     resolve: {
@@ -47,6 +64,12 @@ module.exports = {
     externals: {}
 };
 
+
 function url(filepath) {
     return path.join(__dirname, filepath || '');
+}
+
+
+function getPath(relativePath) {
+    return path.join(__dirname, relativePath);
 }
