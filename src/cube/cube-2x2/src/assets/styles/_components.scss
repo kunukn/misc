@@ -1,0 +1,103 @@
+@charset "UTF-8";
+.c-cube {
+    width: $cube-size;
+    height: $cube-size;
+    &.front.top-left {
+        .cube-display {
+            transform: translateZ($cube-size/2);
+        }
+    }
+    &.front.top-right {
+        .cube-display {
+            transform: translateZ($cube-size/2) translateX($cube-size);
+        }
+    }
+    &.front.bottom-left {
+        .cube-display {
+            transform: translateZ($cube-size/2) translateY($cube-size);
+        }
+    }
+    &.front.bottom-right {
+        .cube-display {
+            transform: translateZ($cube-size/2) translateX($cube-size) translateY($cube-size);
+        }
+    }
+    &.back.top-left {
+        .cube-display {
+            transform: translateZ(-$cube-size/2);
+        }
+    }
+    &.back.top-right {
+        .cube-display {
+            transform: translateZ(-$cube-size/2) translateX($cube-size);
+        }
+    }
+    &.back.bottom-left {
+        .cube-display {
+            transform: translateZ(-$cube-size/2) translateY($cube-size);
+        }
+    }
+    &.back.bottom-right {
+        .cube-display {
+            transform: translateZ(-$cube-size/2) translateX($cube-size) translateY($cube-size);
+        }
+    }
+    .face {
+        top: 0;
+        left: 0;
+        width: $cube-size;
+        height: $cube-size;
+        border-radius: 4px;
+        border: 1px solid black;
+        &:nth-of-type(1) {
+            // front
+            transform: translateZ($cube-size / 2);
+            @include colors(0);
+        }
+        &:nth-of-type(2) {
+            // back
+            transform: translateZ( -$cube-size / 2) rotateY(180deg);
+            @include colors(60);
+        }
+        &:nth-of-type(3) {
+            // top
+            transform: rotateY(-270deg) translateX($cube-size/2);
+            transform-origin: top right;
+            @include colors(120);
+        }
+        &:nth-of-type(4) {
+            // down
+            transform: rotateY(270deg) translateX(-$cube-size / 2);
+            transform-origin: center left;
+            @include colors(180);
+        }
+        &:nth-of-type(5) {
+            // left
+            transform: rotateX(-90deg) translateY(-$cube-size / 2);
+            transform-origin: top center;
+            @include colors(240);
+        }
+        &:nth-of-type(6) {
+            // right
+            transform: rotateX(90deg) translateY($cube-size / 2);
+            transform-origin: bottom center;
+             @include colors(300);
+        }
+    }
+}
+
+.c-button-group {
+    text-align: center;
+    position: relative;
+    outline: 1px solid blue;
+    button {
+        margin: .5rem;
+        font-size: 1rem;
+        position: relative;
+        display: inline-block;
+        &.block {
+            display: block;
+            margin: 0 auto;
+        }
+    }
+}

@@ -12,7 +12,11 @@ faces.forEach(face => {
 function show() {
     document.body.classList.toggle('toggle');
 }
+function rotate(){
+    document.body.classList.toggle('rotate');
+}
 
 export default {
-    show
+    show,
+    rotate
 }
