@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Cube</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
-   <!-- <link rel="stylesheet" href="/app.css?v=1">-->
+
+    <!-- <link rel="stylesheet" href="/app.css?v=1">-->
 
 </head>
 
@@ -15,182 +15,84 @@
 
     <div class="scene">
         <div class="rubik">
-            <div class="side">
-                <div class="cube top-left">
-                    <div class="cube-display">
-                        <div class="face">
-                        </div>
-                        <div class="face">
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cube top-right">
-                    <div class="cube-display">
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cube bottom-left">
-                    <div class="cube-display">
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cube bottom-right">
-                    <div class="cube-display">
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                    </div>
+            <div class="cube front top-left" id="cube-1">
+                <div class="cube-display">
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
                 </div>
             </div>
-            <div class="side">
-                <div class="cube top-left">
-                    <div class="cube-display">
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                    </div>
+            <div class="cube front top-right" id="cube-2">
+                <div class="cube-display">
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
                 </div>
-                <div class="cube top-right">
-                    <div class="cube-display">
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                    </div>
+            </div>
+            <div class="cube front bottom-left" id="cube-3">
+                <div class="cube-display">
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
                 </div>
-                <div class="cube bottom-left">
-                    <div class="cube-display">
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                    </div>
+            </div>
+            <div class="cube front bottom-right" id="cube-4">
+                <div class="cube-display">
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
                 </div>
-                <div class="cube bottom-right">
-                    <div class="cube-display">
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                        <div class="face">
-                            <div class="face-display"></div>
-                        </div>
-                    </div>
+            </div>
+            <div class="cube back top-left" id="cube-5">
+                <div class="cube-display">
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
+                </div>
+            </div>
+            <div class="cube back top-right" id="cube-6">
+                <div class="cube-display">
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
+                </div>
+            </div>
+            <div class="cube back bottom-left" id="cube-7">
+                <div class="cube-display">
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
+                </div>
+            </div>
+            <div class="cube back bottom-right" id="cube-8">
+                <div class="cube-display">
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
                 </div>
             </div>
         </div>
@@ -200,17 +102,17 @@
         <button onclick="u()">U</button>
         <button>L</button>
         <button>F</button>
-        <button>R  </button>
-        <button>B  </button>
-        <button>D  </button><br/>
+        <button>R</button>
+        <button>B</button>
+        <button>D</button><br/>
         <button>U'</button>
         <button>L'</button>
         <button>F'</button>
-        <button>R' </button>
-        <button>B' </button>
-        <button>D' </button>
+        <button>R'</button>
+        <button>B'</button>
+        <button>D'</button>
     </div>
-<!--     <script src="/app.bundle.js?v=1"></script>-->
+    <!--     <script src="/app.bundle.js?v=1"></script>-->
 </body>
 
 </html>
