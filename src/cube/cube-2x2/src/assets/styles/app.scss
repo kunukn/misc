@@ -1,5 +1,10 @@
 @charset "UTF-8";
-@import './_variables';
-@import './_mixins';
-@import './_components';
+
+@import './base/_variables';
+@import './base/_mixins';
+@import './base/_normalize';
+
+@import './components/_cube';
+@import './components/_button-group';
+
 @import './_cube';

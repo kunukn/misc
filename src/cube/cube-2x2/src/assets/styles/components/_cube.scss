@@ -102,19 +102,3 @@
         }
     }
 }
-
-.c-button-group {
-    text-align: center;
-    position: relative;
-    outline: 1px solid blue;
-    button {
-        margin: .5rem;
-        font-size: 1rem;
-        position: relative;
-        display: inline-block;
-        &.block {
-            display: block;
-            margin: 0 auto;
-        }
-    }
-}
