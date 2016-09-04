@@ -5,7 +5,6 @@ console.log('cube2x2 is available in console');
 
 window.cube2x2 = cube;
 
-
 export default {
 
 };

@@ -8,60 +8,60 @@
     width: $cube-size;
     height: $cube-size;
     .cube-display {
-
-    transform-style: preserve-3d;
+        transform-style: preserve-3d;
         position: absolute;
         top: 0;
         left: 0;
     }
+    &.front {
+        &.top-left {
+            .cube-display {
+                transform: translateZ($cube-size/2);
+            }
+        }
+        &.top-right {
+            .cube-display {
+                transform: translateZ($cube-size/2) translateX($cube-size);
+            }
+        }
+        &.bottom-left {
+            .cube-display {
+                transform: translateZ($cube-size/2) translateY($cube-size);
+            }
+        }
+        &.bottom-right {
+            .cube-display {
+                transform: translateZ($cube-size/2) translateX($cube-size) translateY($cube-size);
+            }
+        }
+    }
+    &.back {
+        &.top-left {
+            .cube-display {
+                transform: translateZ(-$cube-size/2);
+            }
+        }
+        &.top-right {
+            .cube-display {
+                transform: translateZ(-$cube-size/2) translateX($cube-size);
+            }
+        }
+        &.bottom-left {
+            .cube-display {
+                transform: translateZ(-$cube-size/2) translateY($cube-size);
+            }
+        }
+        &.bottom-right {
+            .cube-display {
+                transform: translateZ(-$cube-size/2) translateX($cube-size) translateY($cube-size);
+            }
+        }
+    }
     .face {
-
-    transform-style: preserve-3d;
+        transform-style: preserve-3d;
         position: absolute;
         top: 0;
         left: 0;
-    }
-    &.front.top-left {
-        .cube-display {
-            transform: translateZ($cube-size/2);
-        }
-    }
-    &.front.top-right {
-        .cube-display {
-            transform: translateZ($cube-size/2) translateX($cube-size);
-        }
-    }
-    &.front.bottom-left {
-        .cube-display {
-            transform: translateZ($cube-size/2) translateY($cube-size);
-        }
-    }
-    &.front.bottom-right {
-        .cube-display {
-            transform: translateZ($cube-size/2) translateX($cube-size) translateY($cube-size);
-        }
-    }
-    &.back.top-left {
-        .cube-display {
-            transform: translateZ(-$cube-size/2);
-        }
-    }
-    &.back.top-right {
-        .cube-display {
-            transform: translateZ(-$cube-size/2) translateX($cube-size);
-        }
-    }
-    &.back.bottom-left {
-        .cube-display {
-            transform: translateZ(-$cube-size/2) translateY($cube-size);
-        }
-    }
-    &.back.bottom-right {
-        .cube-display {
-            transform: translateZ(-$cube-size/2) translateX($cube-size) translateY($cube-size);
-        }
-    }
-    .face {
         width: $cube-size;
         height: $cube-size;
         border-radius: 4px;
