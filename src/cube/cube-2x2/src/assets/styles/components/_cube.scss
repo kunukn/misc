@@ -7,21 +7,94 @@
     transform-origin: 50% 50%;
     width: $cube-size;
     height: $cube-size;
+    backface-visibility: hidden;
+    .face {
+        transform-style: preserve-3d;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: $cube-size;
+        height: $cube-size;
+        border-radius: 4px;
+        border: 1px solid black;
+        //backface-visibility: hidden;
+        &:nth-of-type(1) {
+            // front
+            transform: translateZ($cube-size / 2);
+            @include color(1);
+        }
+        &:nth-of-type(2) {
+            // back
+            transform: translateZ( -$cube-size / 2) rotateY(180deg);
+            @include color(2);
+        }
+        &:nth-of-type(3) {
+            // right
+            transform: rotateY(-270deg) translateX($cube-size/2);
+            transform-origin: top right;
+            @include color(3);
+        }
+        &:nth-of-type(4) {
+            // left
+            transform: rotateY(270deg) translateX(-$cube-size / 2);
+            transform-origin: center left;
+            @include color(4);
+        }
+        &:nth-of-type(5) {
+            // top
+            transform: rotateX(-90deg) translateY(-$cube-size / 2);
+            transform-origin: top center;
+            @include color(5);
+        }
+        &:nth-of-type(6) {
+            // down
+            transform: rotateX(90deg) translateY($cube-size / 2);
+            transform-origin: bottom center;
+            @include color(6);
+        }
+    }
     .cube-display {
         transform-style: preserve-3d;
         position: absolute;
         top: 0;
         left: 0;
+        backface-visibility: hidden;
     }
     &.front {
+        .face {
+            &:nth-of-type(2) {
+                // back
+                @include face-black;
+            }
+        }
         &.top-left {
             .cube-display {
                 transform: translateZ($cube-size/2);
+            }
+            .face {
+                &:nth-of-type(3) {
+                    // right
+                    @include face-black;
+                }
+                &:nth-of-type(6) {
+                    // down
+                    @include face-black;
+                }
             }
         }
         &.top-right {
             .cube-display {
                 transform: translateZ($cube-size/2) translateX($cube-size);
+            }
+            .face {
+                &:nth-of-type(4) {
+                    // left
+                    @include face-black;
+                }
+                &:nth-of-type(6) {
+                    // down
+                    @include face-black;
+                }
             }
         }
         &.bottom-left {
@@ -55,50 +128,6 @@
             .cube-display {
                 transform: translateZ(-$cube-size/2) translateX($cube-size) translateY($cube-size);
             }
-        }
-    }
-    .face {
-        transform-style: preserve-3d;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: $cube-size;
-        height: $cube-size;
-        border-radius: 4px;
-        border: 1px solid black;
-        &:nth-of-type(1) {
-            // front
-            transform: translateZ($cube-size / 2);
-            @include colors(0);
-        }
-        &:nth-of-type(2) {
-            // back
-            transform: translateZ( -$cube-size / 2) rotateY(180deg);
-            @include colors(60);
-        }
-        &:nth-of-type(3) {
-            // top
-            transform: rotateY(-270deg) translateX($cube-size/2);
-            transform-origin: top right;
-            @include colors(120);
-        }
-        &:nth-of-type(4) {
-            // down
-            transform: rotateY(270deg) translateX(-$cube-size / 2);
-            transform-origin: center left;
-            @include colors(180);
-        }
-        &:nth-of-type(5) {
-            // left
-            transform: rotateX(-90deg) translateY(-$cube-size / 2);
-            transform-origin: top center;
-            @include colors(240);
-        }
-        &:nth-of-type(6) {
-            // right
-            transform: rotateX(90deg) translateY($cube-size / 2);
-            transform-origin: bottom center;
-            @include colors(300);
         }
     }
 }
