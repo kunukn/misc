@@ -9,7 +9,8 @@ export default {
     devtool: 'eval-source-map',
     entry: {
         vendors: ['jquery'],
-        app: ['./src/assets/scripts/index.js']
+        nst: ['./src/assets/scripts/native-slide-toggle'],
+        app: ['./src/assets/scripts/index']
     },
     target: 'web',
     output: {
@@ -38,7 +39,7 @@ export default {
             'window.$': 'jquery',
         }),
 
-        new CommonsChunkPlugin('vendors', 'vendors.bundle.js', Infinity),
+      //  new CommonsChunkPlugin('vendors', 'vendors.bundle.js', Infinity),
     ],
     module: {
         loaders: [{
@@ -48,7 +49,7 @@ export default {
         }, {
             test: /\.scss$/,
             include: url('src/assets/styles'),
-            loader: ExtractTextPlugin.extract('style', 'css!autoprefixer?browsers=last 2 versions!sass'),
+            loader: ExtractTextPlugin.extract('style', 'css!autoprefixer?browsers=last 5 versions!sass'),
         }, {
             test: /\.css$/,
             include: url('node_modules/normalize.css'),
@@ -64,7 +65,7 @@ export default {
         }]
     },
     resolve: {
-        extensions: ['', '.es6', '.js', 'scss']
+        extensions: ['', '.es6', '.js']
     },
     externals: {}
 };
