@@ -5,14 +5,11 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 let CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 
 export default {
-    //context: path.resolve('src'),
     debug: true,
     devtool: 'eval-source-map',
-    noInfo: false,
     entry: {
-        app: [
-            './src/assets/scripts/index.js'
-        ]
+        vendors: ['jquery'],
+        app: ['./src/assets/scripts/index.js']
     },
     target: 'web',
     output: {
@@ -21,19 +18,27 @@ export default {
         filename: '[name].bundle.js'
     },
     devServer: {
-        contentBase: './src'
+        contentBase: './src',
+        noInfo: true,
     },
     plugins: [
         new ExtractTextPlugin('[name].css'),
-        // new webpack.HotModuleReplacementPlugin(),
-        // new webpack.NoErrorsPlugin(),
 
         new HtmlWebpackPlugin({
             template: url('src/index.html'),
             hash: true,
             //filename: 'index.html',
             environment: process.env.NODE_ENV
-        })
+        }),
+
+        new webpack.ProvidePlugin({
+            '$': 'jquery',
+            'jQuery': 'jquery',
+            'window.jQuery': 'jquery',
+            'window.$': 'jquery',
+        }),
+
+        new CommonsChunkPlugin('vendors', 'vendors.bundle.js', Infinity),
     ],
     module: {
         loaders: [{
