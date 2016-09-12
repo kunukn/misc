@@ -9,4 +9,8 @@ log(`app is ready - ${new Date().getTime()}`);
 window.nst = app.nst;
 window.jQueryToggle = app.jQueryToggle;
 
+// Custom other library
+if (window.FastClick)
+    FastClick.attach(document.body);
+
 export default {};
