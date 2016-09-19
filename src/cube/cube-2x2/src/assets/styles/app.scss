@@ -1,7 +1,8 @@
 @charset "UTF-8";
-@import './base/_variables';
-@import './base/_mixins';
-@import './base/_normalize';
-@import './components/_cube';
-@import './components/_button-group';
-@import './_rubik';
+@import './base/variables';
+@import './base/mixins';
+@import './base/normalize';
+@import './components/cube';
+@import './components/button-group';
+@import './rubik';
+

@@ -16,7 +16,7 @@ function rotate(){
     document.body.classList.toggle('rotate');
 }
 
-export default {
+module.exports =  {
     show,
     rotate
-}
+};

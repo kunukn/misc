@@ -1,10 +1,10 @@
-import path from 'path';
-import webpack from 'webpack';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+var path = require('path');
+var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 let CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 
-export default {
+module.exports = {
     //context: path.resolve('src'),
     debug: true,
     devtool: 'eval-source-map',
