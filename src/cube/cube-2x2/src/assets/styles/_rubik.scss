@@ -15,7 +15,6 @@ body {
     &.toggle {
         .scene {
             // animation-play-state: paused;
-            transform-origin: 50% 50%;
             animation: rotate 2s linear infinite;
         }
     }
@@ -52,10 +51,9 @@ body {
 
 @keyframes rotate {
     from {
-        transform: rotate3d(0, 0, 0, 0turn);
     }
     to {
-        transform: rotate3d(1, 1, 1, 1turn);
+        transform: rotateX(0deg) rotateY(360deg) rotateZ(0deg);
     }
 }
 
