@@ -6,11 +6,9 @@ function root(args) {
   return path.join.apply(path, [_root].concat(args));
 }
 
-
 function getPath(relativePath) {
   return path.join(__dirname, relativePath);
 }
 
 exports.root = root;
-
 exports.getPath = getPath;

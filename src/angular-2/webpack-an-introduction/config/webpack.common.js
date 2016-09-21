@@ -2,7 +2,7 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var helpers = require('./helpers');
-var p = helpers.getPath;
+var root = helpers.root;
 
 console.log('** webpack.common.js **');
 
@@ -37,14 +37,12 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        exclude: [helpers.root('src', 'app'), /node_modules/],
-        //exclude: [p('src/app'), /node_modules/],
+        exclude: [/node_modules/, root('src', 'app')],
         loader: ExtractTextPlugin.extract('style', 'css?sourceMap')
       },
       {
         test: /\.css$/,
-        include: [helpers.root('src', 'app')],
-        //include: [p('src/app')],
+        include: [root('src', 'app')],
         loader: 'raw'
       }
     ]
