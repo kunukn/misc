@@ -7,7 +7,7 @@
     "test": "karma start",
     "build": "npm run clean-dist && webpack --config config/webpack.prod.js --progress --profile --bail",
     "deploy": "npm run build",
-    "clean-dist": "rimraf dist/*.* && rimraf dist/assets/",
+    "clean-dist": "rimraf dist/*.* && rimraf dist/assets/*.*",
     "postinstall": "typings install"
   },
   "license": "MIT",
