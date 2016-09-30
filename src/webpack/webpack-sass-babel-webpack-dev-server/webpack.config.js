@@ -29,7 +29,7 @@ module.exports = {
     devServer: {
         contentBase: './',
         noInfo: true,
-        port: 3000,
+        port: 3333,
         //historyApiFallback: true,
         //stats: 'minimal'
     },
