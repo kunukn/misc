@@ -1,4 +1,5 @@
-;var path = require('path'),
+;
+var path = require('path'),
     webpack = require('webpack'),
     CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin,
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
@@ -62,45 +63,36 @@ module.exports = {
              loader: 'jshint-loader',
              }*/
         ],
-        loaders: [
-            {
-                test: /\.html$/,
-                exclude: /node_modules/,
-                loader: "html-loader?minimize=true&removeComments=false&conservativeCollapse=true&collapseWhitespace=true"
-            },
-            {
-                test: /\.js$/,
-                //include: [getPath('src/assets/scrips')],
-                exclude: /node_modules/,
-                loaders: ['babel-loader'],
-            },
-            {
-                test: /\.ts$/,
-                exclude: /node_modules/,
-                loaders: ['awesome-typescript-loader']
-            },
-            {
-                test: /\.scss$/,
-                //exclude: /node_modules/,
-                include: [getPath('src/assets/styles')],
-                loader: ExtractTextPlugin.extract('style-loader', 'css-loader!autoprefixer-loader?browsers=last 10 versions!sass-loader'),
-            }, {
-                test: /\.css$/,
-                include: getPath('node_modules/normalize.css'),
-                loader: ExtractTextPlugin.extract('style-loader', 'css-loader'),
-            }, {
-                test: /\.ico$/,
-                include: getPath('src/assets/images'),
-                loader: 'file-loader?name=favicon.ico&context=/',
-            }, {
-                test: /\.(jpg|png|svg)$/,
-                include: [getPath('src/assets/images')],
-                loader: 'url-loader?limit=10000',
-            }
-        ]
+        loaders: [{
+            test: /\.html$/,
+            exclude: /node_modules/,
+            loader: "html-loader?minimize=true&removeComments=false&conservativeCollapse=true&collapseWhitespace=true"
+        }, {
+            test: /\.js$/,
+            //include: [getPath('src/assets/scrips')],
+            exclude: /node_modules/,
+            loaders: ['babel-loader'],
+        }, {
+            test: /\.scss$/,
+            //exclude: /node_modules/,
+            include: [getPath('src/assets/styles')],
+            loader: ExtractTextPlugin.extract('style-loader', 'css-loader!autoprefixer-loader?browsers=last 10 versions!sass-loader'),
+        }, {
+            test: /\.css$/,
+            include: getPath('node_modules/normalize.css'),
+            loader: ExtractTextPlugin.extract('style-loader', 'css-loader'),
+        }, {
+            test: /\.ico$/,
+            include: getPath('src/assets/images'),
+            loader: 'file-loader?name=favicon.ico&context=/',
+        }, {
+            test: /\.(jpg|png|svg)$/,
+            include: [getPath('src/assets/images')],
+            loader: 'url-loader?limit=10000',
+        }]
     },
     resolve: {
-        extensions: ['', '.js', '.ts']
+        extensions: ['', '.js']
     },
     externals: {}
 };

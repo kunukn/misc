@@ -1,17 +1,17 @@
-;'use strict';
+;
+'use strict';
+
 const log = console.log.bind(console);
 
 log('App running');
 
-require('../styles/app.scss'); // webpack bundle styling
+import '../styles/app.scss';
 
-const Hammer = (<any>window).Hammer;
+const Hammer = window.Hammer;
 
 (() => {
 
-    const log = console.log.bind(console);
-
-    function qs(expr, context?) {
+    function qs(expr, context) {
         return (context || document).querySelector(expr);
     }
 
@@ -58,7 +58,7 @@ const Hammer = (<any>window).Hammer;
 
 
     function createNewState(currentState, update) {
-        let nextState = Object.assign({},currentState,{ top: update.top, front: update.front});
+        let nextState = Object.assign({}, currentState, { top: update.top, front: update.front });
         nextState.rotateX += update.rotateX || 0;
         nextState.rotateY += update.rotateY || 0;
         nextState.rotateZ += update.rotateZ || 0;
@@ -89,43 +89,43 @@ const Hammer = (<any>window).Hammer;
             case ACTION.swipeleft:
                 if (state.top === CUBE.TOP) {
                     if (state.front === CUBE.FRONT)
-                        newState = createNewState(state, {top: CUBE.TOP, front: CUBE.RIGHT, rotateY: -90});
+                        newState = createNewState(state, { top: CUBE.TOP, front: CUBE.RIGHT, rotateY: -90 });
                     if (state.front === CUBE.RIGHT)
-                        newState = createNewState(state, {top: CUBE.TOP, front: CUBE.BACK, rotateY: -90});
+                        newState = createNewState(state, { top: CUBE.TOP, front: CUBE.BACK, rotateY: -90 });
                     if (state.front === CUBE.BACK)
-                        newState = createNewState(state, {top: CUBE.TOP, front: CUBE.LEFT, rotateY: -90});
+                        newState = createNewState(state, { top: CUBE.TOP, front: CUBE.LEFT, rotateY: -90 });
                     if (state.front === CUBE.LEFT)
-                        newState = createNewState(state, {top: CUBE.TOP, front: CUBE.FRONT, rotateY: -90});
+                        newState = createNewState(state, { top: CUBE.TOP, front: CUBE.FRONT, rotateY: -90 });
                 }
                 break;
 
             case ACTION.swiperight:
                 if (state.top === CUBE.TOP) {
                     if (state.front === CUBE.FRONT)
-                        newState = createNewState(state, {top: CUBE.TOP, front: CUBE.LEFT, rotateY: 90});
+                        newState = createNewState(state, { top: CUBE.TOP, front: CUBE.LEFT, rotateY: 90 });
                     if (state.front === CUBE.LEFT)
-                        newState = createNewState(state, {top: CUBE.TOP, front: CUBE.BACK, rotateY: 90});
+                        newState = createNewState(state, { top: CUBE.TOP, front: CUBE.BACK, rotateY: 90 });
                     if (state.front === CUBE.BACK)
-                        newState = createNewState(state, {top: CUBE.TOP, front: CUBE.RIGHT, rotateY: 90});
+                        newState = createNewState(state, { top: CUBE.TOP, front: CUBE.RIGHT, rotateY: 90 });
                     if (state.front === CUBE.RIGHT)
-                        newState = createNewState(state, {top: CUBE.TOP, front: CUBE.FRONT, rotateY: 90});
+                        newState = createNewState(state, { top: CUBE.TOP, front: CUBE.FRONT, rotateY: 90 });
                 }
                 break;
 
             case ACTION.swipeup:
                 if (state.top === CUBE.TOP) {
                     if (state.front === CUBE.FRONT)
-                        newState = createNewState(state, {top: CUBE.FRONT, front: CUBE.DOWN, rotateX: 90});
-                    if (state.front === CUBE.LEFT){
+                        newState = createNewState(state, { top: CUBE.FRONT, front: CUBE.DOWN, rotateX: 90 });
+                    if (state.front === CUBE.LEFT) {
 
-                        newState = createNewState(state, {top: CUBE.FRONT, front: CUBE.LEFT, rotateX: 90, rotateY: -90, rotateZ: -90});;
+                        newState = createNewState(state, { top: CUBE.FRONT, front: CUBE.LEFT, rotateX: 90, rotateY: -90, rotateZ: -90 });;
                         log(newState);
                     }
 
                     if (state.front === CUBE.BACK)
-                        newState = createNewState(state, {top: CUBE.FRONT, front: CUBE.BACK, rotateX: 90});
+                        newState = createNewState(state, { top: CUBE.FRONT, front: CUBE.BACK, rotateX: 90 });
                     if (state.front === CUBE.RIGHT)
-                        newState = createNewState(state, {top: CUBE.FRONT, front: CUBE.RIGHT, rotateX: 90});
+                        newState = createNewState(state, { top: CUBE.FRONT, front: CUBE.RIGHT, rotateX: 90 });
                 }
 
                 break;
@@ -141,26 +141,26 @@ const Hammer = (<any>window).Hammer;
             case ACTION.swipeleft:
                 if (state.top === CUBE.TOP) {
                     if (state.front === CUBE.FRONT)
-                        newState = createNewState(state, {top: CUBE.TOP, front: CUBE.RIGHT, rotateY: -90});
+                        newState = createNewState(state, { top: CUBE.TOP, front: CUBE.RIGHT, rotateY: -90 });
                     if (state.front === CUBE.RIGHT)
-                        newState = createNewState(state, {top: CUBE.TOP, front: CUBE.BACK, rotateY: -90});
+                        newState = createNewState(state, { top: CUBE.TOP, front: CUBE.BACK, rotateY: -90 });
                     if (state.front === CUBE.BACK)
-                        newState = createNewState(state, {top: CUBE.TOP, front: CUBE.LEFT, rotateY: -90});
+                        newState = createNewState(state, { top: CUBE.TOP, front: CUBE.LEFT, rotateY: -90 });
                     if (state.front === CUBE.LEFT)
-                        newState = createNewState(state, {top: CUBE.TOP, front: CUBE.FRONT, rotateY: -90});
+                        newState = createNewState(state, { top: CUBE.TOP, front: CUBE.FRONT, rotateY: -90 });
                 }
                 break;
 
             case ACTION.swiperight:
                 if (state.top === CUBE.TOP) {
                     if (state.front === CUBE.FRONT)
-                        newState = createNewState(state, {top: CUBE.TOP, front: CUBE.LEFT, rotateY: 90});
+                        newState = createNewState(state, { top: CUBE.TOP, front: CUBE.LEFT, rotateY: 90 });
                     if (state.front === CUBE.LEFT)
-                        newState = createNewState(state, {top: CUBE.TOP, front: CUBE.BACK, rotateY: 90});
+                        newState = createNewState(state, { top: CUBE.TOP, front: CUBE.BACK, rotateY: 90 });
                     if (state.front === CUBE.BACK)
-                        newState = createNewState(state, {top: CUBE.TOP, front: CUBE.RIGHT, rotateY: 90});
+                        newState = createNewState(state, { top: CUBE.TOP, front: CUBE.RIGHT, rotateY: 90 });
                     if (state.front === CUBE.RIGHT)
-                        newState = createNewState(state, {top: CUBE.TOP, front: CUBE.FRONT, rotateY: 90});
+                        newState = createNewState(state, { top: CUBE.TOP, front: CUBE.FRONT, rotateY: 90 });
                 }
                 break;
         }
@@ -175,26 +175,26 @@ const Hammer = (<any>window).Hammer;
             case ACTION.swipeleft:
                 if (state.top === CUBE.TOP) {
                     if (state.front === CUBE.FRONT)
-                        newState = createNewState(state, {top: CUBE.TOP, front: CUBE.RIGHT, rotateY: -90});
+                        newState = createNewState(state, { top: CUBE.TOP, front: CUBE.RIGHT, rotateY: -90 });
                     if (state.front === CUBE.RIGHT)
-                        newState = createNewState(state, {top: CUBE.TOP, front: CUBE.BACK, rotateY: -90});
+                        newState = createNewState(state, { top: CUBE.TOP, front: CUBE.BACK, rotateY: -90 });
                     if (state.front === CUBE.BACK)
-                        newState = createNewState(state, {top: CUBE.TOP, front: CUBE.LEFT, rotateY: -90});
+                        newState = createNewState(state, { top: CUBE.TOP, front: CUBE.LEFT, rotateY: -90 });
                     if (state.front === CUBE.LEFT)
-                        newState = createNewState(state, {top: CUBE.TOP, front: CUBE.FRONT, rotateY: -90});
+                        newState = createNewState(state, { top: CUBE.TOP, front: CUBE.FRONT, rotateY: -90 });
                 }
                 break;
 
             case ACTION.swiperight:
                 if (state.top === CUBE.TOP) {
                     if (state.front === CUBE.FRONT)
-                        newState = createNewState(state, {top: CUBE.TOP, front: CUBE.LEFT, rotateY: 90});
+                        newState = createNewState(state, { top: CUBE.TOP, front: CUBE.LEFT, rotateY: 90 });
                     if (state.front === CUBE.LEFT)
-                        newState = createNewState(state, {top: CUBE.TOP, front: CUBE.BACK, rotateY: 90});
+                        newState = createNewState(state, { top: CUBE.TOP, front: CUBE.BACK, rotateY: 90 });
                     if (state.front === CUBE.BACK)
-                        newState = createNewState(state, {top: CUBE.TOP, front: CUBE.RIGHT, rotateY: 90});
+                        newState = createNewState(state, { top: CUBE.TOP, front: CUBE.RIGHT, rotateY: 90 });
                     if (state.front === CUBE.RIGHT)
-                        newState = createNewState(state, {top: CUBE.TOP, front: CUBE.FRONT, rotateY: 90});
+                        newState = createNewState(state, { top: CUBE.TOP, front: CUBE.FRONT, rotateY: 90 });
                 }
                 break;
         }
@@ -209,26 +209,26 @@ const Hammer = (<any>window).Hammer;
             case ACTION.swipeleft:
                 if (state.top === CUBE.TOP) {
                     if (state.front === CUBE.FRONT)
-                        newState = createNewState(state, {top: CUBE.TOP, front: CUBE.RIGHT, rotateY: -90});
+                        newState = createNewState(state, { top: CUBE.TOP, front: CUBE.RIGHT, rotateY: -90 });
                     if (state.front === CUBE.RIGHT)
-                        newState = createNewState(state, {top: CUBE.TOP, front: CUBE.BACK, rotateY: -90});
+                        newState = createNewState(state, { top: CUBE.TOP, front: CUBE.BACK, rotateY: -90 });
                     if (state.front === CUBE.BACK)
-                        newState = createNewState(state, {top: CUBE.TOP, front: CUBE.LEFT, rotateY: -90});
+                        newState = createNewState(state, { top: CUBE.TOP, front: CUBE.LEFT, rotateY: -90 });
                     if (state.front === CUBE.LEFT)
-                        newState = createNewState(state, {top: CUBE.TOP, front: CUBE.FRONT, rotateY: -90});
+                        newState = createNewState(state, { top: CUBE.TOP, front: CUBE.FRONT, rotateY: -90 });
                 }
                 break;
 
             case ACTION.swiperight:
                 if (state.top === CUBE.TOP) {
                     if (state.front === CUBE.FRONT)
-                        newState = createNewState(state, {top: CUBE.TOP, front: CUBE.LEFT, rotateY: 90});
+                        newState = createNewState(state, { top: CUBE.TOP, front: CUBE.LEFT, rotateY: 90 });
                     if (state.front === CUBE.LEFT)
-                        newState = createNewState(state, {top: CUBE.TOP, front: CUBE.BACK, rotateY: 90});
+                        newState = createNewState(state, { top: CUBE.TOP, front: CUBE.BACK, rotateY: 90 });
                     if (state.front === CUBE.BACK)
-                        newState = createNewState(state, {top: CUBE.TOP, front: CUBE.RIGHT, rotateY: 90});
+                        newState = createNewState(state, { top: CUBE.TOP, front: CUBE.RIGHT, rotateY: 90 });
                     if (state.front === CUBE.RIGHT)
-                        newState = createNewState(state, {top: CUBE.TOP, front: CUBE.FRONT, rotateY: 90});
+                        newState = createNewState(state, { top: CUBE.TOP, front: CUBE.FRONT, rotateY: 90 });
                 }
                 break;
         }
@@ -240,14 +240,15 @@ const Hammer = (<any>window).Hammer;
         let newState = state;
         return newState;
     }
+
     function downReducer(state, action) {
         log('todo');
         let newState = state;
         return newState;
     }
 
-    function getDebugData(face, event){
-        return  `
+    function getDebugData(face, event) {
+        return `
     <div class='event'>${face} ${event.type}</div>
     <div class='state'> ${JSON.stringify(state)}</div>
     <div class='transform'> ${cubeElement.style.transform}</div>
@@ -295,49 +296,49 @@ const Hammer = (<any>window).Hammer;
     /* Setup */
     hammerFront.on("swipeleft swiperight swipeup swipedown", (ev) => {
         //log(ev);
-        const action = {type: ev.type, payload: {}};
+        const action = { type: ev.type, payload: {} };
         const newState = frontReducer(state, action);
         updateUiByState(newState);
         setState(newState);
 
-        debug.innerHTML = getDebugData('front',ev);
+        debug.innerHTML = getDebugData('front', ev);
     });
 
     hammerRight.on("swipeleft swiperight swipeup swipedown", (ev) => {
         //log(ev);
-        const action = {type: ev.type, payload: {}};
+        const action = { type: ev.type, payload: {} };
         const newState = rightReducer(state, action);
         updateUiByState(newState);
         setState(newState);
 
-        debug.innerHTML = getDebugData('right',ev);
+        debug.innerHTML = getDebugData('right', ev);
     });
     hammerLeft.on("swipeleft swiperight swipeup swipedown", (ev) => {
         //log(ev);
-        const action = {type: ev.type, payload: {}};
+        const action = { type: ev.type, payload: {} };
         const newState = leftReducer(state, action);
         updateUiByState(newState);
         setState(newState);
 
-        debug.innerHTML = getDebugData('left',ev);
+        debug.innerHTML = getDebugData('left', ev);
     });
 
     hammerBack.on("swipeleft swiperight swipeup swipedown", (ev) => {
         //log(ev);
-        const action = {type: ev.type, payload: {}};
+        const action = { type: ev.type, payload: {} };
         const newState = backReducer(state, action);
         updateUiByState(newState);
         setState(newState);
 
-        debug.innerHTML = getDebugData('back',ev);
+        debug.innerHTML = getDebugData('back', ev);
     });
 
     hammerTop.on("swipeleft swiperight swipeup swipedown", (ev) => {
-        debug.innerHTML = getDebugData('top',ev);
+        debug.innerHTML = getDebugData('top', ev);
     });
 
     hammerDown.on("swipeleft swiperight swipeup swipedown", (ev) => {
-        debug.innerHTML = getDebugData('down',ev);
+        debug.innerHTML = getDebugData('down', ev);
     });
 
 
@@ -348,8 +349,6 @@ const Hammer = (<any>window).Hammer;
 
 
 
-export class App{
-    constructor(){
-    }
+export class App {
+    constructor() {}
 }
-

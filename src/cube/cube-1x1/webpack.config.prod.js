@@ -1,4 +1,5 @@
-;var path = require('path'),
+;
+var path = require('path'),
     webpack = require('webpack'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin,
@@ -41,11 +42,11 @@ module.exports = {
         }),
 
         /* https://github.com/webpack/webpack/issues/368 */
-        new webpack.optimize.CommonsChunkPlugin({name: ['vendors'].reverse(), minChunks: Infinity}),
+        new webpack.optimize.CommonsChunkPlugin({ name: ['vendors'].reverse(), minChunks: Infinity }),
 
         new webpack.optimize.UglifyJsPlugin({
-            compress: {warnings: false,},
-            output: {comments: false},
+            compress: { warnings: false, },
+            output: { comments: false },
             mangle: {
                 except: ['$']
             },
@@ -59,46 +60,34 @@ module.exports = {
         })
     ],
     module: {
-        loaders: [
-            {
-                test: /\.html$/,
-                exclude: /node_modules/,
-                loader: "html-loader?minimize=true&removeComments=false&conservativeCollapse=true&collapseWhitespace=true"
-            },
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loaders: [WebpackStrip.loader('console.debug', 'console.log', 'debug', 'log'), 'babel-loader']
-            }, {
-                test: /\.es6$/,
-                include: getPath('src/assets/scrips'),
-                loaders: [WebpackStrip.loader('console.debug', 'console.log', 'debug', 'log'), 'babel-loader']
-            },
-            {
-                test: /\.ts$/,
-                exclude: /node_modules/,
-                loaders: [WebpackStrip.loader('console.debug', 'console.log', 'debug', 'log'),'awesome-typescript-loader']
-            },
-            {
-                test: /\.scss$/,
-                include: getPath('src/assets/styles'),
-                loader: ExtractTextPlugin.extract('style-loader', 'css-loader!autoprefixer-loader?browsers=last 10 versions!sass-loader'),
-            }, {
-                test: /\.css$/,
-                include: getPath('node_modules/normalize.css'),
-                loader: ExtractTextPlugin.extract('style-loader', 'css-loader'),
-            }, {
-                test: /\.ico$/,
-                include: getPath('src/assets/images'),
-                loader: 'file-loader?name=favicon.ico&context=/',
-            }, {
-                test: /\.(jpg|png|svg)$/,
-                include: getPath('src/assets/images'),
-                loader: 'url-loader?limit=10000',
-            }]
+        loaders: [{
+            test: /\.html$/,
+            exclude: /node_modules/,
+            loader: "html-loader?minimize=true&removeComments=false&conservativeCollapse=true&collapseWhitespace=true"
+        }, {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            loaders: [WebpackStrip.loader('console.debug', 'console.log', 'debug', 'log'), 'babel-loader']
+        }, {
+            test: /\.scss$/,
+            include: getPath('src/assets/styles'),
+            loader: ExtractTextPlugin.extract('style-loader', 'css-loader!autoprefixer-loader?browsers=last 10 versions!sass-loader'),
+        }, {
+            test: /\.css$/,
+            include: getPath('node_modules/normalize.css'),
+            loader: ExtractTextPlugin.extract('style-loader', 'css-loader'),
+        }, {
+            test: /\.ico$/,
+            include: getPath('src/assets/images'),
+            loader: 'file-loader?name=favicon.ico&context=/',
+        }, {
+            test: /\.(jpg|png|svg)$/,
+            include: getPath('src/assets/images'),
+            loader: 'url-loader?limit=10000',
+        }]
     },
     resolve: {
-        extensions: ['', '.js', '.ts']
+        extensions: ['', '.js']
     },
     externals: {}
 };
