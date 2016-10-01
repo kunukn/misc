@@ -15,25 +15,19 @@ import { CUBE, ACTION } from './constants';
 import { createNewState } from './state-machine';
 import { log } from './logger';
 
+import { qs, qsa, byId } from './query';
+
+import lookupTable from './lookupTable';
+
 log('App running');
 
 const Hammer = window.Hammer;
 
-function qs(expr, context) {
-    return (context || document).querySelector(expr);
-}
-
-function qsa(expr, context) {
-    return [].slice.call((context || document).querySelectorAll(expr), 0);
-}
-
-function byId(id) {
-    return document.getElementById(id);
-}
-
-const options = {
+const hammerOptions = {
     preventDefault: true
 };
+
+const hammerEvents = 'swipeleft swiperight swipeup swipedown';
 
 let state = {};
 
@@ -43,11 +37,10 @@ function initState() {
         front: CUBE.FRONT,
         rotateX: 0,
         rotateY: 0,
-        rotateZ: 0
+        rotateZ: 0,
+        transform: '',
     };
 }
-
-
 
 function formatDate(date) {
     return `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
@@ -81,27 +74,27 @@ const debug = qs('.debug'),
     downElement = byId('down');
 
 /* Init */
-const hammerFront = new Hammer(frontElement, options);
+const hammerFront = new Hammer(frontElement, hammerOptions);
 hammerFront.get('swipe').set({
     direction: Hammer.DIRECTION_ALL
 });
-const hammerTop = new Hammer(topElement, options);
+const hammerTop = new Hammer(topElement, hammerOptions);
 hammerTop.get('swipe').set({
     direction: Hammer.DIRECTION_ALL
 });
-const hammerRight = new Hammer(rightElement, options);
+const hammerRight = new Hammer(rightElement, hammerOptions);
 hammerRight.get('swipe').set({
     direction: Hammer.DIRECTION_ALL
 });
-const hammerBack = new Hammer(backElement, options);
+const hammerBack = new Hammer(backElement, hammerOptions);
 hammerBack.get('swipe').set({
     direction: Hammer.DIRECTION_ALL
 });
-const hammerDown = new Hammer(downElement, options);
+const hammerDown = new Hammer(downElement, hammerOptions);
 hammerDown.get('swipe').set({
     direction: Hammer.DIRECTION_ALL
 });
-const hammerLeft = new Hammer(leftElement, options);
+const hammerLeft = new Hammer(leftElement, hammerOptions);
 hammerLeft.get('swipe').set({
     direction: Hammer.DIRECTION_ALL
 });
@@ -109,7 +102,7 @@ hammerLeft.get('swipe').set({
 
 
 /* Setup */
-hammerFront.on("swipeleft swiperight swipeup swipedown", (ev) => {
+hammerFront.on(hammerEvents, (ev) => {
     //log(ev);
     const action = { type: ev.type, payload: {} };
     const newState = frontReducer(state, action);
@@ -119,7 +112,7 @@ hammerFront.on("swipeleft swiperight swipeup swipedown", (ev) => {
     debug.innerHTML = getDebugData('front', ev);
 });
 
-hammerRight.on("swipeleft swiperight swipeup swipedown", (ev) => {
+hammerRight.on(hammerEvents, (ev) => {
     //log(ev);
     const action = { type: ev.type, payload: {} };
     const newState = rightReducer(state, action);
@@ -128,7 +121,7 @@ hammerRight.on("swipeleft swiperight swipeup swipedown", (ev) => {
 
     debug.innerHTML = getDebugData('right', ev);
 });
-hammerLeft.on("swipeleft swiperight swipeup swipedown", (ev) => {
+hammerLeft.on(hammerEvents, (ev) => {
     //log(ev);
     const action = { type: ev.type, payload: {} };
     const newState = leftReducer(state, action);
@@ -138,7 +131,7 @@ hammerLeft.on("swipeleft swiperight swipeup swipedown", (ev) => {
     debug.innerHTML = getDebugData('left', ev);
 });
 
-hammerBack.on("swipeleft swiperight swipeup swipedown", (ev) => {
+hammerBack.on(hammerEvents, (ev) => {
     //log(ev);
     const action = { type: ev.type, payload: {} };
     const newState = backReducer(state, action);
@@ -148,11 +141,11 @@ hammerBack.on("swipeleft swiperight swipeup swipedown", (ev) => {
     debug.innerHTML = getDebugData('back', ev);
 });
 
-hammerTop.on("swipeleft swiperight swipeup swipedown", (ev) => {
+hammerTop.on(hammerEvents, (ev) => {
     debug.innerHTML = getDebugData('top', ev);
 });
 
-hammerDown.on("swipeleft swiperight swipeup swipedown", (ev) => {
+hammerDown.on(hammerEvents, (ev) => {
     debug.innerHTML = getDebugData('down', ev);
 });
 
