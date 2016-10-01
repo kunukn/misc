@@ -17,7 +17,7 @@ import { log } from './logger';
 
 import { qs, qsa, byId } from './query';
 
-import lookupTable from './lookupTable';
+import { lookupTable } from './lookup-tables';
 
 log('App running');
 
