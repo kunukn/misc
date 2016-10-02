@@ -51,7 +51,7 @@ function setState(newState) {
 
 function updateUiByState(newState) {
     if (newState.transforms && newState.transforms.length) {
-        let transform = transforms.join(' ');
+        let transform = newState.transforms.join(' ');
         log(transform);
         cubeElement.style.transform = `${transform}`;
     }
