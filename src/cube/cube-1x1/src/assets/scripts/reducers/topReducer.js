@@ -1,6 +1,7 @@
 import { CUBE, ACTION } from '../constants';
 import { log } from '../logger';
 import { dictTable, dictActionTypes, dictDegree } from '../dictionaries';
+
 export default function topReducer(state, action) {
 
     let actionType = dictActionTypes[action.type];

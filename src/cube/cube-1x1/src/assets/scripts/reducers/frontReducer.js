@@ -1,7 +1,6 @@
 import { CUBE, ACTION } from '../constants';
 import { log } from '../logger';
 import { dictTable, dictActionTypes, dictDegree } from '../dictionaries';
-
 // By state and intent of action, return new state
 export default function frontReducer(state, action) {
 

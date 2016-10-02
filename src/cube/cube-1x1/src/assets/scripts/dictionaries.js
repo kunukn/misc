@@ -33,7 +33,6 @@ dictUi['d<'] = 'z';
 
 const ui = dictUi;
 
-
 const dictDegree = [];
 dictDegree['x'] = 'rotateX(90deg)';
 dictDegree['-x'] = 'rotateX(-90deg)';
@@ -87,9 +86,6 @@ dictRotate['lf'] = ['z'];
 dictRotate['lt'] = ['z', '-y'];
 dictRotate['lb'] = ['z', '2y'];
 
-
-
-
 const dictTable = [];
 
 dictTable['tf'] = [];
@@ -124,7 +120,10 @@ dictTable['lb'] = [];
 
 
 
-let state = 'tf';
+
+let state = 'tf',
+    act = '',
+    dir = '';
 
 const dictState = [];
 dictState[state] = [];
@@ -135,36 +134,35 @@ dictState[state]['-y'] = 'tr';
 dictState[state]['z'] = 'lf';
 dictState[state]['-z'] = 'rf';
 
-let act = '';
-dictTable[state][act = 't^'] = { state: dictState[state]['x'], ui: 'x' };
-dictTable[state][act = 't>'] = { state: dictState[state]['z'], ui: 'z' };
-dictTable[state][act = 'tv'] = { state: dictState[state]['-x'], ui: '-x' };
-dictTable[state][act = 't<'] = { state: dictState[state]['-z'], ui: '-z' };
+dictTable[state][act = 't^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 't>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'tv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 't<'] = { state: dictState[state][dir = ui[act]], ui: dir };
 
-dictTable[state][act = 'f^'] = { state: dictState[state]['x'], ui: 'x' };
-dictTable[state][act = 'f>'] = { state: dictState[state]['y'], ui: 'y' };
-dictTable[state][act = 'fv'] = { state: dictState[state]['-x'], ui: '-x' };
-dictTable[state][act = 'f<'] = { state: dictState[state]['-y'], ui: '-y' };
+dictTable[state][act = 'f^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'f>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'fv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'f<'] = { state: dictState[state][dir = ui[act]], ui: dir };
 
-dictTable[state][act = 'r^'] = { state: dictState[state]['-z'], ui: '-z' };
-dictTable[state][act = 'r>'] = { state: dictState[state]['y'], ui: 'y' };
-dictTable[state][act = 'rv'] = { state: dictState[state]['z'], ui: 'z' };
-dictTable[state][act = 'r<'] = { state: dictState[state]['-y'], ui: '-y' };
+dictTable[state][act = 'r^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'r>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'rv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'r<'] = { state: dictState[state][dir = ui[act]], ui: dir };
 
-dictTable[state][act = 'l^'] = { state: dictState[state]['z'], ui: 'z' };
-dictTable[state][act = 'l>'] = { state: dictState[state]['y'], ui: 'y' };
-dictTable[state][act = 'lv'] = { state: dictState[state]['-z'], ui: '-z' };
-dictTable[state][act = 'l<'] = { state: dictState[state]['-y'], ui: '-y' };
+dictTable[state][act = 'l^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'l>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'lv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'l<'] = { state: dictState[state][dir = ui[act]], ui: dir };
 
-dictTable[state][act = 'b^'] = { state: dictState[state]['x'], ui: 'x' };
-dictTable[state][act = 'b>'] = { state: dictState[state]['y'], ui: 'y' };
-dictTable[state][act = 'bv'] = { state: dictState[state]['-x'], ui: '-x' };
-dictTable[state][act = 'b<'] = { state: dictState[state]['-y'], ui: '-y' };
+dictTable[state][act = 'b^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'b>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'bv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'b<'] = { state: dictState[state][dir = ui[act]], ui: dir };
 
-dictTable[state][act = 'd^'] = { state: dictState[state]['x'], ui: 'x' };
-dictTable[state][act = 'd>'] = { state: dictState[state]['-z'], ui: '-z' };
-dictTable[state][act = 'dv'] = { state: dictState[state]['-x'], ui: '-x' };
-dictTable[state][act = 'd<'] = { state: dictState[state]['z'], ui: 'z' };
+dictTable[state][act = 'd^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'd>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'dv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'd<'] = { state: dictState[state][dir = ui[act]], ui: dir };
 
 
 state = 'tr';
@@ -177,35 +175,35 @@ dictState[state]['-y'] = 'tb';
 dictState[state]['z'] = 'fr';
 dictState[state]['-z'] = 'br';
 
-dictTable[state]['t^'] = { state: dictState[state]['x'], ui: 'x' };
-dictTable[state]['t>'] = { state: dictState[state]['z'], ui: 'z' };
-dictTable[state]['tv'] = { state: dictState[state]['-x'], ui: '-x' };
-dictTable[state]['t<'] = { state: dictState[state]['-z'], ui: '-z' };
+dictTable[state][act = 't^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 't>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'tv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 't<'] = { state: dictState[state][dir = ui[act]], ui: dir };
 
-dictTable[state]['f^'] = { state: dictState[state]['x'], ui: 'x' };
-dictTable[state]['f>'] = { state: dictState[state]['y'], ui: 'y' };
-dictTable[state]['fv'] = { state: dictState[state]['-x'], ui: '-x' };
-dictTable[state]['f<'] = { state: dictState[state]['-y'], ui: '-y' };
+dictTable[state][act = 'f^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'f>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'fv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'f<'] = { state: dictState[state][dir = ui[act]], ui: dir };
 
-dictTable[state]['r^'] = { state: dictState[state]['-z'], ui: '-z' };
-dictTable[state]['r>'] = { state: dictState[state]['y'], ui: 'y' };
-dictTable[state]['rv'] = { state: dictState[state]['z'], ui: 'z' };
-dictTable[state]['r<'] = { state: dictState[state]['-y'], ui: '-y' };
+dictTable[state][act = 'r^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'r>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'rv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'r<'] = { state: dictState[state][dir = ui[act]], ui: dir };
 
-dictTable[state]['l^'] = { state: dictState[state]['z'], ui: 'z' };
-dictTable[state]['l>'] = { state: dictState[state]['y'], ui: 'y' };
-dictTable[state]['lv'] = { state: dictState[state]['-z'], ui: '-z' };
-dictTable[state]['l<'] = { state: dictState[state]['-y'], ui: '-y' };
+dictTable[state][act = 'l^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'l>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'lv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'l<'] = { state: dictState[state][dir = ui[act]], ui: dir };
 
-dictTable[state]['b^'] = { state: dictState[state]['x'], ui: 'x' };
-dictTable[state]['b>'] = { state: dictState[state]['y'], ui: 'y' };
-dictTable[state]['bv'] = { state: dictState[state]['-x'], ui: '-x' };
-dictTable[state]['b<'] = { state: dictState[state]['-y'], ui: '-y' };
+dictTable[state][act = 'b^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'b>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'bv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'b<'] = { state: dictState[state][dir = ui[act]], ui: dir };
 
-dictTable[state]['d^'] = { state: dictState[state]['x'], ui: 'x' };
-dictTable[state]['d>'] = { state: dictState[state]['-z'], ui: '-z' };
-dictTable[state]['dv'] = { state: dictState[state]['-x'], ui: '-x' };
-dictTable[state]['d<'] = { state: dictState[state]['z'], ui: 'z' };
+dictTable[state][act = 'd^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'd>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'dv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'd<'] = { state: dictState[state][dir = ui[act]], ui: dir };
 
 
 state = 'tl';
@@ -218,48 +216,248 @@ dictState[state]['-y'] = 'tf';
 dictState[state]['z'] = 'bl';
 dictState[state]['-z'] = 'fl';
 
+dictTable[state][act = 't^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 't>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'tv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 't<'] = { state: dictState[state][dir = ui[act]], ui: dir };
+
+dictTable[state][act = 'f^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'f>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'fv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'f<'] = { state: dictState[state][dir = ui[act]], ui: dir };
+
+dictTable[state][act = 'r^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'r>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'rv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'r<'] = { state: dictState[state][dir = ui[act]], ui: dir };
+
+dictTable[state][act = 'l^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'l>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'lv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'l<'] = { state: dictState[state][dir = ui[act]], ui: dir };
+
+dictTable[state][act = 'b^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'b>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'bv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'b<'] = { state: dictState[state][dir = ui[act]], ui: dir };
+
+dictTable[state][act = 'd^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'd>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'dv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'd<'] = { state: dictState[state][dir = ui[act]], ui: dir };
+
+state = 'tb';
+
+dictState[state] = [];
+dictState[state]['x'] = 'bd';
+dictState[state]['-x'] = 'ft';
+dictState[state]['y'] = 'tr';
+dictState[state]['-y'] = 'tl';
+dictState[state]['z'] = 'rb';
+dictState[state]['-z'] = 'lb';
+
+dictTable[state][act = 't^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 't>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'tv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 't<'] = { state: dictState[state][dir = ui[act]], ui: dir };
+
+dictTable[state][act = 'f^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'f>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'fv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'f<'] = { state: dictState[state][dir = ui[act]], ui: dir };
+
+dictTable[state][act = 'r^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'r>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'rv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'r<'] = { state: dictState[state][dir = ui[act]], ui: dir };
+
+dictTable[state][act = 'l^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'l>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'lv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'l<'] = { state: dictState[state][dir = ui[act]], ui: dir };
+
+dictTable[state][act = 'b^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'b>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'bv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'b<'] = { state: dictState[state][dir = ui[act]], ui: dir };
+
+dictTable[state][act = 'd^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'd>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'dv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'd<'] = { state: dictState[state][dir = ui[act]], ui: dir };
 
 
-dictTable[state]['t^'] = { state: dictState[state]['x'], ui: 'x' };
-dictTable[state]['t>'] = { state: dictState[state]['z'], ui: 'z' };
-dictTable[state]['tv'] = { state: dictState[state]['-x'], ui: '-x' };
-dictTable[state]['t<'] = { state: dictState[state]['-z'], ui: '-z' };
+state = 'ft';
 
-dictTable[state]['f^'] = { state: dictState[state]['x'], ui: 'x' };
-dictTable[state]['f>'] = { state: dictState[state]['y'], ui: 'y' };
-dictTable[state]['fv'] = { state: dictState[state]['-x'], ui: '-x' };
-dictTable[state]['f<'] = { state: dictState[state]['-y'], ui: '-y' };
+dictState[state] = [];
+dictState[state]['x'] = 'tb';
+dictState[state]['-x'] = 'df';
+dictState[state]['y'] = 'fr';
+dictState[state]['-y'] = 'fl';
+dictState[state]['z'] = 'rt';
+dictState[state]['-z'] = 'lt';
 
-dictTable[state]['r^'] = { state: dictState[state]['-z'], ui: '-z' };
-dictTable[state]['r>'] = { state: dictState[state]['y'], ui: 'y' };
-dictTable[state]['rv'] = { state: dictState[state]['z'], ui: 'z' };
-dictTable[state]['r<'] = { state: dictState[state]['-y'], ui: '-y' };
+dictTable[state][act = 't^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 't>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'tv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 't<'] = { state: dictState[state][dir = ui[act]], ui: dir };
 
-dictTable[state]['l^'] = { state: dictState[state]['z'], ui: 'z' };
-dictTable[state]['l>'] = { state: dictState[state]['y'], ui: 'y' };
-dictTable[state]['lv'] = { state: dictState[state]['-z'], ui: '-z' };
-dictTable[state]['l<'] = { state: dictState[state]['-y'], ui: '-y' };
+dictTable[state][act = 'f^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'f>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'fv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'f<'] = { state: dictState[state][dir = ui[act]], ui: dir };
 
-dictTable[state]['b^'] = { state: dictState[state]['x'], ui: 'x' };
-dictTable[state]['b>'] = { state: dictState[state]['y'], ui: 'y' };
-dictTable[state]['bv'] = { state: dictState[state]['-x'], ui: '-x' };
-dictTable[state]['b<'] = { state: dictState[state]['-y'], ui: '-y' };
+dictTable[state][act = 'r^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'r>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'rv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'r<'] = { state: dictState[state][dir = ui[act]], ui: dir };
 
-dictTable[state]['d^'] = { state: dictState[state]['x'], ui: 'x' };
-dictTable[state]['d>'] = { state: dictState[state]['-z'], ui: '-z' };
-dictTable[state]['dv'] = { state: dictState[state]['-x'], ui: '-x' };
-dictTable[state]['d<'] = { state: dictState[state]['z'], ui: 'z' };
+dictTable[state][act = 'l^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'l>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'lv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'l<'] = { state: dictState[state][dir = ui[act]], ui: dir };
+
+dictTable[state][act = 'b^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'b>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'bv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'b<'] = { state: dictState[state][dir = ui[act]], ui: dir };
+
+dictTable[state][act = 'd^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'd>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'dv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'd<'] = { state: dictState[state][dir = ui[act]], ui: dir };
+
+
+
+state = 'fl';
+
+dictState[state] = [];
+dictState[state]['x'] = 'lb';
+dictState[state]['-x'] = 'rf';
+dictState[state]['y'] = 'ft';
+dictState[state]['-y'] = 'fd';
+dictState[state]['z'] = 'tl';
+dictState[state]['-z'] = 'dl';
+
+dictTable[state][act = 't^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 't>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'tv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 't<'] = { state: dictState[state][dir = ui[act]], ui: dir };
+
+dictTable[state][act = 'f^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'f>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'fv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'f<'] = { state: dictState[state][dir = ui[act]], ui: dir };
+
+dictTable[state][act = 'r^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'r>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'rv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'r<'] = { state: dictState[state][dir = ui[act]], ui: dir };
+
+dictTable[state][act = 'l^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'l>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'lv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'l<'] = { state: dictState[state][dir = ui[act]], ui: dir };
+
+dictTable[state][act = 'b^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'b>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'bv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'b<'] = { state: dictState[state][dir = ui[act]], ui: dir };
+
+dictTable[state][act = 'd^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'd>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'dv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'd<'] = { state: dictState[state][dir = ui[act]], ui: dir };
+
+
+
+state = 'fd';
+
+dictState[state] = [];
+dictState[state]['x'] = 'db';
+dictState[state]['-x'] = 'tf';
+dictState[state]['y'] = 'fl';
+dictState[state]['-y'] = 'fr';
+dictState[state]['z'] = 'ld';
+dictState[state]['-z'] = 'rd';
+
+dictTable[state][act = 't^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 't>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'tv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 't<'] = { state: dictState[state][dir = ui[act]], ui: dir };
+
+dictTable[state][act = 'f^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'f>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'fv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'f<'] = { state: dictState[state][dir = ui[act]], ui: dir };
+
+dictTable[state][act = 'r^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'r>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'rv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'r<'] = { state: dictState[state][dir = ui[act]], ui: dir };
+
+dictTable[state][act = 'l^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'l>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'lv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'l<'] = { state: dictState[state][dir = ui[act]], ui: dir };
+
+dictTable[state][act = 'b^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'b>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'bv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'b<'] = { state: dictState[state][dir = ui[act]], ui: dir };
+
+dictTable[state][act = 'd^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'd>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'dv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'd<'] = { state: dictState[state][dir = ui[act]], ui: dir };
+
+
+state = 'fr';
+
+dictState[state] = [];
+dictState[state]['x'] = 'rb';
+dictState[state]['-x'] = 'lf';
+dictState[state]['y'] = 'fd';
+dictState[state]['-y'] = 'ft';
+dictState[state]['z'] = 'dr';
+dictState[state]['-z'] = 'tr';
+
+dictTable[state][act = 't^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 't>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'tv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 't<'] = { state: dictState[state][dir = ui[act]], ui: dir };
+
+dictTable[state][act = 'f^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'f>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'fv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'f<'] = { state: dictState[state][dir = ui[act]], ui: dir };
+
+dictTable[state][act = 'r^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'r>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'rv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'r<'] = { state: dictState[state][dir = ui[act]], ui: dir };
+
+dictTable[state][act = 'l^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'l>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'lv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'l<'] = { state: dictState[state][dir = ui[act]], ui: dir };
+
+dictTable[state][act = 'b^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'b>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'bv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'b<'] = { state: dictState[state][dir = ui[act]], ui: dir };
+
+dictTable[state][act = 'd^'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'd>'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'dv'] = { state: dictState[state][dir = ui[act]], ui: dir };
+dictTable[state][act = 'd<'] = { state: dictState[state][dir = ui[act]], ui: dir };
+
 
 
 
 export { dictUi };
-
 export { dictDegree };
-
 export { dictState };
-
 export { dictTable };
-
 export { dictActionTypes };
-
 export { dictRotate };

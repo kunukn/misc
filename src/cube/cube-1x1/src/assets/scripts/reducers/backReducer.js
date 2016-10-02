@@ -3,6 +3,7 @@ import { log } from '../logger';
 import { dictTable, dictActionTypes, dictDegree } from '../dictionaries';
 
 export default function backReducer(state, action) {
+
     let actionType = dictActionTypes[action.type];
     let actionCode = `b${actionType}`;
     let stateAndUi = dictTable[state.value][actionCode];
