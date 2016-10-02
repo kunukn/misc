@@ -15,5 +15,5 @@ export default function topReducer(state, action) {
     nextState.actionHistory.push(actionCode);
     nextState.transforms.push(transform);
 
-    return newState;
+    return nextState;
 }

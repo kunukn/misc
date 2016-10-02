@@ -17,5 +17,5 @@ export default function frontReducer(state, action) {
     nextState.actionHistory.push(actionCode);
     nextState.transforms.push(transform);
 
-    return newState;
+    return nextState;
 }

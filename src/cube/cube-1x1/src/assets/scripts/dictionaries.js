@@ -1,35 +1,35 @@
 import { ACTION } from './constants';
 
 const dictUi = [];
-ui['t^'] = 'x';
-ui['t>'] = 'z';
-ui['tv'] = '-x';
-ui['t<'] = '-z';
+dictUi['t^'] = 'x';
+dictUi['t>'] = 'z';
+dictUi['tv'] = '-x';
+dictUi['t<'] = '-z';
 
-ui['f^'] = 'x';
-ui['f>'] = 'y';
-ui['fv'] = '-x';
-ui['f<'] = '-y';
+dictUi['f^'] = 'x';
+dictUi['f>'] = 'y';
+dictUi['fv'] = '-x';
+dictUi['f<'] = '-y';
 
-ui['r^'] = '-z';
-ui['r>'] = 'y';
-ui['rv'] = 'z';
-ui['r<'] = '-y';
+dictUi['r^'] = '-z';
+dictUi['r>'] = 'y';
+dictUi['rv'] = 'z';
+dictUi['r<'] = '-y';
 
-ui['l^'] = 'z';
-ui['l>'] = 'y';
-ui['lv'] = '-z';
-ui['l<'] = '-y';
+dictUi['l^'] = 'z';
+dictUi['l>'] = 'y';
+dictUi['lv'] = '-z';
+dictUi['l<'] = '-y';
 
-ui['b^'] = 'x';
-ui['b>'] = 'y';
-ui['bv'] = '-x';
-ui['b<'] = '-y';
+dictUi['b^'] = 'x';
+dictUi['b>'] = 'y';
+dictUi['bv'] = '-x';
+dictUi['b<'] = '-y';
 
-ui['d^'] = 'x';
-ui['d>'] = '-z';
-ui['dv'] = '-x';
-ui['d<'] = 'z';
+dictUi['d^'] = 'x';
+dictUi['d>'] = '-z';
+dictUi['dv'] = '-x';
+dictUi['d<'] = 'z';
 
 const ui = dictUi;
 
