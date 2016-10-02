@@ -53,6 +53,21 @@ function updateUiByState(newState) {
         let transform = newState.transforms.join(' ');
         cubeElement.style.transform = `${transform}`;
     }
+    return this;
+}
+
+function truncateTransforms(state) {
+    if (state.transforms.length >= 3) {
+        let transforms = dictRotate[state.value];
+        if (transforms && transforms.length) {
+            state.transforms = transforms.map(t => {
+                return dictDegree[t];
+            });
+
+            log('replaced transform');
+        }
+    }
+    return this;
 }
 
 function getDebugData(face, event) {
@@ -75,7 +90,7 @@ const debug = qs('.debug'),
 
 
 cubeElement.addEventListener('transitionend', (ev) => {
-    if (state.transforms.length >= 4) {
+    if (state.transforms && state.transforms.length >= 4) {
         //    cubeElement.classList.add('u-no-transition-important');
         //   cubeElement.offsetHeight;
         //cubeElement.classList.remove('u-no-transition-important');
@@ -112,10 +127,14 @@ hammerLeft.get('swipe').set({
 //-----------
 
 
+
+
 /* Setup */
 hammerFront.on(hammerEvents, (ev) => {
     const action = { type: ev.type, payload: {} };
     const newState = frontReducer(state, action);
+
+    truncateTransforms(newState);
     updateUiByState(newState);
     setState(newState);
 

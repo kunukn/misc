@@ -55,8 +55,8 @@ dictActionTypes[ACTION.swipeleft] = '<';
 const dictRotate = [];
 
 dictRotate['tf'] = [];
-dictRotate['tr'] = ['y'];
-dictRotate['tl'] = ['-y'];
+dictRotate['tr'] = ['-y'];
+dictRotate['tl'] = ['y'];
 dictRotate['tb'] = ['2y'];
 
 dictRotate['fd'] = ['x'];

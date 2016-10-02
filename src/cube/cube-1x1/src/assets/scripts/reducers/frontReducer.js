@@ -6,7 +6,6 @@ import { getNextState } from '../getNextState';
 // By state and intent of action, return new state
 export default function frontReducer(state, action) {
 
-
     let actionType = dictActionTypes[action.type];
     let actionCode = `f${actionType}`;
     let stateAndUi = getNextState(state.value, actionCode);
