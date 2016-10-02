@@ -17,7 +17,7 @@ import { log } from './logger';
 
 import { qs, qsa, byId } from './query';
 
-import { lookupTable } from './lookup-tables';
+import { dictDegree } from './dictionaries';
 
 log('App running');
 
@@ -33,12 +33,10 @@ let state = {};
 
 function initState() {
     state = {
-        top: CUBE.TOP,
-        front: CUBE.FRONT,
-        rotateX: 0,
-        rotateY: 0,
-        rotateZ: 0,
-        transform: '',
+        value: 'tf', // top front
+        stateHistory: ['tf'],        
+        actionHistory: [],
+        transforms: [],
     };
 }
 
@@ -52,7 +50,13 @@ function setState(newState) {
 }
 
 function updateUiByState(newState) {
-    cubeElement.style.transform = `rotateX(${newState.rotateX}deg) rotateY(${newState.rotateY}deg) rotateZ(${newState.rotateZ}deg)`;
+    if (newState.transforms && newState.transforms.length) {
+        let transform = transforms.join(' ');
+        log(transform);
+        cubeElement.style.transform = `${transform}`;
+    }
+
+    //   cubeElement.style.transform = `rotateX(${newState.rotateX}deg) rotateY(${newState.rotateY}deg) rotateZ(${newState.rotateZ}deg)`;
 }
 
 function getDebugData(face, event) {

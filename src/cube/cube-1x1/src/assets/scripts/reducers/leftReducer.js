@@ -1,38 +1,20 @@
 import { CUBE, ACTION } from '../constants';
-import { createNewState } from '../state-machine';
 import { log } from '../logger';
-
+import { dictTable, dictActionTypes, dictDegree } from '../dictionaries';
 
 export default function leftReducer(state, action) {
 
-    let newState = state;
+    let actionType = dictActionTypes[action.type];
+    let actionCode = `l${actionType}`;
+    let stateAndUi = dictTable[state.value][actionCode];
+    let transform = dictDegree[stateAndUi.ui];
 
-    switch (action.type) {
-        case ACTION.swipeleft:
-            if (state.top === CUBE.TOP) {
-                if (state.front === CUBE.FRONT)
-                    newState = createNewState(state, { top: CUBE.TOP, front: CUBE.RIGHT, rotateY: -90 });
-                if (state.front === CUBE.RIGHT)
-                    newState = createNewState(state, { top: CUBE.TOP, front: CUBE.BACK, rotateY: -90 });
-                if (state.front === CUBE.BACK)
-                    newState = createNewState(state, { top: CUBE.TOP, front: CUBE.LEFT, rotateY: -90 });
-                if (state.front === CUBE.LEFT)
-                    newState = createNewState(state, { top: CUBE.TOP, front: CUBE.FRONT, rotateY: -90 });
-            }
-            break;
+    let nextState = Object.assign({}, state);
 
-        case ACTION.swiperight:
-            if (state.top === CUBE.TOP) {
-                if (state.front === CUBE.FRONT)
-                    newState = createNewState(state, { top: CUBE.TOP, front: CUBE.LEFT, rotateY: 90 });
-                if (state.front === CUBE.LEFT)
-                    newState = createNewState(state, { top: CUBE.TOP, front: CUBE.BACK, rotateY: 90 });
-                if (state.front === CUBE.BACK)
-                    newState = createNewState(state, { top: CUBE.TOP, front: CUBE.RIGHT, rotateY: 90 });
-                if (state.front === CUBE.RIGHT)
-                    newState = createNewState(state, { top: CUBE.TOP, front: CUBE.FRONT, rotateY: 90 });
-            }
-            break;
-    }
+    nextState.value = stateAndUi.state;
+    nextState.stateHistory.push(stateAndUi.state);
+    nextState.actionHistory.push(actionCode);
+    nextState.transforms.push(transform);
+
     return newState;
 }
