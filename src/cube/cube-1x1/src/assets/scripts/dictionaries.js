@@ -41,6 +41,12 @@ dictDegree['y'] = 'rotateY(90deg)';
 dictDegree['-y'] = 'rotateY(-90deg)';
 dictDegree['z'] = 'rotateZ(90deg)';
 dictDegree['-z'] = 'rotateZ(-90deg)';
+dictDegree['2x'] = 'rotateX(180deg)';
+dictDegree['-2x'] = 'rotateX(-180deg)';
+dictDegree['2y'] = 'rotateY(180deg)';
+dictDegree['-2y'] = 'rotateY(-180deg)';
+dictDegree['2z'] = 'rotateZ(180deg)';
+dictDegree['-2z'] = 'rotateZ(-180deg)';
 
 const dictActionTypes = [];
 dictActionTypes[ACTION.swipeup] = '^';
@@ -54,32 +60,32 @@ const dictRotate = [];
 dictRotate['tf'] = [];
 dictRotate['tr'] = ['y'];
 dictRotate['tl'] = ['-y'];
-dictRotate['tb'] = ['y', 'y'];
+dictRotate['tb'] = ['2y'];
 
 dictRotate['fd'] = ['x'];
-dictRotate['fr'] = ['x', 'y'];
-dictRotate['ft'] = ['y', '-z', 'y'];
+dictRotate['fr'] = ['x', '-y'];
+dictRotate['ft'] = ['x', '2y'];
 dictRotate['fl'] = ['x', 'y'];
 
 dictRotate['rd'] = ['-z', '-y'];
-dictRotate['rb'] = [];
-dictRotate['rt'] = [];
-dictRotate['rf'] = [];
+dictRotate['rb'] = ['-z', '2y'];
+dictRotate['rt'] = ['-z', 'y'];
+dictRotate['rf'] = ['-z'];
 
-dictRotate['db'] = [];
-dictRotate['dr'] = [];
-dictRotate['df'] = [];
-dictRotate['dl'] = [];
+dictRotate['db'] = ['2x'];
+dictRotate['dr'] = ['2x', 'y'];
+dictRotate['df'] = ['2x', '2y'];
+dictRotate['dl'] = ['2x', '-y'];
 
-dictRotate['bd'] = [];
-dictRotate['bl'] = [];
+dictRotate['bd'] = ['-x', '2y'];
+dictRotate['bl'] = ['-x', 'y'];
 dictRotate['bt'] = ['-x'];
-dictRotate['br'] = [];
+dictRotate['br'] = ['-x', '-y'];
 
-dictRotate['ld'] = [];
-dictRotate['lf'] = [];
-dictRotate['lt'] = [];
-dictRotate['lb'] = [];
+dictRotate['ld'] = ['z', 'y'];
+dictRotate['lf'] = ['z'];
+dictRotate['lt'] = ['z', '-y'];
+dictRotate['lb'] = ['z', '2y'];
 
 
 
