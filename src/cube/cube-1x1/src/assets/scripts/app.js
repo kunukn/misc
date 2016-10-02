@@ -12,12 +12,11 @@ import downReducer from './reducers/downReducer';
 
 
 import { CUBE, ACTION } from './constants';
-import { createNewState } from './state-machine';
 import { log } from './logger';
 
 import { qs, qsa, byId } from './query';
 
-import { dictDegree } from './dictionaries';
+import { dictDegree, dictRotate } from './dictionaries';
 
 log('App running');
 
@@ -34,7 +33,7 @@ let state = {};
 function initState() {
     state = {
         value: 'tf', // top front
-        stateHistory: ['tf'],        
+        stateHistory: ['tf'],
         actionHistory: [],
         transforms: [],
     };
@@ -52,11 +51,8 @@ function setState(newState) {
 function updateUiByState(newState) {
     if (newState.transforms && newState.transforms.length) {
         let transform = newState.transforms.join(' ');
-        log(transform);
         cubeElement.style.transform = `${transform}`;
     }
-
-    //   cubeElement.style.transform = `rotateX(${newState.rotateX}deg) rotateY(${newState.rotateY}deg) rotateZ(${newState.rotateZ}deg)`;
 }
 
 function getDebugData(face, event) {
@@ -76,6 +72,17 @@ const debug = qs('.debug'),
     leftElement = byId('left'),
     backElement = byId('back'),
     downElement = byId('down');
+
+
+cubeElement.addEventListener('transitionend', (ev) => {
+    if (state.transforms.length >= 4) {
+        //    cubeElement.classList.add('u-no-transition-important');
+        //   cubeElement.offsetHeight;
+        //cubeElement.classList.remove('u-no-transition-important');
+    }
+
+});
+
 
 /* Init */
 const hammerFront = new Hammer(frontElement, hammerOptions);

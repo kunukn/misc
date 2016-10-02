@@ -48,6 +48,42 @@ dictActionTypes[ACTION.swiperight] = '>';
 dictActionTypes[ACTION.swipedown] = 'v';
 dictActionTypes[ACTION.swipeleft] = '<';
 
+
+const dictRotate = [];
+
+dictRotate['tf'] = [];
+dictRotate['tr'] = ['y'];
+dictRotate['tl'] = ['-y'];
+dictRotate['tb'] = ['y', 'y'];
+
+dictRotate['fd'] = ['x'];
+dictRotate['fr'] = ['x', 'y'];
+dictRotate['ft'] = ['y', '-z', 'y'];
+dictRotate['fl'] = ['x', 'y'];
+
+dictRotate['rd'] = ['-z', '-y'];
+dictRotate['rb'] = [];
+dictRotate['rt'] = [];
+dictRotate['rf'] = [];
+
+dictRotate['db'] = [];
+dictRotate['dr'] = [];
+dictRotate['df'] = [];
+dictRotate['dl'] = [];
+
+dictRotate['bd'] = [];
+dictRotate['bl'] = [];
+dictRotate['bt'] = ['-x'];
+dictRotate['br'] = [];
+
+dictRotate['ld'] = [];
+dictRotate['lf'] = [];
+dictRotate['lt'] = [];
+dictRotate['lb'] = [];
+
+
+
+
 const dictTable = [];
 
 dictTable['tf'] = [];
@@ -218,4 +254,6 @@ export { dictState };
 
 export { dictTable };
 
-export {dictActionTypes};
+export { dictActionTypes };
+
+export { dictRotate };

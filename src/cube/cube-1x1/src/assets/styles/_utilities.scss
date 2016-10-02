@@ -10,3 +10,7 @@
 .u-text-ellipsis{
 	@include text-ellipsis;
 }
+
+.u-no-transition-important{
+    transition: none !important;
+}
