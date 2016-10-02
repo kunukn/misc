@@ -1,7 +1,7 @@
 import { CUBE, ACTION } from '../constants';
 import { log } from '../logger';
-import { dictActionTypes, dictDegree, dictUi } from '../dictionaries/dictionary';
-import { getNextState } from '../dictionaries/getNextState';
+import { dictActionTypes, dictDegree, dictUi } from '../dictionary';
+import { getNextState } from '../getNextState';
 
 export default function rightReducer(state, action) {
 

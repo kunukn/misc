@@ -1,5 +1,4 @@
 import { dictUi } from './dictionary';
-const ui = dictUi;
 
 let state,
     act,
