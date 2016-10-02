@@ -51,7 +51,7 @@ function getRight(state) {
     return opposite[getLeft(state)];
 }
 
-function nextState(state, action) {
+function getNextState(state, action) {
 
     let direction = dictUi[action];
 
@@ -66,8 +66,10 @@ function nextState(state, action) {
 
     if (swipe === '^' || swipe === 'v') {
         if (actionOnFace !== top && actionOnFace !== front) {
-            if(direction === 'x') direction = '-z';
-            else if(direction === '-x') direction = 'z';
+            if (direction === 'x') direction = '-z';
+            else if (direction === '-x') direction = 'z';
+
+            log('z used');
         }
     }
 
@@ -75,37 +77,31 @@ function nextState(state, action) {
         case 'x':
             nextTop = front;
             nextFront = opposite[top];
-            return `${nextTop}${nextFront}`;
+            return {state: `${nextTop}${nextFront}`, ui: direction};
         case '-x':
             nextTop = opposite[front];
             nextFront = top;;
-            return `${nextTop}${nextFront}`;
+            return {state: `${nextTop}${nextFront}`, ui: direction};
         case 'y':
             nextTop = top;
             nextFront = getLeft(state);
-            return `${nextTop}${nextFront}`;
+            return {state: `${nextTop}${nextFront}`, ui: direction};
         case '-y':
             nextTop = top;
             nextFront = getRight(state);
-            return `${nextTop}${nextFront}`;
+            return {state: `${nextTop}${nextFront}`, ui: direction};
         case 'z':
             nextTop = getLeft(state);
             nextFront = front;
-            return `${nextTop}${nextFront}`;
+            return {state: `${nextTop}${nextFront}`, ui: direction};
         case '-z':
             nextTop = getRight(state);
             nextFront = front;
-            return `${nextTop}${nextFront}`;
+            return {state: `${nextTop}${nextFront}`, ui: direction};
 
         default:
-            return state;
+            return undefined;
     }
-}
-
-function getNextState(stateCode, action) {
-
-    let direction = dictUi[action];
-    return { state: nextState(stateCode, action), ui: direction };
 }
 
 export { getNextState };
