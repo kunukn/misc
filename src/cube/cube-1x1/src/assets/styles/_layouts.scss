@@ -1,8 +1,6 @@
 @charset "UTF-8";
-
 $size: 200px;
 $color-face: rgba(dodgerblue, 1);
-
 *,
 :before,
 :after {
@@ -28,10 +26,10 @@ body {
         word-wrap: break-word;
         word-wrap: break-all;
         max-width: 320px;
-        @media(min-width: 620px){
+        @media(min-width: 620px) {
             max-width: 620px;
         }
-        @media(max-width: 900px){
+        @media(max-width: 900px) {
             max-width: 900px;
         }
     }

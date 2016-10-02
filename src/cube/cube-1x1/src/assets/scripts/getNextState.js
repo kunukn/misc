@@ -52,12 +52,26 @@ function getRight(state) {
 }
 
 function nextState(state, action) {
+
+    let direction = dictUi[action];
+
     let top = state[0],
         front = state[1],
         nextTop,
         nextFront;
 
-    switch (action) {
+    let actionOnFace = action[0];
+    let swipe = action[1];
+
+
+    if (swipe === '^' || swipe === 'v') {
+        if (actionOnFace !== top && actionOnFace !== front) {
+            if(direction === 'x') direction = '-z';
+            else if(direction === '-x') direction = 'z';
+        }
+    }
+
+    switch (direction) {
         case 'x':
             nextTop = front;
             nextFront = opposite[top];
@@ -88,9 +102,10 @@ function nextState(state, action) {
     }
 }
 
-function getNextState(state, action) {
+function getNextState(stateCode, action) {
+
     let direction = dictUi[action];
-    return { state: nextState(state, direction), ui: direction };
+    return { state: nextState(stateCode, action), ui: direction };
 }
 
 export { getNextState };

@@ -57,7 +57,7 @@ function updateUiByState(newState) {
 }
 
 function truncateTransforms(state) {
-    if (state.transforms.length >= 3) {
+    if (state.transforms.length >= 4) {
         let transforms = dictRotate[state.value];
         if (transforms && transforms.length) {
             state.transforms = transforms.map(t => {
