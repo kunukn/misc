@@ -16,7 +16,7 @@ import { log } from './logger';
 
 import { qs, qsa, byId } from './query';
 
-import { dictDegree, dictRotate } from './dictionaries';
+import { dictDegree, dictRotate } from './dictionaries/dictionary';
 
 log('App running');
 
