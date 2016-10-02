@@ -114,7 +114,6 @@ hammerLeft.get('swipe').set({
 
 /* Setup */
 hammerFront.on(hammerEvents, (ev) => {
-    //log(ev);
     const action = { type: ev.type, payload: {} };
     const newState = frontReducer(state, action);
     updateUiByState(newState);
@@ -124,7 +123,6 @@ hammerFront.on(hammerEvents, (ev) => {
 });
 
 hammerRight.on(hammerEvents, (ev) => {
-    //log(ev);
     const action = { type: ev.type, payload: {} };
     const newState = rightReducer(state, action);
     updateUiByState(newState);
@@ -133,7 +131,6 @@ hammerRight.on(hammerEvents, (ev) => {
     debug.innerHTML = getDebugData('right', ev);
 });
 hammerLeft.on(hammerEvents, (ev) => {
-    //log(ev);
     const action = { type: ev.type, payload: {} };
     const newState = leftReducer(state, action);
     updateUiByState(newState);
@@ -143,7 +140,6 @@ hammerLeft.on(hammerEvents, (ev) => {
 });
 
 hammerBack.on(hammerEvents, (ev) => {
-    //log(ev);
     const action = { type: ev.type, payload: {} };
     const newState = backReducer(state, action);
     updateUiByState(newState);
