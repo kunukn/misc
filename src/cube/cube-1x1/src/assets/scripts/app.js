@@ -3,12 +3,12 @@
 
 import '../styles/app.scss';
 
-import frontReducer from './reducers/frontReducer';
-import rightReducer from './reducers/rightReducer';
-import topReducer from './reducers/topReducer';
-import leftReducer from './reducers/leftReducer';
-import backReducer from './reducers/backReducer';
-import downReducer from './reducers/downReducer';
+import frontReducer from './reducers/front-reducer';
+import rightReducer from './reducers/right-reducer';
+import topReducer from './reducers/top-reducer';
+import leftReducer from './reducers/left-reducer';
+import backReducer from './reducers/back-reducer';
+import downReducer from './reducers/down-reducer';
 
 
 import { CUBE, ACTION } from './constants';
@@ -25,8 +25,6 @@ const Hammer = window.Hammer;
 const hammerOptions = {
     preventDefault: true
 };
-
-const hammerEvents = 'swipeleft swiperight swipeup swipedown';
 
 let state = {};
 
@@ -80,7 +78,7 @@ function getDebugData(face, event) {
 }
 
 const debug = qs('.debug'),
-    cubeElement = byId('cube'),
+    cubeElement = byId('cube-1x1'),
     frontElement = byId('front'),
     topElement = byId('top'),
     rightElement = byId('right'),
@@ -97,6 +95,7 @@ cubeElement.addEventListener('transitionend', (ev) => {
     }
 
 });
+
 
 
 /* Init */
@@ -130,6 +129,8 @@ hammerLeft.get('swipe').set({
 
 
 /* Setup */
+const hammerEvents = 'swipeleft swiperight swipeup swipedown';
+
 hammerFront.on(hammerEvents, (ev) => {
     const action = { type: ev.type, payload: {} };
     const newState = frontReducer(state, action);
@@ -179,6 +180,21 @@ hammerDown.on(hammerEvents, (ev) => {
 
 initState();
 
+function rotateTo(stateCode) {
+    let transforms = dictRotate[stateCode];
+    if (transforms && transforms.length) {
+        transforms = transforms.map(t => {
+            return dictDegree[t];
+        });
+        let transformCss = transforms.join(' ');
+        cubeElement.style.transform = transformCss;
+    }
+}
+
+
+window.cube = {
+    rotateTo
+};
 
 export class App {
     constructor() {}

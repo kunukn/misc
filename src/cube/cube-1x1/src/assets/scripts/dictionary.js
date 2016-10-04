@@ -32,6 +32,7 @@ dictUi['dv'] = '-x';
 dictUi['d<'] = 'z';
 
 const dictDegree = [];
+dictDegree['.'] = 'rotateX(0deg)';
 dictDegree['x'] = 'rotateX(90deg)';
 dictDegree['-x'] = 'rotateX(-90deg)';
 dictDegree['y'] = 'rotateY(90deg)';
@@ -54,15 +55,15 @@ dictActionTypes[ACTION.swipeleft] = '<';
 
 const dictRotate = [];
 
-dictRotate['tf'] = [];
+dictRotate['tf'] = ['.'];
 dictRotate['tr'] = ['-y'];
 dictRotate['tl'] = ['y'];
 dictRotate['tb'] = ['2y'];
 
 dictRotate['fd'] = ['x'];
-dictRotate['fr'] = ['x', '-y'];
-dictRotate['ft'] = ['x', '2y'];
-dictRotate['fl'] = ['x', 'y'];
+dictRotate['fr'] = ['x', 'z'];
+dictRotate['ft'] = ['x', '2z'];
+dictRotate['fl'] = ['x', '-z'];
 
 dictRotate['rd'] = ['-z', '-y'];
 dictRotate['rb'] = ['-z', '2y'];

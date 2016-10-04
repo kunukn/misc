@@ -77,27 +77,27 @@ function getNextState(state, action) {
         case 'x':
             nextTop = front;
             nextFront = opposite[top];
-            return {state: `${nextTop}${nextFront}`, ui: direction};
+            return { state: `${nextTop}${nextFront}`, ui: direction };
         case '-x':
             nextTop = opposite[front];
             nextFront = top;;
-            return {state: `${nextTop}${nextFront}`, ui: direction};
+            return { state: `${nextTop}${nextFront}`, ui: direction };
         case 'y':
             nextTop = top;
             nextFront = getLeft(state);
-            return {state: `${nextTop}${nextFront}`, ui: direction};
+            return { state: `${nextTop}${nextFront}`, ui: direction };
         case '-y':
             nextTop = top;
             nextFront = getRight(state);
-            return {state: `${nextTop}${nextFront}`, ui: direction};
+            return { state: `${nextTop}${nextFront}`, ui: direction };
         case 'z':
             nextTop = getLeft(state);
             nextFront = front;
-            return {state: `${nextTop}${nextFront}`, ui: direction};
+            return { state: `${nextTop}${nextFront}`, ui: direction };
         case '-z':
             nextTop = getRight(state);
             nextFront = front;
-            return {state: `${nextTop}${nextFront}`, ui: direction};
+            return { state: `${nextTop}${nextFront}`, ui: direction };
 
         default:
             return undefined;
