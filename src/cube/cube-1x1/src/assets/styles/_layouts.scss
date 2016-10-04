@@ -96,7 +96,7 @@ body {
             transform: translateZ(-$size/2) rotateY(180deg);
         }
         &.down {
-            transform: rotateX(90deg) translateY($size/2) rotateY(180deg);
+            transform: rotateX(90deg) translateY(-$size/2) rotateY(180deg) rotateZ(180deg);
             transform-origin: bottom center;
             background: darken($color-face, 20%);
         }
