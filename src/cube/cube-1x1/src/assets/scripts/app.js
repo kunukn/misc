@@ -132,7 +132,7 @@ hammerLeft.get('swipe').set({
 const hammerEvents = 'swipeleft swiperight swipeup swipedown';
 
 hammerFront.on(hammerEvents, (ev) => {
-    const action = { type: ev.type, payload: {} };
+    const action = { type: ev.type };
     const newState = frontReducer(state, action);
 
     truncateTransforms(newState);
@@ -143,7 +143,7 @@ hammerFront.on(hammerEvents, (ev) => {
 });
 
 hammerRight.on(hammerEvents, (ev) => {
-    const action = { type: ev.type, payload: {} };
+    const action = { type: ev.type };
     const newState = rightReducer(state, action);
     updateUiByState(newState);
     setState(newState);
@@ -151,7 +151,7 @@ hammerRight.on(hammerEvents, (ev) => {
     debug.innerHTML = getDebugData('right', ev);
 });
 hammerLeft.on(hammerEvents, (ev) => {
-    const action = { type: ev.type, payload: {} };
+    const action = { type: ev.type };
     const newState = leftReducer(state, action);
     updateUiByState(newState);
     setState(newState);
@@ -160,7 +160,7 @@ hammerLeft.on(hammerEvents, (ev) => {
 });
 
 hammerBack.on(hammerEvents, (ev) => {
-    const action = { type: ev.type, payload: {} };
+    const action = { type: ev.type };
     const newState = backReducer(state, action);
     updateUiByState(newState);
     setState(newState);
