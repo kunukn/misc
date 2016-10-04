@@ -65,9 +65,9 @@ dictRotate['fr'] = ['x', 'z'];
 dictRotate['ft'] = ['x', '2z'];
 dictRotate['fl'] = ['x', '-z'];
 
-dictRotate['rd'] = ['-z', '-y'];
-dictRotate['rb'] = ['-z', '2y'];
-dictRotate['rt'] = ['-z', 'y'];
+dictRotate['rd'] = ['-z', 'x'];
+dictRotate['rb'] = ['-z', '2x'];
+dictRotate['rt'] = ['-z', '-x'];
 dictRotate['rf'] = ['-z'];
 
 dictRotate['db'] = ['2x'];
@@ -75,15 +75,15 @@ dictRotate['dr'] = ['2x', 'y'];
 dictRotate['df'] = ['2x', '2y'];
 dictRotate['dl'] = ['2x', '-y'];
 
-dictRotate['bd'] = ['-x', '2y'];
-dictRotate['bl'] = ['-x', 'y'];
+dictRotate['bd'] = ['-x', '2z'];
+dictRotate['bl'] = ['-x', 'z'];
 dictRotate['bt'] = ['-x'];
-dictRotate['br'] = ['-x', '-y'];
+dictRotate['br'] = ['-x', '-z'];
 
-dictRotate['ld'] = ['z', 'y'];
+dictRotate['ld'] = ['z', 'x'];
 dictRotate['lf'] = ['z'];
-dictRotate['lt'] = ['z', '-y'];
-dictRotate['lb'] = ['z', '2y'];
+dictRotate['lt'] = ['z', '-x'];
+dictRotate['lb'] = ['z', '2x'];
 
 
 export { dictUi };
