@@ -16,7 +16,7 @@ import { log } from './logger';
 
 import { qs, qsa, byId } from './query';
 
-import { dictDegree, dictRotate } from './dictionary';
+import { dictDegree, dictRotate } from './dictionaries/dictionary';
 
 log('App running');
 
@@ -207,10 +207,17 @@ function _x() {
     debug.innerHTML = getDebugData('front', 'swipedown');
 }
 
-function temp() {
+function tempY_() {
     let t = getComputedStyle(cubeElement).transform;
     t = t == 'none' ? '' : t;
     cubeElement.style.transform = `${t} rotateY(-90deg)`;
+    log(cubeElement.style.transform);
+}
+
+function tempY() {
+    let t = getComputedStyle(cubeElement).transform;
+    t = t == 'none' ? '' : t;
+    cubeElement.style.transform = `${t} rotateY(90deg)`;
     log(cubeElement.style.transform);
 }
 
@@ -219,9 +226,13 @@ window.cube = {
     rotateTo,
     x,
     _x,
-    temp,
     debug: {
-        cubeElement
+        cubeElement,
+        y: tempY,
+        _y: tempY_,
+        getState: function() {
+            return state; },
+
     }
 };
 

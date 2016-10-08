@@ -1,6 +1,6 @@
 import { CUBE, ACTION } from '../constants';
 import { log } from '../logger';
-import { dictActionTypes, dictDegree } from '../dictionary';
+import { dictActionTypes, dictDegree } from '../dictionaries/dictionary';
 import { dictBackAction as dictAction } from '../dictionaries/dict-back-action';
 
 export default function backReducer(state, action) {

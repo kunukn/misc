@@ -1,6 +1,6 @@
 import { CUBE, ACTION } from '../constants';
 import { log } from '../logger';
-import { dictActionTypes, dictDegree } from '../dictionary';
+import { dictActionTypes, dictDegree } from '../dictionaries/dictionary';
 import { dictRightAction as dictAction } from '../dictionaries/dict-right-action';
 
 export default function rightReducer(state, action) {

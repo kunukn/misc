@@ -1,4 +1,4 @@
-import { ACTION } from './constants';
+import { ACTION } from '../constants';
 
 const dictUi = [];
 dictUi['t^'] = 'x';
