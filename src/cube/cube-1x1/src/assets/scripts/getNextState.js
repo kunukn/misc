@@ -40,18 +40,18 @@ left['lb'] = 't';
 left['ld'] = 'b';
 left['lf'] = 'd';
 
-function getLeft(state) {
-    const l = left[state];
+export function getLeft(stateCode) {
+    const l = left[stateCode];
     if (!l || l.length !== 1) throw new Error('getLeft - ' + l);
 
     return l;
 }
 
-function getRight(state) {
-    return opposite[getLeft(state)];
+export function getRight(stateCode) {
+    return opposite[getLeft(stateCode)];
 }
 
-function getNextState(state, action) {
+export function getNextState(state, action) {
 
     let direction = dictUi[action];
 
@@ -103,5 +103,3 @@ function getNextState(state, action) {
             return undefined;
     }
 }
-
-export { getNextState };

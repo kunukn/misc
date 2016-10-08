@@ -135,7 +135,7 @@ hammerFront.on(hammerEvents, (ev) => {
     const action = { type: ev.type };
     const newState = frontReducer(state, action);
 
-    truncateTransforms(newState);
+ //   truncateTransforms(newState);
     updateUiByState(newState);
     setState(newState);
 
