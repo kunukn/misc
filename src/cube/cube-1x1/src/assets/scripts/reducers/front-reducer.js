@@ -1,12 +1,10 @@
 import { CUBE, ACTION } from '../constants';
 import { log } from '../logger';
-import { dictActionTypes, dictDegree, dictUi } from '../dictionary';
-import { getNextState } from '../getNextState';
+import { dictActionTypes, dictDegree } from '../dictionary';
 import { dictFrontAction } from '../dictionaries/dict-front-action';
 
 // By state and intent of action, return new state
 export default function frontReducer(state, action) {
-
     let actionType = dictActionTypes[action.type];
     let actionCode = `f${actionType}`;
 

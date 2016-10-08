@@ -1,6 +1,6 @@
 import { STATES as S } from '../constants';
 
-const dict = [];
+let dict = [];
 dict['f^'] = [];
 dict['f>'] = [];
 dict['fv'] = [];

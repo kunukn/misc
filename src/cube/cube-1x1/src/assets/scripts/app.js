@@ -135,7 +135,7 @@ hammerFront.on(hammerEvents, (ev) => {
     const action = { type: ev.type };
     const newState = frontReducer(state, action);
 
- //   truncateTransforms(newState);
+    //   truncateTransforms(newState);
     updateUiByState(newState);
     setState(newState);
 
@@ -191,9 +191,28 @@ function rotateTo(stateCode) {
     }
 }
 
+function x() {
+    const newState = frontReducer(state, {type:'swipeup'});
+    //   truncateTransforms(newState);
+    updateUiByState(newState);
+    setState(newState);
+    debug.innerHTML = getDebugData('front', 'swipeup');
+}
+
+function _x() {
+    const newState = frontReducer(state, {type: 'swipedown'});
+    //   truncateTransforms(newState);
+    updateUiByState(newState);
+    setState(newState);
+    debug.innerHTML = getDebugData('front', 'swipedown');
+}
+
+
 
 window.cube = {
-    rotateTo
+    rotateTo,
+    x,
+    _x,
 };
 
 export class App {
