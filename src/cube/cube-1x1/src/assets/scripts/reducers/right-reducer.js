@@ -5,6 +5,9 @@ import { dictRightAction as dictAction } from '../dictionaries/dict-right-action
 
 export default function rightReducer(state, action) {
 
+    return state; // todo
+
+
     let actionType = dictActionTypes[action.type];
     let actionCode = `r${actionType}`;
     let stateAndUi = dictAction[actionCode][state.value];

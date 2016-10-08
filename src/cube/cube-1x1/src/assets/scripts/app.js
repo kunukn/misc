@@ -48,7 +48,8 @@ function setState(newState) {
 
 function updateUiByState(newState) {
     if (newState.transforms && newState.transforms.length) {
-        let transform = newState.transforms.join(' ');
+        const transforms = newState.transforms.map(t => `rotate${t.key}(${t.val}deg)`);
+        const transform = transforms.join(' ');
         cubeElement.style.transform = `${transform}`;
     }
     return this;
@@ -195,7 +196,7 @@ function rotateTo(stateCode) {
         nextState.value = stateCode;
         nextState.stateHistory.push(stateCode);
         nextState.actionHistory.push(`rotateTo: ${stateCode}`);
-        nextState.transforms = transformCss;
+        nextState.transforms = [transformCss];
 
         setState(nextState);
 

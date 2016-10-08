@@ -5,6 +5,8 @@ import { dictDownAction as dictAction } from '../dictionaries/dict-down-action';
 
 export default function downReducer(state, action) {
 
+    return state; // todo
+
     let actionType = dictActionTypes[action.type];
     let actionCode = `d${actionType}`;
     let stateAndUi = dictAction[actionCode][state.value];

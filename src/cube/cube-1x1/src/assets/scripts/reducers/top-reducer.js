@@ -5,6 +5,9 @@ import { dictTopAction as dictAction } from '../dictionaries/dict-top-action';
 
 export default function topReducer(state, action) {
 
+    return state; // todo
+
+
     let actionType = dictActionTypes[action.type];
     let actionCode = `t${actionType}`;
     let stateAndUi = dictAction[actionCode][state.value];
