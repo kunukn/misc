@@ -5,6 +5,8 @@ import { dictBackAction as dictAction } from '../dictionaries/dict-back-action';
 
 export default function backReducer(state, action) {
 
+    return state; // todo
+
     let actionType = dictActionTypes[action.type];
     let actionCode = `b${actionType}`;
     let stateAndUi = dictAction[actionCode][state.value];

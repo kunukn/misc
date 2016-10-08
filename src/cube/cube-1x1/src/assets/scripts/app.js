@@ -26,10 +26,14 @@ const hammerOptions = {
     preventDefault: true
 };
 
-let state = {};
+let _state = {};
+
+function getState() {
+    return _state;
+}
 
 function initState() {
-    state = {
+    _state = {
         value: 'tf', // top front
         stateHistory: ['tf'],
         actionHistory: [],
@@ -42,15 +46,14 @@ function formatDate(date) {
 }
 
 function setState(newState) {
-    state = newState;
+    _state = newState;
     return this;
 }
 
-function updateUiByState(newState) {
-    if (newState.transforms && newState.transforms.length) {
-        const transforms = newState.transforms.map(t => `rotate${t.key}(${t.val}deg)`);
-        const transform = transforms.join(' ');
-        cubeElement.style.transform = `${transform}`;
+function updateUiByState(state) {
+    if (state.transforms && state.transforms.length) {
+        const transforms = state.transforms.map(t => `rotate${t.key}(${t.val}deg)`);
+        cubeElement.style.transform = transforms.join(' ');
     }
     return this;
 }
@@ -72,7 +75,7 @@ function truncateTransforms(state) {
 function getDebugData(face, event) {
     return `
     <div class='event'>${face} ${event.type}</div>
-    <div class='state'> ${JSON.stringify(state)}</div>
+    <div class='state'> ${JSON.stringify(getState())}</div>
     <div class='transform'> ${cubeElement.style.transform}</div>
     <div class='time'> ${(formatDate(new Date()))}</div>
     `;
@@ -89,6 +92,8 @@ const debug = qs('.debug'),
 
 
 cubeElement.addEventListener('transitionend', (ev) => {
+    let state = getState();
+
     if (state.transforms && state.transforms.length >= 4) {
         //    cubeElement.classList.add('u-no-transition-important');
         //   cubeElement.offsetHeight;
@@ -134,7 +139,7 @@ const hammerEvents = 'swipeleft swiperight swipeup swipedown';
 
 hammerFront.on(hammerEvents, (ev) => {
     const action = { type: ev.type };
-    const newState = frontReducer(state, action);
+    const newState = frontReducer(getState(), action);
 
     //   truncateTransforms(newState);
     updateUiByState(newState);
@@ -145,7 +150,7 @@ hammerFront.on(hammerEvents, (ev) => {
 
 hammerRight.on(hammerEvents, (ev) => {
     const action = { type: ev.type };
-    const newState = rightReducer(state, action);
+    const newState = rightReducer(getState(), action);
     updateUiByState(newState);
     setState(newState);
 
@@ -153,7 +158,7 @@ hammerRight.on(hammerEvents, (ev) => {
 });
 hammerLeft.on(hammerEvents, (ev) => {
     const action = { type: ev.type };
-    const newState = leftReducer(state, action);
+    const newState = leftReducer(getState(), action);
     updateUiByState(newState);
     setState(newState);
 
@@ -162,7 +167,7 @@ hammerLeft.on(hammerEvents, (ev) => {
 
 hammerBack.on(hammerEvents, (ev) => {
     const action = { type: ev.type };
-    const newState = backReducer(state, action);
+    const newState = backReducer(getState(), action);
     updateUiByState(newState);
     setState(newState);
 
@@ -170,10 +175,20 @@ hammerBack.on(hammerEvents, (ev) => {
 });
 
 hammerTop.on(hammerEvents, (ev) => {
+    const action = { type: ev.type };
+    const newState = topReducer(getState(), action);
+    updateUiByState(newState);
+    setState(newState);
+
     debug.innerHTML = getDebugData('top', ev);
 });
 
 hammerDown.on(hammerEvents, (ev) => {
+    const action = { type: ev.type };
+    const newState = downReducer(getState(), action);
+    updateUiByState(newState);
+    setState(newState);
+
     debug.innerHTML = getDebugData('down', ev);
 });
 
@@ -191,7 +206,7 @@ function rotateTo(stateCode) {
 
         let transformCss = transforms.join(' ');
 
-        let nextState = Object.assign({}, state);
+        let nextState = Object.assign({}, getState());
 
         nextState.value = stateCode;
         nextState.stateHistory.push(stateCode);
@@ -202,12 +217,12 @@ function rotateTo(stateCode) {
 
         cubeElement.style.transform = transformCss;
 
-        return state;
+        return getState();
     }
 }
 
 function x() {
-    const newState = frontReducer(state, { type: 'swipeup' });
+    const newState = frontReducer(getState(), { type: 'swipeup' });
     //   truncateTransforms(newState);
     updateUiByState(newState);
     setState(newState);
@@ -215,7 +230,7 @@ function x() {
 }
 
 function _x() {
-    const newState = frontReducer(state, { type: 'swipedown' });
+    const newState = frontReducer(getState(), { type: 'swipedown' });
     //   truncateTransforms(newState);
     updateUiByState(newState);
     setState(newState);
@@ -245,10 +260,7 @@ window.cube = {
         cubeElement,
         y: tempY,
         _y: tempY_,
-        getState: function() {
-            return state;
-        },
-
+        getState,
     }
 };
 
