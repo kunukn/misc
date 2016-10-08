@@ -1,35 +1,35 @@
 import { ACTION } from '../constants';
 
-const dictUi = [];
-dictUi['t^'] = 'x';
-dictUi['t>'] = 'z';
-dictUi['tv'] = '-x';
-dictUi['t<'] = '-z';
+// const dictUi = [];
+// dictUi['t^'] = 'x';
+// dictUi['t>'] = 'z';
+// dictUi['tv'] = '-x';
+// dictUi['t<'] = '-z';
 
-dictUi['f^'] = 'x';
-dictUi['f>'] = 'y';
-dictUi['fv'] = '-x';
-dictUi['f<'] = '-y';
+// dictUi['f^'] = 'x';
+// dictUi['f>'] = 'y';
+// dictUi['fv'] = '-x';
+// dictUi['f<'] = '-y';
 
-dictUi['r^'] = '-z';
-dictUi['r>'] = 'y';
-dictUi['rv'] = 'z';
-dictUi['r<'] = '-y';
+// dictUi['r^'] = '-z';
+// dictUi['r>'] = 'y';
+// dictUi['rv'] = 'z';
+// dictUi['r<'] = '-y';
 
-dictUi['l^'] = 'z';
-dictUi['l>'] = 'y';
-dictUi['lv'] = '-z';
-dictUi['l<'] = '-y';
+// dictUi['l^'] = 'z';
+// dictUi['l>'] = 'y';
+// dictUi['lv'] = '-z';
+// dictUi['l<'] = '-y';
 
-dictUi['b^'] = 'x';
-dictUi['b>'] = 'y';
-dictUi['bv'] = '-x';
-dictUi['b<'] = '-y';
+// dictUi['b^'] = 'x';
+// dictUi['b>'] = 'y';
+// dictUi['bv'] = '-x';
+// dictUi['b<'] = '-y';
 
-dictUi['d^'] = 'x';
-dictUi['d>'] = '-z';
-dictUi['dv'] = '-x';
-dictUi['d<'] = 'z';
+// dictUi['d^'] = 'x';
+// dictUi['d>'] = '-z';
+// dictUi['dv'] = '-x';
+// dictUi['d<'] = 'z';
 
 const dictDegree = [];
 dictDegree['.'] = 'rotateX(0deg)';
@@ -46,6 +46,21 @@ dictDegree['-2y'] = 'rotateY(-180deg)';
 dictDegree['2z'] = 'rotateZ(180deg)';
 dictDegree['-2z'] = 'rotateZ(-180deg)';
 
+const dictTransform = [];
+dictTransform['.'] = { key: 'X', val: 0 };
+dictTransform['x'] = { key: 'X', val: 90 };
+dictTransform['-x'] = { key: 'X', val: -90 };
+dictTransform['y'] = { key: 'Y', val: 90 };
+dictTransform['-y'] = { key: 'Y', val: -90 };
+dictTransform['z'] = { key: 'Z', val: 90 };
+dictTransform['-z'] = { key: 'Z', val: -90 };
+dictTransform['2x'] = { key: 'X', val: 180 };
+dictTransform['-2x'] = { key: 'X', val: -180 };
+dictTransform['2y'] = { key: 'Y', val: 180 };
+dictTransform['-2y'] = { key: 'Y', val: -180 };
+dictTransform['2z'] = { key: 'Z', val: 180 };
+dictTransform['-2z'] = { key: 'Z', val: -180 };
+
 const dictActionTypes = [];
 dictActionTypes[ACTION.swipeup] = '^';
 dictActionTypes[ACTION.swiperight] = '>';
@@ -53,40 +68,39 @@ dictActionTypes[ACTION.swipedown] = 'v';
 dictActionTypes[ACTION.swipeleft] = '<';
 
 
-const dictRotate = [];
+const dictStateRotate = [];
 
-dictRotate['tf'] = ['.'];
-dictRotate['tr'] = ['-y'];
-dictRotate['tl'] = ['y'];
-dictRotate['tb'] = ['2y'];
+dictStateRotate['tf'] = ['.'];
+dictStateRotate['tr'] = ['-y'];
+dictStateRotate['tl'] = ['y'];
+dictStateRotate['tb'] = ['2y'];
 
-dictRotate['fd'] = ['x'];
-dictRotate['fr'] = ['x', 'z'];
-dictRotate['ft'] = ['x', '2z'];
-dictRotate['fl'] = ['x', '-z'];
+dictStateRotate['fd'] = ['x'];
+dictStateRotate['fr'] = ['x', 'z'];
+dictStateRotate['ft'] = ['x', '2z'];
+dictStateRotate['fl'] = ['x', '-z'];
 
-dictRotate['rd'] = ['-z', 'x'];
-dictRotate['rb'] = ['-z', '2x'];
-dictRotate['rt'] = ['-z', '-x'];
-dictRotate['rf'] = ['-z'];
+dictStateRotate['rd'] = ['-z', 'x'];
+dictStateRotate['rb'] = ['-z', '2x'];
+dictStateRotate['rt'] = ['-z', '-x'];
+dictStateRotate['rf'] = ['-z'];
 
-dictRotate['db'] = ['2x'];
-dictRotate['dr'] = ['2x', 'y'];
-dictRotate['df'] = ['2x', '2y'];
-dictRotate['dl'] = ['2x', '-y'];
+dictStateRotate['db'] = ['2x'];
+dictStateRotate['dr'] = ['2x', 'y'];
+dictStateRotate['df'] = ['2x', '2y'];
+dictStateRotate['dl'] = ['2x', '-y'];
 
-dictRotate['bd'] = ['-x', '2z'];
-dictRotate['bl'] = ['-x', 'z'];
-dictRotate['bt'] = ['-x'];
-dictRotate['br'] = ['-x', '-z'];
+dictStateRotate['bd'] = ['-x', '2z'];
+dictStateRotate['bl'] = ['-x', 'z'];
+dictStateRotate['bt'] = ['-x'];
+dictStateRotate['br'] = ['-x', '-z'];
 
-dictRotate['ld'] = ['z', 'x'];
-dictRotate['lf'] = ['z'];
-dictRotate['lt'] = ['z', '-x'];
-dictRotate['lb'] = ['z', '2x'];
+dictStateRotate['ld'] = ['z', 'x'];
+dictStateRotate['lf'] = ['z'];
+dictStateRotate['lt'] = ['z', '-x'];
+dictStateRotate['lb'] = ['z', '2x'];
 
-
-export { dictUi };
 export { dictDegree };
+export { dictStateRotate };
 export { dictActionTypes };
-export { dictRotate };
+export { dictTransform };

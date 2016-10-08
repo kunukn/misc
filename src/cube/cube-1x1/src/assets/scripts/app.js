@@ -16,7 +16,7 @@ import { log } from './logger';
 
 import { qs, qsa, byId } from './query';
 
-import { dictDegree, dictRotate } from './dictionaries/dictionary';
+import { dictDegree, dictStateRotate, dictTransform } from './dictionaries/dictionary';
 
 log('App running');
 
@@ -56,7 +56,7 @@ function updateUiByState(newState) {
 
 function truncateTransforms(state) {
     if (state.transforms.length >= 4) {
-        let transforms = dictRotate[state.value];
+        let transforms = dictStateRotate[state.value];
         if (transforms && transforms.length) {
             state.transforms = transforms.map(t => {
                 return dictDegree[t];
@@ -181,13 +181,27 @@ hammerDown.on(hammerEvents, (ev) => {
 initState();
 
 function rotateTo(stateCode) {
-    let transforms = dictRotate[stateCode];
-    if (transforms && transforms.length) {
-        transforms = transforms.map(t => {
-            return dictDegree[t];
-        });
+    let transformCodes = dictStateRotate[stateCode];
+    if (transformCodes && transformCodes.length) {
+
+        let transformKeyVals = transformCodes.map(t => dictTransform[t]);
+
+        let transforms = transformKeyVals.map(t => `rotate${t.key}(${t.val}deg)`);
+
         let transformCss = transforms.join(' ');
+
+        let nextState = Object.assign({}, state);
+
+        nextState.value = stateCode;
+        nextState.stateHistory.push(stateCode);
+        nextState.actionHistory.push(`rotateTo: ${stateCode}`);
+        nextState.transforms = transformCss;
+
+        setState(nextState);
+
         cubeElement.style.transform = transformCss;
+
+        return state;
     }
 }
 
@@ -231,7 +245,8 @@ window.cube = {
         y: tempY,
         _y: tempY_,
         getState: function() {
-            return state; },
+            return state;
+        },
 
     }
 };
