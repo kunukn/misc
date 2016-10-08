@@ -1,13 +1,13 @@
 import { CUBE, ACTION } from '../constants';
 import { log } from '../logger';
-import { dictActionTypes, dictDegree, dictUi } from '../dictionary';
-import { getNextState } from '../getNextState';
+import { dictActionTypes, dictDegree } from '../dictionary';
+import { dictRightAction as dictAction } from '../dictionaries/dict-right-action';
 
 export default function rightReducer(state, action) {
 
     let actionType = dictActionTypes[action.type];
     let actionCode = `r${actionType}`;
-    let stateAndUi = getNextState(state.value, actionCode);
+    let stateAndUi = dictAction[actionCode][state.value];
     let transform = dictDegree[stateAndUi.ui];
 
     let nextState = Object.assign({}, state);

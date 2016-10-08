@@ -192,7 +192,7 @@ function rotateTo(stateCode) {
 }
 
 function x() {
-    const newState = frontReducer(state, {type:'swipeup'});
+    const newState = frontReducer(state, { type: 'swipeup' });
     //   truncateTransforms(newState);
     updateUiByState(newState);
     setState(newState);
@@ -200,19 +200,29 @@ function x() {
 }
 
 function _x() {
-    const newState = frontReducer(state, {type: 'swipedown'});
+    const newState = frontReducer(state, { type: 'swipedown' });
     //   truncateTransforms(newState);
     updateUiByState(newState);
     setState(newState);
     debug.innerHTML = getDebugData('front', 'swipedown');
 }
 
+function temp() {
+    let t = getComputedStyle(cubeElement).transform;
+    t = t == 'none' ? '' : t;
+    cubeElement.style.transform = `${t} rotateY(-90deg)`;
+    log(cubeElement.style.transform);
+}
 
 
 window.cube = {
     rotateTo,
     x,
     _x,
+    temp,
+    debug: {
+        cubeElement
+    }
 };
 
 export class App {

@@ -1,13 +1,13 @@
 import { CUBE, ACTION } from '../constants';
 import { log } from '../logger';
-import { dictActionTypes, dictDegree, dictUi } from '../dictionary';
-import { getNextState } from '../getNextState';
+import { dictActionTypes, dictDegree } from '../dictionary';
+import { dictTopAction as dictAction } from '../dictionaries/dict-top-action';
 
 export default function topReducer(state, action) {
 
     let actionType = dictActionTypes[action.type];
     let actionCode = `t${actionType}`;
-    let stateAndUi = getNextState(state.value, actionCode);
+    let stateAndUi = dictAction[actionCode][state.value];
     let transform = dictDegree[stateAndUi.ui];
 
     let nextState = Object.assign({}, state);
@@ -17,5 +17,5 @@ export default function topReducer(state, action) {
     nextState.actionHistory.push(actionCode);
     nextState.transforms.push(transform);
 
-    return nextState;
+    return state;
 }
