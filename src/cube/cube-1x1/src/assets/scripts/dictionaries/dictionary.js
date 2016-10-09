@@ -1,5 +1,5 @@
 import { ACTION } from '../constants';
-import  deepFreeze  from 'deep-freeze';
+import deepFreeze from 'deep-freeze';
 
 const dictDegree = [];
 dictDegree['_'] = 'rotateX(0deg)';
@@ -40,7 +40,7 @@ dictActionTypes[ACTION.swipeleft] = '<';
 
 const dictStateRotate = [];
 
-dictStateRotate['tf'] = ['.'];
+dictStateRotate['tf'] = ['_'];
 dictStateRotate['tr'] = ['-y'];
 dictStateRotate['tl'] = ['y'];
 dictStateRotate['tb'] = ['2y'];

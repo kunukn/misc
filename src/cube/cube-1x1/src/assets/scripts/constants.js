@@ -1,4 +1,7 @@
-export const CUBE = {
+import deepFreeze from 'deep-freeze';
+
+
+const CUBE = {
     TOP: 'top',
     FRONT: 'front',
     RIGHT: 'right',
@@ -6,15 +9,20 @@ export const CUBE = {
     LEFT: 'left',
     DOWN: 'down',
 };
+deepFreeze(CUBE);
 
-export const ACTION = {
+
+const ACTION = {
     swipeleft: 'swipeleft',
     swiperight: 'swiperight',
     swipeup: 'swipeup',
     swipedown: 'swipedown',
 };
+deepFreeze(ACTION);
 
-export const STATES = {
+
+
+const STATES = {
     tf: 'tf',
     tr: 'tr',
     tb: 'tb',
@@ -40,6 +48,8 @@ export const STATES = {
     ld: 'ld',
     lf: 'lf',
 };
+deepFreeze(STATES);
+
 
 
 const opposite = [];
@@ -81,4 +91,4 @@ left['lb'] = 't';
 left['ld'] = 'b';
 left['lf'] = 'd';
 
-export { opposite, left };
+export { CUBE, ACTION, STATES, opposite, left };
