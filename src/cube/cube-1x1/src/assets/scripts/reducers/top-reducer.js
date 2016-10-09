@@ -2,6 +2,7 @@ import { CUBE, ACTION } from '../constants';
 import { log } from '../logger';
 import { dictActionTypes, dictDegree } from '../dictionaries/dictionary';
 import { dictTopAction as dictAction } from '../dictionaries/dict-top-action';
+import { cloneObject } from '../cube-util';
 
 export default function topReducer(state, action) {
 

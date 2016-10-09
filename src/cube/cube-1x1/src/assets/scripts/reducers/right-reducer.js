@@ -2,6 +2,7 @@ import { CUBE, ACTION } from '../constants';
 import { log } from '../logger';
 import { dictActionTypes, dictDegree } from '../dictionaries/dictionary';
 import { dictRightAction as dictAction } from '../dictionaries/dict-right-action';
+import { cloneObject } from '../cube-util';
 
 export default function rightReducer(state, action) {
 

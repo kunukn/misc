@@ -18,6 +18,9 @@ import { qs, qsa, byId } from './query';
 
 import { dictDegree, dictStateRotate, dictTransform } from './dictionaries/dictionary';
 
+import { cloneObject, transformsApply } from './cube-util';
+
+
 log('App running');
 
 const Hammer = window.Hammer;
@@ -65,9 +68,9 @@ function truncateTransforms(state) {
     return this;
 }
 
-function getDebugData(face, event) {
+function getDebugData(face, eventtype) {
     return `
-    <div class='event'>${face} ${event.type}</div>
+    <div class='event'>${face} ${eventtype}</div>
     <div class='state'> ${JSON.stringify(getState())}</div>
     <div class='transform'> ${cubeElement.style.transform}</div>
     <div class='time'> ${(formatDate(new Date()))}</div>
@@ -136,7 +139,7 @@ hammerFront.on(hammerEvents, (ev) => {
     truncateTransforms(newState);
     setState(newState);
     updateUiByState(newState);
-    debug.innerHTML = getDebugData('front', ev);
+    debug.innerHTML = getDebugData('front', ev.type);
 });
 
 hammerRight.on(hammerEvents, (ev) => {
@@ -145,7 +148,7 @@ hammerRight.on(hammerEvents, (ev) => {
     truncateTransforms(newState);
     setState(newState);
     updateUiByState(newState);
-    debug.innerHTML = getDebugData('right', ev);
+    debug.innerHTML = getDebugData('right', ev.type);
 });
 hammerLeft.on(hammerEvents, (ev) => {
     const action = { type: ev.type };
@@ -153,7 +156,7 @@ hammerLeft.on(hammerEvents, (ev) => {
     truncateTransforms(newState);
     setState(newState);
     updateUiByState(newState);
-    debug.innerHTML = getDebugData('left', ev);
+    debug.innerHTML = getDebugData('left', ev.type);
 });
 
 hammerBack.on(hammerEvents, (ev) => {
@@ -162,7 +165,7 @@ hammerBack.on(hammerEvents, (ev) => {
     truncateTransforms(newState);
     setState(newState);
     updateUiByState(newState);
-    debug.innerHTML = getDebugData('back', ev);
+    debug.innerHTML = getDebugData('back', ev.type);
 });
 
 hammerTop.on(hammerEvents, (ev) => {
@@ -171,7 +174,7 @@ hammerTop.on(hammerEvents, (ev) => {
     truncateTransforms(newState);
     setState(newState);
     updateUiByState(newState);
-    debug.innerHTML = getDebugData('top', ev);
+    debug.innerHTML = getDebugData('top', ev.type);
 });
 
 hammerDown.on(hammerEvents, (ev) => {
@@ -180,7 +183,7 @@ hammerDown.on(hammerEvents, (ev) => {
     truncateTransforms(newState);
     setState(newState);
     updateUiByState(newState);
-    debug.innerHTML = getDebugData('down', ev);
+    debug.innerHTML = getDebugData('down', ev.type);
 });
 
 
@@ -257,19 +260,44 @@ function _z() {
 }
 
 
-
-function tempY_() {
-    let t = getComputedStyle(cubeElement).transform;
-    t = t == 'none' ? '' : t;
-    cubeElement.style.transform = `${t} rotateY(-90deg)`;
-    log(cubeElement.style.transform);
+function uix() {
+    ui({ key: 'x', val: 90 });
+    debug.innerHTML = getDebugData('ui', 'x');
 }
 
-function tempY() {
-    let t = getComputedStyle(cubeElement).transform;
-    t = t == 'none' ? '' : t;
-    cubeElement.style.transform = `${t} rotateY(90deg)`;
-    log(cubeElement.style.transform);
+function ui_x() {
+    ui({ key: 'x', val: -90 });
+    debug.innerHTML = getDebugData('ui', '-x');
+}
+
+
+function uiy() {
+    ui({ key: 'y', val: 90 });
+    debug.innerHTML = getDebugData('ui', 'y');
+}
+
+function ui_y() {
+    ui({ key: 'y', val: -90 });
+    debug.innerHTML = getDebugData('ui', '-y');
+}
+
+function uiz() {
+    ui({ key: 'z', val: 90 });
+    debug.innerHTML = getDebugData('ui', 'z');
+}
+
+function ui_z() {
+    ui({ key: 'z', val: -90 });
+    debug.innerHTML = getDebugData('ui', '-z');
+}
+
+
+function ui(transformKeyVal) {
+    let newState = cloneObject(getState());
+    transformsApply(transformKeyVal, newState);
+    truncateTransforms(newState);
+    setState(newState);
+    updateUiByState(newState);
 }
 
 
@@ -283,10 +311,14 @@ window.app = window.cube = {
     _y,
     z,
     _z,
+    uix,
+    ui_x,
+    uiy,
+    ui_y,
+    uiz,
+    ui_z,
     debug: {
-        cubeElement,
-        y: tempY,
-        _y: tempY_,
+        cubeEl: cubeElement,
         getState,
     }
 };
