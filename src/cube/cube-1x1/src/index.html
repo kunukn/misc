@@ -30,17 +30,30 @@
             </div>
         </div>
 
-        <div class="c-button-group">
-            <div class="center">
-                <button onclick="app.uix()">x</button>
-                <button onclick="app.ui_x()">_x</button>
-                <button onclick="app.uiy()">y</button>
-                <button onclick="app.ui_y()">_y</button>
-                <button onclick="app.uiz()">z</button>
-                <button onclick="app.ui_z()">_z</button>
+
+        <footer class="main-footer">
+            
+            <div class="c-cube-rotate-to" id="cube-rotate-to">
+                <div class="center">
+                    <input type="text">
+                    <button onclick="app.uiRotateTo(event)">update</button>
+                </div>
             </div>
-        </div>
+
+            <div class="c-button-group">
+                <div class="center">
+                    <button onclick="app.uix()">x</button>
+                    <button onclick="app.ui_x()">_x</button>
+                    <button onclick="app.uiy()">y</button>
+                    <button onclick="app.ui_y()">_y</button>
+                    <button onclick="app.uiz()">z</button>
+                    <button onclick="app.ui_z()">_z</button>
+                </div>
+            </div>
+        </footer>
+
     </div>
+
 </body>
 
 </html>

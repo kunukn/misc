@@ -300,11 +300,21 @@ function ui(transformKeyVal) {
     updateUiByState(newState);
 }
 
+function uiRotateTo(event) {
+    let component = document.getElementById('cube-rotate-to');
+    let value = component.querySelector('input').value;
+
+    if (value) {
+        this.rotateTo(value);
+    }
+}
+
 
 initState();
 
 window.app = window.cube = {
     rotateTo,
+    uiRotateTo,
     x,
     _x,
     y,

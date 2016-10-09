@@ -1,13 +1,9 @@
 @charset "UTF-8";
 .c-button-group {
     width: 100%;
-    margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    bottom: 0;
-    left: 0;
     > .center {
         display: flex;
         justify-content: space-around;
@@ -15,6 +11,7 @@
         max-width: 30rem;
         flex: 1 1 auto;
         padding: .5rem 0;
+        flex-wrap: wrap;
     }
     button {
         display: inline-block;
@@ -24,4 +21,24 @@
         border: 1px solid gray;
         min-width: 3em;
     }
+}
+
+.c-cube-rotate-to {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    > .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 30rem;
+        flex: 1 1 auto;
+        padding: .5rem 0;
+        flex-wrap: wrap;
+    }
+
+    input {}
+    button {}
 }
