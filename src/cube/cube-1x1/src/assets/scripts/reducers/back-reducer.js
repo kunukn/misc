@@ -1,23 +1,12 @@
-import { CUBE, ACTION } from '../constants';
 import { log } from '../logger';
-import { dictActionTypes, dictDegree } from '../dictionaries/dictionary';
+import { dictActionTypes } from '../dictionaries/dictionary';
 import { dictBackAction as dictAction } from '../dictionaries/dict-back-action';
+import { reducer } from './reducer-util';
 
 export default function backReducer(state, action) {
 
-    return state; // todo
+    const actionType = dictActionTypes[action.type],
+        actionCode = `b${actionType}`;
 
-    let actionType = dictActionTypes[action.type];
-    let actionCode = `b${actionType}`;
-    let stateAndUi = dictAction[actionCode][state.value];
-    let transform = dictDegree[stateAndUi.ui];
-
-    let nextState = Object.assign({}, state);
-
-    nextState.value = stateAndUi.state;
-    nextState.stateHistory.push(stateAndUi.state);
-    nextState.actionHistory.push(actionCode);
-    nextState.transforms.push(transform);
-
-    return nextState;
+    return reducer(state, actionCode, dictAction);
 }
