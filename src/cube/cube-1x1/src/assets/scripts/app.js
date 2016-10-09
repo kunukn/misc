@@ -131,8 +131,8 @@ hammerLeft.get('swipe').set({
 const hammerEvents = 'swipeleft swiperight swipeup swipedown';
 
 hammerFront.on(hammerEvents, (ev) => {
-    const action = { type: ev.type };
-    const newState = frontReducer(getState(), action);
+    const action = { type: ev.type },
+        newState = frontReducer(getState(), action);
     truncateTransforms(newState);
     setState(newState);
     updateUiByState(newState);
@@ -175,16 +175,14 @@ hammerTop.on(hammerEvents, (ev) => {
 });
 
 hammerDown.on(hammerEvents, (ev) => {
-    const action = { type: ev.type };
-    const newState = downReducer(getState(), action);
+    const action = { type: ev.type },
+        newState = downReducer(getState(), action);
     truncateTransforms(newState);
     setState(newState);
     updateUiByState(newState);
     debug.innerHTML = getDebugData('down', ev);
 });
 
-
-initState();
 
 function rotateTo(stateCode) {
     let transformCodes = dictStateRotate[stateCode];
@@ -212,7 +210,6 @@ function x() {
     truncateTransforms(newState);
     setState(newState);
     updateUiByState(newState);
-
     debug.innerHTML = getDebugData('front', 'swipeup');
 }
 
@@ -221,9 +218,45 @@ function _x() {
     truncateTransforms(newState);
     setState(newState);
     updateUiByState(newState);
-
     debug.innerHTML = getDebugData('front', 'swipedown');
 }
+
+
+function y() {
+    const newState = frontReducer(getState(), { type: 'swiperight' });
+    truncateTransforms(newState);
+    setState(newState);
+    updateUiByState(newState);
+    debug.innerHTML = getDebugData('front', 'swiperight');
+}
+
+function _y() {
+    const newState = frontReducer(getState(), { type: 'swipeleft' });
+    truncateTransforms(newState);
+    setState(newState);
+    updateUiByState(newState);
+    debug.innerHTML = getDebugData('front', 'swipeleft');
+}
+
+
+function z() {
+    const newState = topReducer(getState(), { type: 'swiperight' });
+    truncateTransforms(newState);
+    setState(newState);
+    updateUiByState(newState);
+    debug.innerHTML = getDebugData('top', 'swiperight');
+}
+
+
+function _z() {
+    const newState = topReducer(getState(), { type: 'swipeleft' });
+    truncateTransforms(newState);
+    setState(newState);
+    updateUiByState(newState);
+    debug.innerHTML = getDebugData('top', 'swipeleft');
+}
+
+
 
 function tempY_() {
     let t = getComputedStyle(cubeElement).transform;
@@ -240,10 +273,16 @@ function tempY() {
 }
 
 
-window.cube = {
+initState();
+
+window.app = window.cube = {
     rotateTo,
     x,
     _x,
+    y,
+    _y,
+    z,
+    _z,
     debug: {
         cubeElement,
         y: tempY,

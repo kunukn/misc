@@ -48,10 +48,7 @@ body {
 .scene {
     width: $size;
     height: $size;
-    // perspective: 800px;
-    //background: pink;
     margin: 0 auto;
-    ///margin-top: $size;
     position: relative;
     transform-style: preserve-3d;
     transform: rotateX(-30deg) rotateY(-20deg) rotateZ(0deg);
@@ -63,7 +60,7 @@ body {
     height: $size;
     margin: 0 auto;
     transform-style: preserve-3d;
-    transition: 200ms;
+    transition: $cube-transition;
     .face {
         user-select: none;
         cursor: pointer;
