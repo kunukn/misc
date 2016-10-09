@@ -140,6 +140,7 @@ hammerFront.on(hammerEvents, (ev) => {
     setState(newState);
     updateUiByState(newState);
     debug.innerHTML = getDebugData('front', ev.type);
+    log(ev.type);
 });
 
 hammerRight.on(hammerEvents, (ev) => {
@@ -149,6 +150,8 @@ hammerRight.on(hammerEvents, (ev) => {
     setState(newState);
     updateUiByState(newState);
     debug.innerHTML = getDebugData('right', ev.type);
+    log(ev.type);
+    
 });
 hammerLeft.on(hammerEvents, (ev) => {
     const action = { type: ev.type };
@@ -157,6 +160,8 @@ hammerLeft.on(hammerEvents, (ev) => {
     setState(newState);
     updateUiByState(newState);
     debug.innerHTML = getDebugData('left', ev.type);
+    log(ev.type);
+    
 });
 
 hammerBack.on(hammerEvents, (ev) => {
@@ -166,6 +171,8 @@ hammerBack.on(hammerEvents, (ev) => {
     setState(newState);
     updateUiByState(newState);
     debug.innerHTML = getDebugData('back', ev.type);
+    log(ev.type);
+    
 });
 
 hammerTop.on(hammerEvents, (ev) => {
@@ -175,6 +182,8 @@ hammerTop.on(hammerEvents, (ev) => {
     setState(newState);
     updateUiByState(newState);
     debug.innerHTML = getDebugData('top', ev.type);
+    log(ev.type);
+    
 });
 
 hammerDown.on(hammerEvents, (ev) => {
@@ -184,6 +193,8 @@ hammerDown.on(hammerEvents, (ev) => {
     setState(newState);
     updateUiByState(newState);
     debug.innerHTML = getDebugData('down', ev.type);
+    log(ev.type);
+    
 });
 
 

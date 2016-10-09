@@ -1,38 +1,7 @@
 import { ACTION } from '../constants';
 
-// const dictUi = [];
-// dictUi['t^'] = 'x';
-// dictUi['t>'] = 'z';
-// dictUi['tv'] = '-x';
-// dictUi['t<'] = '-z';
-
-// dictUi['f^'] = 'x';
-// dictUi['f>'] = 'y';
-// dictUi['fv'] = '-x';
-// dictUi['f<'] = '-y';
-
-// dictUi['r^'] = '-z';
-// dictUi['r>'] = 'y';
-// dictUi['rv'] = 'z';
-// dictUi['r<'] = '-y';
-
-// dictUi['l^'] = 'z';
-// dictUi['l>'] = 'y';
-// dictUi['lv'] = '-z';
-// dictUi['l<'] = '-y';
-
-// dictUi['b^'] = 'x';
-// dictUi['b>'] = 'y';
-// dictUi['bv'] = '-x';
-// dictUi['b<'] = '-y';
-
-// dictUi['d^'] = 'x';
-// dictUi['d>'] = '-z';
-// dictUi['dv'] = '-x';
-// dictUi['d<'] = 'z';
-
 const dictDegree = [];
-dictDegree['.'] = 'rotateX(0deg)';
+dictDegree['_'] = 'rotateX(0deg)';
 dictDegree['x'] = 'rotateX(90deg)';
 dictDegree['-x'] = 'rotateX(-90deg)';
 dictDegree['y'] = 'rotateY(90deg)';
@@ -47,7 +16,7 @@ dictDegree['2z'] = 'rotateZ(180deg)';
 dictDegree['-2z'] = 'rotateZ(-180deg)';
 
 const dictTransform = [];
-dictTransform['.'] = { key: 'X', val: 0 };
+dictTransform['_'] = { key: 'X', val: 0 };
 dictTransform['x'] = { key: 'X', val: 90 };
 dictTransform['-x'] = { key: 'X', val: -90 };
 dictTransform['y'] = { key: 'Y', val: 90 };
@@ -100,7 +69,11 @@ dictStateRotate['lf'] = ['z'];
 dictStateRotate['lt'] = ['z', '-x'];
 dictStateRotate['lb'] = ['z', '2x'];
 
-export { dictDegree };
+
+Object.freeze(dictStateRotate);
+Object.freeze(dictActionTypes);
+Object.freeze(dictTransform);
+
 export { dictStateRotate };
 export { dictActionTypes };
 export { dictTransform };

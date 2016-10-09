@@ -3,8 +3,8 @@ import { dictActionTypes, dictTransform } from '../dictionaries/dictionary';
 import { cloneObject, transformsApply } from '../cube-util';
 
 export function reducer(state, actionCode, dictAction) {
-    const calculated = dictAction[actionCode][state.value],
-        transformKeyVal = dictTransform[calculated.ui],
+    const calculated = cloneObject(dictAction[actionCode][state.value]),
+        transformKeyVal = cloneObject(dictTransform[calculated.ui]),
         nextState = cloneObject(state);
 
     transformsApply(transformKeyVal, nextState);

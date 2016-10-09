@@ -19,13 +19,20 @@ dict[act][S.fd] = { state: S.db, ui: 'x' };
 dict[act][S.fr] = { state: S.rb, ui: '-y' };
 
 
-
 act = 'f>';
-dict[act][S.tf] = { state: 'tl', ui: 'y' };
+dict[act][S.tf] = { state: S.tl, ui: 'y' };
+dict[act][S.tl] = { state: S.tb, ui: 'y' };
+dict[act][S.tb] = { state: S.tr, ui: 'y' };
+dict[act][S.tl] = { state: S.tf, ui: 'y' };
 
 
 act = 'f<';
-dict[act][S.tf] = { state: 'tr', ui: '-y' };
+dict[act][S.tf] = { state: S.tr, ui: '-y' };
+dict[act][S.tr] = { state: S.tb, ui: '-y' };
+dict[act][S.tb] = { state: S.tl, ui: '-y' };
+dict[act][S.tl] = { state: S.tf, ui: '-y' };
+
+
 
 
 act = 'fv';

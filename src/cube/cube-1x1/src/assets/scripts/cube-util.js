@@ -1,4 +1,5 @@
 import { opposite, left } from './constants';
+import { log } from './logger';
 
 export function getLeft(stateCode) {
     const l = left[stateCode];
@@ -16,11 +17,13 @@ export function cloneObject(obj) {
 }
 
 export function transformsApply(transformKeyVal, state) {
+
     let pushTransform = true;
     if (state.transforms.length) {
         let lastIndex = state.transforms.length - 1;
         if (state.transforms[lastIndex].key === transformKeyVal.key) {
-            state.transforms[lastIndex].val += transformKeyVal.val;
+            let sum = state.transforms[lastIndex].val + transformKeyVal.val;
+            state.transforms[lastIndex].val = sum;
             pushTransform = false;
         }
     }
