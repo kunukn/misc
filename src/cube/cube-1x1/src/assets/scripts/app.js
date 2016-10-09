@@ -305,7 +305,7 @@ function uiRotateTo(event) {
     let value = component.querySelector('input').value;
 
     if (value) {
-        this.rotateTo(value);
+        rotateTo(value);
     }
 }
 
