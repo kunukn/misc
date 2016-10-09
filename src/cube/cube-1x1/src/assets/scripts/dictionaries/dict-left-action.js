@@ -1,4 +1,6 @@
 import { STATES as S } from '../constants';
+import deepFreeze from 'deep-freeze';
+
 
 const dict = [];
 dict['l^'] = [];
@@ -27,5 +29,5 @@ dict[act][S.tl] = { state: S.tf, ui: '-y' };
 act = 'lv';
 dict[act][S.tf] = { state: '', ui: '' };
 
-
+deepFreeze(dict);
 export { dict as dictLeftAction };

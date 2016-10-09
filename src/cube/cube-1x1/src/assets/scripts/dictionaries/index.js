@@ -1,2 +1,2 @@
-export { dictDegree, dictStateRotate, dictActionTypes, dictTransform }
+export { dictStateRotate, dictActionTypes, dictTransform }
 from './dictionary';

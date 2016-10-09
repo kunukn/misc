@@ -1,4 +1,5 @@
 import { ACTION } from '../constants';
+import  deepFreeze  from 'deep-freeze';
 
 const dictDegree = [];
 dictDegree['_'] = 'rotateX(0deg)';
@@ -69,10 +70,9 @@ dictStateRotate['lf'] = ['z'];
 dictStateRotate['lt'] = ['z', '-x'];
 dictStateRotate['lb'] = ['z', '2x'];
 
-
-Object.freeze(dictStateRotate);
-Object.freeze(dictActionTypes);
-Object.freeze(dictTransform);
+deepFreeze(dictStateRotate);
+deepFreeze(dictActionTypes);
+deepFreeze(dictTransform);
 
 export { dictStateRotate };
 export { dictActionTypes };
