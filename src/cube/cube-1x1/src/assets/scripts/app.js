@@ -11,12 +11,12 @@ import backReducer from './reducers/back-reducer';
 import downReducer from './reducers/down-reducer';
 
 
-import { CUBE, ACTION } from './constants';
+import { CUBE, ACTION, STATES } from './constants';
 import { log } from './logger';
 
 import { qs, qsa, byId } from './query';
 
-import { dictDegree, dictStateRotate, dictTransform } from './dictionaries/dictionary';
+import { dictStateRotate, dictTransform } from './dictionaries/dictionary';
 
 import { cloneObject, transformsApply } from './cube-util';
 
@@ -323,6 +323,17 @@ function uiRotateTo(event) {
 
 initState();
 
+const inputPlaceholder = Object.keys(STATES).join(' ');
+const rotateToEl = document.getElementById('cube-rotate-to');
+rotateToEl.querySelector('input').setAttribute('placeholder', inputPlaceholder);
+rotateToEl.addEventListener('keypress', ev => {
+    const key = ev.which || ev.keyCode;
+    const ENTER = 13;
+    if (key === ENTER) {
+        uiRotateTo(event);
+    }
+});
+
 window.app = window.cube = {
     rotateTo,
     uiRotateTo,
@@ -341,6 +352,7 @@ window.app = window.cube = {
     debug: {
         cubeEl: cubeElement,
         getState,
+        STATES,
     }
 };
 

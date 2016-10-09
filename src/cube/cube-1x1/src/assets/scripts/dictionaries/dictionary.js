@@ -1,20 +1,20 @@
 import { ACTION } from '../constants';
 import deepFreeze from 'deep-freeze';
 
-const dictDegree = [];
-dictDegree['_'] = 'rotateX(0deg)';
-dictDegree['x'] = 'rotateX(90deg)';
-dictDegree['-x'] = 'rotateX(-90deg)';
-dictDegree['y'] = 'rotateY(90deg)';
-dictDegree['-y'] = 'rotateY(-90deg)';
-dictDegree['z'] = 'rotateZ(90deg)';
-dictDegree['-z'] = 'rotateZ(-90deg)';
-dictDegree['2x'] = 'rotateX(180deg)';
-dictDegree['-2x'] = 'rotateX(-180deg)';
-dictDegree['2y'] = 'rotateY(180deg)';
-dictDegree['-2y'] = 'rotateY(-180deg)';
-dictDegree['2z'] = 'rotateZ(180deg)';
-dictDegree['-2z'] = 'rotateZ(-180deg)';
+// const dictDegree = [];
+// dictDegree['_'] = 'rotateX(0deg)';
+// dictDegree['x'] = 'rotateX(90deg)';
+// dictDegree['-x'] = 'rotateX(-90deg)';
+// dictDegree['y'] = 'rotateY(90deg)';
+// dictDegree['-y'] = 'rotateY(-90deg)';
+// dictDegree['z'] = 'rotateZ(90deg)';
+// dictDegree['-z'] = 'rotateZ(-90deg)';
+// dictDegree['2x'] = 'rotateX(180deg)';
+// dictDegree['-2x'] = 'rotateX(-180deg)';
+// dictDegree['2y'] = 'rotateY(180deg)';
+// dictDegree['-2y'] = 'rotateY(-180deg)';
+// dictDegree['2z'] = 'rotateZ(180deg)';
+// dictDegree['-2z'] = 'rotateZ(-180deg)';
 
 const dictTransform = [];
 dictTransform['_'] = { key: 'X', val: 0 };
@@ -31,11 +31,15 @@ dictTransform['-2y'] = { key: 'Y', val: -180 };
 dictTransform['2z'] = { key: 'Z', val: 180 };
 dictTransform['-2z'] = { key: 'Z', val: -180 };
 
+deepFreeze(dictTransform);
+
 const dictActionTypes = [];
 dictActionTypes[ACTION.swipeup] = '^';
 dictActionTypes[ACTION.swiperight] = '>';
 dictActionTypes[ACTION.swipedown] = 'v';
 dictActionTypes[ACTION.swipeleft] = '<';
+
+deepFreeze(dictActionTypes);
 
 
 const dictStateRotate = [];
@@ -71,8 +75,7 @@ dictStateRotate['lt'] = ['z', '-x'];
 dictStateRotate['lb'] = ['z', '2x'];
 
 deepFreeze(dictStateRotate);
-deepFreeze(dictActionTypes);
-deepFreeze(dictTransform);
+
 
 export { dictStateRotate };
 export { dictActionTypes };
