@@ -81,4 +81,4 @@ left['lb'] = 't';
 left['ld'] = 'b';
 left['lf'] = 'd';
 
-export {opposite, left};
+export { opposite, left };

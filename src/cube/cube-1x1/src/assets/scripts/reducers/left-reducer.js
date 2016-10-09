@@ -5,7 +5,7 @@ import { dictLeftAction as dictAction } from '../dictionaries/dict-left-action';
 
 export default function leftReducer(state, action) {
 
-        return state; // todo
+    return state; // todo
 
 
     let actionType = dictActionTypes[action.type];

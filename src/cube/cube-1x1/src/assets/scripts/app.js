@@ -60,14 +60,7 @@ function updateUiByState(state) {
 
 function truncateTransforms(state) {
     if (state.transforms.length >= 4) {
-        let transforms = dictStateRotate[state.value];
-        if (transforms && transforms.length) {
-            state.transforms = transforms.map(t => {
-                return dictDegree[t];
-            });
-
-            log('replaced transform');
-        }
+        // todo
     }
     return this;
 }
@@ -140,58 +133,55 @@ const hammerEvents = 'swipeleft swiperight swipeup swipedown';
 hammerFront.on(hammerEvents, (ev) => {
     const action = { type: ev.type };
     const newState = frontReducer(getState(), action);
-
-    //   truncateTransforms(newState);
-    updateUiByState(newState);
+    truncateTransforms(newState);
     setState(newState);
-
+    updateUiByState(newState);
     debug.innerHTML = getDebugData('front', ev);
 });
 
 hammerRight.on(hammerEvents, (ev) => {
     const action = { type: ev.type };
     const newState = rightReducer(getState(), action);
-    updateUiByState(newState);
+    truncateTransforms(newState);
     setState(newState);
-
+    updateUiByState(newState);
     debug.innerHTML = getDebugData('right', ev);
 });
 hammerLeft.on(hammerEvents, (ev) => {
     const action = { type: ev.type };
     const newState = leftReducer(getState(), action);
-    updateUiByState(newState);
+    truncateTransforms(newState);
     setState(newState);
-
+    updateUiByState(newState);
     debug.innerHTML = getDebugData('left', ev);
 });
 
 hammerBack.on(hammerEvents, (ev) => {
     const action = { type: ev.type };
     const newState = backReducer(getState(), action);
-    updateUiByState(newState);
+    truncateTransforms(newState);
     setState(newState);
-
+    updateUiByState(newState);
     debug.innerHTML = getDebugData('back', ev);
 });
 
 hammerTop.on(hammerEvents, (ev) => {
     const action = { type: ev.type };
     const newState = topReducer(getState(), action);
-    updateUiByState(newState);
+    truncateTransforms(newState);
     setState(newState);
-
+    updateUiByState(newState);
     debug.innerHTML = getDebugData('top', ev);
 });
 
 hammerDown.on(hammerEvents, (ev) => {
     const action = { type: ev.type };
     const newState = downReducer(getState(), action);
-    updateUiByState(newState);
+    truncateTransforms(newState);
     setState(newState);
-
+    updateUiByState(newState);
     debug.innerHTML = getDebugData('down', ev);
 });
-
 
 
 initState();
@@ -200,22 +190,18 @@ function rotateTo(stateCode) {
     let transformCodes = dictStateRotate[stateCode];
     if (transformCodes && transformCodes.length) {
 
-        let transformKeyVals = transformCodes.map(t => dictTransform[t]);
-
-        let transforms = transformKeyVals.map(t => `rotate${t.key}(${t.val}deg)`);
-
-        let transformCss = transforms.join(' ');
-
-        let nextState = Object.assign({}, getState());
+        let transformKeyVals = transformCodes.map(t => dictTransform[t]),
+            transforms = transformKeyVals.map(t => `rotate${t.key}(${t.val}deg)`),
+            nextState = Object.assign({}, getState());
 
         nextState.value = stateCode;
         nextState.stateHistory.push(stateCode);
         nextState.actionHistory.push(`rotateTo: ${stateCode}`);
-        nextState.transforms = [transformCss];
+        nextState.transforms = transformKeyVals;
 
         setState(nextState);
 
-        cubeElement.style.transform = transformCss;
+        updateUiByState(nextState);
 
         return getState();
     }
@@ -223,17 +209,19 @@ function rotateTo(stateCode) {
 
 function x() {
     const newState = frontReducer(getState(), { type: 'swipeup' });
-    //   truncateTransforms(newState);
-    updateUiByState(newState);
+    truncateTransforms(newState);
     setState(newState);
+    updateUiByState(newState);
+
     debug.innerHTML = getDebugData('front', 'swipeup');
 }
 
 function _x() {
     const newState = frontReducer(getState(), { type: 'swipedown' });
-    //   truncateTransforms(newState);
-    updateUiByState(newState);
+    truncateTransforms(newState);
     setState(newState);
+    updateUiByState(newState);
+
     debug.innerHTML = getDebugData('front', 'swipedown');
 }
 
