@@ -4,7 +4,7 @@
   "description": "template",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "karma start karma.conf.js",
     "start": "gulp"
   },
   "author": "",
@@ -12,19 +12,27 @@
   "devDependencies": {
     "autoprefixer": "latest",
     "babel-core": "latest",
+    "babel-polyfill": "^6.16.0",
     "babel-preset-es2015": "latest",
+    "babel-register": "^6.16.3",
     "babelify": "^7.3.0",
     "browser-sync": "latest",
     "browserify": "^13.1.0",
     "gulp": "latest",
-    "gulp-babel": "latest",    
+    "gulp-babel": "latest",
     "gulp-notify": "latest",
     "gulp-postcss": "latest",
     "gulp-rename": "latest",
     "gulp-sass": "latest",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-util": "latest",
+    "jasmine-core": "^2.5.2",
     "jquery": "^2.2.4",
+    "karma": "^1.3.0",
+    "karma-babel-preprocessor": "^6.0.1",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-jasmine": "^1.0.2",
+    "karma-phantomjs-launcher": "^1.0.2",
     "vinyl-source-stream": "^1.1.0"
   }
 }
