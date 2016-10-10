@@ -2,16 +2,16 @@
 
 var paths = {
     babel: {
-        from: './assets/scripts/**/*-es6.js',
-        to: './assets/scripts'
+        from: './src/assets/scripts/**/*.js',
+        to: './dist/assets/scripts'
     },
     sass: {
-        from: './assets/styles/**/*.scss',
-        to: './assets/styles'
+        from: './src/assets/styles/**/*.scss',
+        to: './dist/assets/styles'
     },
     postcss: {
-        from: './assets/styles/app.css',
-        to: './assets/styles/app-theme'
+        from: './src/assets/styles/app.css',
+        to: './dist/assets/styles'
     }
 }
 
@@ -25,11 +25,11 @@ var gulp = require('gulp'),
     autoprefixer = require('autoprefixer'),
     browserSync = require('browser-sync').create();
 
-gulp.task('default', ['watch'], function () {
+gulp.task('default', ['watch'], function() {
     return browserSync.init({
         server: {
-            baseDir: ["./"],
-            middleware: function (req, res, next) {
+            baseDir: ['./'],
+            middleware: function(req, res, next) {
                 res.setHeader('Access-Control-Allow-Origin', '*');
                 next();
             }
@@ -43,12 +43,12 @@ gulp.task('default', ['watch'], function () {
             forms: false,
             scroll: false
         },
-        files: ['*.html', 'pages/**/*.html', 'assets/styles/**/*.css', 'assets/scripts/**/*.js']
+        files: ['*.html', 'pages/**/*.html', 'dist/assets/styles/**/*.css', 'dist/assets/scripts/**/*.js']
     });
 });
 
 
-gulp.task('sass', function () {
+gulp.task('sass', function() {
     return gulp.src(paths.sass.from)
         .pipe(sass.sync().on('error', sass.logError))
         .pipe(gulp.dest(paths.sass.to))
@@ -58,35 +58,32 @@ gulp.task('sass', function () {
 });
 
 
-gulp.task("babel", function () {
+gulp.task("babel", function() {
     return gulp.src(paths.babel.from)
         .pipe(babel({
             presets: ['es2015']
         }))
-        .on('error', function (err) {
+        .on('error', function(err) {
             console.log(err.message);
             // end this stream
             this.emit('end');
-        })
-        .pipe(rename(function (path) {
-            path.basename = path.basename.replace(/-es6$/, '');
-        }))
+        })        
         .pipe(gulp.dest(paths.babel.to))
         .pipe(notify({
             message: 'babel task complete'
         }));
 });
 
-gulp.task('postcss', function () {
+gulp.task('postcss', function() {
     var processors = [
-        autoprefixer({ browsers: ['last 1 version'] })
+        autoprefixer({ browsers: ['last 2 version'] })
     ];
     return gulp.src(paths.postcss.from)
         .pipe(postcss(processors))
         .pipe(gulp.dest(paths.postcss.to));
 });
 
-gulp.task('watch', function () {
+gulp.task('watch', function() {
     gulp.watch(paths.sass.from, ['sass']);
     gulp.watch(paths.babel.from, ['babel']);
 });

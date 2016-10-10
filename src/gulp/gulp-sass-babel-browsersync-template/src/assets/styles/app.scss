@@ -1,0 +1,22 @@
+@charset "UTF-8";
+*,
+:before,
+:after {
+    box-sizing: border-box;    
+}
+
+html{
+	font-size: 100%;
+}
+
+body {
+    padding: 1em;
+    color: white;
+	background-color: #333;    
+    font-family: sans-serif;
+	margin: 0;
+	
+    [id=time] {
+        color: red;
+    }
+}
