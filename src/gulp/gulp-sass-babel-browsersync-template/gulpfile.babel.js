@@ -7,10 +7,14 @@ import sourcemaps from 'gulp-sourcemaps';
 var gutil = require('gulp-util'),
     babel = require("gulp-babel"),
     rename = require('gulp-rename'),
-    notify = require('gulp-notify'),    
+    notify = require('gulp-notify'),
     postcss = require('gulp-postcss'),
     autoprefixer = require('autoprefixer'),
+    babelify = require('babelify'),
+    browserify = require("browserify"),
+    source = require("vinyl-source-stream"),
     browserSync = require('browser-sync').create();
+
 
 var paths = {
     babel: {
@@ -24,6 +28,10 @@ var paths = {
     postcss: {
         from: './src/assets/styles/app.css',
         to: './dist/assets/styles'
+    },
+    browserify: {
+        from: './src/assets/scripts/app.js',
+        to: './dist/app-bundle.js',
     }
 }
 
@@ -45,12 +53,12 @@ gulp.task('default', ['watch'], function() {
             forms: false,
             scroll: false
         },
-        files: ['*.html', 'pages/**/*.html', 'dist/assets/styles/**/*.css', 'dist/assets/scripts/**/*.js']
+        files: ['*.html', 'dist/**/*.html', 'dist/**/*.css', 'dist/**/*.js']
     });
 });
 
 
-gulp.task('sass', function() {
+gulp.task('sass', () => {
     return gulp.src(paths.sass.from)
         .pipe(sass.sync().on('error', sass.logError))
         .pipe(gulp.dest(paths.sass.to))
@@ -60,7 +68,7 @@ gulp.task('sass', function() {
 });
 
 
-gulp.task("babel", function() {
+gulp.task("babel", () => {
     return gulp.src(paths.babel.from)
         .pipe(babel({
             presets: ['es2015']
@@ -69,14 +77,14 @@ gulp.task("babel", function() {
             console.log(err.message);
             // end this stream
             this.emit('end');
-        })        
+        })
         .pipe(gulp.dest(paths.babel.to))
         .pipe(notify({
             message: 'babel task complete'
         }));
 });
 
-gulp.task('postcss', function() {
+gulp.task('postcss', () => {
     var processors = [
         autoprefixer({ browsers: ['last 2 version'] })
     ];
@@ -85,7 +93,21 @@ gulp.task('postcss', function() {
         .pipe(gulp.dest(paths.postcss.to));
 });
 
-gulp.task('watch', function() {
+gulp.task('build-scripts', () => {
+    return browserify({
+            entries: [paths.browserify.from]
+        })
+        .transform(babelify)
+        .bundle()
+        .pipe(source('app-bundle.js'))
+        .pipe(gulp.dest('./dist/'))
+        .pipe(notify({
+            message: 'build-scripts complete'
+        }));
+});
+
+
+gulp.task('watch', () => {
     gulp.watch(paths.sass.from, ['sass']);
-    gulp.watch(paths.babel.from, ['babel']);
+    gulp.watch(paths.babel.from, ['build-scripts']);
 });

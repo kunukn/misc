@@ -1,8 +1,8 @@
 'use strict';
 
+import time from "./time.js";
 
-document.getElementById('time').innerHTML = `The time is ${new Date()}`;
+document.getElementById('time').innerHTML = time();
 
-
-
+export default 'app';
 
