@@ -23,7 +23,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = time;
 function time() {
-    return 'Right now the time is ' + new Date();
+    return 'The time is ' + new Date();
 }
 
 },{}]},{},[1]);

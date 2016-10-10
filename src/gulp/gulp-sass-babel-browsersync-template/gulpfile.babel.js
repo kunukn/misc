@@ -1,22 +1,21 @@
-'use strict';
+;'use strict';
 
 import gulp from 'gulp';
 import sass from 'gulp-sass';
 import sourcemaps from 'gulp-sourcemaps';
+import gutil from 'gulp-util';
+import babel from 'gulp-babel';
+import notify from 'gulp-notify';
+import postcss from 'gulp-postcss';
+import autoprefixer from 'autoprefixer';
+import babelify from 'babelify';
+import browserify from 'browserify';
+import source from 'vinyl-source-stream';
+import browserSyncLib from 'browser-sync';
 
-var gutil = require('gulp-util'),
-    babel = require("gulp-babel"),
-    rename = require('gulp-rename'),
-    notify = require('gulp-notify'),
-    postcss = require('gulp-postcss'),
-    autoprefixer = require('autoprefixer'),
-    babelify = require('babelify'),
-    browserify = require("browserify"),
-    source = require("vinyl-source-stream"),
-    browserSync = require('browser-sync').create();
+let browserSync = browserSyncLib.create();
 
-
-var paths = {
+const paths = {
     babel: {
         from: './src/assets/scripts/**/*.js',
         to: './dist/assets/scripts'
