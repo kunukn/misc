@@ -1,5 +1,17 @@
 'use strict';
 
+import gulp from 'gulp';
+import sass from 'gulp-sass';
+import sourcemaps from 'gulp-sourcemaps';
+
+var gutil = require('gulp-util'),
+    babel = require("gulp-babel"),
+    rename = require('gulp-rename'),
+    notify = require('gulp-notify'),    
+    postcss = require('gulp-postcss'),
+    autoprefixer = require('autoprefixer'),
+    browserSync = require('browser-sync').create();
+
 var paths = {
     babel: {
         from: './src/assets/scripts/**/*.js',
@@ -14,16 +26,6 @@ var paths = {
         to: './dist/assets/styles'
     }
 }
-
-var gulp = require('gulp'),
-    gutil = require('gulp-util'),
-    babel = require("gulp-babel"),
-    rename = require('gulp-rename'),
-    notify = require('gulp-notify'),
-    sass = require('gulp-sass'),
-    postcss = require('gulp-postcss'),
-    autoprefixer = require('autoprefixer'),
-    browserSync = require('browser-sync').create();
 
 gulp.task('default', ['watch'], function() {
     return browserSync.init({
