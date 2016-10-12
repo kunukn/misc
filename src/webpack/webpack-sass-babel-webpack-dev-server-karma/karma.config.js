@@ -1,5 +1,7 @@
 var path = require('path');
 
+/* Based on https://github.com/zyml/es6-karma-jasmine-webpack-boilerplate*/ 
+
 module.exports = function(config) {
     config.set({
         browsers: ['PhantomJS'], // Chrome
@@ -16,7 +18,7 @@ module.exports = function(config) {
             'jasmine',
         ],
         preprocessors: {
-            'tests.webpack.js': ['webpack', 'sourcemap'],            
+            'tests.webpack.js': ['webpack', 'sourcemap'],
         },
         reporters: ['progress', 'coverage'],
         webpack: {

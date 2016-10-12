@@ -6,9 +6,9 @@ describe('app', () => {
         expect(App).toBeDefined();
     });
 
-    //let app = new App();
+    let app = new App();
 
-    // it('app to be defined', () => {
-    //     expect(app).toBeDefined();
-    // });
+    it('instance to be defined', () => {
+        expect(app).toBeDefined();
+    });
 });

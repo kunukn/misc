@@ -1,10 +1,9 @@
 ;
 'use strict';
 
-if (process.env.INCLUDE_STYLING) { 
+if (process.env.INCLUDE_STYLING) {
     require('../styles/app.scss');
 }
-
 
 import utils from './util';
 

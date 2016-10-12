@@ -1,5 +1,5 @@
 export default {
-    run(){
-        console.log('i am util');
+    whoami() {
+        return 'i am util';
     }
 };
