@@ -44,7 +44,7 @@ const
     leftEl = qs('.left', cubeEl),
     backEl = qs('.back', cubeEl),
     downEl = qs('.down', cubeEl),
-    appInfoEl = qs('.js-app-info');
+    stateInfoEl = qs('.js-state-info');
 
 let _appState = {
     code: nextState.first,
@@ -61,7 +61,7 @@ function setState(state) {
 }
 
 function updateAppInfo() {
-    appInfoEl.innerHTML = `<label>State: </label><span class="state"> ${getState().code}</span>`;
+    stateInfoEl.innerHTML = `<label>State: </label><span class="state"> ${getState().code}</span>`;
 }
 
 const hammerFront = new Hammer(

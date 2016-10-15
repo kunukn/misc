@@ -1,26 +1,5 @@
 import deepFreeze from 'deep-freeze';
 
-
-const CUBE = {
-    TOP: 'top',
-    FRONT: 'front',
-    RIGHT: 'right',
-    BACK: 'back',
-    LEFT: 'left',
-    DOWN: 'down',
-};
-deepFreeze(CUBE);
-
-
-const ACTION = {
-    swipeleft: 'swipeleft',
-    swiperight: 'swiperight',
-    swipeup: 'swipeup',
-    swipedown: 'swipedown',
-};
-deepFreeze(ACTION);
-
-
 const STATES = {
     uf: 'uf',
     ur: 'ur',
@@ -66,7 +45,7 @@ left['ub'] = 'r';
 left['ul'] = 'b';
 
 left['fu'] = 'r';
-left['fl'] = 't';
+left['fl'] = 'u';
 left['fd'] = 'l';
 left['fr'] = 'd';
 
