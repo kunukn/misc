@@ -44,7 +44,7 @@ const
     leftEl = qs('.left', cubeEl),
     backEl = qs('.back', cubeEl),
     downEl = qs('.down', cubeEl),
-    debugEl = qs('.debug');
+    appInfoEl = qs('.js-app-info');
 
 let _appState = {
     code: nextState.first,
@@ -57,11 +57,11 @@ function getState() {
 
 function setState(state) {
     _appState = state;
-    updateDebug();
+    updateAppInfo();
 }
 
-function updateDebug() {
-    debugEl.innerHTML = `<label>State: </label><span class="state"> ${getState().code}</span>`;
+function updateAppInfo() {
+    appInfoEl.innerHTML = `<label>State: </label><span class="state"> ${getState().code}</span>`;
 }
 
 const hammerFront = new Hammer(
@@ -90,8 +90,6 @@ hammerFront.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
         if (element.dataset.type !== 'swipe-component')
             element = element.parentElement;
     }
-    let state = getState(),
-        stateCode = state.code;
 
     switch (type) {
         case 'tap':
@@ -99,40 +97,16 @@ hammerFront.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
             break;
 
         case 'swipeup':
-            if (!state.swipeEnabled)
-                return;
-
-            state.code = dictCube[stateCode]['x']; // reducer
-            state.swipeEnabled = false;
-            setState(state);
-            x(); // ui
+            x();
             break;
         case 'swiperight':
-            if (!state.swipeEnabled)
-                return;
-
-            state.code = dictCube[stateCode]['y']; // reducer
-            state.swipeEnabled = false;
-            setState(state);
-            y(); // ui
+            y();
             break;
         case 'swipedown':
-            if (!state.swipeEnabled)
-                return;
-
-            state.code = dictCube[stateCode]['-x']; // reducer
-            state.swipeEnabled = false;
-            setState(state);
-            _x(); // ui
+            _x();
             break;
         case 'swipeleft':
-            if (!state.swipeEnabled)
-                return;
-
-            state.code = dictCube[stateCode]['-y']; // reducer
-            state.swipeEnabled = false;
-            setState(state);
-            _y(); // ui
+            _y();
             break;
     }
 });
@@ -148,8 +122,6 @@ hammerUp.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
         if (element.dataset.type !== 'swipe-component')
             element = element.parentElement;
     }
-    let state = getState(),
-        stateCode = state.code;
 
     switch (type) {
         case 'tap':
@@ -157,40 +129,16 @@ hammerUp.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
             break;
 
         case 'swipeup':
-            if (!state.swipeEnabled)
-                return;
-
-            state.code = dictCube[stateCode]['x']; // reducer
-            state.swipeEnabled = false;
-            setState(state);
-            x(); // ui
+            x();
             break;
         case 'swiperight':
-            if (!state.swipeEnabled)
-                return;
-
-            state.code = dictCube[stateCode]['z']; // reducer
-            state.swipeEnabled = false;
-            setState(state);
-            z(); // ui
+            z();
             break;
         case 'swipedown':
-            if (!state.swipeEnabled)
-                return;
-
-            state.code = dictCube[stateCode]['-x']; // reducer
-            state.swipeEnabled = false;
-            setState(state);
-            _x(); // ui
+            _x();
             break;
         case 'swipeleft':
-            if (!state.swipeEnabled)
-                return;
-
-            state.code = dictCube[stateCode]['-z']; // reducer
-            state.swipeEnabled = false;
-            setState(state);
-            _z(); // ui
+            _z();
             break;
     }
 });
@@ -206,49 +154,22 @@ hammerRight.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
         if (element.dataset.type !== 'swipe-component')
             element = element.parentElement;
     }
-    let state = getState(),
-        stateCode = state.code;
-
     switch (type) {
         case 'tap':
             tap();
             break;
 
         case 'swipeup':
-            if (!state.swipeEnabled)
-                return;
-
-            state.code = dictCube[stateCode]['-z']; // reducer
-            state.swipeEnabled = false;
-            setState(state);
-            _z(); // ui
+            _z();
             break;
         case 'swiperight':
-            if (!state.swipeEnabled)
-                return;
-
-            state.code = dictCube[stateCode]['y']; // reducer
-            state.swipeEnabled = false;
-            setState(state);
-            y(); // ui
+            y();
             break;
         case 'swipedown':
-            if (!state.swipeEnabled)
-                return;
-
-            state.code = dictCube[stateCode]['z']; // reducer
-            state.swipeEnabled = false;
-            setState(state);
-            z(); // ui
+            z();
             break;
         case 'swipeleft':
-            if (!state.swipeEnabled)
-                return;
-
-            state.code = dictCube[stateCode]['-y']; // reducer
-            state.swipeEnabled = false;
-            setState(state);
-            _y(); // ui
+            _y();
             break;
     }
 });
@@ -293,27 +214,68 @@ function tap() {
     log(`tap`);
 }
 
-function x() {
-    cubeEl.style.transform = `rotateX(90deg)`;
+function actionInvoke(action, ui) {
+    let state = getState(),
+        stateCode = state.code;
+
+    if (!state.swipeEnabled)
+        return;
+
+    state.code = dictCube[stateCode][action]; // reducer
+    state.swipeEnabled = false;
+    setState(state);
+    ui();
 }
 
-function y() {
-    cubeEl.style.transform = `rotateY(90deg)`;
+
+function x() {
+    actionInvoke('x', uix);
 }
 
 function _x() {
-    cubeEl.style.transform = `rotateX(-90deg)`;
+    actionInvoke('-x', ui_x);
+}
+
+function y() {
+    actionInvoke('y', uiy);
 }
 
 function _y() {
-    cubeEl.style.transform = `rotateY(-90deg)`;
+    actionInvoke('-y', ui_y);
 }
 
+
 function z() {
-    cubeEl.style.transform = `rotateZ(90deg)`;
+    actionInvoke('z', uiz);
 }
 
 function _z() {
+    actionInvoke('-z', ui_z);
+}
+
+
+
+function uix() {
+    cubeEl.style.transform = `rotateX(90deg)`;
+}
+
+function uiy() {
+    cubeEl.style.transform = `rotateY(90deg)`;
+}
+
+function ui_x() {
+    cubeEl.style.transform = `rotateX(-90deg)`;
+}
+
+function ui_y() {
+    cubeEl.style.transform = `rotateY(-90deg)`;
+}
+
+function uiz() {
+    cubeEl.style.transform = `rotateZ(90deg)`;
+}
+
+function ui_z() {
     cubeEl.style.transform = `rotateZ(-90deg)`;
 }
 
@@ -321,16 +283,15 @@ cubeEl.addEventListener('transitionend', transitionEnd);
 
 window.app = window.cube = {
     x,
-    _x,
-    y,
-    _y,
-    z,
-    _z,
-    debug: {}
+    // _x,
+    // y,
+    // _y,
+    // z,
+    // _z
 };
 
 updateUiFaces();
-updateDebug();
+updateAppInfo();
 
 export class App {
     constructor() {}
