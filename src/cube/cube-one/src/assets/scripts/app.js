@@ -15,7 +15,6 @@ import dictCube from './dictionaries/dict-cube';
 
 log('App running');
 
-
 function rAF(callback) {
     window.requestAnimationFrame(callback);
 }
@@ -47,19 +46,39 @@ const
     downEl = qs('.down', cubeEl),
     debugEl = qs('.debug');
 
-let stateCode = nextState.first;
+let _appState = {
+    code: nextState.first,
+    swipeEnabled: true,
+};
+
+function getState() {
+    return cloneObject(_appState);
+}
+
+function setState(state) {
+    _appState = state;
+    updateDebug();
+}
 
 function updateDebug() {
-    debugEl.innerHTML = `<span class="state">State: ${stateCode}</span><span class="time">${new Date()}</span>`;
+    debugEl.innerHTML = `<label>State: </label><span class="state"> ${getState().code}</span>`;
 }
 
 const hammerFront = new Hammer(
     touchFrontEl,
     hammerOptions);
 
-hammerFront.get('swipe').set({
-    direction: Hammer.DIRECTION_ALL
-});
+const hammerUp = new Hammer(
+    touchUpEl,
+    hammerOptions);
+
+const hammerRight = new Hammer(
+    touchRightEl,
+    hammerOptions);
+
+hammerFront.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+hammerUp.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+hammerRight.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 
 hammerFront.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
     const type = ev.type;
@@ -71,45 +90,181 @@ hammerFront.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
         if (element.dataset.type !== 'swipe-component')
             element = element.parentElement;
     }
-    let nextStateCode;
+    let state = getState(),
+        stateCode = state.code;
+
     switch (type) {
         case 'tap':
             tap();
             break;
+
         case 'swipeup':
-            nextStateCode = dictCube[stateCode]['x'];
-            stateCode = nextStateCode;
-            x();
+            if (!state.swipeEnabled)
+                return;
+
+            state.code = dictCube[stateCode]['x']; // reducer
+            state.swipeEnabled = false;
+            setState(state);
+            x(); // ui
             break;
         case 'swiperight':
-            nextStateCode = dictCube[stateCode]['y'];
-            stateCode = nextStateCode;
-            y();
+            if (!state.swipeEnabled)
+                return;
+
+            state.code = dictCube[stateCode]['y']; // reducer
+            state.swipeEnabled = false;
+            setState(state);
+            y(); // ui
             break;
         case 'swipedown':
-            nextStateCode = dictCube[stateCode]['-x'];
-            stateCode = nextStateCode;
-            _x();
+            if (!state.swipeEnabled)
+                return;
+
+            state.code = dictCube[stateCode]['-x']; // reducer
+            state.swipeEnabled = false;
+            setState(state);
+            _x(); // ui
             break;
         case 'swipeleft':
-            nextStateCode = dictCube[stateCode]['-y'];
-            stateCode = nextStateCode;
-            _y();
+            if (!state.swipeEnabled)
+                return;
+
+            state.code = dictCube[stateCode]['-y']; // reducer
+            state.swipeEnabled = false;
+            setState(state);
+            _y(); // ui
             break;
     }
-
 });
+
+
+hammerUp.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
+    const type = ev.type;
+    let element = ev.target;
+
+    // Find swipe element if event is invoke on child element
+    if (element.dataset.type !== 'swipe-component') {
+        element = element.parentElement;
+        if (element.dataset.type !== 'swipe-component')
+            element = element.parentElement;
+    }
+    let state = getState(),
+        stateCode = state.code;
+
+    switch (type) {
+        case 'tap':
+            tap();
+            break;
+
+        case 'swipeup':
+            if (!state.swipeEnabled)
+                return;
+
+            state.code = dictCube[stateCode]['x']; // reducer
+            state.swipeEnabled = false;
+            setState(state);
+            x(); // ui
+            break;
+        case 'swiperight':
+            if (!state.swipeEnabled)
+                return;
+
+            state.code = dictCube[stateCode]['z']; // reducer
+            state.swipeEnabled = false;
+            setState(state);
+            z(); // ui
+            break;
+        case 'swipedown':
+            if (!state.swipeEnabled)
+                return;
+
+            state.code = dictCube[stateCode]['-x']; // reducer
+            state.swipeEnabled = false;
+            setState(state);
+            _x(); // ui
+            break;
+        case 'swipeleft':
+            if (!state.swipeEnabled)
+                return;
+
+            state.code = dictCube[stateCode]['-z']; // reducer
+            state.swipeEnabled = false;
+            setState(state);
+            _z(); // ui
+            break;
+    }
+});
+
+
+hammerRight.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
+    const type = ev.type;
+    let element = ev.target;
+
+    // Find swipe element if event is invoke on child element
+    if (element.dataset.type !== 'swipe-component') {
+        element = element.parentElement;
+        if (element.dataset.type !== 'swipe-component')
+            element = element.parentElement;
+    }
+    let state = getState(),
+        stateCode = state.code;
+
+    switch (type) {
+        case 'tap':
+            tap();
+            break;
+
+        case 'swipeup':
+            if (!state.swipeEnabled)
+                return;
+
+            state.code = dictCube[stateCode]['-z']; // reducer
+            state.swipeEnabled = false;
+            setState(state);
+            _z(); // ui
+            break;
+        case 'swiperight':
+            if (!state.swipeEnabled)
+                return;
+
+            state.code = dictCube[stateCode]['y']; // reducer
+            state.swipeEnabled = false;
+            setState(state);
+            y(); // ui
+            break;
+        case 'swipedown':
+            if (!state.swipeEnabled)
+                return;
+
+            state.code = dictCube[stateCode]['z']; // reducer
+            state.swipeEnabled = false;
+            setState(state);
+            z(); // ui
+            break;
+        case 'swipeleft':
+            if (!state.swipeEnabled)
+                return;
+
+            state.code = dictCube[stateCode]['-y']; // reducer
+            state.swipeEnabled = false;
+            setState(state);
+            _y(); // ui
+            break;
+    }
+});
+
 
 function updateUiFaces() {
 
     let u, f, r, l, b, d;
+    const state = getState();
 
-    u = getUp(stateCode);
-    f = getFront(stateCode);
-    r = getRight(stateCode);
-    l = getLeft(stateCode);
-    b = getBack(stateCode);
-    d = getDown(stateCode);
+    u = getUp(state.code);
+    f = getFront(state.code);
+    r = getRight(state.code);
+    l = getLeft(state.code);
+    b = getBack(state.code);
+    d = getDown(state.code);
 
     upEl.style.background = dictColors[u];
     frontEl.style.background = dictColors[f];
@@ -126,43 +281,40 @@ function transitionEnd(ev) {
         cubeEl.style.transform = '';
         rAF(_ => {
             cubeEl.style.transition = '';
+
+            const state = getState();
+            state.swipeEnabled = true;
+            setState(state);
         });
     });
 }
 
 function tap() {
     log(`tap`);
-    updateDebug();
 }
 
 function x() {
     cubeEl.style.transform = `rotateX(90deg)`;
-    updateDebug();
 }
 
 function y() {
     cubeEl.style.transform = `rotateY(90deg)`;
-    updateDebug();
 }
 
 function _x() {
     cubeEl.style.transform = `rotateX(-90deg)`;
-    updateDebug();
 }
 
 function _y() {
     cubeEl.style.transform = `rotateY(-90deg)`;
-    updateDebug();
 }
 
 function z() {
     cubeEl.style.transform = `rotateZ(90deg)`;
-    updateDebug();
 }
 
 function _z() {
     cubeEl.style.transform = `rotateZ(-90deg)`;
-    updateDebug();
 }
 
 cubeEl.addEventListener('transitionend', transitionEnd);

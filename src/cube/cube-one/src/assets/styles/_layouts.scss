@@ -1,5 +1,5 @@
 $size: 200px;
-$transition-duration: 300ms;
+$transition-duration: 200ms;
 *,
 :before,
 :after {
@@ -8,6 +8,7 @@ $transition-duration: 300ms;
 
 body {
     font: 20px sans-serif;
+    background: #fafafa;
 }
 
 .debug {
@@ -18,18 +19,19 @@ body {
     padding: .1em;
     min-height: 1.5em;
     border-bottom: 1px solid lightgray;
+    > label {
+        font-weight: 700;
+        display: inline-block;
+    }
     > .state {
         display: inline-block;
         margin-right: 1em;
         font-weight: 700;
-    }
-    > .time {
-        font-size: 60%;
+        text-transform: uppercase;
     }
 }
 
 .cube-scene {
-    //transition: 200ms;
     width: $size;
     height: $size;
     // perspective: 800px;
@@ -42,7 +44,6 @@ body {
 }
 
 .cube-component {
-    //transition: 300ms;
     width: $size;
     height: $size;
     margin: 0 auto;
@@ -63,9 +64,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: start;
-    color: white;
+    color: #222;
+    color: transparent;
     cursor: pointer;
-    //  font-size: 0;
+    // font-size: 0;
     &--up {
         transform: rotateX(-90deg) translateY($size/2) rotateY(180deg) rotateZ(180deg);
         transform-origin: top center;
@@ -77,9 +79,17 @@ body {
         transform: rotateY(-270deg) translateX($size/2);
         transform-origin: top right;
     }
-    &--left {}
-    &--back {}
-    &--down {}
+    &--left {
+        transform: rotateY(270deg) translateX(-$size/2);
+        transform-origin: center left;
+    }
+    &--back {
+        transform: translateZ(-$size/2) rotateY(180deg);
+    }
+    &--down {
+        transform: rotateX(90deg) translateY(-$size/2) rotateY(180deg) rotateZ(180deg);
+        transform-origin: bottom center;
+    }
 }
 
 .cube {
@@ -103,7 +113,7 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 1px solid;
+        border: 1px solid black;
         font-size: 0;
         color: transparent;
         backface-visibility: hidden;
@@ -129,6 +139,24 @@ body {
     .left {
         transform: rotateY(270deg) translateX(-$size/2);
         transform-origin: center left;
+    }
+    .front-color {
+        background: #009E60;
+    }
+    .up-color {
+        background: white;
+    }
+    .right-color {
+        background: #C41E3A;
+    }
+    .left-color {
+        background: #FF5800;
+    }
+    .back-color {
+        background: #0051BA;
+    }
+    .down-color {
+        background: #FFD500;
     }
 }
 
