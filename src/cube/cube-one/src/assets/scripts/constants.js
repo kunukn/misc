@@ -22,15 +22,15 @@ deepFreeze(ACTION);
 
 
 const STATES = {
-    tf: 'tf',
-    tr: 'tr',
-    tb: 'tb',
-    tl: 'tl',
-    ft: 'ft',
+    uf: 'uf',
+    ur: 'ur',
+    ub: 'ub',
+    ul: 'ul',
+    fu: 'fu',
     fl: 'fl',
     fd: 'fd',
     fr: 'fr',
-    rt: 'rt',
+    ru: 'ru',
     rf: 'rf',
     rd: 'rd',
     rb: 'rb',
@@ -38,11 +38,11 @@ const STATES = {
     dl: 'dl',
     db: 'db',
     dr: 'dr',
-    bt: 'bt',
+    bu: 'bu',
     br: 'br',
     bd: 'bd',
     bl: 'bl',
-    lt: 'lt',
+    lu: 'lu',
     lb: 'lb',
     ld: 'ld',
     lf: 'lf',
@@ -52,26 +52,26 @@ deepFreeze(STATES);
 
 
 const opposite = [];
-opposite['t'] = 'd';
-opposite['d'] = 't';
+opposite['u'] = 'd';
+opposite['d'] = 'u';
 opposite['r'] = 'l';
 opposite['l'] = 'r';
 opposite['f'] = 'b';
 opposite['b'] = 'f';
 
 const left = [];
-left['tf'] = 'l';
-left['tr'] = 'f';
-left['tb'] = 'r';
-left['tl'] = 'b';
+left['uf'] = 'l';
+left['ur'] = 'f';
+left['ub'] = 'r';
+left['ul'] = 'b';
 
-left['ft'] = 'r';
+left['fu'] = 'r';
 left['fl'] = 't';
 left['fd'] = 'l';
 left['fr'] = 'd';
 
-left['rt'] = 'b';
-left['rf'] = 't';
+left['ru'] = 'b';
+left['rf'] = 'u';
 left['rd'] = 'f';
 left['rb'] = 'd';
 
@@ -80,15 +80,15 @@ left['dl'] = 'f';
 left['db'] = 'l';
 left['dr'] = 'b';
 
-left['bt'] = 'l';
-left['br'] = 't';
+left['bu'] = 'l';
+left['br'] = 'u';
 left['bd'] = 'r';
 left['bl'] = 'd';
 
-left['lt'] = 'f';
-left['lb'] = 't';
+left['lu'] = 'f';
+left['lb'] = 'u';
 left['ld'] = 'b';
 left['lf'] = 'd';
 
 
-export { CUBE, ACTION, STATES, opposite, left };
+export { STATES, opposite, left };

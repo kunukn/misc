@@ -3,16 +3,15 @@
 
 import '../styles/app.scss';
 
-import { CUBE, ACTION, STATES } from './constants';
 import { log } from './logger';
 
 import { qs, qsa, byId } from './query';
 
-import { dictColors } from './dictionaries/dictionary';
+import dictColors from './dictionaries/dict-colors';
 
-import { cloneObject, nextState, getLeft, getRight, getDown, getBack, getTop, getFront } from './cube-util';
+import { cloneObject, nextState, getLeft, getRight, getDown, getBack, getUp, getFront } from './cube-util';
 
-import { dictCube } from './dictionaries/dict-cube';
+import dictCube from './dictionaries/dict-cube';
 
 log('App running');
 
@@ -20,12 +19,10 @@ log('App running');
 function rAF(callback) {
     window.requestAnimationFrame(callback);
 }
-const next = rAF;
 
 function nextFrame(callback) {
     rAF(() => {
         rAF(callback);
-        return next;
     });
 }
 
@@ -35,22 +32,25 @@ const hammerOptions = {
 
 const
     cubeComponentEl = byId('cube-component'),
-    touchTopEl = qs('.js-touch-top', cubeComponentEl),
+    touchUpEl = qs('.js-touch-up', cubeComponentEl),
     touchFrontEl = qs('.js-touch-front', cubeComponentEl),
     touchRightEl = qs('.js-touch-right', cubeComponentEl),
+    touchLeftEl = qs('.js-touch-left', cubeComponentEl),
+    touchBackEl = qs('.js-touch-back', cubeComponentEl),
+    touchDownEl = qs('.js-touch-down', cubeComponentEl),
     cubeEl = qs('.js-cube', cubeComponentEl),
     frontEl = qs('.front', cubeEl),
-    topEl = qs('.top', cubeEl),
+    upEl = qs('.up', cubeEl),
     rightEl = qs('.right', cubeEl),
     leftEl = qs('.left', cubeEl),
     backEl = qs('.back', cubeEl),
     downEl = qs('.down', cubeEl),
     debugEl = qs('.debug');
 
-let stateCode = 'tf';
+let stateCode = nextState.first;
 
 function updateDebug() {
-    debugEl.innerHTML = `<span class="state">${stateCode}</span><span class="time">${new Date()}</span>`;
+    debugEl.innerHTML = `<span class="state">State: ${stateCode}</span><span class="time">${new Date()}</span>`;
 }
 
 const hammerFront = new Hammer(
@@ -102,16 +102,16 @@ hammerFront.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
 
 function updateUiFaces() {
 
-    let t, f, r, l, b, d;
+    let u, f, r, l, b, d;
 
-    t = getTop(stateCode);
+    u = getUp(stateCode);
     f = getFront(stateCode);
     r = getRight(stateCode);
     l = getLeft(stateCode);
     b = getBack(stateCode);
     d = getDown(stateCode);
 
-    topEl.style.background = dictColors[t];
+    upEl.style.background = dictColors[u];
     frontEl.style.background = dictColors[f];
     rightEl.style.background = dictColors[r];
     leftEl.style.background = dictColors[l];
@@ -124,7 +124,7 @@ function transitionEnd(ev) {
     nextFrame(_ => {
         updateUiFaces();
         cubeEl.style.transform = '';
-        next(_ => {
+        rAF(_ => {
             cubeEl.style.transition = '';
         });
     });
@@ -178,6 +178,7 @@ window.app = window.cube = {
 };
 
 updateUiFaces();
+updateDebug();
 
 export class App {
     constructor() {}

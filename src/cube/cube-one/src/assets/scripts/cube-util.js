@@ -1,7 +1,7 @@
 import { opposite, left } from './constants';
 import { log } from './logger';
 
-export function getTop(stateCode) {
+export function getUp(stateCode) {
     return stateCode[0];
 }
 
@@ -32,17 +32,17 @@ export function cloneObject(obj) {
 function NextState() {
 
     const S = [];
-    S.push('tf');
-    S.push('tr');
-    S.push('tb');
-    S.push('tl');
+    S.push('uf');
+    S.push('ur');
+    S.push('ub');
+    S.push('ul');
 
-    S.push('ft');
+    S.push('fu');
     S.push('fl');
     S.push('fd');
     S.push('fr');
 
-    S.push('rt');
+    S.push('ru');
     S.push('rf');
     S.push('rd');
     S.push('rb');
@@ -52,17 +52,17 @@ function NextState() {
     S.push('db');
     S.push('dr');
 
-    S.push('bt');
+    S.push('bu');
     S.push('br');
     S.push('bd');
     S.push('bl');
 
-    S.push('lt');
+    S.push('lu');
     S.push('lb');
     S.push('ld');
     S.push('lf');
 
-    this.first = 'tf';
+    this.first = 'uf';
     this.last = 'lf';
 
     this.stateCount = S.length;
