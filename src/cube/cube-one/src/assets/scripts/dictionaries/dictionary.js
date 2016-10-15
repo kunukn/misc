@@ -77,6 +77,21 @@ dictStateRotate['lb'] = ['z', '2x'];
 deepFreeze(dictStateRotate);
 
 
+
+const dictColors = [];
+dictColors['t'] = 'red';
+dictColors['f'] = 'lightgreen';
+dictColors['r'] = 'beige';
+dictColors['l'] = 'teal';
+dictColors['b'] = 'orange';
+dictColors['d'] = 'dodgerblue';
+deepFreeze(dictColors);
+
+
+
+
+
 export { dictStateRotate };
 export { dictActionTypes };
 export { dictTransform };
+export { dictColors };

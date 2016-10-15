@@ -11,6 +11,24 @@ body {
     font: 20px sans-serif;
 }
 
+.debug {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: .1em;
+    min-height: 2em;
+    border: 1px solid lightgray;
+    > .state {
+        display: inline-block;
+        margin-right: 1em;
+        font-weight: 700;
+        background: pink;
+
+    }
+    > .time {}
+}
+
 .cube-scene {
     transition: 200ms;
     width: $size;
@@ -43,13 +61,23 @@ body {
     //background: rgba(red, .5);
     backface-visibility: hidden;
     z-index: 1;
-    transform: translateZ($size/2 + 1px);
     display: flex;
     justify-content: center;
     align-items: start;
     color: white;
     cursor: pointer;
     //  font-size: 0;
+    &--top {
+        transform: rotateX(-90deg) translateY($size/2) rotateY(180deg) rotateZ(180deg);
+        transform-origin: top center;
+    }
+    &--front {
+        transform: translateZ($size/2 + 1px);
+    }
+    &--right {
+        transform: rotateY(-270deg) translateX($size/2);
+        transform-origin: top right;
+    }
 }
 
 .cube {
@@ -60,9 +88,11 @@ body {
     margin: 0 auto;
     transform-style: preserve-3d;
     user-select: none;
+    pointer-events: none;
     //  animation: spin 5s infinite linear;
     .face {
         user-select: none;
+        pointer-events: none;
         transition: translate 200ms;
         position: absolute;
         width: $size;

@@ -1,53 +1,30 @@
-import { STATES as S } from '../constants';
+import { STATES, opposite, left } from '../constants';
+import { nextState, getRight, getLeft, getOpposite, getBelow } from '../cube-util';
 import deepFreeze from 'deep-freeze';
 
-const d = [];
+const dictCube = [];
 
-Object.keys(S).forEach(i => d[i] = []);
+Object.keys(STATES).forEach(i => dictCube[i] = []);
 
-/*
-    tf: 'tf',
-    tr: 'tr',
-    tb: 'tb',
-    tl: 'tl',
-    ft: 'ft',
-    fl: 'fl',
-    fd: 'fd',
-    fr: 'fr',
-    rt: 'rt',
-    rf: 'rf',
-    rd: 'rd',
-    rb: 'rb',
-    df: 'df',
-    dl: 'dl',
-    db: 'db',
-    dr: 'dr',
-    bt: 'bt',
-    br: 'br',
-    bd: 'bd',
-    bl: 'bl',
-    lt: 'lt',
-    lb: 'lb',
-    ld: 'ld',
-    lf: 'lf',
-*/ 
+function split(state) {
+    return { t: state[0], f: state[1] };
+}
 
-let s = 'tf';
-d[s]['x'] = 'fd';
-d[s]['-x'] = 'bt';
-d[s]['y'] = 'tl';
-d[s]['-y'] = 'tr';
-d[s]['z'] = 'rf';
-d[s]['-z'] = 'lf';
+let index, tf, next, state = nextState.first;
 
-s = 'tr';
-d[S.tf]['x'] = '';
-d[S.tf]['-x'] = '';
-d[S.tf]['y'] = '';
-d[S.tf]['-y'] = '';
-d[S.tf]['z'] = '';
-d[S.tf]['-z'] = '';
+for (index = 0; index < nextState.stateCount; index++) {
 
+    tf = split(state);
+    dictCube[state]['x'] = `${tf.f}${opposite[tf.t]}`;
+    dictCube[state]['-x'] = `${opposite[tf.f]}${tf.t}`;
+    dictCube[state]['y'] = `${tf.t}${getLeft(state)}`;
+    dictCube[state]['-y'] = `${tf.t}${getRight(state)}`;
+    dictCube[state]['z'] = `${getLeft(state)}${tf.f}`;
+    dictCube[state]['-z'] = `${getRight(state)}${tf.f}`;
 
-deepFreeze(d);
-export { d as dictCube };
+    next = nextState.get(state);
+    state = next.state;
+}
+
+deepFreeze(dictCube);
+export { dictCube };

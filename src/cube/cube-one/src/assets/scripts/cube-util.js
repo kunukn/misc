@@ -1,37 +1,32 @@
 import { opposite, left } from './constants';
 import { log } from './logger';
 
-export function getLeft(stateCode) {
-    const l = left[stateCode];
-    if (!l || l.length !== 1) throw new Error('getLeft - ' + l);
+export function getTop(stateCode) {
+    return stateCode[0];
+}
 
-    return l;
+export function getFront(stateCode) {
+    return stateCode[1];
 }
 
 export function getRight(stateCode) {
     return opposite[getLeft(stateCode)];
 }
 
-export function cloneObject(obj) {
-    return Object.assign({}, obj);
+export function getLeft(stateCode) {
+    return left[stateCode];
 }
 
-export function transformsApply(transformKeyVal, state) {
+export function getDown(stateCode) {
+    return opposite[stateCode[0]];
+}
 
-    let pushTransform = true;
-    if (state.transforms.length) {
-        let lastIndex = state.transforms.length - 1;
-        if (state.transforms[lastIndex].key === transformKeyVal.key) {
-            let sum = state.transforms[lastIndex].val + transformKeyVal.val;
-            state.transforms[lastIndex].val = sum;
-            pushTransform = false;
-        }
-    }
-    if (pushTransform) {
-        state.transforms.push(transformKeyVal);
-    }
+export function getBack(stateCode) {
+    return opposite[stateCode[1]];
+}
 
-    return state;
+export function cloneObject(obj) {
+    return Object.assign({}, obj);
 }
 
 function NextState() {
@@ -67,27 +62,23 @@ function NextState() {
     S.push('ld');
     S.push('lf');
 
+    this.first = 'tf';
+    this.last = 'lf';
+
     this.stateCount = S.length;
 
     this.get = function(state) {
         let index = S.indexOf(state);
         if (index >= 0) {
             if (index === S.length - 1) {
-                return S[0];
+                return { state: S[0], index: 0 };
             }
-            return S[index + 1];
+            return {
+                state: S[index + 1],
+                index: index + 1
+            };
         }
         return undefined;
-    }
-
-    this.isFirst = function(state) {
-        let index = S.indexOf(state);
-        return index === 0;
-    }
-
-    this.isLast = function(state) {
-        let index = S.indexOf(state);
-        return index === S.length - 1;
     }
 }
 const nextState = new NextState();

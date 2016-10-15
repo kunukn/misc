@@ -21,7 +21,6 @@ const ACTION = {
 deepFreeze(ACTION);
 
 
-
 const STATES = {
     tf: 'tf',
     tr: 'tr',
@@ -90,5 +89,6 @@ left['lt'] = 'f';
 left['lb'] = 't';
 left['ld'] = 'b';
 left['lf'] = 'd';
+
 
 export { CUBE, ACTION, STATES, opposite, left };
