@@ -6,9 +6,22 @@ $transition-duration: 200ms;
     box-sizing: border-box;
 }
 
+html,
+body {}
+
 body {
     font: 20px sans-serif;
     background: #fafafa;
+    margin: 0;
+}
+
+.body-wrapper {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .app-info {
@@ -46,7 +59,7 @@ body {
     //margin-top: $size;
     position: relative;
     transform-style: preserve-3d;
-    transform: rotateX(-20deg) rotateY(-30deg) rotateZ(0deg);
+    transform: rotateX(-20deg) rotateY(-20deg) rotateZ(0deg);
     // background: pink;
 }
 
@@ -54,7 +67,7 @@ body {
     width: $size;
     height: $size;
     margin: 0 auto;
-    margin-top: $size;
+    // margin-top: .5 * $size;
     position: relative;
     transform-style: preserve-3d;
 }
@@ -124,6 +137,7 @@ body {
         font-size: 0;
         color: transparent;
         backface-visibility: hidden;
+        background: lightgray;
     }
     .front {
         transform: translateZ($size/2);
