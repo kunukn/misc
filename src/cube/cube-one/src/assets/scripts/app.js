@@ -18,9 +18,20 @@ import { qs, qsa, byId } from './query';
 
 import { dictStateRotate, dictTransform } from './dictionaries/dictionary';
 
-import { cloneObject, transformsApply } from './cube-util';
+import { cloneObject, transformsApply, nextState } from './cube-util';
+
+import { dictCube } from './dictionaries/dict-cube';
 
 log('App running');
+
+window.nextState = nextState;
+
+let sss = 'tf';
+for (var i = 0; i < 24; i++) {
+    sss = nextState.get(sss);
+    log(sss);        
+}
+
 
 function rAF(callback) {
     window.requestAnimationFrame(callback);

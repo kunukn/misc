@@ -33,3 +33,62 @@ export function transformsApply(transformKeyVal, state) {
 
     return state;
 }
+
+function NextState() {
+
+    const S = [];
+    S.push('tf');
+    S.push('tr');
+    S.push('tb');
+    S.push('tl');
+
+    S.push('ft');
+    S.push('fl');
+    S.push('fd');
+    S.push('fr');
+
+    S.push('rt');
+    S.push('rf');
+    S.push('rd');
+    S.push('rb');
+
+    S.push('df');
+    S.push('dl');
+    S.push('db');
+    S.push('dr');
+
+    S.push('bt');
+    S.push('br');
+    S.push('bd');
+    S.push('bl');
+
+    S.push('lt');
+    S.push('lb');
+    S.push('ld');
+    S.push('lf');
+
+    this.stateCount = S.length;
+
+    this.get = function(state) {
+        let index = S.indexOf(state);
+        if (index >= 0) {
+            if (index === S.length - 1) {
+                return S[0];
+            }
+            return S[index + 1];
+        }
+        return undefined;
+    }
+
+    this.isFirst = function(state) {
+        let index = S.indexOf(state);
+        return index === 0;
+    }
+
+    this.isLast = function(state) {
+        let index = S.indexOf(state);
+        return index === S.length - 1;
+    }
+}
+const nextState = new NextState();
+export { nextState };
