@@ -25,10 +25,6 @@ log('App running');
 
 const Hammer = window.Hammer;
 
-const hammerOptions = {
-    preventDefault: true
-};
-
 let _state = {};
 
 function getState() {
@@ -101,6 +97,9 @@ cubeElement.addEventListener('transitionend', (ev) => {
 
 
 /* Init */
+const hammerOptions = {
+    preventDefault: true
+};
 const hammerFront = new Hammer(frontElement, hammerOptions);
 hammerFront.get('swipe').set({
     direction: Hammer.DIRECTION_ALL
