@@ -9,6 +9,7 @@ import { qs, qsa, byId } from './query';
 
 import dictColors from './dictionaries/dict-colors';
 
+
 import {
     cloneObject,
     nextState,
@@ -21,6 +22,7 @@ import {
 } from './cube-util';
 
 import dictCube from './dictionaries/dict-cube';
+import dictCubeTransform from './dictionaries/dict-cube-transform';
 
 import { STATES } from './constants';
 
@@ -49,12 +51,12 @@ const
     touchBackEl = qs('.js-touch-back', cubeComponentEl),
     touchDownEl = qs('.js-touch-down', cubeComponentEl),
     cubeEl = qs('.js-cube', cubeComponentEl),
-    frontEl = qs('.front', cubeEl),
-    upEl = qs('.up', cubeEl),
-    rightEl = qs('.right', cubeEl),
-    leftEl = qs('.left', cubeEl),
-    backEl = qs('.back', cubeEl),
-    downEl = qs('.down', cubeEl),
+    frontEl = qs('.front > div', cubeEl),
+    upEl = qs('.up > div', cubeEl),
+    rightEl = qs('.right > div', cubeEl),
+    leftEl = qs('.left > div', cubeEl),
+    backEl = qs('.back > div', cubeEl),
+    downEl = qs('.down > div', cubeEl),
     stateInfoEl = qs('.js-state-info');
 
 let _appState = {
@@ -138,7 +140,6 @@ hammerUp.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
         case 'tap':
             tap();
             break;
-
         case 'swipeup':
             x();
             break;
@@ -204,6 +205,24 @@ function updateUiFaces() {
     leftEl.style.background = dictColors[l];
     backEl.style.background = dictColors[b];
     downEl.style.background = dictColors[d];
+
+    let t = dictCubeTransform[state.code]['u'];
+    upEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
+
+    t = dictCubeTransform[state.code]['f'];
+    frontEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
+    
+    t = dictCubeTransform[state.code]['r'];
+    rightEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
+    
+    t = dictCubeTransform[state.code]['l'];
+    leftEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
+    
+    t = dictCubeTransform[state.code]['b'];
+    backEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
+    
+    t = dictCubeTransform[state.code]['d'];
+    downEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
 }
 
 function transitionEnd(ev) {

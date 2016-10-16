@@ -29,7 +29,6 @@ const STATES = {
 deepFreeze(STATES);
 
 
-
 const opposite = [];
 opposite['u'] = 'd';
 opposite['d'] = 'u';
