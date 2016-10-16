@@ -80,18 +80,25 @@ function updateAppInfo() {
 const hammerFront = new Hammer(
     touchFrontEl,
     hammerOptions);
-
 const hammerUp = new Hammer(
     touchUpEl,
     hammerOptions);
-
 const hammerRight = new Hammer(
     touchRightEl,
+    hammerOptions);
+const hammerLeft = new Hammer(
+    touchLeftEl,
+    hammerOptions);
+const hammerDown = new Hammer(
+    touchDownEl,
     hammerOptions);
 
 hammerFront.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 hammerUp.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 hammerRight.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+hammerLeft.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+hammerDown.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+
 
 hammerFront.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
     const type = ev.type;
@@ -187,6 +194,66 @@ hammerRight.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
 });
 
 
+hammerLeft.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
+    const type = ev.type;
+    let element = ev.target;
+
+    // Find swipe element if event is invoke on child element
+    if (element.dataset.type !== 'swipe-component') {
+        element = element.parentElement;
+        if (element.dataset.type !== 'swipe-component')
+            element = element.parentElement;
+    }
+    switch (type) {
+        case 'tap':
+            tap();
+            break;
+
+        case 'swipeup':
+            z();
+            break;
+        case 'swiperight':
+            y();
+            break;
+        case 'swipedown':
+            _z();
+            break;
+        case 'swipeleft':
+            _y();
+            break;
+    }
+});
+
+hammerDown.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
+    const type = ev.type;
+    let element = ev.target;
+
+    // Find swipe element if event is invoke on child element
+    if (element.dataset.type !== 'swipe-component') {
+        element = element.parentElement;
+        if (element.dataset.type !== 'swipe-component')
+            element = element.parentElement;
+    }
+    switch (type) {
+        case 'tap':
+            tap();
+            break;
+        case 'swipeup':
+            x();
+            break;
+        case 'swiperight':
+            _z();
+            break;
+        case 'swipedown':
+            _x();
+            break;
+        case 'swipeleft':
+            z();
+            break;
+    }
+});
+
+
 function updateUiFaces() {
 
     let u, f, r, l, b, d;
@@ -211,16 +278,16 @@ function updateUiFaces() {
 
     t = dictCubeTransform[state.code]['f'];
     frontEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
-    
+
     t = dictCubeTransform[state.code]['r'];
     rightEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
-    
+
     t = dictCubeTransform[state.code]['l'];
     leftEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
-    
+
     t = dictCubeTransform[state.code]['b'];
     backEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
-    
+
     t = dictCubeTransform[state.code]['d'];
     downEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
 }

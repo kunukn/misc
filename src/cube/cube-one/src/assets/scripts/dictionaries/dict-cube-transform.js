@@ -6,12 +6,14 @@ const dictCubeTransform = [];
 
 Object.keys(STATES).forEach(i => dictCubeTransform[i] = []);
 
-dictCubeTransform['fd']['u'] = '';
-dictCubeTransform['fd']['f'] = '';
 dictCubeTransform['fd']['r'] = {angle: 90, dir: 'Z'};
-dictCubeTransform['fd']['l'] = '';
-dictCubeTransform['fd']['b'] = '';
-dictCubeTransform['fd']['d'] = '';
+dictCubeTransform['db']['r'] = {angle: 180, dir: 'Z'};
+dictCubeTransform['bu']['r'] = {angle: -90, dir: 'Z'};
+
+dictCubeTransform['fd']['l'] = {angle: -90, dir: 'Z'};
+dictCubeTransform['db']['l'] = {angle: 180, dir: 'Z'};
+dictCubeTransform['bu']['l'] = {angle: 90, dir: 'Z'};
+
 
 deepFreeze(dictCubeTransform);
 export default dictCubeTransform;

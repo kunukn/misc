@@ -1,7 +1,7 @@
 import deepFreeze from 'deep-freeze';
 
 const dictColors = [];
-dictColors['u'] = 'linear-gradient(135deg, #fff, #ddd)';
+dictColors['u'] = 'linear-gradient(135deg, #fff, #bbb)';
 dictColors['f'] = 'linear-gradient(135deg, #009E60, white)';
 dictColors['r'] = 'linear-gradient(135deg, #C41E3A, white)';
 dictColors['l'] = 'linear-gradient(135deg, #FF5800, white)';
