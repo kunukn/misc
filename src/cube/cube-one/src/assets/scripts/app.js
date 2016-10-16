@@ -9,9 +9,20 @@ import { qs, qsa, byId } from './query';
 
 import dictColors from './dictionaries/dict-colors';
 
-import { cloneObject, nextState, getLeft, getRight, getDown, getBack, getUp, getFront } from './cube-util';
+import {
+    cloneObject,
+    nextState,
+    getLeft,
+    getRight,
+    getDown,
+    getBack,
+    getUp,
+    getFront
+} from './cube-util';
 
 import dictCube from './dictionaries/dict-cube';
+
+import { STATES } from './constants';
 
 log('App running');
 
@@ -227,6 +238,17 @@ function actionInvoke(action, ui) {
     ui();
 }
 
+function gotoState(stateCode) {
+
+    if (!STATES[stateCode])
+        return;
+
+    let state = getState();
+    state.code = stateCode;
+    setState(state);
+    updateUiFaces();
+}
+
 
 function x() {
     actionInvoke('x', uix);
@@ -281,17 +303,20 @@ function ui_z() {
 
 cubeEl.addEventListener('transitionend', transitionEnd);
 
-window.app = window.cube = {
+window.cube = {
     x,
-    // _x,
-    // y,
-    // _y,
-    // z,
-    // _z
+    _x,
+    y,
+    _y,
+    z,
+    _z,
+    gotoState
 };
 
-updateUiFaces();
-updateAppInfo();
+((initApplication) => {
+    updateUiFaces();
+    updateAppInfo();
+})();
 
 export class App {
     constructor() {}
