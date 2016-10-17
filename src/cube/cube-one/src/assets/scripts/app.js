@@ -387,6 +387,11 @@ function ui_z() {
     cubeEl.style.transform = `rotateZ(-90deg)`;
 }
 
+function reset() {
+    gotoState('uf');
+    return 'reset';
+}
+
 cubeEl.addEventListener('transitionend', transitionEnd);
 
 window.cube = {
@@ -396,7 +401,8 @@ window.cube = {
     _y,
     z,
     _z,
-    gotoState
+    gotoState,
+    reset
 };
 
 ((initApplication) => {
