@@ -92,26 +92,27 @@ body {
         outline: none;
         box-shadow: 0 0 50px white;
     }
+    //display: none;
     // font-size: 0;
     &--up {
         transform: rotateX(-90deg) translateY($size/2) rotateY(180deg) rotateZ(180deg);
         transform-origin: top center;
     }
-    &--front {
+    &[data-type=front] {
         transform: translateZ($size/2 + 1px);
     }
-    &--right {
+    &[data-type=right] {
         transform: rotateY(-270deg) translateX($size/2);
         transform-origin: top right;
     }
-    &--left {
+    &[data-type=left] {
         transform: rotateY(270deg) translateX(-$size/2);
         transform-origin: center left;
     }
-    &--back {
+    &[data-type=back] {
         transform: translateZ(-$size/2) rotateY(180deg);
     }
-    &--down {
+    &[data-type=down] {
         transform: rotateX(90deg) translateY(-$size/2) rotateY(180deg) rotateZ(180deg);
         transform-origin: bottom center;
     }
@@ -141,9 +142,12 @@ body {
         border: 2px solid black;
         font-size: 0;
         color: transparent;
-        backface-visibility: hidden;
-        background: gray;
+        //backface-visibility: hidden;
         border-radius: 1px;
+        opacity: .9;
+        &.tapped {
+            opacity: .5;
+        }
         > div {
             position: absolute;
             width: 100%;

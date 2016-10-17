@@ -128,7 +128,7 @@ hammerFront.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
 
     switch (type) {
         case 'tap':
-            tap();
+            tap(element, ev.target.dataset.type);
             break;
 
         case 'swipeup':
@@ -160,7 +160,7 @@ hammerUp.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
 
     switch (type) {
         case 'tap':
-            tap();
+            tap(element, ev.target.dataset.type);
             break;
         case 'swipeup':
             x();
@@ -190,7 +190,7 @@ hammerRight.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
     }
     switch (type) {
         case 'tap':
-            tap();
+            tap(element, ev.target.dataset.type);
             break;
 
         case 'swipeup':
@@ -221,7 +221,7 @@ hammerLeft.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
     }
     switch (type) {
         case 'tap':
-            tap();
+            tap(element, ev.target.dataset.type);
             break;
 
         case 'swipeup':
@@ -251,7 +251,7 @@ hammerDown.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
     }
     switch (type) {
         case 'tap':
-            tap();
+            tap(element, ev.target.dataset.type);
             break;
         case 'swipeup':
             x();
@@ -270,8 +270,6 @@ hammerDown.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
 
 
 function updateUiFaces() {
-
-
 
     let u, f, r, l, b, d;
     const state = getState();
@@ -325,8 +323,8 @@ function transitionEnd(ev) {
     });
 }
 
-function tap() {
-    log(`tap`);
+function tap(element, target) {
+    qs(`.${target}.face`, element).classList.toggle('tapped');
 }
 
 function actionInvoke(action, ui) {
