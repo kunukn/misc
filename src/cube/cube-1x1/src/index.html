@@ -1,0 +1,59 @@
+<!doctype html>
+<!--[if lte IE 9]><html class="no-js ie-old" lang="da"><![endif]-->
+<!--[if gte IE 11]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <base href="/">
+    <title>App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--[if lte IE 9]>
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="body-wrapper">
+        <div class="debug"></div>
+
+        <div class="scene">
+            <div class="cube" id="cube-1x1">
+                <div class="front face" id="front">front</div>
+                <div class="top face" id="top">top</div>
+                <div class="right face" id="right">right</div>
+                <div class="back face" id="back">back</div>
+                <div class="down face" id="down">down</div>
+                <div class="left face" id="left">left</div>
+            </div>
+        </div>
+
+
+        <footer class="main-footer">
+
+            <div class="c-cube-rotate-to" id="cube-rotate-to">
+                <div class="center">
+                    <input type="text" placeholder="">
+                    <button onclick="app.uiRotateTo(event)">update</button>
+                </div>
+            </div>
+
+            <div class="c-button-group">
+                <div class="center">
+                    <button onclick="app.uix()">x</button>
+                    <button onclick="app.ui_x()">_x</button>
+                    <button onclick="app.uiy()">y</button>
+                    <button onclick="app.ui_y()">_y</button>
+                    <button onclick="app.uiz()">z</button>
+                    <button onclick="app.ui_z()">_z</button>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>

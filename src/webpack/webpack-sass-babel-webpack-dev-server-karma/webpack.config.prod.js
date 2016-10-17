@@ -1,4 +1,5 @@
-;var path = require('path'),
+;
+var path = require('path'),
     webpack = require('webpack'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin,
@@ -43,11 +44,11 @@ module.exports = {
         }),
 
         /* https://github.com/webpack/webpack/issues/368 */
-        new webpack.optimize.CommonsChunkPlugin({name: ['vendors'].reverse(), minChunks: Infinity}),
+        new webpack.optimize.CommonsChunkPlugin({ name: ['vendors'].reverse(), minChunks: Infinity }),
 
         new webpack.optimize.UglifyJsPlugin({
-            compress: {warnings: false,},
-            output: {comments: false},
+            compress: { warnings: false, },
+            output: { comments: false },
             mangle: {
                 except: ['$']
             },
@@ -61,8 +62,7 @@ module.exports = {
         })
     ],
     module: {
-        loaders: [
-            {
+        loaders: [{
                 test: /\.html$/,
                 exclude: /node_modules/,
                 loader: "html-loader?minimize=true&removeComments=false&conservativeCollapse=true&collapseWhitespace=true"
@@ -91,7 +91,8 @@ module.exports = {
                 test: /\.(jpg|png|svg)$/,
                 include: getPath('src/assets/images'),
                 loader: 'url-loader?limit=10000',
-            }]
+            }
+        ]
     },
     resolve: {
         extensions: ['', '.js', '.ts']
