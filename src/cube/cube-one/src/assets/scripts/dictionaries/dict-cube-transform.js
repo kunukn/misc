@@ -17,7 +17,9 @@ dictCubeTransform['bu']['l'] = { angle: 90, dir: 'Z' };
 dictCubeTransform['ul']['u'] = { angle: -90, dir: 'Z' };
 dictCubeTransform['ur']['u'] = { angle: 90, dir: 'Z' };
 dictCubeTransform['ub']['u'] = { angle: 180, dir: 'Z' };
+dictCubeTransform['bu']['u'] = { angle: 180, dir: 'Z' };
 
+dictCubeTransform['fd']['b'] = { angle: 180, dir: 'Z' };
 
 deepFreeze(dictCubeTransform);
 export default dictCubeTransform;

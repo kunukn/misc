@@ -265,6 +265,8 @@ hammerDown.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
 
 function updateUiFaces() {
 
+
+
     let u, f, r, l, b, d;
     const state = getState();
 
@@ -304,6 +306,7 @@ function updateUiFaces() {
 function transitionEnd(ev) {
     cubeEl.style.transition = `0s`;
     nextFrame(_ => {
+        //setTimeout(updateUiFaces, 700);
         updateUiFaces();
         cubeEl.style.transform = '';
         rAF(_ => {
@@ -426,7 +429,7 @@ function handleFrontKeyEvent(event) {
 
 function handleRightKeyEvent(event) {
     event.stopPropagation();
-   
+
     switch (event.keyCode) {
         case KEY.LEFT:
             _y();
