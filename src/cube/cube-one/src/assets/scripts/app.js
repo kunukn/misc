@@ -43,7 +43,13 @@ const KEY = {
     LEFT: 37,
     UP: 38,
     RIGHT: 39,
-    DOWN: 40
+    DOWN: 40,
+    a: 65,
+    d: 68,
+    e: 69,
+    q: 81,
+    s: 83,
+    w: 87,
 };
 
 
@@ -469,19 +475,28 @@ function handleUpKeyEvent(event) {
 
 
 function handleKeyEvent(event) {
-
     switch (event.keyCode) {
         case KEY.LEFT:
+        case KEY.a:
             _y();
             break;
         case KEY.UP:
+        case KEY.w:
             x();
             break;
         case KEY.RIGHT:
+        case KEY.d:
             y();
             break;
         case KEY.DOWN:
+        case KEY.s:
             _x();
+            break;
+        case KEY.q:
+            _z();
+            break;
+        case KEY.e:
+            z();
             break;
     }
 }
