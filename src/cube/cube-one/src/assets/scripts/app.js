@@ -38,6 +38,15 @@ function nextFrame(callback) {
     });
 }
 
+
+const KEY = {
+    LEFT: 37,
+    UP: 38,
+    RIGHT: 39,
+    DOWN: 40
+};
+
+
 const hammerOptions = {
     preventDefault: true
 };
@@ -394,14 +403,83 @@ function reset() {
 
 cubeEl.addEventListener('transitionend', transitionEnd);
 
+function handleFrontKeyEvent(event) {
+    event.stopPropagation();
 
-function handleKeyDown(event){
     switch (event.keyCode) {
-        case 37: _y(); break; //Left key
-        case 38: x(); break; //Up key
-        case 39: y(); break; //Right key
-        case 40: _x(); break; //Down key
-        default: break;
+        case KEY.LEFT:
+            _y();
+            break;
+        case KEY.UP:
+            x();
+            break;
+        case KEY.RIGHT:
+            y();
+            break;
+        case KEY.DOWN:
+            event.preventDefault();
+            _x();
+            break;
+    }
+}
+
+
+function handleRightKeyEvent(event) {
+    event.stopPropagation();
+   
+    switch (event.keyCode) {
+        case KEY.LEFT:
+            _y();
+            break;
+        case KEY.UP:
+            _z();
+            break;
+        case KEY.RIGHT:
+            y();
+            break;
+        case KEY.DOWN:
+            event.preventDefault();
+            z();
+            break;
+    }
+}
+
+
+function handleUpKeyEvent(event) {
+    event.stopPropagation();
+
+    switch (event.keyCode) {
+        case KEY.LEFT:
+            _z();
+            break;
+        case KEY.UP:
+            x();
+            break;
+        case KEY.RIGHT:
+            z();
+            break;
+        case KEY.DOWN:
+            _x();
+            break;
+    }
+}
+
+
+function handleKeyEvent(event) {
+
+    switch (event.keyCode) {
+        case KEY.LEFT:
+            _y();
+            break;
+        case KEY.UP:
+            x();
+            break;
+        case KEY.RIGHT:
+            y();
+            break;
+        case KEY.DOWN:
+            _x();
+            break;
     }
 }
 
@@ -419,7 +497,10 @@ window.cube = {
 
 ((initApplication) => {
 
-    window.addEventListener('keydown',handleKeyDown,false);
+    window.addEventListener('keydown', handleKeyEvent, false);
+    touchFrontEl.addEventListener('keydown', handleFrontKeyEvent, false);
+    touchRightEl.addEventListener('keydown', handleRightKeyEvent, false);
+    touchUpEl.addEventListener('keydown', handleUpKeyEvent, false);
 
     updateUiFaces();
     updateAppInfo();

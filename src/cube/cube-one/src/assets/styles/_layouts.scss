@@ -87,6 +87,10 @@ body {
     color: #222;
     color: transparent;
     cursor: pointer;
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 50px white;
+    }
     // font-size: 0;
     &--up {
         transform: rotateX(-90deg) translateY($size/2) rotateY(180deg) rotateZ(180deg);
