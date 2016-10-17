@@ -394,6 +394,17 @@ function reset() {
 
 cubeEl.addEventListener('transitionend', transitionEnd);
 
+
+function handleKeyDown(event){
+    switch (event.keyCode) {
+        case 37: _y(); break; //Left key
+        case 38: x(); break; //Up key
+        case 39: y(); break; //Right key
+        case 40: _x(); break; //Down key
+        default: break;
+    }
+}
+
 window.cube = {
     x,
     _x,
@@ -405,7 +416,11 @@ window.cube = {
     reset
 };
 
+
 ((initApplication) => {
+
+    window.addEventListener('keydown',handleKeyDown,false);
+
     updateUiFaces();
     updateAppInfo();
 })();
