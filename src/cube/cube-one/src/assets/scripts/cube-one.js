@@ -334,7 +334,7 @@ class CubeOne {
     }
 
     tap(element, target) {
-         qs(`.${target}.face`, element).classList.toggle('tapped');
+        qs(`.${target}.face`, element).classList.toggle('tapped');
     }
 
     actionInvoke(action, ui) {
