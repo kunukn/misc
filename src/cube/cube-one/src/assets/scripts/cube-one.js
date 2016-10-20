@@ -1,8 +1,6 @@
 ;
 'use strict';
 
-import '../styles/app.scss';
-
 import { log } from './logger';
 
 import { qs, qsa, byId } from './query';
@@ -64,8 +62,6 @@ class CubeOne {
             swipeEnabled: true,
         };
     }
-
-
 
     getState() {
         return cloneObject(this._appState);
@@ -365,9 +361,8 @@ class CubeOne {
         let state = this.getState();
         state.code = stateCode;
         this.setState(state);
-        updateUiFaces();
+        this.updateUiFaces();
     }
-
 
     x() {
         this.actionInvoke('x', this.uix);

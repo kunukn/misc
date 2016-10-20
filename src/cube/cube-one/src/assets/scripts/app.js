@@ -17,7 +17,6 @@ cube.init();
 window.cube = window.cube || [];
 window.cube.push(cube);
 
-
 export class App {
     constructor() {}
 }
