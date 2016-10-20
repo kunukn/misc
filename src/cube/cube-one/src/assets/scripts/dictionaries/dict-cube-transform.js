@@ -124,7 +124,7 @@ dictCubeTransform['ld']['d'] = { angle: 180, dir: 'Z' };
 dictCubeTransform['fl']['d'] = { angle: -90, dir: 'Z' };
 dictCubeTransform['fr']['d'] = { angle: 90, dir: 'Z' };
 dictCubeTransform['rd']['d'] = { angle: 180, dir: 'Z' };
-dictCubeTransform['rb']['d'] = { angle: -90, dir: 'Z' };
+dictCubeTransform['rb']['d'] = { angle: 90, dir: 'Z' };
 dictCubeTransform['lb']['d'] = { angle: -90, dir: 'Z' };
 
 deepFreeze(dictCubeTransform);
