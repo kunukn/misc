@@ -57,465 +57,412 @@ const hammerOptions = {
     preventDefault: true
 };
 
-const
-    cubeComponentEl = byId('cube-component'),
-    touchUpEl = qs('.js-touch-up', cubeComponentEl),
-    touchFrontEl = qs('.js-touch-front', cubeComponentEl),
-    touchRightEl = qs('.js-touch-right', cubeComponentEl),
-    touchLeftEl = qs('.js-touch-left', cubeComponentEl),
-    touchBackEl = qs('.js-touch-back', cubeComponentEl),
-    touchDownEl = qs('.js-touch-down', cubeComponentEl),
-    cubeEl = qs('.js-cube', cubeComponentEl),
-    frontEl = qs('.front > div', cubeEl),
-    upEl = qs('.up > div', cubeEl),
-    rightEl = qs('.right > div', cubeEl),
-    leftEl = qs('.left > div', cubeEl),
-    backEl = qs('.back > div', cubeEl),
-    downEl = qs('.down > div', cubeEl),
-    stateInfoEl = qs('.js-state-info');
 
-let _appState = {
-    code: nextState.first,
-    swipeEnabled: true,
-};
+class CubeOne {
 
-function getState() {
-    return cloneObject(_appState);
-}
-
-function setState(state) {
-    _appState = state;
-    updateAppInfo();
-}
-
-function updateAppInfo() {
-    stateInfoEl.innerHTML = `<label>State: </label><span class="state"> ${getState().code}</span>`;
-}
-
-const hammerFront = new Hammer(
-    touchFrontEl,
-    hammerOptions);
-const hammerUp = new Hammer(
-    touchUpEl,
-    hammerOptions);
-const hammerRight = new Hammer(
-    touchRightEl,
-    hammerOptions);
-const hammerLeft = new Hammer(
-    touchLeftEl,
-    hammerOptions);
-const hammerDown = new Hammer(
-    touchDownEl,
-    hammerOptions);
-
-hammerFront.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
-hammerUp.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
-hammerRight.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
-hammerLeft.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
-hammerDown.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
-
-
-hammerFront.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
-    const type = ev.type;
-    let element = ev.target;
-
-    // Find swipe element if event is invoke on child element
-    if (element.dataset.type !== 'swipe-component') {
-        element = element.parentElement;
-        if (element.dataset.type !== 'swipe-component')
-            element = element.parentElement;
+    constructor(cubeComponent, stateInfoEl) {
+        this.cubeComponentEl = cubeComponent;
+        this.stateInfoEl = stateInfoEl;
+        this._appState = {
+            code: nextState.first,
+            swipeEnabled: true,
+        };
     }
 
-    switch (type) {
-        case 'tap':
-            tap(element, ev.target.dataset.type);
-            break;
-
-        case 'swipeup':
-            x();
-            break;
-        case 'swiperight':
-            y();
-            break;
-        case 'swipedown':
-            _x();
-            break;
-        case 'swipeleft':
-            _y();
-            break;
-    }
-});
 
 
-hammerUp.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
-    const type = ev.type;
-    let element = ev.target;
-
-    // Find swipe element if event is invoke on child element
-    if (element.dataset.type !== 'swipe-component') {
-        element = element.parentElement;
-        if (element.dataset.type !== 'swipe-component')
-            element = element.parentElement;
+    getState() {
+        return cloneObject(this._appState);
     }
 
-    switch (type) {
-        case 'tap':
-            tap(element, ev.target.dataset.type);
-            break;
-        case 'swipeup':
-            x();
-            break;
-        case 'swiperight':
-            z();
-            break;
-        case 'swipedown':
-            _x();
-            break;
-        case 'swipeleft':
-            _z();
-            break;
+    setState(state) {
+        this._appState = state;
+        this.updateAppInfo();
     }
-});
 
-
-hammerRight.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
-    const type = ev.type;
-    let element = ev.target;
-
-    // Find swipe element if event is invoke on child element
-    if (element.dataset.type !== 'swipe-component') {
-        element = element.parentElement;
-        if (element.dataset.type !== 'swipe-component')
-            element = element.parentElement;
+    updateAppInfo() {
+        this.stateInfoEl.innerHTML = `<label>State: </label><span class="state"> ${this.getState().code}</span>`;
     }
-    switch (type) {
-        case 'tap':
-            tap(element, ev.target.dataset.type);
-            break;
-
-        case 'swipeup':
-            _z();
-            break;
-        case 'swiperight':
-            y();
-            break;
-        case 'swipedown':
-            z();
-            break;
-        case 'swipeleft':
-            _y();
-            break;
-    }
-});
 
 
-hammerLeft.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
-    const type = ev.type;
-    let element = ev.target;
+    transitionEnd(ev) {
+        const cubeEl = this.cubeEl;
+        cubeEl.style.transition = `0s`;
+        nextFrame(_ => {
+            this.updateUiFaces();
+            cubeEl.style.transform = '';
+            rAF(_ => {
+                cubeEl.style.transition = '';
 
-    // Find swipe element if event is invoke on child element
-    if (element.dataset.type !== 'swipe-component') {
-        element = element.parentElement;
-        if (element.dataset.type !== 'swipe-component')
-            element = element.parentElement;
-    }
-    switch (type) {
-        case 'tap':
-            tap(element, ev.target.dataset.type);
-            break;
-
-        case 'swipeup':
-            z();
-            break;
-        case 'swiperight':
-            y();
-            break;
-        case 'swipedown':
-            _z();
-            break;
-        case 'swipeleft':
-            _y();
-            break;
-    }
-});
-
-hammerDown.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
-    const type = ev.type;
-    let element = ev.target;
-
-    // Find swipe element if event is invoke on child element
-    if (element.dataset.type !== 'swipe-component') {
-        element = element.parentElement;
-        if (element.dataset.type !== 'swipe-component')
-            element = element.parentElement;
-    }
-    switch (type) {
-        case 'tap':
-            tap(element, ev.target.dataset.type);
-            break;
-        case 'swipeup':
-            x();
-            break;
-        case 'swiperight':
-            _z();
-            break;
-        case 'swipedown':
-            _x();
-            break;
-        case 'swipeleft':
-            z();
-            break;
-    }
-});
-
-
-function updateUiFaces() {
-
-    let u, f, r, l, b, d;
-    const state = getState();
-
-    u = getUp(state.code);
-    f = getFront(state.code);
-    r = getRight(state.code);
-    l = getLeft(state.code);
-    b = getBack(state.code);
-    d = getDown(state.code);
-
-    upEl.style.background = dictColors[u];
-    frontEl.style.background = dictColors[f];
-    rightEl.style.background = dictColors[r];
-    leftEl.style.background = dictColors[l];
-    backEl.style.background = dictColors[b];
-    downEl.style.background = dictColors[d];
-
-    let t = dictCubeTransform[state.code]['u'];
-    upEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
-
-    t = dictCubeTransform[state.code]['f'];
-    frontEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
-
-    t = dictCubeTransform[state.code]['r'];
-    rightEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
-
-    t = dictCubeTransform[state.code]['l'];
-    leftEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
-
-    t = dictCubeTransform[state.code]['b'];
-    backEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
-
-    t = dictCubeTransform[state.code]['d'];
-    downEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
-}
-
-function transitionEnd(ev) {
-    cubeEl.style.transition = `0s`;
-    nextFrame(_ => {
-        //setTimeout(updateUiFaces, 700);
-        updateUiFaces();
-        cubeEl.style.transform = '';
-        rAF(_ => {
-            cubeEl.style.transition = '';
-
-            const state = getState();
-            state.swipeEnabled = true;
-            setState(state);
+                const state = this.getState();
+                state.swipeEnabled = true;
+                this.setState(state);
+            });
         });
-    });
-}
-
-function tap(element, target) {
-    qs(`.${target}.face`, element).classList.toggle('tapped');
-}
-
-function actionInvoke(action, ui) {
-    let state = getState(),
-        stateCode = state.code;
-
-    if (!state.swipeEnabled)
-        return;
-
-    state.code = dictCube[stateCode][action]; // reducer
-    state.swipeEnabled = false;
-    setState(state);
-    ui();
-}
-
-function gotoState(stateCode) {
-
-    if (!STATES[stateCode])
-        return;
-
-    let state = getState();
-    state.code = stateCode;
-    setState(state);
-    updateUiFaces();
-}
+    }
 
 
-function x() {
-    actionInvoke('x', uix);
-}
+    init() {
 
-function _x() {
-    actionInvoke('-x', ui_x);
-}
+        this.handleKeyEvent.bind(this);
 
-function y() {
-    actionInvoke('y', uiy);
-}
+        const cubeComponentEl = this.cubeComponentEl;
 
-function _y() {
-    actionInvoke('-y', ui_y);
-}
+        const touchUpEl = qs('.js-touch-up', cubeComponentEl),
+            touchFrontEl = qs('.js-touch-front', cubeComponentEl),
+            touchRightEl = qs('.js-touch-right', cubeComponentEl),
+            touchLeftEl = qs('.js-touch-left', cubeComponentEl),
+            touchBackEl = qs('.js-touch-back', cubeComponentEl),
+            touchDownEl = qs('.js-touch-down', cubeComponentEl);
+
+        const cubeEl = qs('.js-cube', cubeComponentEl);
+        this.cubeEl = cubeEl;
+
+        this.frontEl = qs('.front > div', cubeEl);
+        this.upEl = qs('.up > div', cubeEl);
+        this.rightEl = qs('.right > div', cubeEl);
+        this.leftEl = qs('.left > div', cubeEl);
+        this.backEl = qs('.back > div', cubeEl);
+        this.downEl = qs('.down > div', cubeEl);
+        //this.stateInfoEl = qs('.js-state-info');
+
+        const hammerFront = new Hammer(
+            touchFrontEl,
+            hammerOptions);
+        const hammerUp = new Hammer(
+            touchUpEl,
+            hammerOptions);
+        const hammerRight = new Hammer(
+            touchRightEl,
+            hammerOptions);
+        const hammerLeft = new Hammer(
+            touchLeftEl,
+            hammerOptions);
+        const hammerDown = new Hammer(
+            touchDownEl,
+            hammerOptions);
+
+        hammerFront.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+        hammerUp.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+        hammerRight.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+        hammerLeft.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+        hammerDown.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 
 
-function z() {
-    actionInvoke('z', uiz);
-}
+        hammerFront.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
+            const type = ev.type;
+            let element = ev.target;
 
-function _z() {
-    actionInvoke('-z', ui_z);
-}
+            // Find swipe element if event is invoke on child element
+            if (element.dataset.type !== 'swipe-component') {
+                element = element.parentElement;
+                if (element.dataset.type !== 'swipe-component')
+                    element = element.parentElement;
+            }
+
+            switch (type) {
+                case 'tap':
+                    this.tap(element, ev.target.dataset.type);
+                    break;
+                case 'swipeup':
+                    this.x();
+                    break;
+                case 'swiperight':
+                    this.y();
+                    break;
+                case 'swipedown':
+                    this._x();
+                    break;
+                case 'swipeleft':
+                    this._y();
+                    break;
+            }
+        });
 
 
+        hammerUp.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
+            const type = ev.type;
+            let element = ev.target;
 
-function uix() {
-    cubeEl.style.transform = `rotateX(90deg)`;
-}
+            // Find swipe element if event is invoke on child element
+            if (element.dataset.type !== 'swipe-component') {
+                element = element.parentElement;
+                if (element.dataset.type !== 'swipe-component')
+                    element = element.parentElement;
+            }
 
-function uiy() {
-    cubeEl.style.transform = `rotateY(90deg)`;
-}
+            switch (type) {
+                case 'tap':
+                    this.tap(element, ev.target.dataset.type);
+                    break;
+                case 'swipeup':
+                    this.x();
+                    break;
+                case 'swiperight':
+                    this.z();
+                    break;
+                case 'swipedown':
+                    this._x();
+                    break;
+                case 'swipeleft':
+                    this._z();
+                    break;
+            }
+        });
 
-function ui_x() {
-    cubeEl.style.transform = `rotateX(-90deg)`;
-}
 
-function ui_y() {
-    cubeEl.style.transform = `rotateY(-90deg)`;
-}
+        hammerRight.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
+            const type = ev.type;
+            let element = ev.target;
 
-function uiz() {
-    cubeEl.style.transform = `rotateZ(90deg)`;
-}
+            // Find swipe element if event is invoke on child element
+            if (element.dataset.type !== 'swipe-component') {
+                element = element.parentElement;
+                if (element.dataset.type !== 'swipe-component')
+                    element = element.parentElement;
+            }
+            switch (type) {
+                case 'tap':
+                    this.tap(element, ev.target.dataset.type);
+                    break;
+                case 'swipeup':
+                    this._z();
+                    break;
+                case 'swiperight':
+                    this.y();
+                    break;
+                case 'swipedown':
+                    this.z();
+                    break;
+                case 'swipeleft':
+                    this._y();
+                    break;
+            }
+        });
 
-function ui_z() {
-    cubeEl.style.transform = `rotateZ(-90deg)`;
-}
 
-function reset() {
-    gotoState('uf');
-    return 'reset';
-}
+        hammerLeft.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
+            const type = ev.type;
+            let element = ev.target;
 
-cubeEl.addEventListener('transitionend', transitionEnd);
+            // Find swipe element if event is invoke on child element
+            if (element.dataset.type !== 'swipe-component') {
+                element = element.parentElement;
+                if (element.dataset.type !== 'swipe-component')
+                    element = element.parentElement;
+            }
+            switch (type) {
+                case 'tap':
+                    this.tap(element, ev.target.dataset.type);
+                    break;
+                case 'swipeup':
+                    this.z();
+                    break;
+                case 'swiperight':
+                    this.y();
+                    break;
+                case 'swipedown':
+                    this._z();
+                    break;
+                case 'swipeleft':
+                    this._y();
+                    break;
+            }
+        });
 
-function handleFrontKeyEvent(event) {
-    event.stopPropagation();
+        hammerDown.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
+            const type = ev.type;
+            let element = ev.target;
 
-    switch (event.keyCode) {
-        case KEY.LEFT:
-            _y();
-            break;
-        case KEY.UP:
-            x();
-            break;
-        case KEY.RIGHT:
-            y();
-            break;
-        case KEY.DOWN:
-            event.preventDefault();
-            _x();
-            break;
+            // Find swipe element if event is invoke on child element
+            if (element.dataset.type !== 'swipe-component') {
+                element = element.parentElement;
+                if (element.dataset.type !== 'swipe-component')
+                    element = element.parentElement;
+            }
+            switch (type) {
+                case 'tap':
+                    tap(element, ev.target.dataset.type);
+                    break;
+                case 'swipeup':
+                    x();
+                    break;
+                case 'swiperight':
+                    _z();
+                    break;
+                case 'swipedown':
+                    _x();
+                    break;
+                case 'swipeleft':
+                    z();
+                    break;
+            }
+        });
+
+        this.cubeComponentEl.addEventListener('keydown', this.handleKeyEvent.bind(this), false);
+        this.updateUiFaces();
+        this.updateAppInfo();
+        cubeEl.addEventListener('transitionend', this.transitionEnd.bind(this));
+    }
+
+
+    updateUiFaces() {
+
+        let u, f, r, l, b, d;
+        const state = this.getState();
+
+        u = getUp(state.code);
+        f = getFront(state.code);
+        r = getRight(state.code);
+        l = getLeft(state.code);
+        b = getBack(state.code);
+        d = getDown(state.code);
+
+        this.upEl.style.background = dictColors[u];
+        this.frontEl.style.background = dictColors[f];
+        this.rightEl.style.background = dictColors[r];
+        this.leftEl.style.background = dictColors[l];
+        this.backEl.style.background = dictColors[b];
+        this.downEl.style.background = dictColors[d];
+
+        let t = dictCubeTransform[state.code]['u'];
+        this.upEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
+
+        t = dictCubeTransform[state.code]['f'];
+        this.frontEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
+
+        t = dictCubeTransform[state.code]['r'];
+        this.rightEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
+
+        t = dictCubeTransform[state.code]['l'];
+        this.leftEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
+
+        t = dictCubeTransform[state.code]['b'];
+        this.backEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
+
+        t = dictCubeTransform[state.code]['d'];
+        this.downEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
+    }
+
+    tap(element, target) {
+        qs(`.${target}.face`, element).classList.toggle('tapped');
+    }
+
+    actionInvoke(action, ui) {
+        let state = this.getState(),
+            stateCode = state.code;
+
+        if (!state.swipeEnabled)
+            return;
+
+        state.code = dictCube[stateCode][action]; // reducer
+        state.swipeEnabled = false;
+        this.setState(state);
+        ui = ui.bind(this);
+        ui();
+    }
+
+    gotoState(stateCode) {
+        if (!STATES[stateCode])
+            return;
+
+        let state = this.getState();
+        state.code = stateCode;
+        this.setState(state);
+        updateUiFaces();
+    }
+
+
+    x() {
+        this.actionInvoke('x', this.uix);
+    }
+
+    _x() {
+        this.actionInvoke('-x', this.ui_x);
+    }
+
+    y() {
+        this.actionInvoke('y', this.uiy);
+    }
+
+    _y() {
+        this.actionInvoke('-y', this.ui_y);
+    }
+
+
+    z() {
+        this.actionInvoke('z', this.uiz);
+    }
+
+    _z() {
+        this.actionInvoke('-z', this.ui_z);
+    }
+
+    uix() {
+        this.cubeEl.style.transform = `rotateX(90deg)`;
+    }
+
+    uiy() {
+        this.cubeEl.style.transform = `rotateY(90deg)`;
+    }
+
+    ui_x() {
+        this.cubeEl.style.transform = `rotateX(-90deg)`;
+    }
+
+    ui_y() {
+        this.cubeEl.style.transform = `rotateY(-90deg)`;
+    }
+
+    uiz() {
+        this.cubeEl.style.transform = `rotateZ(90deg)`;
+    }
+
+    ui_z() {
+        this.cubeEl.style.transform = `rotateZ(-90deg)`;
+    }
+
+    reset() {
+        this.gotoState('uf');
+        return 'reset';
+    }
+
+
+    handleKeyEvent(event) {
+        switch (event.keyCode) {
+            case KEY.LEFT:
+            case KEY.a:
+                this._y();
+                break;
+            case KEY.UP:
+            case KEY.w:
+                this.x();
+                break;
+            case KEY.RIGHT:
+            case KEY.d:
+                this.y();
+                break;
+            case KEY.DOWN:
+            case KEY.s:
+                this._x();
+                break;
+            case KEY.q:
+                this._z();
+                break;
+            case KEY.e:
+                this.z();
+                break;
+        }
     }
 }
 
 
-function handleRightKeyEvent(event) {
-    event.stopPropagation();
+let cube = new CubeOne(byId('cube-component-1'), qs('.js-state-info'));
+cube.init();
 
-    switch (event.keyCode) {
-        case KEY.LEFT:
-            _y();
-            break;
-        case KEY.UP:
-            _z();
-            break;
-        case KEY.RIGHT:
-            y();
-            break;
-        case KEY.DOWN:
-            event.preventDefault();
-            z();
-            break;
-    }
-}
+window.cube = window.cube || [];
+window.cube.push(cube);
 
-
-function handleUpKeyEvent(event) {
-    event.stopPropagation();
-
-    switch (event.keyCode) {
-        case KEY.LEFT:
-            _z();
-            break;
-        case KEY.UP:
-            x();
-            break;
-        case KEY.RIGHT:
-            z();
-            break;
-        case KEY.DOWN:
-            _x();
-            break;
-    }
-}
-
-
-function handleKeyEvent(event) {
-    switch (event.keyCode) {
-        case KEY.LEFT:
-        case KEY.a:
-            _y();
-            break;
-        case KEY.UP:
-        case KEY.w:
-            x();
-            break;
-        case KEY.RIGHT:
-        case KEY.d:
-            y();
-            break;
-        case KEY.DOWN:
-        case KEY.s:
-            _x();
-            break;
-        case KEY.q:
-            _z();
-            break;
-        case KEY.e:
-            z();
-            break;
-    }
-}
-
-window.cube = {
-    x,
-    _x,
-    y,
-    _y,
-    z,
-    _z,
-    gotoState,
-    reset
-};
-
-
-((initApplication) => {
-    window.addEventListener('keydown', handleKeyEvent, false);    
-    updateUiFaces();
-    updateAppInfo();
-})();
 
 export class App {
     constructor() {}

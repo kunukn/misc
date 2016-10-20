@@ -1,1 +1,157 @@
 @charset "UTF-8";
+.cube-scene {
+    width: $size;
+    height: $size;
+    // perspective: 800px;
+    margin: 0 auto;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateX(-20deg) rotateY(-20deg) rotateZ(0deg);
+    // background: pink;
+}
+
+.cube-component {
+    width: $size;
+    height: $size;
+    margin: 0 auto;
+    position: relative;
+    transform-style: preserve-3d;
+    &:focus{
+        outline: none;
+        .face{
+            border: 2px solid black;
+        }
+    }
+}
+
+.cube-touch {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $size;
+    height: $size;
+    //background: rgba(red, .5);
+    backface-visibility: hidden;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    color: #222;
+    color: transparent;
+    cursor: pointer;
+    background: transparent;
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 50px white;
+    }
+    //display: none;
+    // font-size: 0;
+    &--up {
+        transform: rotateX(-90deg) translateY($size/2) rotateY(180deg) rotateZ(180deg);
+        transform-origin: top center;
+    }
+    &[data-type=front] {
+        transform: translateZ($size/2 + 1px);
+    }
+    &[data-type=right] {
+        transform: rotateY(-270deg) translateX($size/2);
+        transform-origin: top right;
+    }
+    &[data-type=left] {
+        transform: rotateY(270deg) translateX(-$size/2);
+        transform-origin: center left;
+    }
+    &[data-type=back] {
+        transform: translateZ(-$size/2) rotateY(180deg);
+    }
+    &[data-type=down] {
+        transform: rotateX(90deg) translateY(-$size/2) rotateY(180deg) rotateZ(180deg);
+        transform-origin: bottom center;
+    }
+}
+
+.cube {
+    transition: $transition-duration;
+    position: relative;
+    width: $size;
+    height: $size;
+    margin: 0 auto;
+    transform-style: preserve-3d;
+    user-select: none;
+    pointer-events: none;
+    //  animation: spin 5s infinite linear;
+    .face {
+        user-select: none;
+        pointer-events: none;
+        transition: translate 200ms;
+        position: absolute;
+        width: $size;
+        height: $size;
+        text-transform: uppercase;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid white;
+        font-size: 0;
+        color: transparent;
+        //backface-visibility: hidden;
+        border-radius: 1px;
+        opacity: .9;
+        &.tapped {
+            opacity: .5;
+        }
+        >div {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+        }
+    }
+    .front {
+        transform: translateZ($size/2);
+    }
+    .up {
+        transform: rotateX(-90deg) translateY($size/2) rotateY(180deg) rotateZ(180deg);
+        transform-origin: top center;
+    }
+    .right {
+        transform: rotateY(-270deg) translateX($size/2);
+        transform-origin: top right;
+    }
+    .back {
+        transform: translateZ(-$size/2) rotateY(180deg);
+    }
+    .down {
+        transform: rotateX(90deg) translateY(-$size/2) rotateY(180deg) rotateZ(180deg);
+        transform-origin: bottom center;
+    }
+    .left {
+        transform: rotateY(270deg) translateX(-$size/2);
+        transform-origin: center left;
+    }
+    .front-color {
+        background: $color-front;
+    }
+    .up-color {
+        background: $color-up;
+    }
+    .right-color {
+        background: $color-right;
+    }
+    .left-color {
+        background: $color-left;
+    }
+    .back-color {
+        background: $color-back;
+    }
+    .down-color {
+        background: $color-down;
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotateY(1turn) rotateX(1turn);
+    }
+}
