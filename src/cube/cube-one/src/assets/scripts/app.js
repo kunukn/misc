@@ -512,12 +512,7 @@ window.cube = {
 
 
 ((initApplication) => {
-
-    window.addEventListener('keydown', handleKeyEvent, false);
-    touchFrontEl.addEventListener('keydown', handleFrontKeyEvent, false);
-    touchRightEl.addEventListener('keydown', handleRightKeyEvent, false);
-    touchUpEl.addEventListener('keydown', handleUpKeyEvent, false);
-
+    window.addEventListener('keydown', handleKeyEvent, false);    
     updateUiFaces();
     updateAppInfo();
 })();
