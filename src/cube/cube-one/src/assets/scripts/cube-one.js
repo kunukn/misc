@@ -46,17 +46,14 @@ const KEY = {
     w: 87,
 };
 
-
 const hammerOptions = {
     preventDefault: true
 };
 
-
 class CubeOne {
-
-    constructor(cubeComponent, stateInfoEl) {
-        this.cubeComponentEl = cubeComponent;
-        this.stateInfoEl = stateInfoEl;
+    constructor(config) {
+        this.cubeComponentEl = config.cubeComponent;
+        this.stateInfoEl = config.infoComponent;
         this._appState = {
             code: nextState.first,
             swipeEnabled: true,
@@ -73,7 +70,8 @@ class CubeOne {
     }
 
     updateAppInfo() {
-        this.stateInfoEl.innerHTML = `<label>State: </label><span class="state"> ${this.getState().code}</span>`;
+        if (this.stateInfoEl)
+            this.stateInfoEl.innerHTML = `<label>State: </label><span class="state"> ${this.getState().code}</span>`;
     }
 
 
@@ -116,7 +114,6 @@ class CubeOne {
         this.leftEl = qs('.left > div', cubeEl);
         this.backEl = qs('.back > div', cubeEl);
         this.downEl = qs('.down > div', cubeEl);
-        //this.stateInfoEl = qs('.js-state-info');
 
         const hammerFront = new Hammer(
             touchFrontEl,
@@ -337,7 +334,7 @@ class CubeOne {
     }
 
     tap(element, target) {
-        qs(`.${target}.face`, element).classList.toggle('tapped');
+         qs(`.${target}.face`, element).classList.toggle('tapped');
     }
 
     actionInvoke(action, ui) {
