@@ -307,12 +307,12 @@ class CubeOne {
         b = getBack(state.code);
         d = getDown(state.code);
 
-        this.upEl.style.background = dictColors[u];
-        this.frontEl.style.background = dictColors[f];
-        this.rightEl.style.background = dictColors[r];
-        this.leftEl.style.background = dictColors[l];
-        this.backEl.style.background = dictColors[b];
-        this.downEl.style.background = dictColors[d];
+        this.upEl.style.backgroundColor = dictColors[u];
+        this.frontEl.style.backgroundColor = dictColors[f];
+        this.rightEl.style.backgroundColor = dictColors[r];
+        this.leftEl.style.backgroundColor = dictColors[l];
+        this.backEl.style.backgroundColor = dictColors[b];
+        this.downEl.style.backgroundColor = dictColors[d];
 
         let t = dictCubeTransform[state.code]['u'];
         this.upEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
