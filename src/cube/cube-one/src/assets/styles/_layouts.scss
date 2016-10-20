@@ -40,11 +40,11 @@ body {
     border-bottom: 1px solid lightgray;
     .about {}
     .state-info {
-        > label {
+        >label {
             font-weight: 700;
             display: inline-block;
         }
-        > .state {
+        >.state {
             display: inline-block;
             font-weight: 700;
             text-transform: uppercase;
@@ -148,7 +148,7 @@ body {
         &.tapped {
             opacity: .5;
         }
-        > div {
+        >div {
             position: absolute;
             width: 100%;
             height: 100%;
