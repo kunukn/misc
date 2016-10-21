@@ -135,6 +135,9 @@ class CubeOne {
                 const state = this.getState();
                 state.swipeEnabled = true;
                 this.setState(state);
+                this._triggerEvent('afterrotate', {
+                    cube: this.cubeComponentEl,
+                });
             });
         });
     }
