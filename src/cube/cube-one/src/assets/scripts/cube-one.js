@@ -1,7 +1,7 @@
 ;
 'use strict';
 
-import { log } from './logger';
+import { debug, log, error } from './logger';
 
 import { qs, qsa, byId } from './query';
 
@@ -21,7 +21,7 @@ import {
 import dictCube from './dictionaries/dict-cube';
 import dictCubeTransform from './dictionaries/dict-cube-transform';
 
-import { STATES } from './constants';
+import { STATES, STATES_ARRAY } from './constants';
 
 function rAF(callback) {
     window.requestAnimationFrame(callback);
@@ -46,26 +46,74 @@ const KEY = {
     w: 87,
 };
 
-const hammerOptions = {
-    preventDefault: true
+
+const EVENT_NAMES = {
+    init: 'init',
+    statechange: 'statechange',
+    beforerotate: 'beforerotate',
+    afterrotate: 'afterrotate',
 };
+
+
 
 class CubeOne {
     constructor(config) {
+
+        if (!config || !config.cubeComponent) {
+            error(`CubeOne element was not provided: ${config.cubeComponent}`);
+            return;
+        }
+
         this.cubeComponentEl = config.cubeComponent;
         this.stateInfoEl = config.infoComponent;
+
         this._appState = {
             code: nextState.first,
             swipeEnabled: true,
         };
+
+        this._initCallbacks();
     }
+
+
+    _initCallbacks() {
+        this.callbacks = {};
+        Object.keys(EVENT_NAMES).forEach((eventName, index) => this.callbacks[eventName] = []);
+    }
+
+    addCallbackForEvent(eventName, cb) {
+        let collection = this.callbacks[(eventName = eventName.toLowerCase())];
+        if (collection && typeof cb === 'function') {
+            collection.push(cb);
+        }
+    };
+
+    _triggerEvent(eventName, payload) {
+        let collection = this.callbacks[eventName] || [],
+            i, max;
+        for (i = 0, max = collection.length; i < max; i++) {
+            collection[i].call(this, eventName, payload);
+        }
+    }
+
 
     getState() {
         return cloneObject(this._appState);
     }
 
     setState(state) {
+        const previousStateCode = this._appState.code,
+            currentStateCode = state.code;
+
         this._appState = state;
+
+        if (previousStateCode !== currentStateCode) {
+            this._triggerEvent('statechange', {
+                cube: this.cubeComponentEl,
+                previousStateCode,
+                currentStateCode
+            });
+        }
         this.updateAppInfo();
     }
 
@@ -98,60 +146,107 @@ class CubeOne {
 
         const cubeComponentEl = this.cubeComponentEl;
 
-        const touchUpEl = qs('.js-touch-up', cubeComponentEl),
-            touchFrontEl = qs('.js-touch-front', cubeComponentEl),
-            touchRightEl = qs('.js-touch-right', cubeComponentEl),
-            touchLeftEl = qs('.js-touch-left', cubeComponentEl),
-            touchBackEl = qs('.js-touch-back', cubeComponentEl),
-            touchDownEl = qs('.js-touch-down', cubeComponentEl);
+        const touchUpEl = qs('[data-type="up"].cubeone-js-touch', cubeComponentEl),
+            touchFrontEl = qs('[data-type="front"].cubeone-js-touch', cubeComponentEl),
+            touchRightEl = qs('[data-type="right"].cubeone-js-touch', cubeComponentEl),
+            touchLeftEl = qs('[data-type="left"].cubeone-js-touch', cubeComponentEl),
+            touchBackEl = qs('[data-type="back"].cubeone-js-touch', cubeComponentEl),
+            touchDownEl = qs('[data-type="down"].cubeone-js-touch', cubeComponentEl);
 
-        const cubeEl = qs('.js-cube', cubeComponentEl);
+        const cubeEl = qs('.cubeone-js-cube', cubeComponentEl);
         this.cubeEl = cubeEl;
 
-        this.frontEl = qs('.front > div', cubeEl);
-        this.upEl = qs('.up > div', cubeEl);
-        this.rightEl = qs('.right > div', cubeEl);
-        this.leftEl = qs('.left > div', cubeEl);
-        this.backEl = qs('.back > div', cubeEl);
-        this.downEl = qs('.down > div', cubeEl);
+        this.frontEl = qs('.cubeone-front > div', cubeEl);
+        this.upEl = qs('.cubeone-up > div', cubeEl);
+        this.rightEl = qs('.cubeone-right > div', cubeEl);
+        this.leftEl = qs('.cubeone-left > div', cubeEl);
+        this.backEl = qs('.cubeone-back > div', cubeEl);
+        this.downEl = qs('.cubeone-down > div', cubeEl);
 
-        const hammerFront = new Hammer(
-            touchFrontEl,
-            hammerOptions);
-        const hammerUp = new Hammer(
-            touchUpEl,
-            hammerOptions);
-        const hammerRight = new Hammer(
-            touchRightEl,
-            hammerOptions);
-        const hammerLeft = new Hammer(
-            touchLeftEl,
-            hammerOptions);
-        const hammerDown = new Hammer(
-            touchDownEl,
-            hammerOptions);
+        const hammerOptions = {
+            preventDefault: true
+        };
 
-        hammerFront.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
-        hammerUp.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
-        hammerRight.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
-        hammerLeft.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
-        hammerDown.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+        const swipeFront = new Hammer.Swipe();
+        swipeFront.set({ direction: Hammer.DIRECTION_ALL });
+        const swipeUp = new Hammer.Swipe();
+        swipeUp.set({ direction: Hammer.DIRECTION_ALL });
+        const swipeRight = new Hammer.Swipe();
+        swipeRight.set({ direction: Hammer.DIRECTION_ALL });
+        const swipeLeft = new Hammer.Swipe();
+        swipeLeft.set({ direction: Hammer.DIRECTION_ALL });
+        const swipeDown = new Hammer.Swipe();
+        swipeDown.set({ direction: Hammer.DIRECTION_ALL });
+        const swipeBack = new Hammer.Swipe();
+        swipeBack.set({ direction: Hammer.DIRECTION_ALL });
+
+        const hammerFront = new Hammer.Manager(touchFrontEl, {});
+        hammerFront.add(swipeFront);
+
+        const hammerUp = new Hammer.Manager(touchUpEl, {});
+        hammerUp.add(swipeUp);
+
+        const hammerRight = new Hammer.Manager(touchRightEl, {});
+        hammerRight.add(swipeRight);
+
+        const hammerLeft = new Hammer.Manager(touchLeftEl, {});
+        hammerLeft.add(swipeLeft);
+
+        const hammerDown = new Hammer.Manager(touchDownEl, {});
+        hammerDown.add(swipeDown);
+
+        const hammerBack = new Hammer.Manager(touchDownEl, {});
+        hammerBack.add(swipeBack);
 
 
-        hammerFront.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
+        hammerFront.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
+        hammerFront.add(new Hammer.Tap({ event: 'singletap' }));
+        hammerFront.get('doubletap').recognizeWith('singletap');
+        hammerFront.get('singletap').requireFailure('doubletap');
+
+        hammerUp.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
+        hammerUp.add(new Hammer.Tap({ event: 'singletap' }));
+        hammerUp.get('doubletap').recognizeWith('singletap');
+        hammerUp.get('singletap').requireFailure('doubletap');
+
+        hammerRight.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
+        hammerRight.add(new Hammer.Tap({ event: 'singletap' }));
+        hammerRight.get('doubletap').recognizeWith('singletap');
+        hammerRight.get('singletap').requireFailure('doubletap');
+
+        hammerLeft.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
+        hammerLeft.add(new Hammer.Tap({ event: 'singletap' }));
+        hammerLeft.get('doubletap').recognizeWith('singletap');
+        hammerLeft.get('singletap').requireFailure('doubletap');
+
+        hammerDown.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
+        hammerDown.add(new Hammer.Tap({ event: 'singletap' }));
+        hammerDown.get('doubletap').recognizeWith('singletap');
+        hammerDown.get('singletap').requireFailure('doubletap');
+
+        hammerBack.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
+        hammerBack.add(new Hammer.Tap({ event: 'singletap' }));
+        hammerBack.get('doubletap').recognizeWith('singletap');
+        hammerBack.get('singletap').requireFailure('doubletap');
+
+        hammerFront.on('singletap doubletap swipeup swipedown swiperight swipeleft', (ev) => {
+
             const type = ev.type;
             let element = ev.target;
+            debug(`${type} ${element.dataset.type}`);
 
             // Find swipe element if event is invoke on child element
-            if (element.dataset.type !== 'swipe-component') {
+            if (element.dataset.type !== 'cubeone') {
                 element = element.parentElement;
-                if (element.dataset.type !== 'swipe-component')
+                if (element.dataset.type !== 'cubeone')
                     element = element.parentElement;
             }
 
             switch (type) {
-                case 'tap':
-                    this.tap(element, ev.target.dataset.type);
+                case 'singletap':
+                    break;
+                case 'doubletap':
+                    this.tapped(element, ev.target.dataset.type);
                     break;
                 case 'swipeup':
                     this.x();
@@ -169,20 +264,23 @@ class CubeOne {
         });
 
 
-        hammerUp.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
+        hammerUp.on('singletap doubletap swipeup swipedown swiperight swipeleft', (ev) => {
             const type = ev.type;
             let element = ev.target;
+            debug(`${type} ${element.dataset.type}`);
 
             // Find swipe element if event is invoke on child element
-            if (element.dataset.type !== 'swipe-component') {
+            if (element.dataset.type !== 'cubeone') {
                 element = element.parentElement;
-                if (element.dataset.type !== 'swipe-component')
+                if (element.dataset.type !== 'cubeone')
                     element = element.parentElement;
             }
 
             switch (type) {
-                case 'tap':
-                    this.tap(element, ev.target.dataset.type);
+                case 'singletap':
+                    break;
+                case 'doubletap':
+                    this.tapped(element, ev.target.dataset.type);
                     break;
                 case 'swipeup':
                     this.x();
@@ -200,19 +298,22 @@ class CubeOne {
         });
 
 
-        hammerRight.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
+        hammerRight.on('singletap doubletap swipeup swipedown swiperight swipeleft', (ev) => {
             const type = ev.type;
             let element = ev.target;
+            debug(`${type} ${element.dataset.type}`);
 
             // Find swipe element if event is invoke on child element
-            if (element.dataset.type !== 'swipe-component') {
+            if (element.dataset.type !== 'cubeone') {
                 element = element.parentElement;
-                if (element.dataset.type !== 'swipe-component')
+                if (element.dataset.type !== 'cubeone')
                     element = element.parentElement;
             }
             switch (type) {
-                case 'tap':
-                    this.tap(element, ev.target.dataset.type);
+                case 'singletap':
+                    break;
+                case 'doubletap':
+                    this.tapped(element, ev.target.dataset.type);
                     break;
                 case 'swipeup':
                     this._z();
@@ -230,19 +331,22 @@ class CubeOne {
         });
 
 
-        hammerLeft.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
+        hammerLeft.on('singletap doubletap swipeup swipedown swiperight swipeleft', (ev) => {
             const type = ev.type;
             let element = ev.target;
+            debug(`${type} ${element.dataset.type}`);
 
             // Find swipe element if event is invoke on child element
-            if (element.dataset.type !== 'swipe-component') {
+            if (element.dataset.type !== 'cubeone') {
                 element = element.parentElement;
-                if (element.dataset.type !== 'swipe-component')
+                if (element.dataset.type !== 'cubeone')
                     element = element.parentElement;
             }
             switch (type) {
-                case 'tap':
-                    this.tap(element, ev.target.dataset.type);
+                case 'singletap':
+                    break;
+                case 'doubletap':
+                    this.tapped(element, ev.target.dataset.type);
                     break;
                 case 'swipeup':
                     this.z();
@@ -259,39 +363,52 @@ class CubeOne {
             }
         });
 
-        hammerDown.on('tap swipeup swipedown swiperight swipeleft', (ev) => {
+        hammerDown.on('singletap doubletap swipeup swipedown swiperight swipeleft', (ev) => {
             const type = ev.type;
             let element = ev.target;
+            debug(`${type} ${element.dataset.type}`);
 
             // Find swipe element if event is invoke on child element
-            if (element.dataset.type !== 'swipe-component') {
+            if (element.dataset.type !== 'cubeone') {
                 element = element.parentElement;
-                if (element.dataset.type !== 'swipe-component')
+                if (element.dataset.type !== 'cubeone')
                     element = element.parentElement;
             }
             switch (type) {
-                case 'tap':
-                    tap(element, ev.target.dataset.type);
+                case 'singletap':
+                    break;
+                case 'doubletap':
+                    this.tapped(element, ev.target.dataset.type);
                     break;
                 case 'swipeup':
-                    x();
+                    this.x();
                     break;
                 case 'swiperight':
-                    _z();
+                    this._z();
                     break;
                 case 'swipedown':
-                    _x();
+                    this._x();
                     break;
                 case 'swipeleft':
-                    z();
+                    this.z();
                     break;
             }
         });
+
+
+        hammerBack.on('singletap doubletap swipeup swipedown swiperight swipeleft', (ev) => {
+            const type = ev.type;
+            let element = ev.target;
+            log(`${type} ${element.dataset.type}`);
+        });
+
 
         this.cubeComponentEl.addEventListener('keydown', this.handleKeyEvent.bind(this), false);
         this.updateUiFaces();
         this.updateAppInfo();
         cubeEl.addEventListener('transitionend', this.transitionEnd.bind(this));
+
+        this._triggerEvent('init', { cube: this.cubeComponentEl });
     }
 
 
@@ -333,8 +450,8 @@ class CubeOne {
         this.downEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
     }
 
-    tap(element, target) {
-        qs(`.${target}.face`, element).classList.toggle('tapped');
+    tapped(element, target) {
+        qs(`.cubeone-${target}.cubeone-face`, element).classList.toggle('tapped');
     }
 
     actionInvoke(action, ui) {
@@ -357,6 +474,13 @@ class CubeOne {
 
         let state = this.getState();
         state.code = stateCode;
+        this.setState(state);
+        this.updateUiFaces();
+    }
+
+    setToRandomState() {
+        let state = this.getState();
+        state.code = STATES_ARRAY[(STATES_ARRAY.length * Math.random()) | 0];
         this.setState(state);
         this.updateUiFaces();
     }
@@ -423,6 +547,7 @@ class CubeOne {
                 this._y();
                 break;
             case KEY.UP:
+                event.preventDefault();
             case KEY.w:
                 this.x();
                 break;
@@ -431,6 +556,7 @@ class CubeOne {
                 this.y();
                 break;
             case KEY.DOWN:
+                event.preventDefault();
             case KEY.s:
                 this._x();
                 break;

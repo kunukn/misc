@@ -11,36 +11,97 @@ import CubeOne from './cube-one';
 
 //log('App running');
 
-const cube1 = new CubeOne({
+const states = {};
+
+function statechangeCallback(eventName, payload) {
+    states[payload.cube.id] = payload.currentStateCode;
+    checkForComplete();
+}
+
+function initCallback(eventName, payload) {}
+
+const bodyWrapperEl = qs('.body-wrapper');
+
+function checkForComplete() {
+
+
+    let keys = Object.keys(states);
+    let isComplete = false;
+
+    if (keys.length >= 4) {
+        isComplete = true;
+        keys.forEach((key, index, array) => {
+            if (states[key] !== 'uf') {
+                isComplete = false;
+            }
+        });
+    }
+
+    if (isComplete)
+        bodyWrapperEl.classList.add('with-background-image');
+    else {
+        bodyWrapperEl.classList.remove('with-background-image');
+    }
+}
+
+let cubeOne = {
+    cubes: []
+};
+
+let cube = new CubeOne({
     cubeComponent: byId('cubeone-component-1'),
     infoComponent: qs('.js-state-info-1'),
 });
-cube1.init();
+cube.addCallbackForEvent('init', initCallback);
+cube.addCallbackForEvent('statechange', statechangeCallback);
+cube.init();
+cube.setToRandomState();
+cubeOne.cubes.push(cube);
 
-const cube2 = new CubeOne({
+//----------
+cube = new CubeOne({
     cubeComponent: byId('cubeone-component-2'),
     infoComponent: qs('.js-state-info-2'),
 });
-cube2.init();
+cube.addCallbackForEvent('init', initCallback);
+cube.addCallbackForEvent('statechange', statechangeCallback);
+cube.init();
+cube.setToRandomState();
+cubeOne.cubes.push(cube);
 
-const cube3 = new CubeOne({
+//----------
+cube = new CubeOne({
     cubeComponent: byId('cubeone-component-3'),
     infoComponent: qs('.js-state-info-3'),
 });
-cube3.init();
+cube.addCallbackForEvent('init', initCallback);
+cube.addCallbackForEvent('statechange', statechangeCallback);
+cube.init();
+cube.setToRandomState();
+cubeOne.cubes.push(cube);
 
-const cube4 = new CubeOne({
+//----------
+cube = new CubeOne({
     cubeComponent: byId('cubeone-component-4'),
     infoComponent: qs('.js-state-info-4'),
 });
-cube4.init();
+cube.addCallbackForEvent('init', initCallback);
+cube.addCallbackForEvent('statechange', statechangeCallback);
+cube.init();
+cube.setToRandomState();
+cubeOne.cubes.push(cube);
 
-window.cubeOne = window.cubeOne || [];
-window.cubeOne.push(cube1);
-window.cubeOne.push(cube2);
-window.cubeOne.push(cube3);
-window.cubeOne.push(cube4);
+//----------
 
+cubeOne.solve = () => {
+    cubeOne.cubes.forEach( cube => cube.gotoState('uf'));
+};
+
+window.cubeOne = cubeOne;
+
+
+
+//----------
 log('cubeOne is available in console');
 
 
