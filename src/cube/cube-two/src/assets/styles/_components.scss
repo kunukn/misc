@@ -17,4 +17,15 @@
     outline: 1px solid pink;
     width: 4*$cube-size;
     height: 4*$cube-size;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.cubetwo-container {
+    width: 2*$cube-size;
+    height: 2*$cube-size;
+    outline: 1px solid hotpink;
 }
