@@ -12,7 +12,7 @@ module.exports = {
     devtool: 'eval',
     context: path.resolve('./'),
     entry: {
-        vendors: ['jquery'],
+        // vendors: ['jquery'],
         app: ['./src/assets/scripts'],
         //app: ['webpack-dev-server/client?http://localhost:8080/', './src/assets/scripts/app'],
     },
@@ -37,9 +37,9 @@ module.exports = {
     plugins: [
         new ExtractTextPlugin('[name].css'),
         new webpack.ProvidePlugin({
-            $: 'jquery',
-            jquery: 'jQuery',
-            'windows.jQuery': 'jquery'
+            // $: 'jquery',
+            // jquery: 'jQuery',
+            // 'windows.jQuery': 'jquery'
         }),
         new webpack.DefinePlugin({
             "process.env": {
@@ -47,7 +47,9 @@ module.exports = {
             }
         }),
 
-        new webpack.optimize.CommonsChunkPlugin({ name: ['vendors'].reverse(), minChunks: Infinity }),
+        
+        /* https://github.com/webpack/webpack/issues/368 */
+        // new webpack.optimize.CommonsChunkPlugin({ name: ['vendors'].reverse(), minChunks: Infinity }),
 
         new HtmlWebpackPlugin({
             template: 'src/index.html',
@@ -55,8 +57,7 @@ module.exports = {
         })
     ],
     module: {
-        preLoaders: [            
-        ],
+        preLoaders: [],
         loaders: [{
                 /* Enable to the window object */
                 test: require.resolve('jquery'),
@@ -96,9 +97,7 @@ module.exports = {
     resolve: {
         extensions: ['', '.js', '.ts']
     },
-    externals: {
-        //"jquery": "$"
-    },
+    externals: {},
 };
 
 
