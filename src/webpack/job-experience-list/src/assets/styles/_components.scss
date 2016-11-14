@@ -1,0 +1,153 @@
+@charset "UTF-8";
+// Page
+.page {
+    max-width: 1280px;
+    margin: 0 auto;
+    //border: 1px solid red;
+    position: relative;
+    padding: $gutter-unit;
+}
+
+.jobs {
+    padding: $gutter-unit;
+    >header {
+        font-size: 120%;
+        padding: $gutter-unit;
+    }
+    &__top-headings {
+        display: none;
+        @include device(medium) {
+            padding: $gutter-unit;
+            display: flex;
+            justify-content: space-between;
+            align-content: center;
+            >h3 {
+                //background: pink; // debug        
+                flex: 1;
+            }
+        }
+    }
+    &__include-option {
+        padding: $gutter-unit;
+        label,
+        input,
+        span {
+            cursor: pointer;
+            user-select: none;
+        }
+    }
+    &__list {
+        //background: pink; // debug
+        position: relative;
+        display: block;
+        >li {
+            border-radius: $border-radius-theme;
+            background: rgba(black, .05);
+            border-bottom: 1px solid transparent; // trick to enable bottom padding
+            display: block;
+            +li {
+                margin-top: $gutter-unit * 2;
+            }
+        }
+    }
+    &__item {
+        padding: $gutter-unit;
+        >div {
+            margin-bottom: $gutter-unit;
+        }
+        @include device(medium) {
+            display: flex;
+            //justify-content: space-between;
+            align-content: center;
+            >h3 {
+                display: none;
+            }
+            >div {
+                flex: 1;
+            }
+        }
+    }
+}
+
+.work-history {
+    border-radius: $border-radius-theme;
+    padding: $gutter-unit;
+    margin: $gutter-unit;
+    font-size: 90%;
+    background: rgba(black, .1);
+    >header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__top-headings {
+        display: none;
+        @include device(medium) {
+            margin-top: $gutter-unit * 2;
+            padding: 0 $gutter-unit;
+            display: flex;
+            //justify-content: space-between;
+            align-content: center;
+            >h3 {
+                //background: pink; // debug                
+                &:nth-child(1) {
+                    flex: 1;
+                }
+                &:nth-child(2) {
+                    flex: 2;
+                }
+            }
+        }
+    }
+    &__include-option {
+        padding: $gutter-unit;
+        label,
+        input,
+        span {
+            cursor: pointer;
+            user-select: none;
+        }
+    }
+    &__toggle {
+        font-size: inherit;
+        border: 1px solid;
+        background: transparent;
+        box-shadow: none;
+        border-radius: 2px;
+        cursor: pointer;
+        &:before {
+            content: attr(data-text-show);
+            display: block;
+        }
+        &.show {
+            &:before {
+                content: attr(data-text-hide);
+            }
+        }
+    }
+    &__list {
+        >li {
+            background: rgba(black, .1);
+            margin-top: $gutter-unit;
+            border-radius: $border-radius-theme;
+        }
+    }
+    &__item {
+        padding: $gutter-unit;
+        @include device(medium) {
+            display: flex;
+            >h3 {
+                display: none;
+            }
+            >div {
+                flex: 1;
+                &:nth-of-type(2) {
+                    flex: 2;
+                }
+            }
+        }
+        >div {
+            margin-bottom: $gutter-unit;
+        }
+    }
+}
