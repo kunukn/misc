@@ -6,6 +6,19 @@
     //border: 1px solid red;
     position: relative;
     padding: $gutter-unit;
+    color: #222;
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+    h3 {
+        margin: 0;
+        padding: 0;
+        font-size: 110%;
+        font-weight: 600;
+        color: #222;
+    }
 }
 
 .jobs {
@@ -42,9 +55,9 @@
         display: block;
         >li {
             border-radius: $border-radius-theme;
-            background: rgba(black, .05);
-            border-bottom: 1px solid transparent; // trick to enable bottom padding
-            display: block;
+            background: white;
+            margin-bottom: $gutter-unit;
+            border: 1px solid gray; // trick to enable bottom padding
             +li {
                 margin-top: $gutter-unit * 2;
             }
@@ -57,7 +70,6 @@
         }
         @include device(medium) {
             display: flex;
-            //justify-content: space-between;
             align-content: center;
             >h3 {
                 display: none;
@@ -74,7 +86,7 @@
     padding: $gutter-unit;
     margin: $gutter-unit;
     font-size: 90%;
-    background: rgba(black, .1);
+    background-color: $color-theme;
     >header {
         display: flex;
         justify-content: space-between;
@@ -86,10 +98,8 @@
             margin-top: $gutter-unit * 2;
             padding: 0 $gutter-unit;
             display: flex;
-            //justify-content: space-between;
             align-content: center;
             >h3 {
-                //background: pink; // debug                
                 &:nth-child(1) {
                     flex: 1;
                 }
@@ -115,6 +125,7 @@
         box-shadow: none;
         border-radius: 2px;
         cursor: pointer;
+        min-width: 100px;
         &:before {
             content: attr(data-text-show);
             display: block;
@@ -127,7 +138,8 @@
     }
     &__list {
         >li {
-            background: rgba(black, .1);
+            background: white;
+            //border: 1px solid rgba(gray, .5);
             margin-top: $gutter-unit;
             border-radius: $border-radius-theme;
         }
@@ -150,4 +162,8 @@
             margin-bottom: $gutter-unit;
         }
     }
+}
+
+.mdl-checkbox.is-checked .mdl-checkbox__tick-outline {
+    //background: #{$color-theme} url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiI…lsZT0iZmlsbDojZmZmZmZmO2ZpbGwtb3BhY2l0eToxO3N0cm9rZTpub25lIiAvPgo8L3N2Zz4K");
 }
