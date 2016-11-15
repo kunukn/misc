@@ -11,16 +11,16 @@
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
     <![endif]-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.blue_grey-deep_purple.min.css" />
-    <link rel="stylesheet" href="/src/assets/vendor/nst/nst.min.css">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.deep_orange-deep_purple.min.css" />
+    <link rel="stylesheet" href="/src/assets/vendor/nst/nst.css">
 </head>
 
 <body>
-    <div class="page">
+    <div class="page" id="app">
 
         <div class="jobs">
             <header>
-                <h3>Positions</h3>
+                <h3> {{ title }}</h3>
             </header>
 
             <div class="jobs__top-headings">
@@ -31,7 +31,8 @@
 
             <ul class="jobs__list">
 
-                <li>
+
+                <li v-for="role in roles">
                     <div class="jobs__include-option">
                         <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
                             <input type="checkbox" class="mdl-checkbox__input" checked />
@@ -47,7 +48,7 @@
                         <div>4 years 2 month</div>
                     </div>
 
-                    <div class="nst-component work-history js-work-history">
+                    <div class="nst-component work-history">
 
                         <header>
                             <h3 class="work-history__headline">Companies</h3>
@@ -55,7 +56,7 @@
                         </header>
 
 
-                        <div class="nst-content work-history__content js-work-history__content">
+                        <div class="nst-content work-history__content">
 
                             <div>
 
@@ -108,82 +109,7 @@
                     </div>
                 </li>
 
-                <li>
-                    <div class="jobs__include-option">
-                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-                            <input type="checkbox" class="mdl-checkbox__input" checked />
-                            <span class="mdl-checkbox__label">Include?</span>
-                        </label>
-                    </div>
-                    <div class="jobs__item">
-                        <h3>Position</h3>
-                        <div>Architect</div>
-                        <h3>Total</h3>
-                        <div>7 years 1 month</div>
-                        <h3>Last 5 years</h3>
-                        <div>4 years 2 month</div>
-                    </div>
 
-                    <div class="nst-component work-history js-work-history">
-
-                        <header>
-                            <h3 class="work-history__headline">Companies</h3>
-                            <button class="nst-toggle work-history__toggle show mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="this.classList.toggle('show')" data-text-show="Show" data-text-hide="Hide" aria-label="toggle"></button>
-                        </header>
-
-
-                        <div class="nst-content work-history__content js-work-history__content">
-
-                            <div>
-
-                                <div class="work-history__top-headings">
-                                    <h3>Company</h3>
-                                    <h3>Total</h3>
-                                </div>
-
-                                <ul class="work-history__list">
-
-                                    <li>
-                                        <div class="work-history__include-option">
-                                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-                                            <input type="checkbox" class="mdl-checkbox__input" checked />
-                                            <span class="mdl-checkbox__label">Include?</span>
-                                        </label>
-                                        </div>
-
-                                        <div class="work-history__item">
-                                            <h3>Company</h3>
-                                            <div>ABC</div>
-                                            <h3>Total</h3>
-                                            <div>3 years 2 month</div>
-                                        </div>
-                                    </li>
-
-
-                                    <li>
-                                        <div class="work-history__include-option">
-                                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-                                            <input type="checkbox" class="mdl-checkbox__input" checked />
-                                            <span class="mdl-checkbox__label">Include?</span>
-                                        </label>
-                                        </div>
-
-                                        <div class="work-history__item">
-                                            <h3>Company</h3>
-                                            <div>ABC</div>
-                                            <h3>Total</h3>
-                                            <div>3 years 2 month</div>
-                                        </div>
-                                    </li>
-
-
-
-                                </ul>
-                            </div>
-                        </div>
-
-                    </div>
-                </li>
 
             </ul>
 
@@ -192,8 +118,9 @@
 
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.5/vue.min.js"></script>
     <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
-    <script src="/src/assets/vendor/nst/nst.min.js"></script>
+    <script src="/src/assets/vendor/nst/nst.js"></script>
 </body>
 
 </html>
