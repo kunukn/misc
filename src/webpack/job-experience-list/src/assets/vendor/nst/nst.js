@@ -48,7 +48,6 @@ window.nst = (function() {
     }
 
     function toggle(event) {
-
         function collapse(component, content) {
 
             component.classList.add(collapsingCss);
@@ -200,6 +199,7 @@ window.nst = (function() {
 
     function initAll() {
         var component, allToggles = $$(toggleSelector);
+
         allToggles.forEach(function(toggleElement) {
 
             // if init with collapsed state, then set required maxHeight
@@ -207,14 +207,15 @@ window.nst = (function() {
             if (component && component.classList.contains(collapsedCss)) {
                 component.querySelector('.' + contentCss).style.maxHeight = '0px';
             }
-
             toggleElement.addEventListener('click', toggle);
         });
 
         return this;
     }
 
-    initAll();
+    setTimeout(function() {
+        initAll();
+    }, 2000);
 
     return {
         init: init,

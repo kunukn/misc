@@ -22,17 +22,21 @@ var app = new Vue({
     data: {
         title: 'Positions',
         roles: [{
-                role: 'Architect',
+                title: 'Architect',
+                durationFiveYears: { year: 1, month: 2 },
+                durationTotal: { year: 1, month: 2 },
                 jobs: [
-                    { company: 'ABC', duration: { year: 1, month: 2 } },
-                    { company: 'BCD', duration: { year: 3, month: 4 } },
+                    { company: 'ABC', durationTotal: { year: 1, month: 2 } },
+                    { company: 'BCD', durationTotal: { year: 3, month: 4 } },
                 ]
             },
             {
-                role: 'Developer',
+                title: 'Developer',
+                durationFiveYears: { year: 1, month: 2 },
+                durationTotal: { year: 1, month: 2 },
                 jobs: [
-                    { company: 'XBC', duration: { year: 1, month: 2 } },
-                    { company: 'XCD', duration: { year: 3, month: 4 } },
+                    { company: 'XBC', durationTotal: { year: 5, month: 6 } },
+                    { company: 'XCD', durationTotal: { year: 7, month: 8 } },
                 ]
             },
         ],

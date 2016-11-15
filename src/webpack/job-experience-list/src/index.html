@@ -41,11 +41,11 @@
                     </div>
                     <div class="jobs__item">
                         <h3>Position</h3>
-                        <div>Architect</div>
+                        <div>{{role.title}}</div>
                         <h3>Total</h3>
-                        <div>7 years 1 month</div>
+                        <div>{{role.durationTotal.year}} year(s) {{role.durationTotal.month}} month(s)</div>
                         <h3>Last 5 years</h3>
-                        <div>4 years 2 month</div>
+                        <div>{{role.durationFiveYears.year}} year(s) {{role.durationFiveYears.month}} month(s)</div>
                     </div>
 
                     <div class="nst-component work-history">
@@ -67,7 +67,7 @@
 
                                 <ul class="work-history__list">
 
-                                    <li>
+                                    <li v-for="job in role.jobs">
                                         <div class="work-history__include-option">
                                             <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
                                                 <input type="checkbox" class="mdl-checkbox__input" checked />
@@ -77,30 +77,11 @@
 
                                         <div class="work-history__item">
                                             <h3>Company</h3>
-                                            <div>ABC</div>
+                                            <div>{{job.company}}</div>
                                             <h3>Total</h3>
-                                            <div>3 years 2 month</div>
+                                            <div>{{job.durationTotal.year}} year(s) {{job.durationTotal.month}} month(s)</div>
                                         </div>
                                     </li>
-
-
-                                    <li>
-                                        <div class="work-history__include-option">
-                                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-                                                <input type="checkbox" class="mdl-checkbox__input" checked />
-                                                <span class="mdl-checkbox__label">Include?</span>
-                                            </label>
-                                        </div>
-
-                                        <div class="work-history__item">
-                                            <h3>Company</h3>
-                                            <div>ABC</div>
-                                            <h3>Total</h3>
-                                            <div>3 years 2 month</div>
-                                        </div>
-                                    </li>
-
-
 
                                 </ul>
                             </div>
@@ -114,12 +95,10 @@
             </ul>
 
         </div>
-
-
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.5/vue.min.js"></script>
-    <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
     <script src="/src/assets/vendor/nst/nst.js"></script>
 </body>
 
