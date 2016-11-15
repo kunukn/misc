@@ -4,48 +4,60 @@ import styles from '../styles/app.scss'; // Apply styling
 
 const log = console.log.bind(console);
 
+function Job(data) {
+    var self = this;
+    self.title = ko.observable('');
 
-function qs(expr, context) {
-    return (context || document).querySelector(expr);
 }
 
-function qsa(expr, context) {
-    return [].slice.call((context || document).querySelectorAll(expr), 0);
+function Role(data) {
+    var self = this;
+    self.jobs = ko.observableArray([]);
+
+    // if (data.jobs) {
+    //     data.jobs.forEach(function(item) {
+    //         self.jobs.push(new Job(item));
+    //     });
+    // }
 }
 
-function byId(id) {
-    return document.getElementById(id);
+function ViewModel(data) {
+    var self = this;
+    self.title = data.title;
+    self.roles = ko.observableArray([]);
+
+    if (data.roles) {
+        data.roles.forEach(function(item) {
+            self.roles.push(new Role(item));
+        });
+    }
+
+    log(self.roles());
 }
 
-var app = new Vue({
-    el: '#app',
-    data: {
-        title: 'Positions',
-        roles: [{
-                title: 'Architect',
-                durationFiveYears: { year: 1, month: 2 },
-                durationTotal: { year: 1, month: 2 },
-                jobs: [
-                    { company: 'ABC', durationTotal: { year: 1, month: 2 } },
-                    { company: 'BCD', durationTotal: { year: 3, month: 4 } },
-                ]
+
+
+var viewModel = new ViewModel({
+    title: 'Positions',
+    roles: [{
+        title: 'Architect',
+        durationTotal: '5 years 1 month',
+        durationFiveYears: '2 years 1 month',
+        jobs: [{
+                company: 'ABC',
+                durationTotal: '2 years 1 month'
             },
             {
-                title: 'Developer',
-                durationFiveYears: { year: 1, month: 2 },
-                durationTotal: { year: 1, month: 2 },
-                jobs: [
-                    { company: 'XBC', durationTotal: { year: 5, month: 6 } },
-                    { company: 'XCD', durationTotal: { year: 7, month: 8 } },
-                ]
-            },
-        ],
-    }
-})
+                company: 'DBC',
+                durationTotal: '1 years 1 month'
+            }
+        ]
+    }],
+});
+ko.applyBindings(viewModel, document.getElementById('app'));
+window.viewModel = viewModel;
 
 log('App running');
-
-
 
 export class App {
     constructor() {}

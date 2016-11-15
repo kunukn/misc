@@ -20,7 +20,7 @@
 
         <div class="jobs">
             <header>
-                <h3> {{ title }}</h3>
+                <h3 data-bind="text: title"></h3>
             </header>
 
             <div class="jobs__top-headings">
@@ -29,10 +29,8 @@
                 <h3>Last 5 years</h3>
             </div>
 
-            <ul class="jobs__list">
-
-
-                <li v-for="role in roles">
+            <ul class="jobs__list" data-bind="foreach: roles">
+                <li>
                     <div class="jobs__include-option">
                         <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
                             <input type="checkbox" class="mdl-checkbox__input" checked />
@@ -41,11 +39,11 @@
                     </div>
                     <div class="jobs__item">
                         <h3>Position</h3>
-                        <div>{{role.title}}</div>
+                        <div data-bind="text: title"></div>
                         <h3>Total</h3>
-                        <div>{{role.durationTotal.year}} year(s) {{role.durationTotal.month}} month(s)</div>
+                        <div xxdata-bind="text: durationTotal"></div>
                         <h3>Last 5 years</h3>
-                        <div>{{role.durationFiveYears.year}} year(s) {{role.durationFiveYears.month}} month(s)</div>
+                        <div xxdata-bind="text: durationFiveYears"></div>
                     </div>
 
                     <div class="nst-component work-history">
@@ -65,7 +63,7 @@
                                     <h3>Total</h3>
                                 </div>
 
-                                <ul class="work-history__list">
+                                <ul class="work-history__list" data-bind="foreach: jobs">
 
                                     <li v-for="job in role.jobs">
                                         <div class="work-history__include-option">
@@ -97,7 +95,7 @@
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.5/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
     <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
     <script src="/src/assets/vendor/nst/nst.js"></script>
 </body>
