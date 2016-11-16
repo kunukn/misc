@@ -2,6 +2,8 @@
 
 import styles from '../styles/app.scss'; // Apply styling
 
+var nst = require('native-slide-toggle');
+
 const log = console.log.bind(console);
 
 class Job {
@@ -81,6 +83,12 @@ var viewModel = new ViewModel({
 });
 ko.applyBindings(viewModel, document.getElementById('app'));
 window.vm = window.viewModel = viewModel;
+
+setTimeout(function() {
+    nst.initAll({
+        log: 'nst - manual init all'
+    });
+}, 1000);
 
 log('App running');
 
