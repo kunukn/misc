@@ -58,7 +58,7 @@ class ViewModel {
 }
 
 
-var viewModel = new ViewModel({
+const viewModel = new ViewModel({
     isDebug: true,
     title: 'Nested list',
     continents: [{
