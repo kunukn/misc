@@ -12,11 +12,7 @@
 
 <body>
     <div class="page" id="app">
-
-
-        <pre aria-hidden="true" data-bind="visible: $root.isDebug, text: ko.toJSON($root, null, 2)"></pre>
-
-
+     
         <div>
             <h1 data-bind="text: title">App</h1>
             <div>
@@ -48,7 +44,8 @@
 
 
         </div>
-
+        
+        <pre aria-hidden="true" data-bind="visible: $root.isDebug, text: ko.toJSON($root, null, 2)"></pre>
 
     </div>
 

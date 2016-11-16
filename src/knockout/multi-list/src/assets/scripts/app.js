@@ -15,7 +15,7 @@ class Country {
 }
 
 class Continent {
-    constructor(data) {        
+    constructor(data) {
         var self = this;
         // Data parsing
         self.name = data.name;
@@ -26,12 +26,13 @@ class Continent {
         }
         // Functions
         self.getTotal = ko.pureComputed(_ => {
-            var sum = 0;
-            ko.unwrap(self.countries).map(item => {
-                if (ko.unwrap(item.isIncluded))
-                    sum += item.population;
-            });
-            return sum;
+            const countries = ko.unwrap(self.countries);
+            return countries.reduce((total, current) => {
+                return ko.unwrap(current.isIncluded) ?
+                    total + current.population :
+                    total;
+            }, 0);
+
         });
     }
 }
@@ -48,9 +49,10 @@ class ViewModel {
         }
         // Functions
         self.getTotal = ko.pureComputed(_ => {
-            var sum = 0;
-            ko.unwrap(self.continents).map(item => sum += item.getTotal());
-            return sum;
+            const continents = ko.unwrap(self.continents);
+            return continents.reduce((total, current) => {
+                return total + current.getTotal();
+            }, 0);
         });
     }
 }
@@ -58,7 +60,7 @@ class ViewModel {
 
 var viewModel = new ViewModel({
     isDebug: true,
-    title: 'Continents and Countries',
+    title: 'Nested list',
     continents: [{
             name: 'Europe',
             countries: [{
