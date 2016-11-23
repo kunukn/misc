@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
 </head>
 
 <body>
@@ -14,15 +15,15 @@
         <div class="sfs-jobs-on-ships" id="sfs-jobs-on-ships">
             <!-- ko template: {afterRender: afterRender } -->
             <header>
-                <h3 data-bind="text: title"></h3>
+                <h3 data-bind="text: title" class="article-heading"></h3>
             </header>
             <div class="sfs-jobs-on-ships__total-count">
                 <div class="sfs-jobs-on-ships__total-count-total">
-                    <span>Total: </span>
+                    <span>Total </span>
                     <span data-bind="text: getTotal()"></span>
                 </div>
                 <div class="sfs-jobs-on-ships__total-count-last-five-years">
-                    <span>De sidste 5 år: </span>
+                    <span>De sidste 5 år </span>
                     <span data-bind="text: getLastFiveYears()"></span>
                 </div>
             </div>
