@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="sfs-ship-page">
+
+        <div class="sfs-jobs-on-ships" id="sfs-jobs-on-ships">
+            <!-- ko template: {afterRender: afterRender } -->
+            <header>
+                <h3 data-bind="text: title"></h3>
+            </header>
+            <div class="sfs-jobs-on-ships__total-count">
+                <div class="sfs-jobs-on-ships__total-count-total">
+                    <span>Total: </span>
+                    <span data-bind="text: getTotal()"></span>
+                </div>
+                <div class="sfs-jobs-on-ships__total-count-last-five-years">
+                    <span>De sidste 5 år: </span>
+                    <span data-bind="text: getLastFiveYears()"></span>
+                </div>
+            </div>
+
+            <div class="sfs-jobs-on-ships__top-headings">
+                <h3>Stilling</h3>
+                <h3>Ialt</h3>
+                <h3>De sidste 5 år</h3>
+            </div>
+
+            <ul class="sfs-jobs-on-ships__list" data-bind="foreach: roles">
+
+                <li>
+                    <div class="sfs-jobs-on-ships__include-option">
+                        <label>
+                    <input type="checkbox" data-bind="checked: isIncluded"/>
+                    <span>Medtages?</span>
+                </label>
+                    </div>
+                    <div class="sfs-jobs-on-ships__item">
+                        <h3>Stilling</h3>
+                        <div data-bind="text: name"></div>
+                        <h3>Ialt</h3>
+                        <div data-bind="text: durationTotalFormatted"></div>
+                        <h3>De sidste 5 år</h3>
+                        <div data-bind="text: durationLastFiveYearsFormatted"></div>
+                    </div>
+
+                    <div class="sfs-ships-work-history sfs-js-ships-work-history">
+                        <header>
+                            <h3 class="sfs-ships-work-history__headline"><span>Skibe</span> <span data-bind="text: '('+shipCount()+')'"></span></h3>
+                            <button class="sfs-ships-work-history__toggle sfs-js-ships-work-history__toggle" data-text-show="Vis" data-text-hide="Skjul" aria-label="ship toggle"></button>
+                        </header>
+
+
+                        <div class="sfs-ships-work-history__content sfs-js-ships-work-history__content">
+
+                            <div class="sfs-ships-work-history__top-headings">
+                                <h3>Navn</h3>
+                                <h3>Effekt kW</h3>
+                                <h3>Tonnage BT</h3>
+                                <h3>Ialt</h3>
+                                <h3>De sidste 5 år</h3>
+                            </div>
+
+                            <ul class="sfs-ships-work-history__list" data-bind="foreach: ships">
+
+                                <li>
+                                    <div class="sfs-ships-work-history__include-option">
+                                        <label>
+                                        <input type="checkbox" data-bind="checked: isIncluded"/>
+                                        <span>Medtages?</span>
+                                        </label>
+                                    </div>
+
+                                    <div class="sfs-ships-work-history__item">
+                                        <h3>Navn</h3>
+                                        <div data-bind="text: name"></div>
+                                        <h3>Effect kW</h3>
+                                        <div data-bind="text: effect"></div>
+                                        <h3>Tonnage BT</h3>
+                                        <div data-bind="text: tonnage"></div>
+                                        <h3>Ialt</h3>
+                                        <div data-bind="text: durationTotalFormatted"></div>
+                                        <h3>De sidste 5 år</h3>
+                                        <div data-bind="text: durationLastFiveYearsFormatted"></div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                </li>
+            </ul>
+
+
+            <pre aria-hidden="true" data-bind="text: ko.toJSON($root, null, 2)"></pre>
+
+            <!-- /ko -->
+        </div>
+
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
+</body>
+
+</html>

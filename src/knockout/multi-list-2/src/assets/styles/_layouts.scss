@@ -1,0 +1,233 @@
+*,
+:before,
+:after {
+    box-sizing: border-box;
+}
+
+// Resets
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 110%;
+    //line-height: 1.5;
+}
+
+html {
+    font-size: 100%;
+}
+
+html,
+body {
+    min-height: 100vh;
+}
+
+body {
+    font-family: Helvetica, sans-serif;
+    margin: 0;
+    position: relative;
+}
+
+// Page
+.sfs-ship-page {
+    max-width: 1280px;
+    margin: 0 auto;
+    //border: 1px solid red;
+    position: relative;
+    padding: $gutter-unit;
+}
+
+.sfs-jobs-on-ships {
+    padding: $gutter-unit;
+    >header {
+        font-size: 120%;
+        padding: $gutter-unit;
+    }
+    &__total-count {
+        background: beige;
+        padding: $gutter-unit*2 $gutter-unit;
+        margin-bottom: $gutter-unit;
+        text-align: right;
+        span {
+            position: relative;
+            display: inline-block;
+        }
+    }
+    &__total-count-total {
+        >span {
+            &:nth-of-type(1) {}
+            &:nth-of-type(2) {
+                min-width: 9rem;
+            }
+        }
+    }
+    &__total-count-last-five-years {
+        >span {
+            &:nth-of-type(1) {}
+            &:nth-of-type(2) {
+                min-width: 9rem;
+            }
+        }
+    }
+    &__top-headings {
+        display: none;
+        @include device(medium) {
+            padding: $gutter-unit;
+            display: flex;
+            justify-content: space-between;
+            align-content: center;
+            >h3 {
+                //background: pink; // debug        
+                flex: 1;
+            }
+        }
+    }
+    &__include-option {
+        padding: $gutter-unit;
+        label,
+        input,
+        span {
+            cursor: pointer;
+            user-select: none;
+        }
+    }
+    &__list {
+        //background: pink; // debug
+        position: relative;
+        display: block;
+        >li {
+            border-radius: $border-radius-theme;
+            background: rgba(black, .05);
+            border-bottom: 1px solid transparent; // trick to enable bottom padding
+            display: block;
+            +li {
+                margin-top: $gutter-unit * 2;
+            }
+        }
+    }
+    &__item {
+        padding: $gutter-unit;
+        >div {
+            margin-bottom: $gutter-unit;
+        }
+        @include device(medium) {
+            display: flex;
+            //justify-content: space-between;
+            align-content: center;
+            >h3 {
+                display: none;
+            }
+            >div {
+                flex: 1;
+            }
+        }
+    }
+}
+
+.sfs-ships-work-history {
+    border-radius: $border-radius-theme;
+    padding: $gutter-unit;
+    margin: $gutter-unit;
+    font-size: 90%;
+    background: rgba(black, .1);
+    >header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__top-headings {
+        display: none;
+        @include device(medium) {
+            margin-top: $gutter-unit * 2;
+            padding: 0 $gutter-unit;
+            display: flex;
+            //justify-content: space-between;
+            align-content: center;
+            >h3 {
+                //background: pink; // debug                
+                &:nth-child(1) {
+                    flex: 1;
+                }
+                &:nth-child(2) {
+                    flex: 1;
+                }
+                &:nth-child(3) {
+                    flex: 1;
+                }
+                &:nth-child(4) {
+                    flex: 1;
+                }
+                &:nth-child(5) {
+                    flex: 1;
+                }
+            }
+        }
+    }
+    &__include-option {
+        padding: $gutter-unit;
+        label,
+        input,
+        span {
+            cursor: pointer;
+            user-select: none;
+        }
+    }
+    &__toggle {
+        font-size: inherit;
+        border: 1px solid;
+        background: transparent;
+        box-shadow: none;
+        border-radius: 2px;
+        cursor: pointer;
+        &:before {
+            content: attr(data-text-hide);
+            display: block;
+        }
+        &.sfs-show {
+            &:before {
+                content: attr(data-text-show);
+            }
+        }
+    }
+    &__list {
+        >li {
+            background: rgba(black, .1);
+            margin-top: $gutter-unit;
+            border-radius: $border-radius-theme;
+        }
+    }
+    &__item {
+        padding: $gutter-unit;
+        @include device(medium) {
+            display: flex;
+            >h3 {
+                display: none;
+            }
+            >div {
+                &:nth-of-type(1) {
+                    flex: 1;
+                }
+                &:nth-of-type(2) {
+                    flex: 1;
+                }
+                &:nth-of-type(3) {
+                    flex: 1;
+                }
+                &:nth-of-type(4) {
+                    flex: 1;
+                }
+                &:nth-of-type(5) {
+                    flex: 1;
+                }
+            }
+        }
+        >div {
+            margin-bottom: $gutter-unit;
+        }
+    }
+}
