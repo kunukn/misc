@@ -150,29 +150,29 @@ function applyCollapsibleToggles() {
 function ViewModel(data) {
 
     function durationFormatter(duration, labels) {
-        var years = duration.years,
+        var days = duration.days,
             months = duration.months,
-            yearLabel = years > 1 ? labels.yearPluralLabel : labels.yearLabel,
+            dayLabel = days > 1 ? labels.dayPluralLabel : labels.dayLabel,
             monthLabel = months > 1 ? labels.monthPluralLabel : labels.monthLabel;
 
-        if (years === 0 && months === 0)
+        if (days === 0 && months === 0)
             return labels.noneDurationLabel;
-        else if (years === 0)
+        else if (days === 0)
             return months + ' ' + monthLabel;
         else if (months === 0)
-            return years + ' ' + yearLabel;
-        return years + ' ' + yearLabel + ' ' + months + ' ' + monthLabel;
+            return days + ' ' + dayLabel;
+        return months + ' ' + monthLabel + ' ' + days + ' ' + dayLabel + ' ';
     }
 
-    function getMonths(duration) {
-        return duration.years * 12 + duration.months;
+    function getDays(duration) {
+        return duration.months * 30 + duration.days;
     }
 
-    function getDurationByMonths(byMonths) {
-        var years = (byMonths / 12) | 0;
-        var months = byMonths % 12;
+    function getDurationByDays(byDays) {
+        var days = byDays % 30;
+        var months = (byDays / 30) | 0;
         return {
-            years: years,
+            days: days,
             months: months
         };
     }
@@ -182,19 +182,21 @@ function ViewModel(data) {
     var options = {
         labels: {
             noneDurationLabel: data.noneDurationLabel,
-            yearLabel: data.yearLabel,
-            yearPluralLabel: data.yearPluralLabel,
+            dayLabel: data.dayLabel,
+            dayPluralLabel: data.dayPluralLabel,
             monthLabel: data.monthLabel,
             monthPluralLabel: data.monthPluralLabel,
         },
         durationFormatter: durationFormatter,
-        getMonths: getMonths,
-        getDurationByMonths: getDurationByMonths,
+        getDays: getDays,
+        getDurationByDays: getDurationByDays,
     };
 
     self.roles = ko.observableArray([]);
     self.title = data.title;
     self.afterRender = data.afterRender || function() {};
+
+    log(self.afterRender);
 
     if (data.roles) {
         self.roles(data.roles.map(function(item) {
@@ -203,37 +205,38 @@ function ViewModel(data) {
     }
 
     self.getTotal = ko.computed(function() {
-        var months = 0,
+        var days = 0,
             roles = ko.unwrap(self.roles);
 
         if (roles.length) {
-            months = roles.reduce(function(total, current) {
-                return ko.unwrap(current.isIncluded) ? (total + current.getTotalMonths()) : total;
+            days = roles.reduce(function(total, current) {
+                return ko.unwrap(current.isIncluded) ? (total + current.getDaysTotal()) : total;
             }, 0);
         }
 
 
-        var duration = options.getDurationByMonths(months);
+        var duration = options.getDurationByDays(days);
 
-        return options.durationFormatter({ years: duration.years, months: duration.months }, options.labels);
+        return options.durationFormatter({ days: duration.days, months: duration.months }, options.labels);
     });
 
     self.getLastFiveYears = ko.computed(function() {
-        var months = 0,
+        var days = 0,
             roles = ko.unwrap(self.roles);
 
         if (roles.length) {
-            months = roles.reduce(function(total, current) {
-                return ko.unwrap(current.isIncluded) ? total + current.getLastFiveYearsMonths() : total;
+            days = roles.reduce(function(total, current) {
+                return ko.unwrap(current.isIncluded) ? total + current.getDaysLastFiveYears() : total;
             }, 0);
         }
-        var duration = options.getDurationByMonths(months);
+        var duration = options.getDurationByDays(days);
 
-        return options.durationFormatter({ years: duration.years, months: duration.months }, options.labels);
+        return options.durationFormatter({ days: duration.days, months: duration.months }, options.labels);
     });
 }
 
 function Role(data, options) {
+    //debugger;
     var self = this;
     self.isIncluded = ko.observable(!!data.isIncluded);
     self.name = data.name || '';
@@ -250,35 +253,35 @@ function Role(data, options) {
         return ko.unwrap(self.ships).length;
     });
 
-    self.getTotalMonths = ko.pureComputed(function() {
+    self.getDaysTotal = ko.pureComputed(function() {
         var ships = ko.unwrap(self.ships);
         if (!ships.length) {
             return 0;
         }
 
         var total = ships.reduce(function(total, current) {
-            return total + current.getMonthsTotal();
+            return total + current.getDaysTotal();
         }, 0);
         return total;
     });
-    self.getLastFiveYearsMonths = ko.pureComputed(function() {
+    self.getDaysLastFiveYears = ko.pureComputed(function() {
         var ships = ko.unwrap(self.ships);
         if (!ships.length) {
             return 0;
         }
         var total = ships.reduce(function(total, current) {
-            return total + current.getMonthsLastFiveYears();
+            return total + current.getDaysLastFiveYears();
         }, 0);
         return total;
     });
 
     self.durationLastFiveYearsFormatted = ko.pureComputed(function() {
-        var duration = options.getDurationByMonths(self.getLastFiveYearsMonths());
-        return options.durationFormatter({ years: duration.years, months: duration.months }, options.labels);
+        var duration = options.getDurationByDays(self.getDaysLastFiveYears());
+        return options.durationFormatter({ days: duration.days, months: duration.months }, options.labels);
     });
     self.durationTotalFormatted = ko.pureComputed(function() {
-        var duration = options.getDurationByMonths(self.getTotalMonths());
-        return options.durationFormatter({ years: duration.years, months: duration.months }, options.labels);
+        var duration = options.getDurationByDays(self.getDaysTotal());
+        return options.durationFormatter({ days: duration.days, months: duration.months }, options.labels);
     });
 }
 
@@ -289,108 +292,94 @@ function Ship(data, options) {
     self.name = data.name || '';
     self.tonnage = data.tonnage || 0;
     self.effect = data.effect || 0;
-    self.durationLastFiveYears = data.durationLastFiveYears || { years: 0, months: 0 };
-    self.durationTotal = data.durationTotal || { years: 0, months: 0 };
+    self.durationLastFiveYears = { days: 0, months: 0 };
+    self.durationTotal = { days: 0, months: 0 };
 
-    self.getMonthsTotal = ko.pureComputed(function() {
+    if (data.durationTotal) {        
+        self.durationTotal = options.getDurationByDays(data.durationTotal);
+    }
+    if (data.durationLastFiveYears) {        
+        self.durationLastFiveYears = options.getDurationByDays(data.durationLastFiveYears);
+    }
+
+    self.getDaysTotal = ko.pureComputed(function() {
         if (ko.unwrap(self.isIncluded)) {
-            return options.getMonths(self.durationTotal);
+            return options.getDays(self.durationTotal);
         }
         return 0;
     });
 
-    self.getMonthsLastFiveYears = ko.pureComputed(function() {
+    self.getDaysLastFiveYears = ko.pureComputed(function() {
         if (ko.unwrap(self.isIncluded)) {
-            return options.getMonths(self.durationLastFiveYears);
+            return options.getDays(self.durationLastFiveYears);
         }
         return 0;
     });
 
     self.durationTotalFormatted = ko.pureComputed(function() {
-        var years = self.durationTotal.years,
+        var days = self.durationTotal.days,
             months = self.durationTotal.months;
-        return options.durationFormatter({ years: years, months: months }, options.labels);
+        return options.durationFormatter({ days: days, months: months }, options.labels);
     });
 
     self.durationLastFiveYearsFormatted = ko.pureComputed(function() {
-        var years = self.durationLastFiveYears.years,
+        var days = self.durationLastFiveYears.days,
             months = self.durationLastFiveYears.months;
-        return options.durationFormatter({ years: years, months: months }, options.labels);
+        return options.durationFormatter({ days: days, months: months }, options.labels);
     });
 }
 
 var dataFromService = {
     title: 'Stillinger',
     noneDurationLabel: 'Ingen tid',
-    yearLabel: 'år',
-    yearPluralLabel: 'år',
+    dayLabel: 'dag',
+    dayPluralLabel: 'dage',
     monthLabel: 'måned',
     monthPluralLabel: 'måneder',
-    afterRender: applyCollapsibleToggles,
     roles: [{
-            name: 'Kaptajn',
-            isIncluded: true,
-            ships: [{
-                    name: 'Sea Hurricane',
-                    durationLastFiveYears: { years: 1, months: 2 },
-                    durationTotal: { years: 0, months: 2 },
-                    tonnage: 1,
-                    effect: 2000,
-                    isIncluded: true,
-                },
-                {
-                    name: 'Sea Storm',
-                    durationLastFiveYears: { years: 1, months: 3 },
-                    durationTotal: { years: 4, months: 3 },
-                    tonnage: 4,
-                    effect: 3000,
-                    isIncluded: true,
-                }
-            ],
-        },
-        {
-            name: 'Sømand',
-            isIncluded: true,
-            ships: [{
-                    name: 'Sea Hurricane',
-                    durationLastFiveYears: { years: 1, months: 2 },
-                    durationTotal: { years: 0, months: 2 },
-                    tonnage: 1,
-                    effect: 2000,
-                    isIncluded: true,
-                },
-                {
-                    name: 'Sea Storm',
-                    durationLastFiveYears: { years: 1, months: 0 },
-                    durationTotal: { years: 1, months: 1 },
-                    tonnage: 4,
-                    effect: 3000,
-                    isIncluded: true,
-                },
-                {
-                    name: 'Sea Sailor',
-                    durationLastFiveYears: { years: 0, months: 3 },
-                    durationTotal: { years: 0, months: 3 },
-                    tonnage: 40,
-                    effect: 300,
-                    isIncluded: true,
-                }
-            ],
-        },
-        {
-            name: 'Kok',
-            isIncluded: true,
-            ships: [{
-                name: 'Sea Monster',
-                durationLastFiveYears: { years: 0, months: 2 },
-                durationTotal: { years: 0, months: 2 },
-                tonnage: 12,
-                effect: 5000,
+        name: 'Kaptajn',
+        isIncluded: true,
+        ships: [{
+                name: 'Sea Hurricane',
+                durationLastFiveYears: 63,
+                durationTotal: 74,
+                tonnage: 1,
+                effect: 2000,
                 isIncluded: true,
-            }, ],
-        }
-    ]
+            },
+            {
+                name: 'Sea Hurricane',
+                durationLastFiveYears: 63,
+                durationTotal: 74,
+                tonnage: 1,
+                effect: 2000,
+                isIncluded: true,
+            },
+        ],
+    }, {
+        name: 'Kaptajn',
+        isIncluded: true,
+        ships: [{
+                name: 'Sea Hurricane',
+                durationLastFiveYears: 63,
+                durationTotal: 74,
+                tonnage: 1,
+                effect: 2000,
+                isIncluded: true,
+            },
+            {
+                name: 'Sea Hurricane',
+                durationLastFiveYears: 63,
+                durationTotal: 74,
+                tonnage: 1,
+                effect: 2000,
+                isIncluded: true,
+            },
+        ],
+    }, ]
 };
+
+dataFromService.afterRender = applyCollapsibleToggles;
 var vm = new ViewModel(dataFromService);
 ko.applyBindings(vm, document.getElementById('sfs-ship-page'));
 window.vm = vm;

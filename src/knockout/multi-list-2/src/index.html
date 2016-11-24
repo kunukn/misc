@@ -14,6 +14,8 @@
 
         <div class="sfs-jobs-on-ships" id="sfs-jobs-on-ships">
             <!-- ko template: {afterRender: afterRender } -->
+
+            <pre aria-hidden="true" data-bind="text: ko.toJSON($root, null, 2)"></pre>
             <header>
                 <h3 data-bind="text: title" class="article-heading"></h3>
             </header>
@@ -101,7 +103,7 @@
             </ul>
 
 
-            <pre aria-hidden="true" data-bind="text: ko.toJSON($root, null, 2)"></pre>
+
 
             <!-- /ko -->
         </div>
