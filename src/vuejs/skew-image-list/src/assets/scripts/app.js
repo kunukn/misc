@@ -1,6 +1,7 @@
 'use strict';
 
 import styles from '../styles/app.scss'; // Apply styling
+import Vue from 'vue';
 
 const log = console.log.bind(console);
 

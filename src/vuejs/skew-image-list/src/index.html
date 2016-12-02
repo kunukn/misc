@@ -14,21 +14,18 @@
 <body>
     <div class="body-wrapper">
 
-    <div class="skew-images" id="skew-images">
-
-        <div class="skew-image" v-for="item in items" v-bind:style="{ backgroundColor: item.backgroundColor }"  >
-            <div class="skew-effect" v-bind:class="{ 'skew-reverse': isSkewReversed }">
-            <div class="skew-item">
-                <div class="skew-img" arial-labe="image" v-bind:style="{ backgroundImage: item.backgroundImage }"  v-bind:class="{ 'skew-reverse': isSkewReversed }">img</div>
+        <div class="skew-images" id="skew-images">
+            <div class="skew-image" v-for="item in items" v-bind:style="{ backgroundColor: item.backgroundColor }"  >
+                <div class="skew-effect" v-bind:class="{ 'skew-reverse': isSkewReversed }">
+                <div class="skew-item">
+                    <div class="skew-img" arial-labe="image" v-bind:style="{ backgroundImage: item.backgroundImage }"  v-bind:class="{ 'skew-reverse': isSkewReversed }">img</div>
+                </div>
+                </div>
+                <div class="skew-outline"  v-bind:class="{ 'is-debug': isDebug }"></div>
             </div>
-            </div>
-            <div class="skew-outline"  v-bind:class="{ 'is-debug': isDebug }"></div>
         </div>
 
-    </div>
-
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.min.js"></script>
+    </div>    
 </body>
 
 </html>
