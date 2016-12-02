@@ -33,5 +33,6 @@ body {
     justify-content: center;
     align-items: center;
     min-height: inherit;
+    height: 1px; // Fix IE11 bug
     width: 100%;
 }
