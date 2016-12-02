@@ -14,7 +14,7 @@
 <body>
     <div class="body-wrapper">
 
-        <div class="skew-images" id="skew-images">
+        <div class="skew-images" id="skewImages" v-bind:style="{backgroundColor: backgroundColor, borderColor: borderColor}">
             <div class="skew-image" v-for="item in items" v-bind:style="{ backgroundColor: item.backgroundColor }"  >
                 <div class="skew-effect" v-bind:class="{ 'skew-reverse': isSkewReversed }">
                 <div class="skew-item">
@@ -25,7 +25,9 @@
             </div>
         </div>
 
-    </div>    
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.4/vue.min.js"></script>    
 </body>
 
 </html>

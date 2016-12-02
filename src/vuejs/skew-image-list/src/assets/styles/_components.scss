@@ -8,12 +8,14 @@ $box-size: 200px;
   &-images {
     padding: .2rem;
     padding-right: $offset * 2;
+    border: 1px solid transparent;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-flow: row wrap;
     background: rgba(white, .2);
     width: 96%;
+    max-width: 100%;
     position: relative;
   }
   &-image {
