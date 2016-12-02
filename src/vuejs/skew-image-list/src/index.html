@@ -5,10 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <base href="/">
     <title>App</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--[if lte IE 9]>
-    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
-    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
 </head>
 
 <body>
@@ -18,7 +15,7 @@
             <div class="skew-image" v-for="item in items" v-bind:style="{ backgroundColor: item.backgroundColor }"  >
                 <div class="skew-effect" v-bind:class="{ 'skew-reverse': isSkewReversed }">
                 <div class="skew-item">
-                    <div class="skew-img" arial-labe="image" v-bind:style="{ backgroundImage: item.backgroundImage }"  v-bind:class="{ 'skew-reverse': isSkewReversed }">img</div>
+                    <div class="skew-img" arial-labe="image" v-bind:style="{ backgroundImage: item.backgroundImage }">img</div>
                 </div>
                 </div>
                 <div class="skew-outline"  v-bind:class="{ 'is-debug': isDebug }"></div>

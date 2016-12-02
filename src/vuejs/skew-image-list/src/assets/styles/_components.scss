@@ -42,6 +42,9 @@ $box-size: 200px;
     overflow: hidden;
     &.skew-reverse {
       transform: skewX($skew);
+      .skew-img{
+        transform: skewX(-$skew);
+      }
     }
   }
   &-item {
@@ -64,10 +67,7 @@ $box-size: 200px;
     background-repeat: no-repeat;
     background-size: cover;
     font-size: 0;
-    color: transparent;
-    &.skew-reverse {
-      transform: skewX(-$skew);
-    }
+    color: transparent;    
   }
   &-outline {
     // Element used for debugging
