@@ -1,14 +1,10 @@
 'use strict';
 
 import styles from '../styles/app.scss'; // Apply styling
-import vue from 'vue';
+//import Vue from 'vue'; // vue.runtime.common.js
+import Vue from '../../../node_modules/vue/dist/vue.min.js'
 
 const log = console.log.bind(console);
-
-log(vue);
-
-
-
 
 log('App running');
 
