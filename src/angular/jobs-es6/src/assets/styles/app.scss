@@ -73,7 +73,7 @@ button {
   max-width: 1200px;
   min-height: 100vh;
   position: relative;
-  border: 1 solid #222;
+  //border: 1 solid #222;
   background: white;
   &:after {
     display: table;
@@ -111,8 +111,7 @@ button {
     }
     float: left;
     padding: $gutter+$header-height $gutter $gutter+$footer-height;
-    height: calc(100vh - #{0*$header-height} - #{$footer-height});
-    //background: white;    
+    height: calc(100vh - #{0*$header-height} - #{$footer-height});    
     overflow: auto;
     > ul{
       list-style-type: none;
@@ -120,7 +119,7 @@ button {
       padding: 0;
       > li{
         padding: $gutter;        
-        background: #f2f2f2;
+        background: lightblue;
         display: flex;
         //justify-content: space-between;
         align-items: center;
@@ -150,8 +149,15 @@ button {
     float: right;
     padding: $gutter+$header-height $gutter $gutter+$footer-height;
     height: calc(100vh - #{0*$header-height} - #{$footer-height});
-    background: #f2f2f2;
+    background: rgba(white, 1);
     overflow: auto;
+     > .company-name {
+      color: dodgerblue;
+      font-size: 140%;
+      font-weight: bold;
+      padding: .5rem 0;
+      border-bottom: 1px dashed currentColor;
+    }
   }
   > .details {
     position: absolute;
@@ -162,7 +168,13 @@ button {
     height: calc(100vh - #{1*$header-height} - #{$footer-height});
     width: 100%;
     overflow: auto;
-    //display: none;
+     > .company-name {
+      color: dodgerblue;
+      font-size: 140%;
+      font-weight: bold;
+      padding: .5rem 0;
+      border-bottom: 1px dashed currentColor;
+    }
   }
   > footer {
     height: $footer-height;
