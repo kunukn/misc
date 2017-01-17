@@ -11,7 +11,7 @@ log('App running');
 const example1 = new Vue({
   el: '#skewImages',
   data: {
-    isDebug: false,
+    isDebug: true,
     isSkewReversed: false,
     backgroundColor: 'transparent',
     borderColor: 'gray',

@@ -1,0 +1,58 @@
+<!doctype html>
+<!--[if lte IE 9]>
+<html class="no-js ie-old" lang="da"><![endif]-->
+
+<html class="no-js" lang="en" ng-app="app">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <base href="/">
+    <title>App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--[if lte IE 9]>
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<div class="app"  ng-controller="AppController as vm">
+
+    <header>
+        <div>{{vm.HUD}} ({{vm.jobs.length}})</div>
+        <button ng-click="vm.isDetailsActive=false" ng-if="vm.isDetailsActive">close</button>
+    </header>
+    <div class="aside">
+        <ul>
+            <li ng-click="vm.selectJob($index)" aria-role="button" tabindex="0" ng-repeat="job in vm.jobs track by $index" >
+            <div class="index" ng-bind="'('+($index+1)+') '"> </div>
+            <div class="title" ng-bind="job.title"></div>
+            </li>
+        </ul>
+
+    </div>
+    <div class="content" ng-if="vm.isContentActive">
+        <div class="company-name" ng-bind="vm.companyName"></div>
+        <div class="details" ng-bind-html="vm.details"></div>
+    </div>
+
+    <div class="details" ng-show="vm.isDetailsActive">
+        <div class="company-name" ng-bind="vm.companyName"></div>
+        <div class="details" ng-bind-html="vm.details"></div>
+    </div>
+
+    <footer>
+        &copy; footer
+    </footer>
+
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.6.1/angular-sanitize.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.6.0/showdown.min.js"></script>
+</body>
+
+</html>
