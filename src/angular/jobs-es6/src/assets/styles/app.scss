@@ -11,11 +11,12 @@
 $header-height: 40px;
 $footer-height: 20px;
 $gutter: 4px;
+$color-theme: #AEFFD8;
 
 $device-medium: 600px;
 @mixin device($type) {
-  $small-only: "(max-width: 599px)";
-  $medium: "(min-width: 600px)";
+  $small-only: "(max-width: 699px)";
+  $medium: "(min-width: 700px)";
   $large: "(min-width: 1400px)";
   @if $type==large {
     @media #{$large} {
@@ -66,6 +67,10 @@ button {
   padding: 0;
   font-size: 100%;
   outline: none;
+}
+
+a{
+  color: teal;
 }
 
 .app {
@@ -119,13 +124,21 @@ button {
       padding: 0;
       > li{
         padding: $gutter;        
-        background: lightblue;
+        background-color: $color-theme;
         display: flex;
         //justify-content: space-between;
         align-items: center;
         border-radius: $gutter;
         cursor: pointer;
         min-height: 40px;
+        outline: none;
+        &:hover{
+          background-color: #8AFFC1;
+        }
+        &:focus{
+          background-color: #8FDC97;
+          
+        }
         + li{
           margin-top: $gutter;
         }
@@ -151,13 +164,6 @@ button {
     height: calc(100vh - #{0*$header-height} - #{$footer-height});
     background: rgba(white, 1);
     overflow: auto;
-     > .company-name {
-      color: dodgerblue;
-      font-size: 140%;
-      font-weight: bold;
-      padding: .5rem 0;
-      border-bottom: 1px dashed currentColor;
-    }
   }
   > .details {
     position: absolute;
@@ -168,14 +174,19 @@ button {
     height: calc(100vh - #{1*$header-height} - #{$footer-height});
     width: 100%;
     overflow: auto;
+  }
+
+  > .content, > .details {
+      
      > .company-name {
-      color: dodgerblue;
+      color :teal;
       font-size: 140%;
       font-weight: bold;
       padding: .5rem 0;
       border-bottom: 1px dashed currentColor;
     }
   }
+
   > footer {
     height: $footer-height;
     width: 100%;

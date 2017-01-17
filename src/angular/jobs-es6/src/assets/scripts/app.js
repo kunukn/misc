@@ -2,6 +2,7 @@
 import styles from '../styles/app.scss'; // Apply styling
 import mockData from './mock-data.js';
 
+const MEDIA_MEDIUM_BREAKPOINT = 700;
 const log = console.log.bind(console);
 const error = console.error.bind(console);
 
@@ -69,7 +70,7 @@ class AppController {
     this.loadJobs();
     this.selectJob = function selectJob(index) {
 
-      if(window.innerWidth < 600){
+      if(window.innerWidth < MEDIA_MEDIUM_BREAKPOINT){
         this.isDetailsActive = true;
       }
       else{
