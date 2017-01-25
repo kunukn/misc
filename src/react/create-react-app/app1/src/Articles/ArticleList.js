@@ -13,9 +13,9 @@ class ArticleList extends Component {
       <div className="article-list">
         <h1> article list</h1>
         <div>
-          <ArticleSpot />
-          <ArticleSpot />
-          <ArticleSpot />
+          <ArticleSpot content="article spot" />
+          <ArticleSpot content="some spot" />
+          <ArticleSpot url="some-url" content="other spot"/>
         </div>
       </div>
     );

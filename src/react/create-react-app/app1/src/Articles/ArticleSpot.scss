@@ -1,6 +1,25 @@
-.article-spot{
-  color: black;
-  background-color: lightblue;
-  padding: 1rem;
+.article-spot{    
   margin: 1rem;
+  position: relative;
+  > a{
+    color: black;
+    background-color: lightblue;  
+    transition: 200ms;
+    color: inherit;    
+    position: inherit;
+    display: block;
+    box-shadow: 0px 2px 10px darken(lightblue, 30%);
+    &:hover, &:focus{
+      box-shadow: 0px 4px 10px darken(lightblue, 40%);
+    }
+    &:hover{
+      transform: translateY(-4px);
+    }
+  }
+  &__content{
+    padding: 1rem;
+    position: inherit;
+    color: black;
+    background-color: lightblue;  
+  }
 }

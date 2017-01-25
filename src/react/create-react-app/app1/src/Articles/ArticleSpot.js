@@ -9,8 +9,22 @@ class ArticleSpot extends Component {
 
   render() {
     return (
-      <div className="article-spot">
-        article spot
+
+    <div className="article-spot">        
+
+      { this.props.url && 
+        <a href={"#"+this.props.url}>
+          <div className="article-spot__content">  
+            {this.props.content}
+          </div>
+        </a>
+      }
+      { !this.props.url && 
+        <div className="article-spot__content">  
+          {this.props.content}
+        </div>
+      }
+                   
       </div>
     );
   }
