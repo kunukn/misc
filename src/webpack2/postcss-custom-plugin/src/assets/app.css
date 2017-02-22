@@ -1,0 +1,16 @@
+body {
+    background: gold;
+}
+
+div {
+    display: flex;
+    background: white;
+    padding: 1rem;
+    transition: 200ms;
+}
+
+div:hover{
+    background: red;
+}
+
+/* div:focus {} is added by postcss-focus plugin */
