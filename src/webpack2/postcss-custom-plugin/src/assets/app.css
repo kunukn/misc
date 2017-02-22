@@ -21,6 +21,7 @@ div {
     border: 1px solid black; /* removed postcss */
     outline: 1px solid blue; /* removed postcss */
     box-shadow: 0 0 20px black;
+    color: red;
 }
 div > div{
     background-color: red; /* disabled postcss */

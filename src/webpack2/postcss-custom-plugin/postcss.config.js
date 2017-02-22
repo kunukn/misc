@@ -12,8 +12,8 @@ module.exports = {
       
       'color': {
         type: 'changeValue',
-        from: 'red',
-        to: 'green'
+        whenValueEquals: 'red',
+        to: 'orange'
       },
       'mouse': {
         type: 'changeProp',
