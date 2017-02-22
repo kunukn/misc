@@ -16,4 +16,17 @@ div {
     padding: 1rem;
     transition: 200ms;
     border-radius: '50%'; /* disabled postcss */
+    position: relative;
+}
+div > div{
+    background-color: red; /* disabled postcss */
+}
+div::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
 }
