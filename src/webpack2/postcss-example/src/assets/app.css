@@ -1,0 +1,9 @@
+body {
+    background: gold;
+}
+
+div {
+    display: flex;
+    background: white;
+    padding: 1rem;
+}
