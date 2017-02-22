@@ -30,45 +30,17 @@ module.exports = (env = {}) => {
         new ExtractTextPlugin({ filename: '[name].bundle.css', allChunks: true })
     ];
 
-
-    if (isProd) {
-        plugins.push(new webpack.LoaderOptionsPlugin({ minimize: true, debug: false }));
-        plugins.push(new webpack.optimize.UglifyJsPlugin({
-            minimize: true,
-            compress: {
-                warnings: false,
-                screw_ie8: true,
-                conditionals: true,
-                unused: true,
-                comparisons: true,
-                sequences: true,
-                dead_code: true,
-                evaluate: true,
-                if_return: true,
-                join_vars: true
-            },
-            output: {
-                comments: false
-            }
-        }));
-    } else {
-        //plugins.push(new webpack.HotModuleReplacementPlugin());
-    }
-
-
     return {
         devtool: isProd ? 'source-map' : 'eval',
         context: path.resolve('./'),
         entry: {
-            rpi: ['./src/index']
+            app: ['./src/index']
         },
         output: {
             path: path.join(__dirname, 'dist'),
             publicPath: '',
             filename: '[name].bundle.js',
             chunkFilename: '[id].chunk.js',
-            libraryTarget: "umd",
-            library: "ReadingPositionIndicator"
         },
         devServer: {
             open: true,
@@ -82,20 +54,10 @@ module.exports = (env = {}) => {
         plugins: plugins,
         module: {
             rules: [
-                {
-                    test: /\.js$/,
-                    loader: 'babel-loader',
-                    exclude: [/node_modules/]
-                },
                 // {
-                //     test: /\.html$/,
-                //     loader: 'html-loader',
+                //     test: /\.js$/,
+                //     loader: 'babel-loader',
                 //     exclude: [/node_modules/]
-                // },
-                // {
-                //     test: /\.css$/,
-                //     loader: ExtractTextPlugin.extract({ loader: 'css-loader?importLoaders=1' }),
-                //     exclude: [/node_modules/],
                 // },
                 {
                     test: /\.css$/,
@@ -106,32 +68,6 @@ module.exports = (env = {}) => {
                     ],
                     exclude: [/node_modules/],
                 },
-                {
-                    test: /\.scss$/,
-                    use: [
-                        'style-loader',
-                        'css-loader?importLoaders=1',
-                        'postcss-loader'
-                    ],
-                    exclude: [/node_modules/],
-                },
-                //  {
-                //     test: /\.(sass|scss)$/,
-                //     use: ['style-loader', 'css-loader', 'sass-loader'],
-                //     exclude: [/node_modules/],
-                // }, 
-                {
-                    test: /\.(png|gif|jpg)$/,
-                    loader: 'url-loader',
-                    options: {
-                        limit: '25000'
-                    },
-                    exclude: [/node_modules/],
-                }, {
-                    test: /\.(ttf|eot|svg)$/,
-                    loader: 'file-loader',
-                    exclude: [/node_modules/],
-                }
             ]
         },
         resolve: {

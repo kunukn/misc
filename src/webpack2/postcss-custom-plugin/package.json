@@ -2,7 +2,7 @@
   "name": "app",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.js",
+  "main": "postcss-alter-property-value.js",
   "scripts": {
     "start": "npm run dev",
     "dev": "webpack-dev-server --progress --config webpack.config.js",
