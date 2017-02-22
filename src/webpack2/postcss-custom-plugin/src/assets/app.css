@@ -1,16 +1,17 @@
 body {
+    font-family: sans-serif;
     background: gold;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 div {
+    font-size: 2rem;
     display: flex;
     background: white;
     padding: 1rem;
     transition: 200ms;
 }
-
-div:hover{
-    background: red;
-}
-
-/* div:focus {} is added by postcss-focus plugin */
