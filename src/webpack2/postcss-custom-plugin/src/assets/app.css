@@ -6,6 +6,7 @@ body {
     display: flex; /* disabled postcss */
     justify-content: center;
     align-items: center;
+    mouse: pointer; /* cursor: pointer - postcss */
 }
 
 div {
@@ -17,16 +18,18 @@ div {
     transition: 200ms;
     border-radius: '50%'; /* disabled postcss */
     position: relative;
+    border: 1px solid black; /* removed postcss */
+    outline: 1px solid blue; /* removed postcss */
+    box-shadow: 0 0 20px black;
 }
 div > div{
     background-color: red; /* disabled postcss */
 }
 div::after{
-    content: '';
+    content: ''; /* disabled postcss */
     position: absolute;
     bottom: 0;
     right: 0;
     width: 100px;
     height: 100px;
-    border: 1px solid black;
 }

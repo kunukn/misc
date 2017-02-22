@@ -2,12 +2,41 @@
 
 module.exports = {
   plugins: [
-    require('./postcss-disable-property-value.js')(
+    require('./postcss-alter-property-value.js')(
       { 
-      'border-radius':'50%', 
-      'background-color':'red',
+      'border-radius': null, 
       'display':'flex',
+      'content': '""',
       'content': "''", 
+      'box-shadow': null,
+      
+      'color': {
+        type: 'changeValue',
+        from: 'red',
+        to: 'green'
+      },
+      'mouse': {
+        type: 'changeProp',
+        forAllValues: true,
+        to: 'cursor'
+      },
+      'background-color': {
+        type: 'disable',
+        whenValueEquals: 'red'
+      },
+      'font-size': {
+        type: 'changeValue',
+        forAllValues: true,
+        to: '3rem',
+      },
+      'outline': {
+        type: 'remove',
+        forAllValues: true
+      },
+      'border': {
+        type: 'remove',
+        whenValueEquals: '1px solid black'
+      },
     }),  
   ]
 }
