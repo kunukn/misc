@@ -60,15 +60,13 @@ module.exports = (env = {}) => {
         devtool: isProd ? 'source-map' : 'eval',
         context: path.resolve('./'),
         entry: {
-            rpi: ['./src/index']
+            app: ['./src/index']
         },
         output: {
             path: path.join(__dirname, 'dist'),
             publicPath: '',
             filename: '[name].bundle.js',
             chunkFilename: '[id].chunk.js',
-            libraryTarget: "umd",
-            library: "ReadingPositionIndicator"
         },
         devServer: {
             open: true,
