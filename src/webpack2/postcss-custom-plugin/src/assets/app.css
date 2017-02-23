@@ -1,36 +1,16 @@
 body {
     font-family: sans-serif;
     background: gold;
-    margin: 0;
-    min-height: 100vh;
-    display: flex; /* disabled postcss */
-    justify-content: center;
-    align-items: center;
-    mouse: pointer; /* cursor: pointer - postcss */
+    background-color: darkred;
+    margin: 0;    
+    mouse: pointer;
 }
 
 div {
-    font-size: 2rem;
-    display: flex; /* disabled postcss */
-    background: white;
-    background-color: red; /* disabled postcss */
-    padding: 1rem;
-    transition: 200ms;
-    border-radius: '50%'; /* disabled postcss */
-    position: relative;
-    border: 1px solid black; /* removed postcss */
-    outline: 1px solid blue; /* removed postcss */
-    box-shadow: 0 0 20px black;
-    color: red;
-}
-div > div{
-    background-color: red; /* disabled postcss */
-}
-div::after{
-    content: ''; /* disabled postcss */
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 100px;
-    height: 100px;
+    font-size: 2rem;    
+    background: white;    
+    padding: 1rem;        
+    color: dodgerblue;
+    outline: 13px dashed blue;
+    border: 1px solid black;
 }

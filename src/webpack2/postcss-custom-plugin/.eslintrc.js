@@ -1,11 +1,11 @@
 module.exports = {
-  "extends": "airbnb-base",
+ // "extends": "airbnb-base",
 
   "env": {
     "browser": true
   },
   "parserOptions": {
-    //"ecmaVersion": 6,
+    "ecmaVersion": 5,
   },
   "rules": {
     "no-underscore-dangle": "off",
