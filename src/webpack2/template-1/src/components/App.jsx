@@ -1,4 +1,9 @@
 import React from 'react';
 
-const App = props => <div className="app">App</div>;
-export default App;
+export default class App extends React.Component{
+  render(){
+    return (
+      <div className="app">App</div>
+    );
+  }
+}
