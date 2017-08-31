@@ -33,7 +33,7 @@ module.exports = (env = {}) => {
         },
         devServer: {
             openPage: 'index.html',
-            //open: true, // auto open browser?
+            open: true, // auto open browser?
             contentBase: './',
             noInfo: true,
             port: 3456,
