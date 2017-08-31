@@ -61,7 +61,8 @@ module.exports = (env = {}) => {
             ]
         },
         resolve: {
-            extensions: ['.js', '.jsx']
+            extensions: ['.js', '.jsx'],
+            modules: [path.resolve(__dirname, "src/components"), "node_modules"],
         },
         externals: {}
     }
