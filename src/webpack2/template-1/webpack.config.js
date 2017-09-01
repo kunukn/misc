@@ -42,7 +42,7 @@ module.exports = (env = {}) => {
       open: true, // auto open browser?
       contentBase: './',
       noInfo: true,
-      port: 3456
+      port: 3339,
     },
     plugins: plugins,
     module: {
