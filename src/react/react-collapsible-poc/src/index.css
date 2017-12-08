@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif; }
+
+.togglebox {
+  outline: 1px solid black;
+  max-width: 400px;
+  margin: 0 auto; }
+  .togglebox__toggle {
+    padding: 1rem;
+    outline: 1px solid black; }
+    .togglebox__toggle button {
+      font-size: 1rem;
+      background: transparent;
+      border: 1px solid gray;
+      padding: .5rem;
+      box-shadow: none; }
+  .togglebox__box {
+    padding: 10rem 1rem;
+    outline: 1px solid black; }
