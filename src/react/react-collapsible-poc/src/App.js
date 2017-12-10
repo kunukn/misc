@@ -38,7 +38,7 @@ class ToggleBox extends Component {
 
   render() {
     
-    return this.props.children({
+    return this.props.render({
       onToggle: this.onToggle,
       setBoxElement: this.setBoxElement,
       state: this.state,
@@ -60,23 +60,21 @@ class ToggleBox extends Component {
 class App extends Component {
   render() {
     return (
-      <ToggleBox>
-        {({ onToggle, setBoxElement, state }) => {
-          return (
-            <div className="togglebox">
-              <div className="togglebox__toggle">
-                <button onClick={onToggle}>toggle</button>
-              </div>
-              <div className="togglebox__box" ref={setBoxElement}>
-                box
-              </div>
-              <pre>{
-                JSON.stringify(state, null, 2)
-              }</pre>
+      <ToggleBox 
+        
+        render={({ onToggle, setBoxElement, state }) => 
+          <div className="togglebox">
+            <div className="togglebox__toggle">
+              <button onClick={onToggle}>toggle</button>
             </div>
-          );
-        }}
-      </ToggleBox>
+            <div className="togglebox__box" ref={setBoxElement}>
+              box
+            </div>
+            <pre>{
+              JSON.stringify(state, null, 2)
+            }</pre>
+          </div>
+      } />
     );
   }
 }
