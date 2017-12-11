@@ -23,7 +23,7 @@ class ToggleBox extends Component {
 
   static defaultProps = {
     duration: 500,
-    ease: 'linear',
+    ease: 'quartInOut',
     //boxState: TOGGLE.EXPANDED,
   };
 
@@ -148,7 +148,7 @@ class App extends Component {
     return (
       <ToggleBox
         duration={1000}
-        ease="linear"
+        ease="quartInOut"
         render={({ onToggle, setBoxElement, state }) => (
           <div className="togglebox">
             <div className="togglebox__toggle">
