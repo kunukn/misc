@@ -55,14 +55,12 @@ class ToggleBox extends Component {
       this.collapse();
     } else if (this.boxState === TOGGLE.COLLAPSED) {
       this.boxElement.style.display = '';
-      rAF(() => {
         this.boxHeight = this.boxElement.clientHeight;
         this.boxState = TOGGLE.EXPANDING;
         this.boxHeight = this.boxElement.clientHeight;
         this.isAnimating = true;
         this.startAnimationTime = new Date().getTime();
         this.expand();
-      });
     } else {
       log('error onToggle');
     }
