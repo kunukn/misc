@@ -84,16 +84,20 @@ class ToggleBox extends Component {
     const progress = 1 - eases[this.props.ease](elapsedTime / duration);
     let currentHeightValue = Math.round(this.boxHeight * progress);
 
-    this.setState({
-      heightValue: currentHeightValue,
-    });
+
+    // this.setState({
+    //   heightValue: currentHeightValue,
+    // });
 
     log(currentHeightValue);
 
     if (elapsedTime < duration) {
-      this.timeout = setTimeout(this.collapse, 160);
+      this.boxElement.style.height = `${currentHeightValue}px`;
+      this.timeout = setTimeout(this.collapse, 16);
     } else {
       log('done');
+      this.boxElement.style.display = 'none';
+      this.boxElement.style.height = '';
     }
   }
 
