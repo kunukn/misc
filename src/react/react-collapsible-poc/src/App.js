@@ -1,11 +1,11 @@
-import React, {Component} from 'react'; // eslint-disable-line
+import React, { Component } from 'react'; // eslint-disable-line
 import PropTypes from 'prop-types'; // eslint-disable-line
 import eases from 'eases';
 
 // inspiration from
 // https://github.com/kunukn/react-number-easing/blob/master/src/components/NumberEasing.jsx
 const log = console.log.bind(console);
-log(Object.keys(eases));
+//log(Object.keys(eases));
 
 const TOGGLE = {
   EXPANDED: 'EXPANDED',
@@ -14,8 +14,11 @@ const TOGGLE = {
   COLLAPSING: 'COLLAPSING',
 };
 
-class ToggleBox extends Component {
+const rAF = window.requestAnimationFrame
+  ? window.requestAnimationFrame.bind(window)
+  : cb => setTimeout(cb, 16);
 
+class ToggleBox extends Component {
   static propTypes = {
     duration: PropTypes.number,
     ease: PropTypes.oneOf(Object.keys(eases)),
@@ -29,7 +32,7 @@ class ToggleBox extends Component {
 
   state = {
     isAnimating: false,
-  //  boxState: TOGGLE.EXPANDED,
+    //  boxState: TOGGLE.EXPANDED,
   };
 
   boxState = TOGGLE.EXPANDED;
@@ -39,7 +42,6 @@ class ToggleBox extends Component {
   };
 
   onToggle = () => {
-    
     if (this.isAnimating) {
       log('isAnimating true');
       return;
@@ -52,23 +54,21 @@ class ToggleBox extends Component {
       this.startAnimationTime = new Date().getTime();
       this.collapse();
     } else if (this.boxState === TOGGLE.COLLAPSED) {
-      this.boxState = TOGGLE.EXPANDING;
-      this.boxHeight = this.boxElement.clientHeight;
-      this.isAnimating = true;
-      this.startAnimationTime = new Date().getTime();
-      this.expand();
+      this.boxElement.style.display = '';
+      rAF(() => {
+        this.boxHeight = this.boxElement.clientHeight;
+        this.boxState = TOGGLE.EXPANDING;
+        this.boxHeight = this.boxElement.clientHeight;
+        this.isAnimating = true;
+        this.startAnimationTime = new Date().getTime();
+        this.expand();
+      });
     } else {
       log('error onToggle');
     }
-
- //   log(this.boxState);
- //   log(this.boxElement && this.boxElement.clientHeight);
-//    log(eases[this.props.ease](0.3));
-
   };
 
   collapse = () => {
-   
     if (!this.boxElement) {
       log('no boxElement');
       return;
@@ -77,19 +77,9 @@ class ToggleBox extends Component {
     const duration = parseInt(this.props.duration, 10);
 
     const now = new Date().getTime();
-    const elapsedTime = Math.min(
-      duration,
-      now - this.startAnimationTime,
-    );
+    const elapsedTime = Math.min(duration, now - this.startAnimationTime);
     const progress = 1 - eases[this.props.ease](elapsedTime / duration);
     let currentHeightValue = Math.round(this.boxHeight * progress);
-
-
-    // this.setState({
-    //   heightValue: currentHeightValue,
-    // });
-
-    log(currentHeightValue);
 
     if (elapsedTime < duration) {
       this.boxElement.style.height = `${currentHeightValue}px`;
@@ -98,30 +88,41 @@ class ToggleBox extends Component {
       log('done');
       this.boxElement.style.display = 'none';
       this.boxElement.style.height = '';
+      this.boxState = TOGGLE.COLLAPSED;
+      this.isAnimating = false;
     }
-  }
+  };
 
   expand = () => {
-   
     if (!this.boxElement) {
       log('no boxElement');
       return;
     }
-    //const duration = parseInt(this.props.duration, 10);
-    
-  }
+
+    const duration = parseInt(this.props.duration, 10);
+    const now = new Date().getTime();
+    const elapsedTime = Math.min(duration, now - this.startAnimationTime);
+    const progress = eases[this.props.ease](elapsedTime / duration);
+    let currentHeightValue = Math.round(
+      this.boxHeight * progress
+    );
+
+    if (elapsedTime < duration) {
+      this.boxElement.style.height = `${currentHeightValue}px`;
+      this.timeout = setTimeout(this.expand, 16);
+    } else {
+      log('done');
+      this.boxElement.style.height = '';
+      this.boxState = TOGGLE.EXPANDED;
+      this.isAnimating = false;
+    }
+  };
 
   componentWillReceiveProps(nextProps) {
     //  const duration = parseInt(this.props.duration, 10);
     //  if (parseInt(nextProps.duration, 10) === duration) {
     //   return;
     // }
-
-    //this.setState({
-    //   previousValue: this.state.displayValue,
-    // });
-    //   this.startAnimationTime = new Date().getTime();
-    //   this.updateNumber();
   }
 
   render() {
@@ -147,7 +148,7 @@ class App extends Component {
   render() {
     return (
       <ToggleBox
-        duration={1000}
+        duration={300}
         ease="quartInOut"
         render={({ onToggle, setBoxElement, state }) => (
           <div className="togglebox">
@@ -155,9 +156,7 @@ class App extends Component {
               <button onClick={onToggle}>toggle</button>
             </div>
             <div className="togglebox__box" ref={setBoxElement}>
-              <div className="togglebox__box-inner">
-                box inner
-              </div>
+              <div className="togglebox__box-inner">box inner</div>
             </div>
             <pre>{JSON.stringify(state, null, 2)}</pre>
           </div>
