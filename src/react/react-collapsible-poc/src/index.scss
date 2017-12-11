@@ -8,6 +8,7 @@ body {
   outline: 1px solid black;
   max-width: 400px;
   margin: 0 auto;
+  box-sizing: border-box;
   &__toggle {
     padding: 1rem;
     outline: 1px solid black;
@@ -17,11 +18,15 @@ body {
         border: 1px solid gray;
         padding: .5rem;
         box-shadow: none;
+        border-radius: 2px;
     }
   }
-  &__box {
-    padding: 10rem 1rem;
-    outline: 1px solid black;
-
+  &__box {    
+    overflow: hidden;
+    //padding: 0 1rem;
   }  
+  &__box-inner {
+    outline: 1px solid red;
+    padding: 10rem 1rem;
+  }
 }

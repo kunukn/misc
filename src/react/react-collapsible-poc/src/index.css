@@ -6,7 +6,8 @@ body {
 .togglebox {
   outline: 1px solid black;
   max-width: 400px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  box-sizing: border-box; }
   .togglebox__toggle {
     padding: 1rem;
     outline: 1px solid black; }
@@ -15,7 +16,10 @@ body {
       background: transparent;
       border: 1px solid gray;
       padding: .5rem;
-      box-shadow: none; }
+      box-shadow: none;
+      border-radius: 2px; }
   .togglebox__box {
-    padding: 10rem 1rem;
-    outline: 1px solid black; }
+    overflow: hidden; }
+  .togglebox__box-inner {
+    outline: 1px solid red;
+    padding: 10rem 1rem; }
