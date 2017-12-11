@@ -1,3 +1,7 @@
+html{
+  font-size: 16px;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -23,10 +27,12 @@ body {
   }
   &__box {    
     overflow: hidden;
-    //padding: 0 1rem;
   }  
   &__box-inner {
-    outline: 1px solid red;
-    padding: 10rem 1rem;
+    display: flex;
+    min-height: 100px;
+    justify-content: center;
+    align-items: center;
+    background-color: lightblue;
   }
 }
