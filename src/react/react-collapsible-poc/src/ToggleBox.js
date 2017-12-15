@@ -5,6 +5,9 @@ import eases from 'eases';
 const log = console.log.bind(console);
 //log(Object.keys(eases));
 
+const requestAnimationFrame = window.requestAnimationFrame ? window.requestAnimationFrame.bind(window) : (callback => setTimeout(callback, 16));
+const cancelAnimationFrame = window.cancelAnimationFrame ? window.cancelAnimationFrame.bind(window) : (ref => clearTimeout(ref));
+
 const TOGGLE = {
   EXPANDED: 'EXPANDED',
   COLLAPSED: 'COLLAPSED',
@@ -148,14 +151,14 @@ export default class ToggleBox extends React.Component {
 
     if (elapsedTime < duration) {
       this._state_.boxElement.style.height = `${currentHeightValue}px`;
-      this._state_.timeout = this.nextTick(this.expand);
+      this.nextTick(this.expand);
     } else {
       this.setExpandedState();
     }
   };
 
   nextTick = callback => {
-    return setTimeout(callback, 16);
+    this.raf = requestAnimationFrame(callback);
   };
 
   componentWillReceiveProps(nextProps) {
@@ -185,6 +188,6 @@ export default class ToggleBox extends React.Component {
   }
 
   componentWillUnmount() {
-    clearTimeout(this.timeout);
+    cancelAnimationFrame(this.raf);    
   }
 }
